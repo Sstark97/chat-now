@@ -1,6 +1,7 @@
 import Head from "next/head"
 import { Inter } from "next/font/google"
 import Button from "@components/Button";
+import AuthHeader from "@components/AuthHeader";
 
 const inter = Inter({ subsets: ["latin"] })
 
@@ -15,6 +16,7 @@ const Home = () => {
             </Head>
             <main className={inter.className}>
                 <h1 className="text-2xl text-center mt-3">Hello World</h1>
+                <AuthHeader title="Crea tu cuenta"/>
                 <Button value="Crear cuenta" />
             </main>
         </>

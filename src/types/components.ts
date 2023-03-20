@@ -7,7 +7,12 @@ interface ButtonProps {
     value: string;
 }
 
+interface AuthHeaderProps {
+    title: string
+}
+
 export type {
     InputProps,
-    ButtonProps
+    ButtonProps,
+    AuthHeaderProps
 }
