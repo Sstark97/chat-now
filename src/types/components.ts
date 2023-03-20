@@ -4,6 +4,11 @@ interface InputProps {
     label: string;
 }
 
+interface ButtonProps {
+    value: string;
+}
+
 export type {
-    InputProps
+    InputProps,
+    ButtonProps
 }
