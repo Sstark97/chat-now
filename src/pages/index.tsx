@@ -1,6 +1,7 @@
 import Head from "next/head"
 import { Inter } from "next/font/google"
-import Input from "@components/Input";
+import Input from "@components/Input"
+import PasswordInput from "@components/PasswordInput"
 
 const inter = Inter({ subsets: ["latin"] })
 
@@ -16,6 +17,7 @@ const Home = () => {
             <main className={inter.className}>
                 <h1 className="text-2xl text-center mt-3">Hello World</h1>
                 <Input type="email" placeholder="Escribe tu email" />
+                <PasswordInput placeholder="Escribe tu contraseña" />
             </main>
         </>
     )
