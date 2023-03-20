@@ -15,7 +15,7 @@ const Home = () => {
             </Head>
             <main className={inter.className}>
                 <h1 className="text-2xl text-center mt-3">Hello World</h1>
-                <Input />
+                <Input type="email" placeholder="Escribe tu email" />
             </main>
         </>
     )
