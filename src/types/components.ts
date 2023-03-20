@@ -1,9 +1,7 @@
 interface InputProps {
-    type: string;
-    placeholder: string;
-    children?: React.ReactNode;
+    type: string
+    placeholder: string
+    children?: React.ReactNode
 }
 
-export type {
-    InputProps
-}
+export type { InputProps }
