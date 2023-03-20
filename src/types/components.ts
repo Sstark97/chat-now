@@ -1,7 +1,17 @@
+import { ReactNode } from "react"
+
 interface InputProps {
     type: string
     placeholder: string
-    children?: React.ReactNode
+    children?: ReactNode
 }
 
-export type { InputProps }
+interface ButtonProps {
+    value: string
+}
+
+interface AuthHeaderProps {
+    title: string
+}
+
+export type { InputProps, ButtonProps, AuthHeaderProps }
