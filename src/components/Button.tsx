@@ -7,7 +7,7 @@ const Button = ({ value }: ButtonProps) => {
     }
 
     return (
-        <button onClick={() => click()} className="">{ value }</button>
+        <button onClick={() => click()} className="w-4/5 bg-light_purple py-3 text-[1.15rem] rounded-xl shadow-lg hover:brightness-110 active:translate-y-[2%] active:shadow-md">{ value }</button>
     )
 }
 
