@@ -1,9 +1,8 @@
 import type { InputProps } from "@customTypes/components"
 
-const Input = ({ type, placeholder, label }: InputProps) => (
-    <div className="w-1/4 flex flex-col">
-        <label className="text-sm font-semibold text-gray-600">{label}</label>
-        <input type={type} placeholder={placeholder} className="border border-gray-300 rounded-md px-3 py-2 mt-1 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent" />
+const Input = ({ type, placeholder }: InputProps) => (
+    <div className="w-1/4 flex flex-col mx-auto">
+        <input type={type} placeholder={placeholder} className="bg-secondary text-white placeholder-white border border-gray-300 rounded-xl px-3 py-2 mt-1 focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent" required/>
     </div>
 )
 
