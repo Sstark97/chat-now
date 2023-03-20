@@ -8,6 +8,9 @@
     "start": "next start",
     "lint": "next lint"
   },
+  "prisma": {
+    "schema": "src/pages/api/prisma/schema.prisma"
+  },
   "dependencies": {
     "@types/node": "18.15.3",
     "@types/react": "18.0.28",
