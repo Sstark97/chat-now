@@ -13,7 +13,7 @@ const Home = () => {
                 <link rel="icon" href="/favicon.ico" />
             </Head>
             <main className={inter.className}>
-                <h1>Hello World</h1>
+                <h1 className="text-2xl text-center mt-3">Hello World</h1>
             </main>
         </>
     )
