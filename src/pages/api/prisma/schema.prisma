@@ -1,0 +1,57 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  email      String        @id
+  name       String
+  password   String
+  status     Status        @default(Disponible)
+  contacs    Contact[]     @relation("Contact")
+  users      Contact[]     @relation("User")
+  receivers  Chat[]        @relation("Receiver")
+  senders    Chat[]        @relation("Sender")
+}
+
+model Message {
+  id    Int            @id @default(autoincrement())
+  text  String
+  date  DateTime       @default(now())
+  chat  Chat?          @relation("Message")
+}
+
+model Contact {
+  User           User     @relation("User", fields: [user_email], references: [email])
+  Contact        User     @relation("Contact", fields: [contact_email], references: [email])
+  user_email     String
+  contact_email  String
+
+  @@id([user_email, contact_email])
+}
+
+model Chat {
+  sender_email      String 
+  receiver_email    String
+  message_id        Int     @unique
+
+  Receiver          User    @relation("Receiver", fields: [receiver_email], references: [email])
+  Sender            User    @relation("Sender", fields: [sender_email], references: [email])
+  Message           Message @relation("Message", fields: [message_id], references: [id])
+
+  @@id([sender_email, receiver_email])
+}
+
+enum Status {
+  Disponible
+  Ocupado
+  Ausente
+  Desconectado
+}
