@@ -1,5 +1,5 @@
-import RegisterForm from "@containers/RegisterForm";
-import Image from "next/image";
+import RegisterForm from "@containers/RegisterForm"
+import Image from "next/image"
 const Register = () => (
     <div className="h-screen flex items-center justify-center">
         <RegisterForm />
