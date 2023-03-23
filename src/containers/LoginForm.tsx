@@ -8,7 +8,7 @@ const LoginForm = () => (
     <div className="w-full md:w-[40%]">
         <AuthHeader title="Bienvenido" />
 
-        <form className="w-3/4 md:w-2/4 mx-auto">
+        <form className="w-10/12 md:w-2/4 mx-auto">
             <Input type="text" placeholder="Escribe tu email" />
             <PasswordInput placeholder="Escribe tu contraseña" />
             <Button value="Iniciar Sesión" />
