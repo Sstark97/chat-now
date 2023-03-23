@@ -1,6 +1,6 @@
 import type { InputProps } from "@customTypes/components"
 
-const Input = ({ type, placeholder, children}: InputProps) => (
+const Input = ({ type, placeholder, children }: InputProps) => (
     <div className="relative flex flex-col mx-auto">
         <input
             type={type}
