@@ -10,12 +10,12 @@ const RegisterForm = () => {
             <AuthHeader title={"Crea tu cuenta"} />
             <form>
                 <div className="flex flex-col items-center">
-                    <div className="w-11/12 lg:w-1/2">
+                    <div className="w-10/12 lg:w-1/2">
                         <Input type="text" placeholder="Nombre" />
                         <Input type="email" placeholder="Correo electrónico" />
                         <PasswordInput placeholder="Contraseña" />
+                        <Button value={"Crear cuenta"} />
                     </div>
-                    <Button value={"Crear cuenta"} />
                 </div>
             </form>
             <p className="mt-5 text-sm text-center text-secondary_text lg:text-lg">
