@@ -1,5 +1,12 @@
 import type { InputProps } from "@customTypes/components"
 
+/**
+ * Este componente es el encargado de mostrar un input
+ * @param {string} type
+ * @param {string} placeholder
+ * @returns component
+ * @example <Input type="text" placeholder="Nombre de usuario" />
+ */
 const Input = ({ type, placeholder, children}: InputProps) => (
     <div className="relative flex flex-col mx-auto">
         <input
