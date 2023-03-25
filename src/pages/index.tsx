@@ -1,8 +1,13 @@
 import Head from "next/head"
 import { Inter } from "next/font/google"
+import Login from "./login"
 
 const inter = Inter({ subsets: ["latin"] })
 
+/**
+ * Esta es la página principal de la aplicación
+ * @returns component
+ */
 const Home = () => {
     return (
         <>
@@ -13,7 +18,7 @@ const Home = () => {
                 <link rel="icon" href="/favicon.ico" />
             </Head>
             <main className={inter.className}>
-                <h1 className="text-2xl text-center mt-3">Hello World</h1>
+                <Login />
             </main>
         </>
     )
