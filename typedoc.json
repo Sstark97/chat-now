@@ -9,5 +9,5 @@
     "excludeProtected": true,
     "excludeExternals": true,
     "excludeNotDocumented": true,
-    "pretty": true,
+    "pretty": true
 }
