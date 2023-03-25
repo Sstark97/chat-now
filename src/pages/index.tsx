@@ -4,6 +4,10 @@ import Login from "./login"
 
 const inter = Inter({ subsets: ["latin"] })
 
+/**
+ * Esta es la página principal de la aplicación
+ * @returns component
+ */
 const Home = () => {
     return (
         <>

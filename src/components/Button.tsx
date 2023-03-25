@@ -1,5 +1,11 @@
 import type { ButtonProps } from "@customTypes/components"
 
+/**
+ * Este componente es el encargado de mostrar un botón
+ * @param {string} value
+ * @returns component
+ * @example <Button value="Iniciar sesión" />
+ */
 const Button = ({ value }: ButtonProps) => {
 
     function click(){

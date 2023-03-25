@@ -1,0 +1,13 @@
+{
+    "entryPoints": ["./src/components/*.tsx", "./src/containers/*.tsx", "./src/pages/*.tsx", "./src/types/components.ts"],
+    "out": "./docs",
+    "exclude": ["**/__tests__/**/*"],
+    "theme": "default",
+    "name": "Chat Now Documentation",
+    "readme": "./README.md",
+    "excludePrivate": true,
+    "excludeProtected": true,
+    "excludeExternals": true,
+    "excludeNotDocumented": true,
+    "pretty": true,
+}
