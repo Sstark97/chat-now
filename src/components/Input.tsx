@@ -7,7 +7,7 @@ import type { InputProps } from "@customTypes/components"
  * @returns component
  * @example <Input type="text" placeholder="Nombre de usuario" />
  */
-const Input = ({ type, placeholder, children}: InputProps) => (
+const Input = ({ type, placeholder, children }: InputProps) => (
     <div className="relative flex flex-col mx-auto">
         <input
             type={type}
