@@ -4,6 +4,7 @@ import type { InputProps } from "@customTypes/components"
  * Este componente es el encargado de mostrar un input
  * @param {string} type
  * @param {string} placeholder
+ * @param children
  * @returns component
  * @example <Input type="text" placeholder="Nombre de usuario" />
  */

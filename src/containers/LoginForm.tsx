@@ -15,7 +15,10 @@ const LoginForm = () => (
         </form>
 
         <p className="mt-5 text-sm text-center text-secondary_text md:text-lg">
-            ¿Aún no tienes cuenta? <Link className="font-bold" href="">Regístrate</Link>
+            ¿Aún no tienes cuenta?{" "}
+            <Link className="font-bold" href="">
+                Regístrate
+            </Link>
         </p>
     </div>
 )
