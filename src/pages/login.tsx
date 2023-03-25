@@ -6,7 +6,7 @@ const Login = () => {
         <div className="h-screen flex items-center">
             <LoginForm />
             <div className="md:w-[60%] flex items-center justify-center">
-                <Image src="/login.png" alt="LoginImage" width={600} height={0} className="hidden md:block" />
+                <Image src="/login.png" alt="LoginImage" width={450} height={0} className="hidden md:block" />
             </div>
         </div>
     )
