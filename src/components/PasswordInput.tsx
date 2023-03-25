@@ -10,7 +10,7 @@ import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai"
  */
 const PasswordInput = ({ placeholder }: { placeholder: string }) => {
     const [showPassword, setShowPassword] = useState(false)
-    const iconClass = "absolute top-3 right-4 fill-white text-xl lg:text-2xl"
+    const iconClass = "absolute top-8 right-4 fill-white text-xl lg:text-2xl"
 
     /**
      * Este método es el encargado de mostrar u ocultar la contraseña
