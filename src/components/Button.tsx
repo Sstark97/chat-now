@@ -12,7 +12,11 @@ const Button = ({ value }: ButtonProps) => {
     }
 
     return (
-        <button onClick={() => click()} className="w-full bg-light_purple py-2 mt-5 md:mt-6 text-[1.15rem] rounded-xl shadow-lg hover:brightness-110 active:translate-y-[2%] active:shadow-md">
+        <button
+            type="button"
+            onClick={() => click()}
+            className="w-full bg-light_purple py-2 mt-5 md:mt-6 text-[1.15rem] rounded-xl shadow-lg hover:brightness-110 active:translate-y-[2%] active:shadow-md"
+        >
             {value}
         </button>
     )
