@@ -18,6 +18,7 @@
     "paths": {
       "@components/*": ["components/*"],
       "@containers/*": ["containers/*"],
+      "@lib/*": ["lib/*"],
       "@pages/*": ["pages/*"],
       "@customTypes/*": ["types/*"],
     }

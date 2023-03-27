@@ -11,7 +11,7 @@
     "docs": "typedoc"
   },
   "prisma": {
-    "schema": "src/pages/api/prisma/schema.prisma"
+    "schema": "src/lib/prisma/schema.prisma"
   },
   "dependencies": {
     "@types/node": "18.15.3",

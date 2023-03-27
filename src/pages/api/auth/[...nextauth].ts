@@ -12,15 +12,8 @@ const options: NextAuthOptions = {
     providers: [
         CredentialsProvider({
             type: "credentials",
-            id: "",
-            name: "Credentials",
-            pages: {
-                signIn: "/auth/login",
-            },
-            async authorize(credentials, req) {
-                console.log(credentials)
-                console.log(req)
-            },
+            name: "ChatNow",
+            async authorize(credentials, req) {},
         }),
     ],
 }
