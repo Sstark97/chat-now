@@ -5,9 +5,7 @@ describe("Register", () => {
     it("renders a heading", () => {
         const { container } = render(<Register />)
 
-        const heading = screen.getByRole("heading", {
-            name: /welcome to next\.js!/i,
-        })
+        const heading = screen.getByText("Crea tu cuenta")
 
         expect(heading).toBeInTheDocument()
 
