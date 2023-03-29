@@ -19,7 +19,7 @@ const RegisterForm = () => {
     return (
         <div className="w-[90%] lg:w-2/5">
             <AuthHeader title={"Crea tu cuenta"} />
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={handleSubmit} method="post">
                 <div className="flex flex-col items-center">
                     <div className="w-10/12 lg:w-1/2" ref={ref}>
                         <Input type="text" placeholder="Nombre" name="name" />

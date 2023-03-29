@@ -1,14 +1,10 @@
 import { PrismaClient } from "@prisma/client"
-import { RequestInternal } from "next-auth"
 
 const prisma = new PrismaClient()
 
-interface registerAction {
-    credentials: Record<"name" | "email" | "password", string> | undefined
-    request: Pick<RequestInternal, "query" | "body" | "headers" | "method">
-}
+type Credentials = Record<"name" | "email" | "password", string> | undefined
 
-const register = async ({ credentials, request }: registerAction) => {
+const register = async (credentials: Credentials) => {
     const user = await prisma.user.findFirst({
         where: { email: credentials?.email },
     })
@@ -17,15 +13,11 @@ const register = async ({ credentials, request }: registerAction) => {
         return null
     }
 
-    console.log("goplaaadafasdf")
-
     const newUser = await prisma.user.create({
         data: {
             ...credentials,
         },
     })
-
-    console.log(newUser)
 
     const isValidPassword = true
 

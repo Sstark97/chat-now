@@ -5,7 +5,7 @@ import { PrismaAdapter } from "@next-auth/prisma-adapter"
 import { PrismaClient } from "@prisma/client"
 import Google from "next-auth/providers/google"
 import Credentials from "next-auth/providers/credentials"
-import { register } from "@lib/services/user.service"
+import * as process from "process"
 
 const prisma = new PrismaClient()
 
@@ -30,9 +30,20 @@ const options: NextAuthOptions = {
                 },
                 password: { label: "Password", type: "password" },
             },
-            authorize: async (credentials, request) => {
-                console.log(credentials)
-                return register({ credentials, request })
+            authorize: async (credentials) => {
+                const res = await fetch(`${process.env.NEXTAUTH_URL}/api/auth/user`, {
+                    method: "POST",
+                    body: JSON.stringify(credentials),
+                    headers: { "Content-type": "application/json" },
+                })
+
+                const user = await res.json()
+
+                if (res.ok && user) {
+                    return user
+                }
+
+                return null
             },
         }),
         Github({
