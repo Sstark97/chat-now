@@ -32,4 +32,13 @@ interface AuthHeaderProps {
     title: string
 }
 
-export type { InputProps, ButtonProps, AuthHeaderProps }
+/**
+ * @interface RegisterProps
+ * @description Register component props
+ * @property {() => void} onRegister - Register function
+ */
+interface RegisterProps {
+    onRegister(): void
+}
+
+export type { InputProps, ButtonProps, AuthHeaderProps, RegisterProps }

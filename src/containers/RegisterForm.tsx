@@ -3,8 +3,9 @@ import Input from "@components/Input"
 import PasswordInput from "@components/PasswordInput"
 import Button from "@components/Button"
 import Link from "next/link"
+import { RegisterProps } from "@customTypes/components"
 
-const RegisterForm = ({ onRegister }: { onRegister(): void }) => {
+const RegisterForm = ({ onRegister }: RegisterProps) => {
     return (
         <div className="w-[90%] lg:w-2/5">
             <AuthHeader title={"Crea tu cuenta"} />
