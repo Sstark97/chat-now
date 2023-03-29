@@ -1,0 +1,32 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Register renders a heading 1`] = `
+<div>
+  <section
+    class="w-full flex flex-col items-center"
+  >
+    <img
+      alt="Logo"
+      class="2xl:w-1/12"
+      data-nimg="1"
+      decoding="async"
+      height="70"
+      loading="lazy"
+      src="/_next/image?url=%2Flogo.png&w=256&q=75"
+      srcset="/_next/image?url=%2Flogo.png&w=96&q=75 1x, /_next/image?url=%2Flogo.png&w=256&q=75 2x"
+      style="color: transparent;"
+      width="70"
+    />
+    <h1
+      class="text-3xl font-bold pt-2 2xl:text-4xl 2xl:pt-3"
+    >
+      irrelevant title
+    </h1>
+    <p
+      class="text-sm font-normal pt-2 text-secondary_text 2xl:text-lg 2xl:pt-3"
+    >
+      Por favor, inserte sus datos
+    </p>
+  </section>
+</div>
+`;
