@@ -3,19 +3,29 @@ import Input from "@components/Input"
 import PasswordInput from "@components/PasswordInput"
 import Button from "@components/Button"
 import Link from "next/link"
-import { RegisterProps } from "@customTypes/components"
+import { MutableRefObject, useCallback, useRef } from "react"
+import { getUserDataFrom } from "@lib/utils/user"
+import { signIn } from "next-auth/react"
 
-const RegisterForm = ({ onRegister }: RegisterProps) => {
+const RegisterForm = () => {
+    const ref = useRef<HTMLDivElement>() as MutableRefObject<HTMLDivElement>
+
+    const handleSubmit = useCallback(async () => {
+        const user = getUserDataFrom(ref.current)
+        console.log(user)
+        await signIn("credentials", { ...user, callbackUrl: "/" })
+    }, [])
+
     return (
         <div className="w-[90%] lg:w-2/5">
             <AuthHeader title={"Crea tu cuenta"} />
-            <form>
+            <form onSubmit={handleSubmit}>
                 <div className="flex flex-col items-center">
-                    <div className="w-10/12 lg:w-1/2">
-                        <Input type="text" placeholder="Nombre" />
-                        <Input type="email" placeholder="Correo electrónico" />
+                    <div className="w-10/12 lg:w-1/2" ref={ref}>
+                        <Input type="text" placeholder="Nombre" name="name" />
+                        <Input type="email" placeholder="Correo electrónico" name="email" />
                         <PasswordInput placeholder="Contraseña" />
-                        <Button value={"Crear cuenta"} action={onRegister} />
+                        <Button value={"Crear cuenta"} />
                     </div>
                 </div>
             </form>

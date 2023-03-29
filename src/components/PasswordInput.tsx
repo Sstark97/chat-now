@@ -20,7 +20,7 @@ const PasswordInput = ({ placeholder }: { placeholder: string }) => {
     }
 
     return (
-        <Input type={showPassword ? "text" : "password"} placeholder={placeholder}>
+        <Input type={showPassword ? "text" : "password"} placeholder={placeholder} name="password">
             {showPassword ? <AiFillEyeInvisible className={iconClass} onClick={handleShowPassword} /> : <AiFillEye className={iconClass} onClick={handleShowPassword} />}
         </Input>
     )

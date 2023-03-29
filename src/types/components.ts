@@ -10,6 +10,7 @@ import { ReactNode } from "react"
 interface InputProps {
     type: string
     placeholder: string
+    name: string
     children?: ReactNode
 }
 
@@ -20,7 +21,6 @@ interface InputProps {
  */
 interface ButtonProps {
     value: string
-    action(): void
 }
 
 /**
