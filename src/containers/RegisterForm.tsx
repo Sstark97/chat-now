@@ -4,7 +4,7 @@ import PasswordInput from "@components/PasswordInput"
 import Button from "@components/Button"
 import Link from "next/link"
 
-const RegisterForm = () => {
+const RegisterForm = ({ onRegister }: { onRegister(): void }) => {
     return (
         <div className="w-[90%] lg:w-2/5">
             <AuthHeader title={"Crea tu cuenta"} />
@@ -14,7 +14,7 @@ const RegisterForm = () => {
                         <Input type="text" placeholder="Nombre" />
                         <Input type="email" placeholder="Correo electrónico" />
                         <PasswordInput placeholder="Contraseña" />
-                        <Button value={"Crear cuenta"} />
+                        <Button value={"Crear cuenta"} action={onRegister} />
                     </div>
                 </div>
             </form>

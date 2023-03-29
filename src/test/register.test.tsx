@@ -1,7 +1,6 @@
 import { render, screen } from "@testing-library/react"
 import AuthHeader from "@components/AuthHeader"
 import RegisterForm from "@containers/RegisterForm"
-import registerForm from "@containers/RegisterForm"
 
 describe("Register", () => {
     it("renders a heading", () => {
