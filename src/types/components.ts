@@ -21,6 +21,7 @@ interface InputProps {
  */
 interface ButtonProps {
     value: string
+    action(): void
 }
 
 /**

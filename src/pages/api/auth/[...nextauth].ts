@@ -55,9 +55,6 @@ const options: NextAuthOptions = {
             clientSecret: process.env.AUTH_GOOGLE_SECRET as string,
         }),
     ],
-    pages: {
-        newUser: "/register",
-    },
 }
 
 export default NextAuth(options)
