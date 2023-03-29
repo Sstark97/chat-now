@@ -1,14 +1,15 @@
 import { render, screen } from "@testing-library/react"
-import Register from "@pages/register"
+import AuthHeader from "@components/AuthHeader"
+import RegisterForm from "@containers/RegisterForm"
 
 describe("Register", () => {
     it("renders a heading", () => {
-        const { container } = render(<Register />)
+        const title = "irrelevant title"
+        const { container } = render(<AuthHeader title={title} />)
 
-        const heading = screen.getByText("Crea tu cuenta")
+        const heading = screen.getByText(title)
 
         expect(heading).toBeInTheDocument()
-
         expect(container).toMatchSnapshot()
     })
 })
