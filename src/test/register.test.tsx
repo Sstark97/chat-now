@@ -9,18 +9,17 @@ describe("Register", () => {
 
         const heading = screen.getByText(title)
 
+        expect(container).toHaveTextContent(title)
         expect(heading).toBeInTheDocument()
         expect(container).toMatchSnapshot()
     })
 
     it("call an event when register clicked", () => {
         const register = jest.fn()
-        const { container } = render(<RegisterForm onRegister={register} />)
-        const registerBtn = container.querySelector("button")
+        const component = render(<RegisterForm onRegister={register} />)
+        const registerBtn = component.getByText("Crear cuenta")
 
-        if (registerBtn) {
-            registerBtn.click()
-        }
+        registerBtn.click()
 
         expect(register).toHaveBeenCalled()
     })
