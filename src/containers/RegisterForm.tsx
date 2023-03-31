@@ -8,6 +8,11 @@ import PasswordInput from "@components/PasswordInput"
 import Button from "@components/Button"
 import AuthGuardian from "@containers/AuthGuardian"
 
+/**
+ * Este componente es el encargado de mostrar el formulario de registro
+ * @returns component
+ * @example <RegisterForm />
+ */
 const RegisterForm = () => {
     const ref = useRef<HTMLDivElement>() as MutableRefObject<HTMLDivElement>
 

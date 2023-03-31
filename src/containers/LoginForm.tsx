@@ -5,6 +5,11 @@ import Input from "@components/Input"
 import PasswordInput from "@components/PasswordInput"
 import AuthGuardian from "@containers/AuthGuardian"
 
+/**
+ * Este componente es el encargado de mostrar el formulario de inicio de sesión
+ * @returns component
+ * @example <LoginForm />
+ */
 const LoginForm = () => (
     <AuthGuardian>
         <div className="w-full md:w-[40%]">
