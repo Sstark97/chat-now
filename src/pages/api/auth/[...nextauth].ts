@@ -14,6 +14,7 @@ const options: NextAuthOptions = {
         colorScheme: "light",
     },
     debug: true,
+    secret: process.env.NEXTAUTH_SECRET,
     adapter: PrismaAdapter(prisma),
     providers: [
         Credentials({
@@ -40,7 +41,11 @@ const options: NextAuthOptions = {
                 const user = await res.json()
 
                 if (res.ok && user) {
-                    return user
+                    return {
+                        id: user.id,
+                        name: user.name,
+                        email: user.email,
+                    }
                 }
 
                 return null
@@ -55,6 +60,9 @@ const options: NextAuthOptions = {
             clientSecret: process.env.AUTH_GOOGLE_SECRET as string,
         }),
     ],
+    session: {
+        strategy: "jwt",
+    },
 }
 
 export default NextAuth(options)
