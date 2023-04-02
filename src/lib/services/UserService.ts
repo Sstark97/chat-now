@@ -1,6 +1,7 @@
 import { UserRepository, Credentials } from "@customTypes/domain"
 
 class UserService {
+    // eslint-disable-next-line no-unused-vars
     constructor(private readonly userRepository: UserRepository) {}
 
     async register(credentials: Credentials) {
