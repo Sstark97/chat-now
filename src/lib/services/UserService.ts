@@ -1,14 +1,11 @@
-import { UserRepository, Credentials } from "@customTypes/domain"
+import { Credentials, UserRepository } from "@customTypes/domain"
 
 class UserService {
     // eslint-disable-next-line no-unused-vars
     constructor(private readonly userRepository: UserRepository) {}
 
     async register(credentials: Credentials) {
-        const email = credentials?.email as string
-
-        const user = await this.userRepository.findUserByEmail(email)
-        if (user) {
+        if (await this.existUserFrom(credentials)) {
             return null
         }
 
@@ -25,6 +22,14 @@ class UserService {
             email: newUser.email,
             username: newUser.name,
         }
+    }
+
+    private async existUserFrom(credentials: Credentials) {
+        const email = credentials?.email as string
+
+        const user = await this.userRepository.findUserByEmail(email)
+
+        return user !== null
     }
 }
 
