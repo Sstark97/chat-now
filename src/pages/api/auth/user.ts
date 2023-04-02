@@ -1,26 +1,24 @@
-// Next.js API route support: https://nextjs.org/docs/api-routes/introduction
-import type { NextApiRequest, NextApiResponse } from "next"
+import type { NextApiResponse } from "next"
+import type { UserResponse } from "@customTypes/domain"
 import { UserFactory } from "@lib/factories/UserFactory"
+import { UserRequest } from "@customTypes/request"
 
-type Data = {
-    name: string
+const getUserFrom = (req: UserRequest) => {
+    const { name, email, password } = req.body
+    return { name, email, password }
 }
 
-export default async function handler(req: NextApiRequest, res: NextApiResponse<Data>) {
+export default async function handler(req: UserRequest, res: NextApiResponse<UserResponse>) {
     const userService = UserFactory.createUserService()
 
     if (req.method !== "POST") {
         res.status(405).end()
     }
 
-    const { name, email, password } = req.body
-    const user = await userService.register({
-        name,
-        email,
-        password,
-    })
+    const user = getUserFrom(req)
+    const userRegistered = (await userService.register(user)) as UserResponse
 
     if (user !== null) {
-        return res.status(200).json({ name: user.username as string, ...user })
+        return res.status(200).json(userRegistered)
     }
 }

@@ -10,4 +10,10 @@ interface UserRepository {
     createUser(credentials: Credentials): Promise<User>
 }
 
-export type { Credentials, User, UserRepository }
+interface UserResponse {
+    id: string
+    email: string | null
+    name: string | null
+}
+
+export type { Credentials, User, UserRepository, UserResponse }

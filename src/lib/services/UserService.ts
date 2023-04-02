@@ -1,10 +1,10 @@
-import { Credentials, UserRepository } from "@customTypes/domain"
+import { Credentials, UserRepository, UserResponse } from "@customTypes/domain"
 
 class UserService {
     // eslint-disable-next-line no-unused-vars
     constructor(private readonly userRepository: UserRepository) {}
 
-    async register(credentials: Credentials) {
+    async register(credentials: Credentials): Promise<UserResponse | null> {
         if (await this.existUserFrom(credentials)) {
             return null
         }
@@ -20,7 +20,7 @@ class UserService {
         return {
             id: newUser.id,
             email: newUser.email,
-            username: newUser.name,
+            name: newUser.name,
         }
     }
 
