@@ -1,6 +1,4 @@
 import { MutableRefObject, useRef } from "react"
-import { useRouter } from "next/router"
-import { getUserDataFrom } from "@lib/utils/user"
 import Link from "next/link"
 import AuthHeader from "@components/AuthHeader"
 import Input from "@components/Input"
@@ -8,7 +6,7 @@ import PasswordInput from "@components/PasswordInput"
 import Button from "@components/Button"
 import AuthGuardian from "@containers/AuthGuardian"
 import AuthProviders from "@containers/AuthProviders"
-import { postFrom } from "@lib/utils/fetcher"
+import useRegister from "@hooks/useRegister"
 
 /**
  * Este componente es el encargado de mostrar el formulario de registro
@@ -17,15 +15,10 @@ import { postFrom } from "@lib/utils/fetcher"
  */
 const RegisterForm = () => {
     const ref = useRef<HTMLDivElement>() as MutableRefObject<HTMLDivElement>
-    const router = useRouter()
+    const { register } = useRegister(ref)
 
-    const handleClick = async () => {
-        const user = getUserDataFrom(ref.current)
-        const userRegistered = await postFrom(user, "/api/auth/user/register")
-
-        if (userRegistered) {
-            router.push("/login")
-        }
+    const handleClickInRegister = async () => {
+        await register()
     }
 
     return (
@@ -41,7 +34,7 @@ const RegisterForm = () => {
                             <Input type="text" placeholder="Nombre" name="name" />
                             <Input type="email" placeholder="Correo electrónico" name="email" />
                             <PasswordInput placeholder="Contraseña" />
-                            <Button value={"Crear cuenta"} action={handleClick} />
+                            <Button value={"Crear cuenta"} action={handleClickInRegister} />
                         </div>
                     </div>
                 </form>
