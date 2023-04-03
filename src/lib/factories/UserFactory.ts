@@ -1,4 +1,4 @@
-import { UserPrismaRepository } from "@lib/repositories/userPrismaRepository"
+import { UserPrismaRepository } from "@lib/repositories/UserPrismaRepository"
 import { UserService } from "@lib/services/UserService"
 
 class UserFactory {
