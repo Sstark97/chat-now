@@ -2,10 +2,15 @@ import type { NextApiResponse } from "next"
 import type { UserResponse } from "@customTypes/domain"
 import { UserFactory } from "@lib/factories/UserFactory"
 import { UserRequest } from "@customTypes/request"
+import bcrypt from "bcrypt"
 
-const getUserFrom = (req: UserRequest) => {
+const getUserFrom = async (req: UserRequest) => {
     const { name, email, password } = req.body
-    return { name, email, password }
+
+    const hashPassword = await bcrypt.hash(password, 10)
+    console.log(hashPassword)
+
+    return { name, email, password: hashPassword }
 }
 
 export default async function handler(req: UserRequest, res: NextApiResponse<UserResponse>) {
@@ -15,7 +20,7 @@ export default async function handler(req: UserRequest, res: NextApiResponse<Use
         res.status(405).end()
     }
 
-    const user = getUserFrom(req)
+    const user = await getUserFrom(req)
     const userRegistered = (await userService.register(user)) as UserResponse
 
     if (user !== null) {
