@@ -2,7 +2,9 @@ import { FcGoogle } from "react-icons/fc"
 import { BsGithub } from "react-icons/bs"
 
 /**
- * AuthProviders
+ * Este componente se encarga de mostrar los botones de registro de las diferentes plataformas
+ * @returns component
+ * @example <AuthProviders />
  */
 const AuthProviders = () => {
     return (

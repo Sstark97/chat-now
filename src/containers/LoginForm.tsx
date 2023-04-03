@@ -4,6 +4,7 @@ import Button from "@components/Button"
 import Input from "@components/Input"
 import PasswordInput from "@components/PasswordInput"
 import AuthGuardian from "@containers/AuthGuardian"
+import AuthProviders from "@containers/AuthProviders"
 
 /**
  * Este componente es el encargado de mostrar el formulario de inicio de sesión
@@ -15,10 +16,17 @@ const LoginForm = () => (
         <div className="w-full md:w-[40%]">
             <AuthHeader title="Bienvenido" />
 
-            <form className="w-10/12 md:w-2/4 mx-auto">
-                <Input type="text" placeholder="Escribe tu email" name="email" />
-                <PasswordInput placeholder="Escribe tu contraseña" />
-                <Button value="Iniciar Sesión" action={() => {}} />
+            <form className="w-full flex flex-col justify-center items-center">
+                <div className="w-7/12">
+                    <AuthProviders />
+                </div>
+                <div className="w-7/12 flex flex-col items-center">
+                    <div className="w-full">
+                        <Input type="text" placeholder="Escribe tu email" name="email" />
+                        <PasswordInput placeholder="Escribe tu contraseña" />
+                        <Button value="Iniciar Sesión" action={() => {}} />
+                    </div>
+                </div>
             </form>
 
             <p className="mt-5 text-sm text-center text-secondary_text md:text-lg">
