@@ -2,8 +2,8 @@ import { ReactNode } from "react"
 
 /**
  * @interface InputProps
- * @description Input component props
- * @property {string} type - Input type
+ * @description Propiedades del componente Input
+ * @property {string} type - Tipo de input
  * @property {string} placeholder - Input placeholder
  * @property {ReactNode} children - Input children
  */
@@ -16,8 +16,8 @@ interface InputProps {
 
 /**
  * @interface ButtonProps
- * @description Button component props
- * @property {string} value - Button value
+ * @description Propiedades del componente Button
+ * @property {string} value - Valor del botón
  */
 interface ButtonProps {
     value: string
@@ -26,8 +26,8 @@ interface ButtonProps {
 
 /**
  * @interface AuthHeaderProps
- * @description AuthHeader component props
- * @property {string} title - AuthHeader title
+ * @description Propiedades del componente AuthHeader
+ * @property {string} title - Título del componente
  */
 interface AuthHeaderProps {
     title: string
@@ -35,8 +35,8 @@ interface AuthHeaderProps {
 
 /**
  * @interface RegisterProps
- * @description Register component props
- * @property {() => void} onRegister - Register function
+ * @description Propiedades del componente Register
+ * @property {() => void} onRegister - Función para registrar un usuario
  */
 interface RegisterProps {
     onRegister(): void

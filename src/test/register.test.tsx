@@ -16,7 +16,7 @@ describe("Register", () => {
 
     it("call an event when register clicked", () => {
         const register = jest.fn()
-        const component = render(<RegisterForm onRegister={register} />)
+        const component = render(<RegisterForm />)
         const registerBtn = component.getByText("Crear cuenta")
 
         registerBtn.click()

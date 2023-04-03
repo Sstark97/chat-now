@@ -1,5 +1,5 @@
 {
-    "entryPoints": ["./src/components/*.tsx", "./src/containers/*.tsx", "./src/pages/*.tsx", "./src/types/components.ts"],
+    "entryPoints": ["./src/components/*.tsx", "./src/containers/*.tsx", "./src/pages/*.tsx", "./src/types/*.ts", "./src/lib/**/*.ts"],
     "out": "./docs",
     "exclude": ["**/__tests__/**/*"],
     "theme": "default",
