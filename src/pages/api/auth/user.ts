@@ -8,7 +8,6 @@ const getUserFrom = async (req: UserRequest) => {
     const { name, email, password } = req.body
 
     const hashPassword = await bcrypt.hash(password, 10)
-    console.log(hashPassword)
 
     return { name, email, password: hashPassword }
 }
