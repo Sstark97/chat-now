@@ -3,6 +3,13 @@ import { getUserDataFrom } from "@lib/utils/user"
 import { postFrom } from "@lib/utils/fetcher"
 import { MutableRefObject } from "react"
 
+/**
+ * @description Hook para registrar un usuario
+ * @param ref
+ * @returns {{register: (function(): Promise<void>)}}
+ * @example
+ * const { register } = useRegister(ref)
+ */
 const useRegister = (ref: MutableRefObject<HTMLDivElement>) => {
     const router = useRouter()
 
@@ -11,7 +18,7 @@ const useRegister = (ref: MutableRefObject<HTMLDivElement>) => {
         const userRegistered = await postFrom(user, "/api/auth/user/register")
 
         if (userRegistered) {
-            router.push("/login")
+            await router.push("/login")
         }
     }
     return { register }
