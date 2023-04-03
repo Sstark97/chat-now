@@ -54,9 +54,6 @@ const options: NextAuthOptions = {
     session: {
         strategy: "jwt",
     },
-    pages: {
-        newUser: "/register",
-    },
 }
 
 export default NextAuth(options)
