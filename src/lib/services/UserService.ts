@@ -39,7 +39,7 @@ class UserService {
         }
     }
 
-    async login(credentials: Credentials): Promise<UserLoginResponse | null | undefined> {
+    async login(credentials: Credentials): Promise<UserResponse | null | undefined> {
         if (!(await this.existUserFrom(credentials))) {
             return null
         }
@@ -53,7 +53,6 @@ class UserService {
                 id: user.id,
                 email: user.email,
                 name: user.name,
-                password: user.password,
             }
         }
 

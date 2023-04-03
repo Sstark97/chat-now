@@ -19,12 +19,8 @@ const options: NextAuthOptions = {
     adapter: PrismaAdapter(prisma),
     providers: [
         Credentials({
-            name: "credentials",
+            name: "login",
             credentials: {
-                name: {
-                    label: "name",
-                    type: "text",
-                },
                 email: {
                     label: "Email",
                     type: "email",
@@ -33,7 +29,7 @@ const options: NextAuthOptions = {
                 password: { label: "Password", type: "password" },
             },
             authorize: async (credentials) => {
-                const user = await postFrom(credentials, `${process.env.NEXTAUTH_URL}/api/auth/user`)
+                const user = await postFrom(credentials, `${process.env.NEXTAUTH_URL}/api/auth/user/login`)
 
                 if (user) {
                     return {
@@ -57,6 +53,9 @@ const options: NextAuthOptions = {
     ],
     session: {
         strategy: "jwt",
+    },
+    pages: {
+        newUser: "/register",
     },
 }
 
