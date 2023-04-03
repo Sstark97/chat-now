@@ -1,12 +1,12 @@
 import { MutableRefObject, useRef } from "react"
 import Link from "next/link"
+import useRegister from "@hooks/useRegister"
 import AuthHeader from "@components/AuthHeader"
 import Input from "@components/Input"
 import PasswordInput from "@components/PasswordInput"
 import Button from "@components/Button"
 import AuthGuardian from "@containers/AuthGuardian"
 import AuthProviders from "@containers/AuthProviders"
-import useRegister from "@hooks/useRegister"
 
 /**
  * Este componente es el encargado de mostrar el formulario de registro

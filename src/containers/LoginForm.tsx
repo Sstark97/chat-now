@@ -1,3 +1,5 @@
+import { MutableRefObject, useRef } from "react"
+import useLogin from "@hooks/useLogin"
 import Link from "next/link"
 import AuthHeader from "@components/AuthHeader"
 import Button from "@components/Button"
@@ -5,9 +7,6 @@ import Input from "@components/Input"
 import PasswordInput from "@components/PasswordInput"
 import AuthGuardian from "@containers/AuthGuardian"
 import AuthProviders from "@containers/AuthProviders"
-import { MutableRefObject, useRef } from "react"
-import { getUserDataFrom } from "@lib/utils/user"
-import { signIn } from "next-auth/react"
 
 /**
  * Este componente es el encargado de mostrar el formulario de inicio de sesión
@@ -16,10 +15,10 @@ import { signIn } from "next-auth/react"
  */
 const LoginForm = () => {
     const ref = useRef<HTMLDivElement>() as MutableRefObject<HTMLDivElement>
+    const { login } = useLogin(ref)
 
     const handleClick = async () => {
-        const user = getUserDataFrom(ref.current)
-        await signIn("credentials", { redirect: true, callbackUrl: "/", ...user })
+        await login()
     }
 
     return (
