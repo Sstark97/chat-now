@@ -7,6 +7,7 @@ import Input from "@components/Input"
 import PasswordInput from "@components/PasswordInput"
 import Button from "@components/Button"
 import AuthGuardian from "@containers/AuthGuardian"
+import AuthProviders from "@containers/AuthProviders"
 
 /**
  * Este componente es el encargado de mostrar el formulario de registro
@@ -25,9 +26,12 @@ const RegisterForm = () => {
         <AuthGuardian>
             <div className="w-[90%] lg:w-2/5">
                 <AuthHeader title={"Crea tu cuenta"} />
-                <form method="post">
-                    <div className="flex flex-col items-center">
-                        <div className="w-10/12 lg:w-1/2" ref={ref}>
+                <form method="post" className="w-full flex flex-col justify-center items-center">
+                    <div className="w-7/12">
+                        <AuthProviders />
+                    </div>
+                    <div className="w-7/12 flex flex-col items-center">
+                        <div className="w-full" ref={ref}>
                             <Input type="text" placeholder="Nombre" name="name" />
                             <Input type="email" placeholder="Correo electrónico" name="email" />
                             <PasswordInput placeholder="Contraseña" />
