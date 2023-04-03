@@ -1,4 +1,5 @@
 import { Credentials, UserLoginResponse, UserRepository, UserResponse } from "@customTypes/domain"
+import { UserRequest } from "@customTypes/request"
 import bcrypt from "bcrypt"
 
 /**
@@ -39,6 +40,14 @@ class UserService {
         }
     }
 
+    /**
+     * @method login
+     * @description Inicia sesión de un usuario
+     * @param credentials
+     * @returns {Promise<UserResponse | null | undefined>}
+     * @example
+     * const userLogged = await userService.login(credentials)
+     */
     async login(credentials: Credentials): Promise<UserResponse | null | undefined> {
         if (!(await this.existUserFrom(credentials))) {
             return null
@@ -57,6 +66,36 @@ class UserService {
         }
 
         return null
+    }
+
+    /**
+     * @method getUserFrom
+     * @description Obtiene los datos de un usuario
+     * @param req
+     * @returns {Promise<Credentials>}
+     * @example
+     * const user = await userService.getUserFrom(req)
+     */
+    async getUserFrom(req: UserRequest) {
+        const { name, email, password } = req.body
+
+        return { name, email, password }
+    }
+
+    /**
+     * @method getUserWithEncryptedPasswordFrom
+     * @description Obtiene los datos de un usuario y hashea su contraseña
+     * @param req
+     * @returns {Promise<Credentials>}
+     * @example
+     * const user = await userService.getUserWithHassedPashFrom(req)
+     */
+    async getUserWithEncryptedPasswordFrom(req: UserRequest) {
+        const user = await this.getUserFrom(req)
+
+        const hashPassword = await bcrypt.hash(user.password, 10)
+
+        return { ...user, password: hashPassword }
     }
 
     /**
