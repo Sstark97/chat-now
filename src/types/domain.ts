@@ -50,4 +50,8 @@ interface UserResponse {
     name: string | null
 }
 
-export type { Credentials, User, UserRepository, UserResponse }
+interface UserLoginResponse extends UserResponse {
+    password?: string
+}
+
+export type { Credentials, User, UserRepository, UserResponse, UserLoginResponse }

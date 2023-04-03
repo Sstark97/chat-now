@@ -1,4 +1,5 @@
-import { Credentials, UserRepository, UserResponse } from "@customTypes/domain"
+import { Credentials, UserLoginResponse, UserRepository, UserResponse } from "@customTypes/domain"
+import bcrypt from "bcrypt"
 
 /**
  * @class UserService
@@ -36,6 +37,27 @@ class UserService {
             email: newUser.email,
             name: newUser.name,
         }
+    }
+
+    async login(credentials: Credentials): Promise<UserLoginResponse | null | undefined> {
+        if (!(await this.existUserFrom(credentials))) {
+            return null
+        }
+
+        const user = (await this.userRepository.findUserByEmail(credentials?.email as string)) as UserLoginResponse
+        const password = credentials?.password as string
+        const userPassword = user?.password as string
+
+        if (await bcrypt.compare(password, userPassword)) {
+            return {
+                id: user.id,
+                email: user.email,
+                name: user.name,
+                password: user.password,
+            }
+        }
+
+        return null
     }
 
     /**
