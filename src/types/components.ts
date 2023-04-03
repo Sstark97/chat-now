@@ -1,4 +1,5 @@
 import { ReactNode } from "react"
+import { ChildrenProps } from "@customTypes/containers"
 
 /**
  * @interface InputProps
@@ -42,4 +43,13 @@ interface RegisterProps {
     onRegister(): void
 }
 
-export type { InputProps, ButtonProps, AuthHeaderProps, RegisterProps }
+/**
+ * @interface AuthButtonProps
+ * @description Propiedades del componente AuthButton
+ * @property {string} credential - Credencial del botón
+ */
+interface AuthButtonProps extends ChildrenProps {
+    credential: "google" | "github"
+}
+
+export type { InputProps, ButtonProps, AuthHeaderProps, RegisterProps, AuthButtonProps }

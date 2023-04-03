@@ -1,8 +1,9 @@
 import { FcGoogle } from "react-icons/fc"
 import { BsGithub } from "react-icons/bs"
+import AuthButton from "@components/AuthButton"
 
 /**
- * Este componente se encarga de mostrar los botones de registro de las diferentes plataformas
+ * Este componente se encarga de crear el contendio de los botones de registro de las diferentes plataformas
  * @returns component
  * @example <AuthProviders />
  */
@@ -10,12 +11,12 @@ const AuthProviders = () => {
     return (
         <>
             <div className="w-full mb-5">
-                <button className="w-full flex justify-center items-center bg-secondary bg-opacity-50 text-white py-2 mt-5 md:mt-6 text-[1.15rem] rounded-xl" type="button">
+                <AuthButton credential="github">
                     <BsGithub className="mr-4 text-2xl text-black" /> Regístrate con GitHub
-                </button>
-                <button className="w-full flex justify-center items-center bg-secondary bg-opacity-50 text-white py-2 mt-5 md:mt-6 text-[1.15rem] rounded-xl" type="button">
+                </AuthButton>
+                <AuthButton credential="google">
                     <FcGoogle className="mr-4 text-2xl" /> Regístrate con Google
-                </button>
+                </AuthButton>
             </div>
 
             <div className="w-full text-center">
