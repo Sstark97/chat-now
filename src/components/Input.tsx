@@ -7,7 +7,7 @@ import { useState, FormEvent } from "react"
  * @param {string} placeholder
  * @param {string} name
  * @param children
- * @param {ErrorManager} errorManager
+ * @param {InputError} errorManager
  * @returns component
  * @example <Input type="text" placeholder="Nombre de usuario" />
  */
