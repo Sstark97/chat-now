@@ -2,21 +2,34 @@ import { ReactNode } from "react"
 import { ChildrenProps } from "@customTypes/containers"
 
 /**
+ * @interface InputError
+ * @description Propiedades del componente Input
+ * @property {string} errorMessage - Mensaje de error del input
+ * @property {RegExp} regex - Expresión regular para validar el input
+ * @property {Function} validateFunction - Función para validar el input
+ */
+interface InputError {
+    errorMessage: string
+    regex: RegExp
+    // eslint-disable-next-line no-unused-vars
+    validate: (value: string) => boolean
+}
+
+/**
  * @interface InputProps
  * @description Propiedades del componente Input
  * @property {string} type - Tipo de input
  * @property {string} placeholder - Input placeholder
  * @property {string} name - Nombre del input
  * @property {ReactNode} children - Input children
- * @property {(e: FormEvent<HTMLInputElement>) => void} validate - Función para validar el input
+ * @property {InputError} validate - Validación del input
  */
 interface InputProps {
     type: string
     placeholder: string
     name: string
     children?: ReactNode
-    // eslint-disable-next-line no-unused-vars
-    validate(value: string): boolean
+    errorManager?: InputError
 }
 
 /**

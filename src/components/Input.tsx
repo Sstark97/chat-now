@@ -1,5 +1,5 @@
 import type { InputProps } from "@customTypes/components"
-import { FormEvent, useState } from "react"
+import { useState, FormEvent } from "react"
 
 /**
  * Este componente es el encargado de mostrar un input
@@ -7,18 +7,19 @@ import { FormEvent, useState } from "react"
  * @param {string} placeholder
  * @param {string} name
  * @param children
+ * @param {ErrorManager} errorManager
  * @returns component
  * @example <Input type="text" placeholder="Nombre de usuario" />
  */
-const Input = ({ type, placeholder, name, children, validate }: InputProps) => {
-    const [emailError, setEmailError] = useState("")
+const Input = ({ type, placeholder, name, children, errorManager }: InputProps) => {
+    const [error, setError] = useState("")
 
-    const handleBlur = (e: FormEvent<HTMLInputElement>) => {
-        const element = e.currentTarget
-        setEmailError(validate(element.value) ? "" : "El email no es válido")
+    const defineError = (e: FormEvent<HTMLInputElement>) => {
+        if (errorManager) {
+            const element = e.currentTarget
+            setError(errorManager.validate(element.value) ? "" : errorManager.errorMessage)
+        }
     }
-
-    console.log(validate)
 
     return (
         <>
@@ -30,11 +31,11 @@ const Input = ({ type, placeholder, name, children, validate }: InputProps) => {
                     autoComplete="new-password"
                     name={name}
                     required
-                    onBlur={handleBlur}
+                    onBlur={defineError}
                 />
                 {children}
             </div>
-            {emailError ? <p id="emailError">{emailError}</p> : null}
+            {error ? <p id="error">{error}</p> : null}
         </>
     )
 }

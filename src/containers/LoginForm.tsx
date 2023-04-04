@@ -7,6 +7,7 @@ import Input from "@components/Input"
 import PasswordInput from "@components/PasswordInput"
 import AuthGuardian from "@containers/AuthGuardian"
 import AuthProviders from "@containers/AuthProviders"
+import { errors } from "../const/const"
 
 /**
  * Este componente es el encargado de mostrar el formulario de inicio de sesión
@@ -15,16 +16,11 @@ import AuthProviders from "@containers/AuthProviders"
  */
 const LoginForm = () => {
     const ref = useRef<HTMLDivElement>() as MutableRefObject<HTMLDivElement>
-    const emailRegex = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/
 
     const { login } = useLogin(ref)
 
     const handleClick = async () => {
         await login()
-    }
-
-    const validateEmail = (email: string) => {
-        return emailRegex.test(email)
     }
 
     return (
@@ -38,7 +34,7 @@ const LoginForm = () => {
                     </div>
                     <div className="w-7/12 flex flex-col items-center">
                         <div className="w-full" ref={ref}>
-                            <Input type="text" placeholder="Escribe tu email" name="email" validate={validateEmail} />
+                            <Input type="text" placeholder="Escribe tu email" name="email" errorManager={errors.email} />
                             <PasswordInput placeholder="Escribe tu contraseña" />
                             <Button value="Iniciar Sesión" action={handleClick} />
                         </div>
