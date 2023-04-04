@@ -4,6 +4,7 @@ module.exports = {
         // Or if using `src` directory:
         "./src/**/*.{js,ts,jsx,tsx}",
     ],
+    safelist: ["border-busy", "border-success"],
     theme: {
         extend: {
             colors: {
@@ -12,7 +13,7 @@ module.exports = {
                 light_purple: "#BC8FCC",
                 icon: "#252525",
                 secondary_text: "#747474",
-                
+
                 dark_primary: "#363636",
                 dark_secondary: "#252525",
                 dark_purple: "#A151BD",
@@ -23,6 +24,9 @@ module.exports = {
                 busy: "#CE261B",
                 absent: "#F2DB06",
                 offline: "#959595",
+
+                success: "#5CAF47",
+                medium_security: "#E7A018",
             },
         },
     },

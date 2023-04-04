@@ -13,13 +13,17 @@ import { useState, FormEvent } from "react"
  */
 const Input = ({ type, placeholder, name, children, errorManager }: InputProps) => {
     const [error, setError] = useState("")
+    //const [border, setBorder] = useState("")
 
     const defineError = (e: FormEvent<HTMLInputElement>) => {
         if (errorManager) {
             const element = e.currentTarget
             setError(errorManager.validate(element.value) ? "" : errorManager.errorMessage)
+            //setBorder(errorManager.validate(element.value) ? "border: 2px; border-color: green" : "border-2 border-busy")
         }
     }
+
+    const inputClass = "bg-secondary text-white placeholder-white border border-gray-300 rounded-xl px-3 py-2 mt-5 focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
 
     return (
         <>
@@ -27,7 +31,8 @@ const Input = ({ type, placeholder, name, children, errorManager }: InputProps) 
                 <input
                     type={type}
                     placeholder={placeholder}
-                    className="bg-secondary text-white placeholder-white border border-gray-300 rounded-xl px-3 py-2 mt-5 focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
+                    className={inputClass}
+                    style={{error === "" ? "border: 2px; border-color: green" : "border: 2px; border-color: red"}}
                     autoComplete="new-password"
                     name={name}
                     required
@@ -35,7 +40,7 @@ const Input = ({ type, placeholder, name, children, errorManager }: InputProps) 
                 />
                 {children}
             </div>
-            {error ? <p id="error">{error}</p> : null}
+            {error ? <p className="text-busy text-sm mt-1 opacity-60">{error}</p> : null}
         </>
     )
 }
