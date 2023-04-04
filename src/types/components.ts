@@ -33,6 +33,17 @@ interface InputProps {
 }
 
 /**
+ * @interface PasswordProps
+ * @description Propiedades del componente Password
+ * @property {string} placeholder - Input placeholder
+ * @property {boolean} validate - Validación del input
+ */
+interface PasswordProps {
+    placeholder: string
+    validate?: boolean
+}
+
+/**
  * @interface ButtonProps
  * @description Propiedades del componente Button
  * @property {string} value - Valor del botón
@@ -69,4 +80,4 @@ interface AuthButtonProps extends ChildrenProps {
     credential: "google" | "github"
 }
 
-export type { InputProps, ButtonProps, AuthHeaderProps, RegisterProps, AuthButtonProps }
+export type { InputProps, PasswordProps, ButtonProps, AuthHeaderProps, RegisterProps, AuthButtonProps }
