@@ -1,6 +1,8 @@
+import { useState } from "react"
+import { useRouter } from "next/router"
 import { getUserDataFrom } from "@lib/utils/user"
 import { MutableRefObject } from "react"
-import { signIn } from "next-auth/react"
+import { signIn, SignInResponse } from "next-auth/react"
 
 /**
  * @description Hook para loguear a un usuario
@@ -10,11 +12,21 @@ import { signIn } from "next-auth/react"
  * const { login } = useLogin(ref)
  */
 const useLogin = (ref: MutableRefObject<HTMLDivElement>) => {
+    const [error, setError] = useState("")
+    const router = useRouter()
     const login = async () => {
         const user = getUserDataFrom(ref.current)
-        await signIn("credentials", { redirect: true, callbackUrl: "/", ...user })
+        const response = await signIn("credentials", { redirect: false, ...user })
+        const { ok } = response as SignInResponse
+
+        if (!ok) {
+            setError("Credenciales incorrectas")
+        } else {
+            setError("")
+            router.push("/")
+        }
     }
-    return { login }
+    return { login, error }
 }
 
 export default useLogin

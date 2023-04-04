@@ -16,8 +16,7 @@ import { errors } from "@lib/const"
  */
 const LoginForm = () => {
     const ref = useRef<HTMLDivElement>() as MutableRefObject<HTMLDivElement>
-
-    const { login } = useLogin(ref)
+    const { login, error } = useLogin(ref)
 
     const handleClick = async () => {
         await login()
@@ -33,6 +32,7 @@ const LoginForm = () => {
                         <AuthProviders />
                     </div>
                     <div className="w-7/12 flex flex-col items-center">
+                        {error ? <p className="text-busy font-semibold mt-1 opacity-60">{error}</p> : null}
                         <div className="w-full" ref={ref}>
                             <Input type="text" placeholder="Escribe tu email" name="email" errorManager={errors.email} />
                             <PasswordInput placeholder="Escribe tu contraseña" validate />
