@@ -15,10 +15,16 @@ import AuthProviders from "@containers/AuthProviders"
  */
 const LoginForm = () => {
     const ref = useRef<HTMLDivElement>() as MutableRefObject<HTMLDivElement>
+    const emailRegex = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/
+
     const { login } = useLogin(ref)
 
     const handleClick = async () => {
         await login()
+    }
+
+    const validateEmail = (email: string) => {
+        return emailRegex.test(email)
     }
 
     return (
@@ -32,7 +38,7 @@ const LoginForm = () => {
                     </div>
                     <div className="w-7/12 flex flex-col items-center">
                         <div className="w-full" ref={ref}>
-                            <Input type="text" placeholder="Escribe tu email" name="email" />
+                            <Input type="text" placeholder="Escribe tu email" name="email" validate={validateEmail} />
                             <PasswordInput placeholder="Escribe tu contraseña" />
                             <Button value="Iniciar Sesión" action={handleClick} />
                         </div>

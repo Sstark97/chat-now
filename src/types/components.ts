@@ -6,13 +6,17 @@ import { ChildrenProps } from "@customTypes/containers"
  * @description Propiedades del componente Input
  * @property {string} type - Tipo de input
  * @property {string} placeholder - Input placeholder
+ * @property {string} name - Nombre del input
  * @property {ReactNode} children - Input children
+ * @property {(e: FormEvent<HTMLInputElement>) => void} validate - Función para validar el input
  */
 interface InputProps {
     type: string
     placeholder: string
     name: string
     children?: ReactNode
+    // eslint-disable-next-line no-unused-vars
+    validate(value: string): boolean
 }
 
 /**
