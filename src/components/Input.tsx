@@ -1,4 +1,5 @@
-import { useState, FormEvent } from "react"
+import { useState, useEffect, useContext, FormEvent } from "react"
+import { ChatContext } from "@context/ChatProvider"
 import type { InputProps } from "@customTypes/components"
 
 /**
@@ -14,8 +15,13 @@ import type { InputProps } from "@customTypes/components"
 const Input = ({ type, placeholder, name, children, errorManager }: InputProps) => {
     const [error, setError] = useState("")
     const [border, setBorder] = useState("")
+    const { handleSetErrorsInForm } = useContext(ChatContext)
 
     const inputClass = "bg-secondary text-white placeholder-white border rounded-xl px-3 py-2 mt-5 focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
+
+    useEffect(() => {
+        handleSetErrorsInForm()
+    }, [border, handleSetErrorsInForm])
 
     const defineError = (e: FormEvent<HTMLInputElement>) => {
         if (errorManager) {
@@ -28,7 +34,7 @@ const Input = ({ type, placeholder, name, children, errorManager }: InputProps) 
     return (
         <>
             <div className="relative flex flex-col mx-auto">
-                <input type={type} placeholder={placeholder} className={`${inputClass} ${border}`} autoComplete="new-password" name={name} required onBlur={defineError} />
+                <input type={type} placeholder={placeholder} className={`${inputClass} ${border}`} autoComplete="new-password" name={name} onBlur={defineError} required />
                 {children}
             </div>
             {error ? <p className="text-busy text-sm mt-1 opacity-60">{error}</p> : null}

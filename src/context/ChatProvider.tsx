@@ -10,7 +10,8 @@ const ChatProvider = ({ children }: ChildrenProps) => {
     const [error, setError] = useState<boolean>(true)
 
     const handleSetErrorsInForm = () => {
-        setError(!isFormValid(ref.current))
+        const haveErrors = !isFormValid(ref.current)
+        setError(haveErrors)
     }
 
     return <Provider value={{ ref, error, handleSetErrorsInForm }}>{children}</Provider>
