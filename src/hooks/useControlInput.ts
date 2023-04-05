@@ -2,6 +2,13 @@ import { FormEvent, useContext, useEffect, useState } from "react"
 import { ChatContext } from "@context/ChatProvider"
 import type { InputError } from "@customTypes/components"
 
+/**
+ * @description Hook para controlar los inputs
+ * @param errorManager {InputError | undefined}
+ * @returns {{error: string, border: string, defineError: (function(*): void)}}
+ * @example
+ * const { error, border, defineError } = useControlInput(errorManager)
+ */
 const useControlInput = (errorManager: InputError | undefined) => {
     const [error, setError] = useState("")
     const [border, setBorder] = useState("")
