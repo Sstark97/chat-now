@@ -1,4 +1,4 @@
-import { MutableRefObject, useRef } from "react"
+import { useContext } from "react"
 import useLogin from "@hooks/useLogin"
 import Link from "next/link"
 import AuthHeader from "@components/AuthHeader"
@@ -7,6 +7,7 @@ import Input from "@components/Input"
 import PasswordInput from "@components/PasswordInput"
 import AuthGuardian from "@containers/AuthGuardian"
 import AuthProviders from "@containers/AuthProviders"
+import { ChatContext } from "@context/ChatProvider"
 import { errors } from "@lib/const"
 
 /**
@@ -15,7 +16,7 @@ import { errors } from "@lib/const"
  * @example <LoginForm />
  */
 const LoginForm = () => {
-    const ref = useRef<HTMLDivElement>() as MutableRefObject<HTMLDivElement>
+    const { ref } = useContext(ChatContext)
     const { login, error } = useLogin(ref)
 
     const handleClick = async () => {
