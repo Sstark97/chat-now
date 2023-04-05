@@ -80,4 +80,4 @@ interface AuthButtonProps extends ChildrenProps {
     credential: "google" | "github"
 }
 
-export type { InputProps, PasswordProps, ButtonProps, AuthHeaderProps, RegisterProps, AuthButtonProps }
+export type { InputError, InputProps, PasswordProps, ButtonProps, AuthHeaderProps, RegisterProps, AuthButtonProps }
