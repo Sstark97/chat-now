@@ -1,5 +1,5 @@
-import { FormEvent, useContext, useEffect, useState } from "react"
-import { ChatContext } from "@context/ChatProvider"
+import { FormEvent, useEffect, useState } from "react"
+import useChatContext from "@hooks/useChatContext"
 import type { InputError } from "@customTypes/components"
 
 /**
@@ -12,11 +12,13 @@ import type { InputError } from "@customTypes/components"
 const useControlInput = (errorManager: InputError | undefined) => {
     const [error, setError] = useState("")
     const [border, setBorder] = useState("")
-    const { handleSetErrorsInForm } = useContext(ChatContext)
+    const { handleSetErrorsInForm } = useChatContext()
 
     useEffect(() => {
-        handleSetErrorsInForm()
-    }, [border, handleSetErrorsInForm])
+        if (errorManager) {
+            handleSetErrorsInForm()
+        }
+    }, [errorManager, border, handleSetErrorsInForm])
 
     const defineError = (e: FormEvent<HTMLInputElement>) => {
         if (errorManager) {

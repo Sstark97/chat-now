@@ -1,5 +1,4 @@
-import { useContext } from "react"
-import { ChatContext } from "@context/ChatProvider"
+import useChatContext from "@hooks/useChatContext"
 import type { ButtonProps } from "@customTypes/components"
 
 /**
@@ -10,7 +9,7 @@ import type { ButtonProps } from "@customTypes/components"
  * @example <Button value="Iniciar sesión" action={login}/>
  */
 const Button = ({ value, action }: ButtonProps) => {
-    const { error } = useContext(ChatContext)
+    const { error } = useChatContext()
 
     return (
         <button
