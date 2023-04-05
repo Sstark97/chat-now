@@ -1,5 +1,5 @@
-import type { InputProps } from "@customTypes/components"
 import { useState, FormEvent } from "react"
+import type { InputProps } from "@customTypes/components"
 
 /**
  * Este componente es el encargado de mostrar un input
