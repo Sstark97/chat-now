@@ -51,8 +51,13 @@ interface UserLoginResponse extends UserResponse {
     password?: string
 }
 
+/**
+ * @interface ErrorResponse
+ * @description Interface para definir la respuesta de error
+ * @property {string} message - Mensaje de error
+ */
 interface ErrorResponse {
-    error: string
+    message: string
 }
 
 export type { Credentials, User, UserRepository, UserResponse, UserLoginResponse, ErrorResponse }

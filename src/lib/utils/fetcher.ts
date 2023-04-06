@@ -15,7 +15,7 @@ async function postFrom<C>(credentials: Record<keyof C, string> | undefined, end
 
     const data = await res.json()
 
-    if (!res.ok) throw new Error(data.error)
+    if (!res.ok) throw new Error(data.message)
 
     return data
 }

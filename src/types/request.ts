@@ -21,4 +21,15 @@ interface UserRequest extends NextApiRequest {
     }
 }
 
-export type { UserRequest }
+/**
+ * @interface ValidateResponse
+ * @description Propiedades de la respuesta de validación
+ * @property {number} status - Código de estado HTTP
+ * @property {string} error - Mensaje de error
+ */
+interface ValidateResponse {
+    status: number
+    error: string
+}
+
+export type { UserRequest, ValidateResponse }
