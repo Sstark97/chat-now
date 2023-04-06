@@ -13,7 +13,11 @@ async function postFrom<C>(credentials: Record<keyof C, string> | undefined, end
         headers: { "Content-type": "application/json" },
     })
 
-    return await res.json()
+    const data = await res.json()
+
+    if (!res.ok) throw new Error(data.error)
+
+    return data
 }
 
 export { postFrom }

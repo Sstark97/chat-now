@@ -1,6 +1,7 @@
 import { Credentials, UserLoginResponse, UserRepository, UserResponse } from "@customTypes/domain"
 import { UserRequest } from "@customTypes/request"
 import bcrypt from "bcrypt"
+import { errors } from "@lib/const"
 
 /**
  * @class UserService
@@ -26,12 +27,6 @@ class UserService {
         }
 
         const newUser = await this.userRepository.createUser(credentials)
-
-        const isValidPassword = true
-
-        if (!isValidPassword) {
-            return null
-        }
 
         return {
             id: newUser.id,
@@ -66,6 +61,10 @@ class UserService {
         }
 
         return null
+    }
+
+    validateUserFrom(password: string) {
+        return errors.strictPassword.validate(password)
     }
 
     /**

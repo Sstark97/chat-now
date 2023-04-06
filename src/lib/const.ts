@@ -14,4 +14,9 @@ export const errors = {
         regex: /^.{8,}$/,
         validate: (value: string) => errors.password.regex.test(value),
     },
+    strictPassword: {
+        errorMessage: "La contraseña debe tener al menos 8 caracteres, una mayúscula, una minúscula, número y un caracter especial",
+        regex: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^\da-zA-Z]).{8,}$/,
+        validate: (value: string) => errors.strictPassword.regex.test(value),
+    },
 }

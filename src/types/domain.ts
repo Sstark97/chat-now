@@ -54,4 +54,8 @@ interface UserLoginResponse extends UserResponse {
     password?: string
 }
 
-export type { Credentials, User, UserRepository, UserResponse, UserLoginResponse }
+interface ErrorResponse {
+    error: string
+}
+
+export type { Credentials, User, UserRepository, UserResponse, UserLoginResponse, ErrorResponse }

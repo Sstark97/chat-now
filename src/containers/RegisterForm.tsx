@@ -16,7 +16,7 @@ import { errors } from "@lib/const"
  */
 const RegisterForm = () => {
     const { ref } = useChatContext()
-    const { register } = useRegister(ref)
+    const { register, error } = useRegister(ref)
 
     const handleClickInRegister = async () => {
         await register()
@@ -31,6 +31,7 @@ const RegisterForm = () => {
                         <AuthProviders />
                     </div>
                     <div className="w-7/12 flex flex-col items-center">
+                        {error ? <p className="text-busy font-semibold mt-1 opacity-60">{error}</p> : null}
                         <div className="w-full" ref={ref}>
                             <Input type="text" placeholder="Nombre" name="name" errorManager={errors.name} />
                             <Input type="email" placeholder="Correo electrónico" name="email" errorManager={errors.email} />
