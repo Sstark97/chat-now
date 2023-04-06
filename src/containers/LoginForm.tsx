@@ -5,6 +5,7 @@ import AuthHeader from "@components/AuthHeader"
 import Button from "@components/Button"
 import Input from "@components/Input"
 import PasswordInput from "@components/PasswordInput"
+import Error from "@components/Error"
 import AuthGuardian from "@containers/AuthGuardian"
 import AuthProviders from "@containers/AuthProviders"
 import { errors } from "@lib/const"
@@ -32,7 +33,7 @@ const LoginForm = () => {
                         <AuthProviders />
                     </div>
                     <div className="w-7/12 flex flex-col items-center">
-                        {error ? <p className="text-busy font-semibold mt-1 opacity-60">{error}</p> : null}
+                        {error ? <Error message={error} /> : null}
                         <div className="w-full" ref={ref}>
                             <Input type="text" placeholder="Escribe tu email" name="email" errorManager={errors.email} />
                             <PasswordInput placeholder="Escribe tu contraseña" validate />

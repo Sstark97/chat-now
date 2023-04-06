@@ -2,6 +2,15 @@ import { ReactNode } from "react"
 import { ChildrenProps } from "@customTypes/containers"
 
 /**
+ * @interface ErrorProps
+ * @description Propiedades del componente Error
+ * @property {string} message - Mensaje de error
+ */
+interface ErrorProps {
+    message: string
+}
+
+/**
  * @interface InputError
  * @description Propiedades del componente Input
  * @property {string} errorMessage - Mensaje de error del input
@@ -80,4 +89,4 @@ interface AuthButtonProps extends ChildrenProps {
     credential: "google" | "github"
 }
 
-export type { InputError, InputProps, PasswordProps, ButtonProps, AuthHeaderProps, RegisterProps, AuthButtonProps }
+export type { ErrorProps, InputError, InputProps, PasswordProps, ButtonProps, AuthHeaderProps, RegisterProps, AuthButtonProps }

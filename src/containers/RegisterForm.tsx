@@ -5,6 +5,7 @@ import AuthHeader from "@components/AuthHeader"
 import Input from "@components/Input"
 import PasswordInput from "@components/PasswordInput"
 import Button from "@components/Button"
+import Error from "@components/Error"
 import AuthGuardian from "@containers/AuthGuardian"
 import AuthProviders from "@containers/AuthProviders"
 import { errors } from "@lib/const"
@@ -31,7 +32,7 @@ const RegisterForm = () => {
                         <AuthProviders />
                     </div>
                     <div className="w-7/12 flex flex-col items-center">
-                        {error ? <p className="text-busy font-semibold mt-1 opacity-60">{error}</p> : null}
+                        {error ? <Error message={error} /> : null}
                         <div className="w-full" ref={ref}>
                             <Input type="text" placeholder="Nombre" name="name" errorManager={errors.name} />
                             <Input type="email" placeholder="Correo electrónico" name="email" errorManager={errors.email} />
