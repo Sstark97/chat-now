@@ -44,8 +44,6 @@ const getUserDataFrom = (current: HTMLDivElement) => {
 const isFormValid = (current: HTMLDivElement) => {
     const allInputs = getInputsFrom(current)
 
-    console.log("GHG")
-
     return allInputs.every((element) => {
         const input = element as HTMLInputElement
 

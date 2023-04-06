@@ -27,7 +27,6 @@ const useRegister = (ref: MutableRefObject<HTMLDivElement>) => {
             }
         } catch (error: unknown) {
             const { message } = error as Error
-            console.log(error)
             setError(message)
         }
     }
