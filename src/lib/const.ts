@@ -1,4 +1,9 @@
-export const errors = {
+enum API {
+    REGISTER = "/api/auth/user/register",
+    LOGIN = "/api/auth/user/login",
+}
+
+const errors = {
     name: {
         errorMessage: "El nombre debe tener al menos 4 caracteres",
         regex: /^.{4,}$/,
@@ -20,3 +25,5 @@ export const errors = {
         validate: (value: string) => errors.strictPassword.regex.test(value),
     },
 }
+
+export { API, errors }

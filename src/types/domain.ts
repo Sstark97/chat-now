@@ -24,10 +24,7 @@ type Credentials = Record<"name" | "email" | "password", string> | undefined
  * const userRepository: UserRepository = new UserPrismaRepository()
  */
 interface UserRepository {
-    // eslint-disable-next-line no-unused-vars
     findUserByEmail(email: string): Promise<User | null>
-
-    // eslint-disable-next-line no-unused-vars
     createUser(credentials: Credentials): Promise<User>
 }
 

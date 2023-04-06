@@ -3,6 +3,7 @@ import { useRouter } from "next/router"
 import { getUserDataFrom } from "@lib/utils/user"
 import { postFrom } from "@lib/utils/fetcher"
 import { MutableRefObject } from "react"
+import { API } from "@lib/const"
 
 /**
  * @description Hook para registrar un usuario
@@ -18,14 +19,15 @@ const useRegister = (ref: MutableRefObject<HTMLDivElement>) => {
     const register = async () => {
         const user = getUserDataFrom(ref.current)
         try {
-            const userRegistered = await postFrom(user, "/api/auth/user/register")
+            const userRegistered = await postFrom(user, API.REGISTER)
 
             if (userRegistered) {
                 setError("")
                 await router.push("/login")
             }
-        } catch (error: Error | any) {
-            setError(error.message)
+        } catch (error: unknown) {
+            const { message } = error as Error
+            setError(message)
         }
     }
     return { register, error }

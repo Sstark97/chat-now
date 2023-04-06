@@ -20,7 +20,6 @@ interface ErrorProps {
 interface InputError {
     errorMessage: string
     regex: RegExp
-    // eslint-disable-next-line no-unused-vars
     validate: (value: string) => boolean
 }
 

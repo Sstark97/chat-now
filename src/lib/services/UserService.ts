@@ -10,7 +10,6 @@ import { errors } from "@lib/const"
  * const userService = new UserService(userRepository)
  */
 class UserService {
-    // eslint-disable-next-line no-unused-vars
     constructor(private readonly userRepository: UserRepository) {}
 
     /**

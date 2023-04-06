@@ -6,6 +6,7 @@ import Credentials from "next-auth/providers/credentials"
 import { PrismaAdapter } from "@next-auth/prisma-adapter"
 import { PrismaClient } from "@prisma/client"
 import { postFrom } from "@lib/utils/fetcher"
+import { API } from "@lib/const"
 import type { NextAuthOptions } from "next-auth"
 
 const prisma = new PrismaClient()
@@ -29,7 +30,7 @@ const options: NextAuthOptions = {
                 password: { label: "Password", type: "password" },
             },
             authorize: async (credentials) => {
-                const user = await postFrom(credentials, `${process.env.NEXTAUTH_URL}/api/auth/user/login`)
+                const user = await postFrom(credentials, `${process.env.NEXTAUTH_URL}${API.LOGIN}`)
 
                 if (user) {
                     return {
