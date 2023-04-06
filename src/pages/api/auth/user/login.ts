@@ -1,7 +1,7 @@
-import type { NextApiResponse } from "next"
-import type { UserResponse } from "@customTypes/domain"
 import { UserFactory } from "@lib/factories/UserFactory"
-import { UserRequest } from "@customTypes/request"
+import type { NextApiResponse } from "next"
+import type { UserRequest } from "@customTypes/request"
+import type { UserResponse } from "@customTypes/domain"
 
 export default async function handler(req: UserRequest, res: NextApiResponse<UserResponse>) {
     const userService = UserFactory.createUserService()
