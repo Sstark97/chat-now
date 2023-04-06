@@ -34,7 +34,7 @@ const RegisterForm = () => {
                         <div className="w-full" ref={ref}>
                             <Input type="text" placeholder="Nombre" name="name" errorManager={errors.name} />
                             <Input type="email" placeholder="Correo electrónico" name="email" errorManager={errors.email} />
-                            <PasswordInput placeholder="Contraseña" />
+                            <PasswordInput placeholder="Contraseña" validate />
                             <Button value={"Crear cuenta"} action={handleClickInRegister} />
                         </div>
                     </div>
