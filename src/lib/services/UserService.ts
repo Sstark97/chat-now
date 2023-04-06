@@ -63,6 +63,14 @@ class UserService {
         return null
     }
 
+    /**
+     * @method validateUserFrom
+     * @description Valida los datos de un usuario
+     * @param password
+     * @returns {boolean}
+     * @example
+     * const userIsValid = userService.validateUserFrom(password)
+     */
     validateUserFrom(password: string) {
         return errors.strictPassword.validate(password)
     }
