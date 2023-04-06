@@ -1,21 +1,27 @@
-import type { NextApiResponse } from "next"
-import type { UserResponse, ErrorResponse } from "@customTypes/domain"
 import { UserFactory } from "@lib/factories/UserFactory"
-import { UserRequest } from "@customTypes/request"
 import { errors } from "@lib/const"
+import type { NextApiResponse } from "next"
+import type { UserRequest } from "@customTypes/request"
+import type { UserResponse, ErrorResponse } from "@customTypes/domain"
 
-export default async function handler(req: UserRequest, res: NextApiResponse<UserResponse | ErrorResponse>) {
-    const userService = UserFactory.createUserService()
+const userService = UserFactory.createUserService()
+
+const checkErrorsInRegisterFrom = async (req: UserRequest, res: NextApiResponse<ErrorResponse>) => {
+    const { email, password } = req.body
 
     if (req.method !== "POST") {
         res.status(405).end()
     }
 
     if (await userService.existUserFrom(req.body)) {
-        return res.status(400).json({ error: `Ya existe un usuario con el email ${req.body.email}` })
-    } else if (!userService.validateUserFrom(req.body.password)) {
+        return res.status(400).json({ error: `Ya existe un usuario con el email ${email}` })
+    } else if (!userService.validateUserFrom(password)) {
         return res.status(400).json({ error: errors.strictPassword.errorMessage })
     }
+}
+
+export default async function handler(req: UserRequest, res: NextApiResponse<UserResponse | ErrorResponse>) {
+    await checkErrorsInRegisterFrom(req, res)
 
     const user = await userService.getUserWithEncryptedPasswordFrom(req)
     const userRegistered = (await userService.register(user)) as UserResponse
