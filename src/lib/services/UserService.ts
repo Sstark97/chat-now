@@ -21,10 +21,6 @@ class UserService {
      * const userRegistered = await userService.register(user)
      */
     async register(credentials: Credentials): Promise<UserResponse | null> {
-        if (await this.existUserFrom(credentials)) {
-            return null
-        }
-
         const newUser = await this.userRepository.createUser(credentials)
 
         return {
@@ -113,7 +109,7 @@ class UserService {
      * @example
      * const userExists = await userService.existUserFrom(credentials)
      */
-    private async existUserFrom(credentials: Credentials) {
+    async existUserFrom(credentials: Credentials) {
         const email = credentials?.email as string
 
         const user = await this.userRepository.findUserByEmail(email)

@@ -11,7 +11,9 @@ export default async function handler(req: UserRequest, res: NextApiResponse<Use
         res.status(405).end()
     }
 
-    if (!userService.validateUserFrom(req.body.password)) {
+    if (await userService.existUserFrom(req.body)) {
+        return res.status(400).json({ error: `Ya existe un usuario con el email ${req.body.email}` })
+    } else if (!userService.validateUserFrom(req.body.password)) {
         return res.status(400).json({ error: errors.strictPassword.errorMessage })
     }
 
