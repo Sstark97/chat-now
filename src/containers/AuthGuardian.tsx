@@ -1,5 +1,6 @@
 import { useSession } from "next-auth/react"
 import { useRouter } from "next/router"
+import { REDIRECT } from "@lib/const"
 import type { ChildrenProps } from "@customTypes/containers"
 
 /**
@@ -13,7 +14,7 @@ const AuthGuardian = ({ children }: ChildrenProps) => {
     const router = useRouter()
 
     if (session) {
-        router.push("/")
+        router.push(REDIRECT.HOME)
     }
 
     return <>{children}</>

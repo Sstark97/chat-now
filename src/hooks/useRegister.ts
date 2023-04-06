@@ -3,7 +3,7 @@ import { useRouter } from "next/router"
 import { getUserDataFrom } from "@lib/utils/user"
 import { postFrom } from "@lib/utils/fetcher"
 import { MutableRefObject } from "react"
-import { API } from "@lib/const"
+import { API, REDIRECT } from "@lib/const"
 
 /**
  * @description Hook para registrar un usuario
@@ -23,7 +23,7 @@ const useRegister = (ref: MutableRefObject<HTMLDivElement>) => {
 
             if (userRegistered) {
                 setError("")
-                await router.push("/login")
+                await router.push(REDIRECT.LOGIN)
             }
         } catch (error: unknown) {
             const { message } = error as Error

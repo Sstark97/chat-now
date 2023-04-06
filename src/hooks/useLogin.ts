@@ -3,6 +3,7 @@ import { useRouter } from "next/router"
 import { getUserDataFrom } from "@lib/utils/user"
 import { MutableRefObject } from "react"
 import { signIn, SignInResponse } from "next-auth/react"
+import { REDIRECT } from "@lib/const"
 
 /**
  * @description Hook para loguear a un usuario
@@ -23,7 +24,7 @@ const useLogin = (ref: MutableRefObject<HTMLDivElement>) => {
             setError("Credenciales incorrectas")
         } else {
             setError("")
-            router.push("/")
+            await router.push(REDIRECT.HOME)
         }
     }
     return { login, error }

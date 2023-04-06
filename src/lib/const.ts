@@ -3,6 +3,11 @@ enum API {
     LOGIN = "/api/auth/user/login",
 }
 
+enum REDIRECT {
+    HOME = "/",
+    LOGIN = "/login",
+}
+
 const errors = {
     name: {
         errorMessage: "El nombre debe tener al menos 4 caracteres",
@@ -26,4 +31,4 @@ const errors = {
     },
 }
 
-export { API, errors }
+export { API, REDIRECT, errors }
