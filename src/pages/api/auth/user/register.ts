@@ -6,6 +6,14 @@ import type { UserResponse, ErrorResponse } from "@customTypes/domain"
 
 const userService = UserFactory.createUserService()
 
+/**
+ * Comprueba si hay errores en los datos del usuario
+ * @param req {UserRequest}
+ * @param res {NextApiResponse<ErrorResponse>}
+ * @returns {Promise<void>}
+ * @example
+ * await checkErrorsInRegisterFrom(req, res)
+ */
 const checkErrorsInRegisterFrom = async (req: UserRequest, res: NextApiResponse<ErrorResponse>) => {
     const { email, password } = req.body
 
