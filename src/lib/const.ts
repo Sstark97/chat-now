@@ -51,4 +51,16 @@ const errors = {
     },
 }
 
-export { API, REDIRECT, EMPTY_ERROR, errors }
+enum SECURITY_LEVEL {
+    LOW = "Baja",
+    MEDIUM = "Media",
+    HIGH = "Alta",
+}
+
+enum SECURITY_LEVEL_COLORS {
+    Baja = "busy",
+    Media = "medium_security",
+    Alta = "success",
+}
+
+export { API, REDIRECT, EMPTY_ERROR, errors, SECURITY_LEVEL, SECURITY_LEVEL_COLORS }

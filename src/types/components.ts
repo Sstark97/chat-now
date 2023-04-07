@@ -49,6 +49,7 @@ interface InputProps {
 interface PasswordProps {
     placeholder: string
     validate?: boolean
+    name?: string
 }
 
 /**

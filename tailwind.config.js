@@ -4,7 +4,7 @@ module.exports = {
         // Or if using `src` directory:
         "./src/**/*.{js,ts,jsx,tsx}",
     ],
-    safelist: ["border-busy", "border-success"],
+    safelist: ["text-secondary_text", "bg-secondary_text", "text-busy", "bg-busy", "text-medium_security", "bg-medium_security", "text-success", "bg-success"],
     theme: {
         extend: {
             colors: {

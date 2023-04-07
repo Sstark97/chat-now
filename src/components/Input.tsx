@@ -36,7 +36,7 @@ const Input = ({ type, placeholder, name, children, errorManager }: InputProps) 
                 {children}
             </div>
             {error ? <p className="text-busy text-sm mt-1 opacity-60">{error}</p> : null}
-            {type === "password" ? <LevelSecurityPassword password={password} /> : null}
+            {name === "password-register" ? <LevelSecurityPassword password={password} /> : null}
         </>
     )
 }
