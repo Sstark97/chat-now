@@ -22,6 +22,8 @@ enum REDIRECT {
     LOGIN = "/login",
 }
 
+const EMPTY_ERROR = "Hmm... parece que este campo es obligatorio"
+
 /**
  * @description Objeto con los errores de validación de los formularios
  * @constant
@@ -49,4 +51,4 @@ const errors = {
     },
 }
 
-export { API, REDIRECT, errors }
+export { API, REDIRECT, EMPTY_ERROR, errors }
