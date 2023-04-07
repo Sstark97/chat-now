@@ -23,7 +23,7 @@ const PasswordInput = ({ placeholder, validate }: PasswordProps) => {
     }
 
     return (
-        <Input type={showPassword ? "text" : "password"} placeholder={placeholder} name="password" errorManager={validate ? errors.password : undefined}>
+        <Input type={showPassword ? "text" : "password"} placeholder={placeholder} name="password" errorManager={validate ? errors.security : undefined}>
             {showPassword ? <AiFillEyeInvisible className={iconClass} onClick={handleShowPassword} /> : <AiFillEye className={iconClass} onClick={handleShowPassword} />}
         </Input>
     )

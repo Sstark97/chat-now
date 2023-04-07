@@ -33,24 +33,19 @@ enum REDIRECT {
  */
 const errors = {
     name: {
-        errorMessage: "El nombre debe tener al menos 4 caracteres",
-        regex: /^.{4,}$/,
+        errorMessage: "El nombre debe tener entre 4 y 20 caracteres",
+        regex: /^.{4,20}$/,
         validate: (value: string) => errors.name.regex.test(value),
     },
     email: {
-        errorMessage: "El email no es válido",
+        errorMessage: "El correo está mal formado",
         regex: /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/,
         validate: (value: string) => errors.email.regex.test(value),
     },
-    password: {
-        errorMessage: "La contraseña debe tener al menos 8 caracteres",
-        regex: /^.{8,}$/,
-        validate: (value: string) => errors.password.regex.test(value),
-    },
-    strictPassword: {
-        errorMessage: "La contraseña debe tener al menos 8 caracteres, una mayúscula, una minúscula, número y un caracter especial",
-        regex: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^\da-zA-Z]).{8,}$/,
-        validate: (value: string) => errors.strictPassword.regex.test(value),
+    security: {
+        errorMessage: "La contraseña debe tener entre 6 y 40 caracteres",
+        regex: /^.{6,40}$/,
+        validate: (value: string) => errors.security.regex.test(value),
     },
 }
 

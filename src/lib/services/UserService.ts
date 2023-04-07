@@ -67,7 +67,7 @@ class UserService {
      * const userIsValid = userService.validateUserFrom(password)
      */
     validateUserFrom(password: string) {
-        return errors.strictPassword.validate(password)
+        return errors.security.validate(password)
     }
 
     /**
