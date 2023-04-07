@@ -63,6 +63,15 @@ interface ButtonProps {
 }
 
 /**
+ * @interface LevelOfSecurityProps
+ * @description Propiedades del componente LevelOfSecurity
+ * @property {string} password - Contraseña
+ */
+interface LevelOfSecurityProps {
+    password: string
+}
+
+/**
  * @interface AuthHeaderProps
  * @description Propiedades del componente AuthHeader
  * @property {string} title - Título del componente
@@ -89,4 +98,4 @@ interface AuthButtonProps extends ChildrenProps {
     credential: "google" | "github"
 }
 
-export type { ErrorProps, InputError, InputProps, PasswordProps, ButtonProps, AuthHeaderProps, RegisterProps, AuthButtonProps }
+export type { ErrorProps, InputError, InputProps, PasswordProps, ButtonProps, LevelOfSecurityProps, AuthHeaderProps, RegisterProps, AuthButtonProps }

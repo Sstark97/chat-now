@@ -1,16 +1,14 @@
-import { getLevelOfSecurityFrom } from "@lib/utils/password"
-import { SECURITY_LEVEL, SECURITY_LEVEL_COLORS } from "@lib/const"
+import useLevelOfSecurity from "@hooks/useLevelOfSecurity"
+import type { LevelOfSecurityProps } from "@customTypes/components"
 
-const LevelSecurityPassword = ({ password }: { password: string }) => {
+const LevelSecurityPassword = ({ password }: LevelOfSecurityProps) => {
+    const passwordHaveTheNecessaryLength = password.length >= 6 && password.length <= 40
     const generalClass = "w-[30%] rounded-lg"
-    const passwordSecurityLevel = getLevelOfSecurityFrom(password)
-    const bgFirstLevel = SECURITY_LEVEL_COLORS[passwordSecurityLevel] ?? "secondary_text"
-    const bgSecondLevel = passwordSecurityLevel === SECURITY_LEVEL.MEDIUM || passwordSecurityLevel === SECURITY_LEVEL.HIGH ? SECURITY_LEVEL_COLORS[passwordSecurityLevel] : "secondary_text"
-    const bgThirdLevel = passwordSecurityLevel === SECURITY_LEVEL.HIGH ? SECURITY_LEVEL_COLORS[passwordSecurityLevel] : "secondary_text"
+    const { passwordSecurityLevel, bgFirstLevel, bgSecondLevel, bgThirdLevel } = useLevelOfSecurity(password)
 
     return (
         <>
-            {password.length >= 6 && password.length <= 40 ? (
+            {passwordHaveTheNecessaryLength ? (
                 <div className="w-full mt-2 flex flex-row items-center justify-between">
                     <p className="w-[60%] text-xs">
                         Nivel de seguridad: <span className={`text-${bgFirstLevel}`}>{passwordSecurityLevel}</span>
