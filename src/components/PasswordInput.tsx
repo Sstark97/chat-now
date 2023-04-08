@@ -8,11 +8,11 @@ import { PasswordProps } from "@customTypes/components"
  * Este componente es el encargado de mostrar un input de tipo password
  * @param {string} placeholder
  * @param {boolean} validate
- * @param {string} name
+ * @param {string} location
  * @returns component
  * @example <PasswordInput placeholder="Contraseña" />
  */
-const PasswordInput = ({ placeholder, validate, name }: PasswordProps) => {
+const PasswordInput = ({ placeholder, validate, location }: PasswordProps) => {
     const [showPassword, setShowPassword] = useState(false)
     const iconClass = "absolute top-8 right-4 fill-white text-xl lg:text-2xl"
 
@@ -24,7 +24,7 @@ const PasswordInput = ({ placeholder, validate, name }: PasswordProps) => {
     }
 
     return (
-        <Input type={showPassword ? "text" : "password"} placeholder={placeholder} name={name ? name : "password"} errorManager={validate ? errors.security : undefined}>
+        <Input type={showPassword ? "text" : "password"} placeholder={placeholder} name="password" errorManager={validate ? errors.security : undefined} location={location}>
             {showPassword ? <AiFillEyeInvisible className={iconClass} onClick={handleShowPassword} /> : <AiFillEye className={iconClass} onClick={handleShowPassword} />}
         </Input>
     )

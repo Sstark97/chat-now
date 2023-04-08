@@ -10,10 +10,11 @@ import { useState } from "react"
  * @param {string} name
  * @param children
  * @param {InputError} errorManager
+ * @param {string} location
  * @returns component
  * @example <Input type="text" placeholder="Nombre de usuario" />
  */
-const Input = ({ type, placeholder, name, children, errorManager }: InputProps) => {
+const Input = ({ type, placeholder, name, children, errorManager, location }: InputProps) => {
     const { error, border, defineError } = useControlInput(errorManager)
     const inputClass = "bg-secondary text-white placeholder-white border rounded-xl px-3 py-2 mt-5 focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
 
@@ -36,7 +37,7 @@ const Input = ({ type, placeholder, name, children, errorManager }: InputProps) 
                 {children}
             </div>
             {error ? <p className="text-busy text-sm mt-1 opacity-60">{error}</p> : null}
-            {name === "password-register" ? <LevelSecurityPassword password={password} /> : null}
+            {location === "register" ? <LevelSecurityPassword password={password} /> : null}
         </>
     )
 }

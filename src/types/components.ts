@@ -31,6 +31,7 @@ interface InputError {
  * @property {string} name - Nombre del input
  * @property {ReactNode} children - Input children
  * @property {InputError} validate - Validación del input
+ * @property {string} location - Ubicación del input
  */
 interface InputProps {
     type: string
@@ -38,6 +39,7 @@ interface InputProps {
     name: string
     children?: ReactNode
     errorManager?: InputError
+    location?: string
 }
 
 /**
@@ -45,11 +47,12 @@ interface InputProps {
  * @description Propiedades del componente Password
  * @property {string} placeholder - Input placeholder
  * @property {boolean} validate - Validación del input
+ * @property {string} location - Ubicación del input
  */
 interface PasswordProps {
     placeholder: string
     validate?: boolean
-    name?: string
+    location?: string
 }
 
 /**
