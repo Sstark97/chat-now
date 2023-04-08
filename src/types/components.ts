@@ -1,22 +1,61 @@
 import { ReactNode } from "react"
+import { ChildrenProps } from "@customTypes/containers"
+
+/**
+ * @interface ErrorProps
+ * @description Propiedades del componente Error
+ * @property {string} message - Mensaje de error
+ */
+interface ErrorProps {
+    message: string
+}
+
+/**
+ * @interface InputError
+ * @description Propiedades del componente Input
+ * @property {string} errorMessage - Mensaje de error del input
+ * @property {RegExp} regex - Expresión regular para validar el input
+ * @property {Function} validateFunction - Función para validar el input
+ */
+interface InputError {
+    errorMessage: string
+    regex: RegExp
+    validate: (value: string) => boolean
+}
 
 /**
  * @interface InputProps
- * @description Input component props
- * @property {string} type - Input type
+ * @description Propiedades del componente Input
+ * @property {string} type - Tipo de input
  * @property {string} placeholder - Input placeholder
+ * @property {string} name - Nombre del input
  * @property {ReactNode} children - Input children
+ * @property {InputError} validate - Validación del input
  */
 interface InputProps {
     type: string
     placeholder: string
+    name: string
     children?: ReactNode
+    errorManager?: InputError
+}
+
+/**
+ * @interface PasswordProps
+ * @description Propiedades del componente Password
+ * @property {string} placeholder - Input placeholder
+ * @property {boolean} validate - Validación del input
+ */
+interface PasswordProps {
+    placeholder: string
+    validate?: boolean
+    name?: string
 }
 
 /**
  * @interface ButtonProps
- * @description Button component props
- * @property {string} value - Button value
+ * @description Propiedades del componente Button
+ * @property {string} value - Valor del botón
  */
 interface ButtonProps {
     value: string
@@ -24,9 +63,18 @@ interface ButtonProps {
 }
 
 /**
+ * @interface LevelOfSecurityProps
+ * @description Propiedades del componente LevelOfSecurity
+ * @property {string} password - Contraseña
+ */
+interface LevelOfSecurityProps {
+    password: string
+}
+
+/**
  * @interface AuthHeaderProps
- * @description AuthHeader component props
- * @property {string} title - AuthHeader title
+ * @description Propiedades del componente AuthHeader
+ * @property {string} title - Título del componente
  */
 interface AuthHeaderProps {
     title: string
@@ -34,11 +82,20 @@ interface AuthHeaderProps {
 
 /**
  * @interface RegisterProps
- * @description Register component props
- * @property {() => void} onRegister - Register function
+ * @description Propiedades del componente Register
+ * @property {() => void} onRegister - Función para registrar un usuario
  */
 interface RegisterProps {
     onRegister(): void
 }
 
-export type { InputProps, ButtonProps, AuthHeaderProps, RegisterProps }
+/**
+ * @interface AuthButtonProps
+ * @description Propiedades del componente AuthButton
+ * @property {string} credential - Credencial del botón
+ */
+interface AuthButtonProps extends ChildrenProps {
+    credential: "google" | "github"
+}
+
+export type { ErrorProps, InputError, InputProps, PasswordProps, ButtonProps, LevelOfSecurityProps, AuthHeaderProps, RegisterProps, AuthButtonProps }
