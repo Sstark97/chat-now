@@ -3,6 +3,7 @@ import Input from "@components/Input"
 import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai"
 import { errors } from "@lib/const"
 import { PasswordProps } from "@customTypes/components"
+import PasswordPopover from "./PasswordPopover"
 
 /**
  * Este componente es el encargado de mostrar un input de tipo password
@@ -24,9 +25,12 @@ const PasswordInput = ({ placeholder, validate, location }: PasswordProps) => {
     }
 
     return (
-        <Input type={showPassword ? "text" : "password"} placeholder={placeholder} name="password" errorManager={validate ? errors.security : undefined} location={location}>
-            {showPassword ? <AiFillEyeInvisible className={iconClass} onClick={handleShowPassword} /> : <AiFillEye className={iconClass} onClick={handleShowPassword} />}
-        </Input>
+        <div className="relative">
+            <Input type={showPassword ? "text" : "password"} placeholder={placeholder} name="password" errorManager={validate ? errors.security : undefined} location={location}>
+                {showPassword ? <AiFillEyeInvisible className={iconClass} onClick={handleShowPassword} /> : <AiFillEye className={iconClass} onClick={handleShowPassword} />}
+            </Input>
+            <PasswordPopover />
+        </div>
     )
 }
 
