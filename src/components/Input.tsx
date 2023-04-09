@@ -2,6 +2,7 @@ import useControlInput from "@hooks/useControlInput"
 import type { InputProps } from "@customTypes/components"
 import LevelSecurityPassword from "@components/LevelSecurityPassword"
 import { useState } from "react"
+import { randomPassword } from "../lib/utils/password"
 
 /**
  * Este componente es el encargado de mostrar un input
@@ -33,9 +34,15 @@ const Input = ({ type, placeholder, name, children, errorManager, location }: In
                     onBlur={defineError}
                     required
                     onChange={(e) => setPassword(e.target.value)}
+                    value={password}
                 />
                 {children}
             </div>
+            {location === "register" ? (
+                <button type="button" onClick={() => setPassword(randomPassword)}>
+                    Generar contraseña
+                </button>
+            ) : null}
             {error ? <p className="text-busy text-sm mt-1 opacity-60">{error}</p> : null}
             {location === "register" ? <LevelSecurityPassword password={password} /> : null}
         </>

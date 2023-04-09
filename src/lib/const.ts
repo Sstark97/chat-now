@@ -22,6 +22,18 @@ enum REDIRECT {
     LOGIN = "/login",
 }
 
+/**
+ * @description String con todos los caracteres posibles para la contraseña
+ * @constant
+ * @type {string}
+ */
+const CHARACTERS = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()_+-=[]{};':\\|,.<>/?"
+
+/**
+ * @description String con el mensaje de error de un campo vacío
+ * @constant
+ * @type {string}
+ */
 const EMPTY_ERROR = "Hmm... parece que este campo es obligatorio"
 
 /**
@@ -51,16 +63,32 @@ const errors = {
     },
 }
 
+/**
+ * @description Enumerado con los niveles de seguridad de la contraseña
+ * @constant
+ * @type {Object}
+ * @property {string} LOW - Nivel de seguridad bajo
+ * @property {string} MEDIUM - Nivel de seguridad medio
+ * @property {string} HIGH - Nivel de seguridad alto
+ */
 enum SECURITY_LEVEL {
     LOW = "Baja",
     MEDIUM = "Media",
     HIGH = "Alta",
 }
 
+/**
+ * @description Enumerado con los colores de los niveles de seguridad de la contraseña
+ * @constant
+ * @type {Object}
+ * @property {string} Baja - Color del nivel de seguridad bajo
+ * @property {string} Media - Color del nivel de seguridad medio
+ * @property {string} Alta - Color del nivel de seguridad alto
+ */
 enum SECURITY_LEVEL_COLORS {
     Baja = "busy",
     Media = "medium_security",
     Alta = "success",
 }
 
-export { API, REDIRECT, EMPTY_ERROR, errors, SECURITY_LEVEL, SECURITY_LEVEL_COLORS }
+export { API, REDIRECT, EMPTY_ERROR, errors, SECURITY_LEVEL, SECURITY_LEVEL_COLORS, CHARACTERS }
