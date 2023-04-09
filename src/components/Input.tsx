@@ -39,8 +39,8 @@ const Input = ({ type, placeholder, name, children, errorManager, location }: In
                 {children}
             </div>
             {location === "register" ? (
-                <button type="button" onClick={() => setPassword(randomPassword)}>
-                    Generar contraseña
+                <button className="text-xs text-secondary_text" type="button" onClick={() => setPassword(randomPassword)}>
+                    Generar contraseña aleatoria
                 </button>
             ) : null}
             {error ? <p className="text-busy text-sm mt-1 opacity-60">{error}</p> : null}
