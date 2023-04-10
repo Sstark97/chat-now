@@ -1,3 +1,7 @@
+import { IoIosChatboxes } from "react-icons/io"
+import { HiUsers } from "react-icons/hi"
+import { IoSettingsSharp } from "react-icons/io5"
+
 /**
  * @description Enumerado con las rutas de la API
  * @constant
@@ -63,6 +67,12 @@ const errors = {
     },
 }
 
+const principalLinks = [
+    { href: "/", icon: IoIosChatboxes },
+    { href: "/contacts", icon: HiUsers },
+    { href: "/settings", icon: IoSettingsSharp },
+]
+
 /**
  * @description Enumerado con los niveles de seguridad de la contraseña
  * @constant
@@ -91,4 +101,4 @@ enum SECURITY_LEVEL_COLORS {
     Alta = "success",
 }
 
-export { API, REDIRECT, EMPTY_ERROR, errors, SECURITY_LEVEL, SECURITY_LEVEL_COLORS, CHARACTERS }
+export { API, REDIRECT, EMPTY_ERROR, errors, SECURITY_LEVEL, SECURITY_LEVEL_COLORS, CHARACTERS, principalLinks }
