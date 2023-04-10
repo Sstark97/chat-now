@@ -27,7 +27,7 @@ module.exports = {
     },
     overrides: [
         {
-            files: ["src/test/*.test.jsx"],
+            files: ["src/test/*.test.tsx"],
             rules: {
                 "testing-library/prefer-user-event": "error",
                 "testing-library/prefer-screen-queries": "error",
@@ -38,11 +38,4 @@ module.exports = {
             },
         },
     ],
-    settings: {
-        "import/resolver": {
-            node: {
-                paths: ["src"],
-            },
-        },
-    },
 }
