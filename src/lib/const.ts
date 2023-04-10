@@ -91,4 +91,20 @@ enum SECURITY_LEVEL_COLORS {
     Alta = "success",
 }
 
-export { API, REDIRECT, EMPTY_ERROR, errors, SECURITY_LEVEL, SECURITY_LEVEL_COLORS, CHARACTERS }
+/**
+ * @description Enumerado con los colores de los estados de los usuarios
+ * @constant
+ * @type {Object}
+ * @property {string} online - Color del estado online
+ * @property {string} busy - Color del estado ocupado
+ * @property {string} absent - Color del estado ausente
+ * @property {string} offline - Color del estado offline
+ */
+enum STATE_COLORS {
+    online = "success",
+    busy = "busy",
+    absent = "absent",
+    offline = "offline",
+}
+
+export { API, REDIRECT, EMPTY_ERROR, errors, SECURITY_LEVEL, SECURITY_LEVEL_COLORS, CHARACTERS, STATE_COLORS }

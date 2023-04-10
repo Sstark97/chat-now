@@ -1,4 +1,5 @@
 import { ReactNode } from "react"
+import { ChatProps } from "@customTypes/components"
 
 /**
  * @interface ChildrenProps
@@ -9,4 +10,8 @@ interface ChildrenProps {
     children?: ReactNode
 }
 
-export type { ChildrenProps }
+interface ChatListProps {
+    chats: Array<ChatProps>
+}
+
+export type { ChildrenProps, ChatListProps }

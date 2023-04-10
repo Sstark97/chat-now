@@ -42,6 +42,14 @@ interface InputProps {
     location?: string
 }
 
+interface ChatProps {
+    name: string
+    time: string
+    message: string
+    numMessages?: number
+    state: string
+}
+
 /**
  * @interface PasswordProps
  * @description Propiedades del componente Password
@@ -101,4 +109,4 @@ interface AuthButtonProps extends ChildrenProps {
     credential: "google" | "github"
 }
 
-export type { ErrorProps, InputError, InputProps, PasswordProps, ButtonProps, LevelOfSecurityProps, AuthHeaderProps, RegisterProps, AuthButtonProps }
+export type { ErrorProps, InputError, InputProps, PasswordProps, ButtonProps, LevelOfSecurityProps, AuthHeaderProps, RegisterProps, AuthButtonProps, ChatProps }

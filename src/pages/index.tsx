@@ -1,7 +1,43 @@
 import Head from "next/head"
 import { Inter } from "next/font/google"
+import ChatList from "@containers/ChatList"
 
 const inter = Inter({ subsets: ["latin"] })
+
+const chats = [
+    {
+        name: "Juan Trabajo",
+        time: "12:30",
+        message: "Mañana podemos hablarlo mejor y jajajajaasdadasdasdasdad",
+        numMessages: 2,
+        state: "online",
+    },
+    {
+        name: "María",
+        time: "10:14",
+        message: "Vale!",
+        numMessages: 1,
+        state: "busy",
+    },
+    {
+        name: "Pedro 1ºDAW",
+        time: "Ayer",
+        message: "Genial tío, pues ya hablamos en otro momento",
+        state: "offline",
+    },
+    {
+        name: "Paula prima",
+        time: "Ayer",
+        message: "√√ Graciaaas",
+        state: "absent",
+    },
+    {
+        name: "Darío",
+        time: "Domingo",
+        message: "√ ¿A qué hora?",
+        state: "offline",
+    },
+]
 
 /**
  * Esta es la página principal de la aplicación
@@ -19,6 +55,7 @@ const Home = () => {
             <main className={inter.className}>
                 <h1 className="text-2xl text-center mt-4">ChatNow</h1>
             </main>
+            <ChatList chats={chats} />
         </>
     )
 }

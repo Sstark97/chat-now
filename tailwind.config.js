@@ -7,7 +7,7 @@ module.exports = {
         "path-to-your-node_modules/@material-tailwind/react/components/**/*.{js,ts,jsx,tsx}",
         "path-to-your-node_modules/@material-tailwind/react/theme/components/**/*.{js,ts,jsx,tsx}",
     ],
-    safelist: ["text-secondary_text", "bg-secondary_text", "text-busy", "bg-busy", "text-medium_security", "bg-medium_security", "text-success", "bg-success"],
+    safelist: ["text-secondary_text", "bg-secondary_text", "text-busy", "bg-busy", "text-medium_security", "bg-medium_security", "text-success", "bg-success", "bg-offline", "bg-absent"],
     theme: {
         extend: {
             colors: {
