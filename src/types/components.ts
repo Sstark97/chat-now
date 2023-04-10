@@ -44,6 +44,23 @@ interface InputProps {
 }
 
 /**
+ * @interface ChatProps
+ * @description Propiedades del componente Chat
+ * @property {string} name - Nombre del usuario
+ * @property {string} time - Hora del mensaje
+ * @property {string} message - Mensaje
+ * @property {number} numMessages - Número de mensajes
+ * @property {string} state - Estado del usuario
+ */
+interface ChatProps {
+    name: string
+    time: string
+    message: string
+    numMessages?: number
+    state: string
+}
+
+/**
  * @interface PasswordProps
  * @description Propiedades del componente Password
  * @property {string} placeholder - Input placeholder
@@ -85,15 +102,6 @@ interface AuthHeaderProps {
 }
 
 /**
- * @interface RegisterProps
- * @description Propiedades del componente Register
- * @property {() => void} onRegister - Función para registrar un usuario
- */
-interface RegisterProps {
-    onRegister(): void
-}
-
-/**
  * @interface AuthButtonProps
  * @description Propiedades del componente AuthButton
  * @property {string} credential - Credencial del botón
@@ -113,4 +121,4 @@ interface NavBarLinks {
     icon: IconType
 }
 
-export type { ErrorProps, InputError, InputProps, PasswordProps, ButtonProps, LevelOfSecurityProps, AuthHeaderProps, RegisterProps, AuthButtonProps, NavBarLinks }
+export type { ErrorProps, InputError, InputProps, PasswordProps, ButtonProps, LevelOfSecurityProps, AuthHeaderProps, AuthButtonProps, ChatProps, NavBarLinks }
