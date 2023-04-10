@@ -6,7 +6,6 @@ import Button from "@components/Button"
 import Input from "@components/Input"
 import PasswordInput from "@components/PasswordInput"
 import Error from "@components/Error"
-import AuthGuardian from "@containers/AuthGuardian"
 import AuthProviders from "@containers/AuthProviders"
 import { errors } from "@lib/const"
 
@@ -24,32 +23,30 @@ const LoginForm = () => {
     }
 
     return (
-        <AuthGuardian>
-            <div className="w-full md:w-[40%]">
-                <AuthHeader title="Bienvenido" />
+        <div className="w-full md:w-[40%]">
+            <AuthHeader title="Bienvenido" />
 
-                <form className="w-full flex flex-col justify-center items-center">
-                    <div className="w-7/12">
-                        <AuthProviders />
+            <form className="w-full flex flex-col justify-center items-center">
+                <div className="w-7/12">
+                    <AuthProviders />
+                </div>
+                <div className="w-7/12 flex flex-col items-center">
+                    {error ? <Error message={error} /> : null}
+                    <div className="w-full" ref={ref}>
+                        <Input type="text" placeholder="Escribe tu email" name="email" errorManager={errors.email} />
+                        <PasswordInput placeholder="Escribe tu contraseña" validate />
+                        <Button value="Iniciar Sesión" action={handleClick} />
                     </div>
-                    <div className="w-7/12 flex flex-col items-center">
-                        {error ? <Error message={error} /> : null}
-                        <div className="w-full" ref={ref}>
-                            <Input type="text" placeholder="Escribe tu email" name="email" errorManager={errors.email} />
-                            <PasswordInput placeholder="Escribe tu contraseña" validate />
-                            <Button value="Iniciar Sesión" action={handleClick} />
-                        </div>
-                    </div>
-                </form>
+                </div>
+            </form>
 
-                <p className="mt-5 text-sm text-center text-secondary_text md:text-lg">
-                    ¿Aún no tienes cuenta?{" "}
-                    <Link className="font-bold" href="/register">
-                        Regístrate
-                    </Link>
-                </p>
-            </div>
-        </AuthGuardian>
+            <p className="mt-5 text-sm text-center text-secondary_text md:text-lg">
+                ¿Aún no tienes cuenta?{" "}
+                <Link className="font-bold" href="/register">
+                    Regístrate
+                </Link>
+            </p>
+        </div>
     )
 }
 

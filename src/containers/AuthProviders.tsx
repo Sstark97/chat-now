@@ -2,6 +2,7 @@ import { FcGoogle } from "react-icons/fc"
 import { BsGithub } from "react-icons/bs"
 import AuthButton from "@components/AuthButton"
 
+// TODO: Refactorizar para que sea un solo componente y no haga un flash de loading
 /**
  * Este componente se encarga de crear el contendio de los botones de registro de las diferentes plataformas
  * @returns component
