@@ -34,6 +34,7 @@ module.exports = {
                 "testing-library/await-async-query": "error",
                 "testing-library/no-debugging-utils": "error",
                 "testing-library/no-await-sync-events": "error",
+                "testing-library/no-node-access": "error",
             },
         },
     ],
