@@ -1,5 +1,6 @@
 import { ReactNode } from "react"
-import { ChildrenProps } from "@customTypes/containers"
+import { ChildrenProps } from "@customTypes/global"
+import { IconType } from "react-icons"
 
 /**
  * @interface ErrorProps
@@ -101,4 +102,15 @@ interface AuthButtonProps extends ChildrenProps {
     credential: "google" | "github"
 }
 
-export type { ErrorProps, InputError, InputProps, PasswordProps, ButtonProps, LevelOfSecurityProps, AuthHeaderProps, RegisterProps, AuthButtonProps }
+/**
+ * @interface NavBarLinks
+ * @description Propiedades del componente NavBarLinks
+ * @property {string} href - Ruta del enlace
+ * @property {IconType} icon - Icono del enlace
+ */
+interface NavBarLinks {
+    href: string
+    icon: IconType
+}
+
+export type { ErrorProps, InputError, InputProps, PasswordProps, ButtonProps, LevelOfSecurityProps, AuthHeaderProps, RegisterProps, AuthButtonProps, NavBarLinks }

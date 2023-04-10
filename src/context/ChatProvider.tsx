@@ -1,5 +1,5 @@
 import { useState, createContext, MutableRefObject, useRef } from "react"
-import type { ChildrenProps } from "@customTypes/containers"
+import type { ChildrenProps } from "@customTypes/global"
 import type { Context } from "@customTypes/context"
 import { isFormValid } from "@lib/utils/user"
 const ChatContext = createContext<Context>({} as Context)
