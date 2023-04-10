@@ -44,4 +44,4 @@ docs
 
 # Ficheros en desarrollo
 
-src/components/PasswordPopover.tsx
+/src/components/PasswordPopover.tsx
