@@ -24,9 +24,11 @@ const PasswordInput = ({ placeholder, validate, location }: PasswordProps) => {
     }
 
     return (
-        <Input type={showPassword ? "text" : "password"} placeholder={placeholder} name="password" errorManager={validate ? errors.security : undefined} location={location}>
-            {showPassword ? <AiFillEyeInvisible className={iconClass} onClick={handleShowPassword} /> : <AiFillEye className={iconClass} onClick={handleShowPassword} />}
-        </Input>
+        <div className="relative">
+            <Input type={showPassword ? "text" : "password"} placeholder={placeholder} name="password" errorManager={validate ? errors.security : undefined} location={location}>
+                {showPassword ? <AiFillEyeInvisible className={iconClass} onClick={handleShowPassword} /> : <AiFillEye className={iconClass} onClick={handleShowPassword} />}
+            </Input>
+        </div>
     )
 }
 

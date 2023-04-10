@@ -41,3 +41,7 @@ next-env.d.ts
 
 # Documentation
 docs
+
+# Ficheros en desarrollo
+
+/src/components/PasswordPopover.tsx
