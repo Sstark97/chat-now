@@ -23,6 +23,7 @@
       "@customTypes/*": ["types/*"],
       "@hooks/*": ["hooks/*"],
       "@context/*": ["context/*"],
+      "@layouts/*": ["layouts/*"],
     }
   },
   "include": ["next-env.d.ts", "./src/**/*.ts", "./src/**/*.tsx"],

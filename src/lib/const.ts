@@ -1,3 +1,8 @@
+import { IoIosChatboxes } from "react-icons/io"
+import { HiUsers } from "react-icons/hi"
+import { IoSettingsSharp } from "react-icons/io5"
+import type { NavBarLinks } from "@customTypes/components"
+
 /**
  * @description Enumerado con las rutas de la API
  * @constant
@@ -64,6 +69,19 @@ const errors = {
 }
 
 /**
+ * @description Objeto con los links de la barra de navegación
+ * @constant
+ * @type {NavBarLinks[]}
+ * @property {string} href - Ruta del link
+ * @property {IconType} icon - Icono del link
+ */
+const principalLinks: NavBarLinks[] = [
+    { href: "/", icon: IoIosChatboxes },
+    { href: "/contacts", icon: HiUsers },
+    { href: "/settings", icon: IoSettingsSharp },
+]
+
+/**
  * @description Enumerado con los niveles de seguridad de la contraseña
  * @constant
  * @type {Object}
@@ -107,4 +125,4 @@ enum STATE_COLORS {
     offline = "offline",
 }
 
-export { API, REDIRECT, EMPTY_ERROR, errors, SECURITY_LEVEL, SECURITY_LEVEL_COLORS, CHARACTERS, STATE_COLORS }
+export { API, REDIRECT, EMPTY_ERROR, errors, SECURITY_LEVEL, SECURITY_LEVEL_COLORS, CHARACTERS, STATE_COLORS, principalLinks }

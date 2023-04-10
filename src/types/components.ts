@@ -1,5 +1,6 @@
 import { ReactNode } from "react"
-import { ChildrenProps } from "@customTypes/containers"
+import { ChildrenProps } from "@customTypes/global"
+import { IconType } from "react-icons"
 
 /**
  * @interface ErrorProps
@@ -101,15 +102,6 @@ interface AuthHeaderProps {
 }
 
 /**
- * @interface RegisterProps
- * @description Propiedades del componente Register
- * @property {() => void} onRegister - Función para registrar un usuario
- */
-interface RegisterProps {
-    onRegister(): void
-}
-
-/**
  * @interface AuthButtonProps
  * @description Propiedades del componente AuthButton
  * @property {string} credential - Credencial del botón
@@ -118,4 +110,15 @@ interface AuthButtonProps extends ChildrenProps {
     credential: "google" | "github"
 }
 
-export type { ErrorProps, InputError, InputProps, PasswordProps, ButtonProps, LevelOfSecurityProps, AuthHeaderProps, RegisterProps, AuthButtonProps, ChatProps }
+/**
+ * @interface NavBarLinks
+ * @description Propiedades del componente NavBarLinks
+ * @property {string} href - Ruta del enlace
+ * @property {IconType} icon - Icono del enlace
+ */
+interface NavBarLinks {
+    href: string
+    icon: IconType
+}
+
+export type { ErrorProps, InputError, InputProps, PasswordProps, ButtonProps, LevelOfSecurityProps, AuthHeaderProps, AuthButtonProps, ChatProps, NavBarLinks }
