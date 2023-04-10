@@ -1,4 +1,5 @@
 import Head from "next/head"
+import Searcher from "@components/Searcher"
 import { Inter } from "next/font/google"
 
 const inter = Inter({ subsets: ["latin"] })
@@ -17,7 +18,7 @@ const Home = () => {
                 <link rel="icon" href="/favicon.ico" />
             </Head>
             <main className={inter.className}>
-                <h1 className="text-2xl text-center mt-4">ChatNow</h1>
+                <Searcher />
             </main>
         </>
     )
