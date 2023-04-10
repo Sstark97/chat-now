@@ -2,7 +2,11 @@ import type { ChatListProps } from "@customTypes/containers"
 import Chat from "@components/Chat"
 
 /**
- * Es
+ * Este componente es el que se encarga de mostrar la lista de chats
+ * @param chats Lista de chats
+ * @returns component
+ * @example
+ * <ChatList chats={chats} />
  */
 const ChatList = ({ chats }: ChatListProps) => {
     return (

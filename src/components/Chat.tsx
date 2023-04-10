@@ -2,11 +2,18 @@ import type { ChatProps } from "@customTypes/components"
 import { STATE_COLORS } from "@lib/const"
 
 /**
- * Es
+ * Este componente es el que se encarga de mostrar la información de un chat
+ * @param name Nombre del usuario
+ * @param time Hora del último mensaje
+ * @param message Último mensaje
+ * @param numMessages Número de mensajes sin leer
+ * @param state Estado del usuario
+ * @returns component
+ * @example
+ * <Chat name="Juan" time="12:30" message="Mañana podemos hablarlo mejor" numMessages={2} state="online" />
  */
 const Chat = ({ name, time, message, numMessages, state }: ChatProps) => {
     const stateStyle = "h-[.8rem] w-[.8rem] ml-3 rounded-full"
-
     const color = STATE_COLORS[state as keyof typeof STATE_COLORS]
 
     return (

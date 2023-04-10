@@ -42,6 +42,15 @@ interface InputProps {
     location?: string
 }
 
+/**
+ * @interface ChatProps
+ * @description Propiedades del componente Chat
+ * @property {string} name - Nombre del usuario
+ * @property {string} time - Hora del mensaje
+ * @property {string} message - Mensaje
+ * @property {number} numMessages - Número de mensajes
+ * @property {string} state - Estado del usuario
+ */
 interface ChatProps {
     name: string
     time: string

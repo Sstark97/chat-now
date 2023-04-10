@@ -10,6 +10,11 @@ interface ChildrenProps {
     children?: ReactNode
 }
 
+/**
+ * @interface ChatListProps
+ * @description Propiedades del componente ChatList
+ * @property {Array<ChatProps>} chats - Lista de chats
+ */
 interface ChatListProps {
     chats: Array<ChatProps>
 }
