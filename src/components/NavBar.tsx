@@ -2,6 +2,11 @@ import Link from "next/link"
 import { useRouter } from "next/router"
 import { principalLinks } from "@lib/const"
 
+/**
+ * Este componente se encarga de crear la barra de navegacion
+ * @returns component
+ * @example <NavBar />
+ */
 const NavBar = () => {
     const router = useRouter()
     const { pathname } = router
@@ -14,7 +19,7 @@ const NavBar = () => {
                 const activeClass = isActive ? "bg-light_purple" : ""
 
                 return (
-                    <Link href={link.href} key={link.href}>
+                    <Link href={href} key={href}>
                         <Icon className={`text-3xl text-5xl rounded-xl p-2 ${activeClass}`} />
                     </Link>
                 )

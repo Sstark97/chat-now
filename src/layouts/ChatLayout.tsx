@@ -2,10 +2,17 @@ import Head from "next/head"
 import Searcher from "@components/Searcher"
 import NavBar from "@components/NavBar"
 import { Inter } from "next/font/google"
+import type { ChildrenProps } from "@customTypes/global"
 
 const inter = Inter({ subsets: ["latin"] })
 
-const ChatLayout = ({ children }: any) => (
+/**
+ * Layout para las paginas del chat
+ * @param children {ChildrenProps}
+ * @returns component
+ * @example <ChatLayout>{children}</ChatLayout>
+ */
+const ChatLayout = ({ children }: ChildrenProps) => (
     <>
         <Head>
             <title>ChatNow</title>

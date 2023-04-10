@@ -1,6 +1,7 @@
 import { IoIosChatboxes } from "react-icons/io"
 import { HiUsers } from "react-icons/hi"
 import { IoSettingsSharp } from "react-icons/io5"
+import type { NavBarLinks } from "@customTypes/components"
 
 /**
  * @description Enumerado con las rutas de la API
@@ -67,7 +68,14 @@ const errors = {
     },
 }
 
-const principalLinks = [
+/**
+ * @description Objeto con los links de la barra de navegación
+ * @constant
+ * @type {NavBarLinks[]}
+ * @property {string} href - Ruta del link
+ * @property {IconType} icon - Icono del link
+ */
+const principalLinks: NavBarLinks[] = [
     { href: "/", icon: IoIosChatboxes },
     { href: "/contacts", icon: HiUsers },
     { href: "/settings", icon: IoSettingsSharp },
