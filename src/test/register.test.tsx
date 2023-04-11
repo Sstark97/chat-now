@@ -1,8 +1,11 @@
 import { render, screen } from "@testing-library/react"
+import { ChatProvider } from "@context/ChatProvider"
 import AuthHeader from "@components/AuthHeader"
 import RegisterForm from "@containers/RegisterForm"
 
-describe.skip("Register", () => {
+jest.mock("next/router", () => require("next-router-mock"))
+
+describe("Register", () => {
     it("renders a heading", () => {
         const title = "irrelevant title"
         const { container } = render(<AuthHeader title={title} />)
@@ -14,13 +17,26 @@ describe.skip("Register", () => {
         expect(container).toMatchSnapshot()
     })
 
-    it("call an event when register clicked", () => {
-        const register = jest.fn()
-        render(<RegisterForm />)
+    it("render register button in Form", () => {
+        render(
+            <ChatProvider>
+                <RegisterForm />
+            </ChatProvider>
+        )
         const registerBtn = screen.getByText("Crear cuenta")
 
-        registerBtn.click()
+        expect(registerBtn).toBeInTheDocument()
+    })
 
-        expect(register).toHaveBeenCalled()
+    it("check if the button is disables when the form is empty", () => {
+        render(
+            <ChatProvider>
+                <RegisterForm />
+            </ChatProvider>
+        )
+
+        const registerBtn = screen.getByText("Crear cuenta")
+
+        expect(registerBtn).toHaveAttribute("disabled")
     })
 })

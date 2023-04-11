@@ -22,11 +22,6 @@ exports[`Register renders a heading 1`] = `
     >
       irrelevant title
     </h1>
-    <p
-      class="text-sm font-normal pt-2 text-secondary_text 2xl:text-lg 2xl:pt-3"
-    >
-      Por favor, inserte sus datos
-    </p>
   </section>
 </div>
 `;
