@@ -81,4 +81,17 @@ describe("Register", () => {
         // Esperamos a que se renderice el elemento <p> con el texto de errors.email.errorMessage
         expect(await screen.findByText(errors.email.errorMessage)).toBeInTheDocument()
     })
+
+    it("check that password error appear in the document if value of input have a length less than 6 characters", async () => {
+        renderRegister()
+
+        const passwordInput = await screen.findByPlaceholderText("Contraseña")
+        await user.type(passwordInput, "short")
+
+        // Hacemos clic fuera del input
+        user.click(document.body)
+
+        // Esperamos a que se renderice el elemento <p> con el texto de errors.email.errorMessage
+        expect(await screen.findByText(errors.security.errorMessage)).toBeInTheDocument()
+    })
 })
