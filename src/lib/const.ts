@@ -52,17 +52,17 @@ const EMPTY_ERROR = "Hmm... parece que este campo es obligatorio"
  */
 const errors = {
     name: {
-        errorMessage: "El nombre debe tener entre 4 y 20 caracteres",
+        message: "El nombre debe tener entre 4 y 20 caracteres",
         regex: /^.{4,20}$/,
         validate: (value: string) => errors.name.regex.test(value),
     },
     email: {
-        errorMessage: "El correo está mal formado",
+        message: "El correo está mal formado",
         regex: /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/,
         validate: (value: string) => errors.email.regex.test(value),
     },
     security: {
-        errorMessage: "La contraseña debe tener entre 6 y 40 caracteres",
+        message: "La contraseña debe tener entre 6 y 40 caracteres",
         regex: /^.{6,40}$/,
         validate: (value: string) => errors.security.regex.test(value),
     },
