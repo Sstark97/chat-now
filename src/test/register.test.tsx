@@ -1,41 +1,36 @@
 import { render, screen } from "@testing-library/react"
-import { ChatProvider } from "@context/ChatProvider"
-import AuthHeader from "@components/AuthHeader"
-import RegisterForm from "@containers/RegisterForm"
 import userEvent from "@testing-library/user-event"
+import { ChatProvider } from "@context/ChatProvider"
+import RegisterForm from "@containers/RegisterForm"
 import { EMPTY_ERROR, errors } from "@lib/const"
+import type { UserEvent } from "@testing-library/user-event/setup/setup"
 
 jest.mock("next/router", () => require("next-router-mock"))
 
+const renderRegister = () => {
+    render(
+        <ChatProvider>
+            <RegisterForm />
+        </ChatProvider>
+    )
+}
+
 describe("Register", () => {
-    it("renders a heading", () => {
-        const title = "irrelevant title"
-        const { container } = render(<AuthHeader title={title} />)
+    let user: UserEvent
 
-        const heading = screen.getByText(title)
-
-        expect(container).toHaveTextContent(title)
-        expect(heading).toBeInTheDocument()
-        expect(container).toMatchSnapshot()
+    beforeEach(() => {
+        user = userEvent.setup()
     })
 
     it("render register button in Form", () => {
-        render(
-            <ChatProvider>
-                <RegisterForm />
-            </ChatProvider>
-        )
+        renderRegister()
         const registerBtn = screen.getByText("Crear cuenta")
 
         expect(registerBtn).toBeInTheDocument()
     })
 
     it("check if the button is disables when the form is empty", () => {
-        render(
-            <ChatProvider>
-                <RegisterForm />
-            </ChatProvider>
-        )
+        renderRegister()
 
         const registerBtn = screen.getByText("Crear cuenta")
 
@@ -43,13 +38,7 @@ describe("Register", () => {
     })
 
     it("check if the button is enable when all inputs are correct", async () => {
-        const user = userEvent.setup()
-
-        render(
-            <ChatProvider>
-                <RegisterForm />
-            </ChatProvider>
-        )
+        renderRegister()
 
         const registerBtn = screen.getByText("Crear cuenta")
         const nameInput = await screen.findByPlaceholderText("Nombre")
@@ -68,13 +57,7 @@ describe("Register", () => {
     })
 
     it("should render error message when user clicks outside of name input", async () => {
-        const user = userEvent.setup()
-
-        render(
-            <ChatProvider>
-                <RegisterForm />
-            </ChatProvider>
-        )
+        renderRegister()
 
         const nameInput = await screen.findByPlaceholderText("Nombre")
         user.click(nameInput)
@@ -87,13 +70,7 @@ describe("Register", () => {
     })
 
     it("check that email error appear in the document if value of input not have an email format", async () => {
-        const user = userEvent.setup()
-
-        render(
-            <ChatProvider>
-                <RegisterForm />
-            </ChatProvider>
-        )
+        renderRegister()
 
         const emailInput = await screen.findByPlaceholderText("Correo electrónico")
         await user.type(emailInput, "notFormatEmail")
@@ -101,7 +78,7 @@ describe("Register", () => {
         // Hacemos clic fuera del input
         user.click(document.body)
 
-        // Esperamos a que se renderice el elemento <p> con el texto de EMPTY_ERROR
+        // Esperamos a que se renderice el elemento <p> con el texto de errors.email.errorMessage
         expect(await screen.findByText(errors.email.errorMessage)).toBeInTheDocument()
     })
 })
