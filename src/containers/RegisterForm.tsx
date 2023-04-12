@@ -7,7 +7,8 @@ import PasswordInput from "@components/PasswordInput"
 import Button from "@components/Button"
 import Error from "@components/Error"
 import AuthProviders from "@containers/AuthProviders"
-import { AUTH_BUTTONS, INPUT_REGISTER_PLACEHOLDER, errors } from "@lib/const"
+import { errors } from "@lib/constants/validations"
+import { AUTH_BUTTONS, INPUT_REGISTER_PLACEHOLDER } from "@lib/constants/authForms"
 
 /**
  * Este componente es el encargado de mostrar el formulario de registro

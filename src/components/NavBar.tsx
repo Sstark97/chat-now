@@ -1,6 +1,6 @@
 import Link from "next/link"
 import { useRouter } from "next/router"
-import { principalLinks } from "@lib/const"
+import { principalLinks } from "@lib/constants/links"
 
 /**
  * Este componente se encarga de crear la barra de navegacion

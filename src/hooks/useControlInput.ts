@@ -1,7 +1,7 @@
 import { FormEvent, useEffect, useState } from "react"
 import useChatContext from "@hooks/useChatContext"
-import { EMPTY_ERROR } from "@lib/const"
 import type { InputError } from "@customTypes/components"
+import { EMPTY_ERROR } from "@lib/constants/validations"
 
 /**
  * @description Hook para controlar los inputs

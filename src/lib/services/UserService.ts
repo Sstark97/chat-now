@@ -1,7 +1,7 @@
 import { Credentials, UserLoginResponse, UserRepository, UserResponse } from "@customTypes/domain"
 import { UserRequest } from "@customTypes/request"
 import bcrypt from "bcrypt"
-import { errors } from "@lib/const"
+import { errors } from "@lib/constants/validations"
 
 /**
  * @class UserService

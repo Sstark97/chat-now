@@ -2,7 +2,8 @@ import { render, screen } from "@testing-library/react"
 import userEvent from "@testing-library/user-event"
 import { ChatProvider } from "@context/ChatProvider"
 import RegisterForm from "@containers/RegisterForm"
-import { EMPTY_ERROR, INPUT_REGISTER_PLACEHOLDER, AUTH_BUTTONS, errors } from "@lib/const"
+import { EMPTY_ERROR, errors } from "@lib/constants/validations"
+import { AUTH_BUTTONS, INPUT_REGISTER_PLACEHOLDER } from "@lib/constants/authForms"
 import type { UserEvent } from "@testing-library/user-event/setup/setup"
 
 jest.mock("next/router", () => require("next-router-mock"))

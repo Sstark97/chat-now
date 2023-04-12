@@ -1,8 +1,8 @@
 import { UserFactory } from "@lib/factories/UserFactory"
-import { errors } from "@lib/const"
 import type { NextApiResponse } from "next"
 import type { UserRequest, ValidateResponse } from "@customTypes/request"
 import type { UserResponse, ErrorResponse } from "@customTypes/domain"
+import { errors } from "@lib/constants/validations"
 
 const userService = UserFactory.createUserService()
 

@@ -3,7 +3,7 @@ import { useRouter } from "next/router"
 import { getUserDataFrom } from "@lib/utils/user"
 import { postFrom } from "@lib/utils/fetcher"
 import { MutableRefObject } from "react"
-import { API, REDIRECT } from "@lib/const"
+import { API, REDIRECT } from "@lib/constants/links"
 
 /**
  * @description Hook para registrar un usuario
