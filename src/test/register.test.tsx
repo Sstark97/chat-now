@@ -3,6 +3,7 @@ import { ChatProvider } from "@context/ChatProvider"
 import AuthHeader from "@components/AuthHeader"
 import RegisterForm from "@containers/RegisterForm"
 import userEvent from "@testing-library/user-event"
+import { EMPTY_ERROR } from "@lib/const"
 
 jest.mock("next/router", () => require("next-router-mock"))
 
@@ -59,10 +60,29 @@ describe("Register", () => {
         await user.type(emailInput, "irrelevant@email.com")
         await user.type(passwordInput, "irrelevant_password1234")
 
-        await user.click(nameInput)
-        await user.click(emailInput)
-        await user.click(passwordInput)
+        user.click(nameInput)
+        user.click(emailInput)
+        user.click(passwordInput)
 
         expect(registerBtn).not.toHaveAttribute("disabled")
+    })
+
+    it("should render error message when user clicks outside of name input", async () => {
+        const user = userEvent.setup()
+
+        render(
+            <ChatProvider>
+                <RegisterForm />
+            </ChatProvider>
+        )
+
+        const nameInput = await screen.findByPlaceholderText("Nombre")
+        user.click(nameInput)
+
+        // Hacemos clic fuera del input
+        user.click(document.body)
+
+        // Esperamos a que se renderice el elemento <p> con el texto de EMPTY_ERROR
+        expect(await screen.findByText(EMPTY_ERROR)).toBeInTheDocument()
     })
 })
