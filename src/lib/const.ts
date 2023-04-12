@@ -27,6 +27,17 @@ enum REDIRECT {
     LOGIN = "/login",
 }
 
+enum INPUT_REGISTER_PLACEHOLDER {
+    NAME = "Nombre",
+    EMAIL = "Correo electrónico",
+    PASSWORD = "Contraseña",
+}
+
+enum AUTH_BUTTONS {
+    LOGIN = "Iniciar sesión",
+    REGISTER = "Crear cuenta",
+}
+
 /**
  * @description String con todos los caracteres posibles para la contraseña
  * @constant
@@ -125,4 +136,4 @@ enum STATE_COLORS {
     offline = "offline",
 }
 
-export { API, REDIRECT, EMPTY_ERROR, errors, SECURITY_LEVEL, SECURITY_LEVEL_COLORS, CHARACTERS, STATE_COLORS, principalLinks }
+export { API, REDIRECT, INPUT_REGISTER_PLACEHOLDER, AUTH_BUTTONS, EMPTY_ERROR, errors, SECURITY_LEVEL, SECURITY_LEVEL_COLORS, CHARACTERS, STATE_COLORS, principalLinks }

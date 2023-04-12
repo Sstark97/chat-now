@@ -7,7 +7,7 @@ import Input from "@components/Input"
 import PasswordInput from "@components/PasswordInput"
 import Error from "@components/Error"
 import AuthProviders from "@containers/AuthProviders"
-import { errors } from "@lib/const"
+import { AUTH_BUTTONS, errors } from "@lib/const"
 
 /**
  * Este componente es el encargado de mostrar el formulario de inicio de sesión
@@ -35,7 +35,7 @@ const LoginForm = () => {
                     <div className="w-full" ref={ref}>
                         <Input type="text" placeholder="Escribe tu email" name="email" errorManager={errors.email} />
                         <PasswordInput placeholder="Escribe tu contraseña" validate />
-                        <Button value="Iniciar Sesión" action={handleClick} />
+                        <Button value={AUTH_BUTTONS.LOGIN} action={handleClick} />
                     </div>
                 </div>
             </form>

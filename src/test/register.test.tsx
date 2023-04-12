@@ -2,7 +2,7 @@ import { render, screen } from "@testing-library/react"
 import userEvent from "@testing-library/user-event"
 import { ChatProvider } from "@context/ChatProvider"
 import RegisterForm from "@containers/RegisterForm"
-import { EMPTY_ERROR, errors } from "@lib/const"
+import { EMPTY_ERROR, INPUT_REGISTER_PLACEHOLDER, AUTH_BUTTONS, errors } from "@lib/const"
 import type { UserEvent } from "@testing-library/user-event/setup/setup"
 
 jest.mock("next/router", () => require("next-router-mock"))
@@ -24,7 +24,7 @@ describe("Register", () => {
 
     it("render register button in Form", () => {
         renderRegister()
-        const registerBtn = screen.getByText("Crear cuenta")
+        const registerBtn = screen.getByText(AUTH_BUTTONS.REGISTER)
 
         expect(registerBtn).toBeInTheDocument()
     })
@@ -32,7 +32,7 @@ describe("Register", () => {
     it("check if the button is disables when the form is empty", () => {
         renderRegister()
 
-        const registerBtn = screen.getByText("Crear cuenta")
+        const registerBtn = screen.getByText(AUTH_BUTTONS.REGISTER)
 
         expect(registerBtn).toHaveAttribute("disabled")
     })
@@ -40,10 +40,10 @@ describe("Register", () => {
     it("check if the button is enable when all inputs are correct", async () => {
         renderRegister()
 
-        const registerBtn = screen.getByText("Crear cuenta")
-        const nameInput = await screen.findByPlaceholderText("Nombre")
-        const emailInput = await screen.findByPlaceholderText("Correo electrónico")
-        const passwordInput = await screen.findByPlaceholderText("Contraseña")
+        const registerBtn = screen.getByText(AUTH_BUTTONS.REGISTER)
+        const nameInput = screen.getByPlaceholderText(INPUT_REGISTER_PLACEHOLDER.NAME)
+        const emailInput = screen.getByPlaceholderText(INPUT_REGISTER_PLACEHOLDER.EMAIL)
+        const passwordInput = screen.getByPlaceholderText(INPUT_REGISTER_PLACEHOLDER.PASSWORD)
 
         await user.type(nameInput, "irrelevant name")
         await user.type(emailInput, "irrelevant@email.com")
@@ -59,7 +59,7 @@ describe("Register", () => {
     it("should render error message when user clicks outside of name input", async () => {
         renderRegister()
 
-        const nameInput = await screen.findByPlaceholderText("Nombre")
+        const nameInput = screen.getByPlaceholderText(INPUT_REGISTER_PLACEHOLDER.NAME)
         user.click(nameInput)
 
         // Hacemos clic fuera del input
@@ -72,7 +72,7 @@ describe("Register", () => {
     it("check that email error appear in the document if value of input not have an email format", async () => {
         renderRegister()
 
-        const emailInput = await screen.findByPlaceholderText("Correo electrónico")
+        const emailInput = screen.getByPlaceholderText(INPUT_REGISTER_PLACEHOLDER.EMAIL)
         await user.type(emailInput, "notFormatEmail")
 
         // Hacemos clic fuera del input
@@ -85,7 +85,7 @@ describe("Register", () => {
     it("check that password error appear in the document if value of input have a length less than 6 characters", async () => {
         renderRegister()
 
-        const passwordInput = await screen.findByPlaceholderText("Contraseña")
+        const passwordInput = screen.getByPlaceholderText(INPUT_REGISTER_PLACEHOLDER.PASSWORD)
         await user.type(passwordInput, "short")
 
         // Hacemos clic fuera del input
@@ -93,5 +93,17 @@ describe("Register", () => {
 
         // Esperamos a que se renderice el elemento <p> con el texto de errors.security.errorMessage
         expect(await screen.findByText(errors.security.message)).toBeInTheDocument()
+    })
+
+    it("check if password are secure if the user click in generate password button", async () => {
+        renderRegister()
+
+        const generatePasswordBtn = screen.getByText("Generar contraseña aleatoria")
+        const passwordInput = screen.getByPlaceholderText(INPUT_REGISTER_PLACEHOLDER.PASSWORD)
+
+        await user.click(generatePasswordBtn)
+
+        expect(passwordInput).not.toHaveDisplayValue("")
+        expect(await screen.findByText(/Alta/i)).toBeInTheDocument()
     })
 })
