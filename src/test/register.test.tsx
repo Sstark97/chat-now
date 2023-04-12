@@ -3,7 +3,7 @@ import { ChatProvider } from "@context/ChatProvider"
 import AuthHeader from "@components/AuthHeader"
 import RegisterForm from "@containers/RegisterForm"
 import userEvent from "@testing-library/user-event"
-import { EMPTY_ERROR } from "@lib/const"
+import { EMPTY_ERROR, errors } from "@lib/const"
 
 jest.mock("next/router", () => require("next-router-mock"))
 
@@ -84,5 +84,24 @@ describe("Register", () => {
 
         // Esperamos a que se renderice el elemento <p> con el texto de EMPTY_ERROR
         expect(await screen.findByText(EMPTY_ERROR)).toBeInTheDocument()
+    })
+
+    it("check that email error appear in the document if value of input not have an email format", async () => {
+        const user = userEvent.setup()
+
+        render(
+            <ChatProvider>
+                <RegisterForm />
+            </ChatProvider>
+        )
+
+        const emailInput = await screen.findByPlaceholderText("Correo electrónico")
+        await user.type(emailInput, "notFormatEmail")
+
+        // Hacemos clic fuera del input
+        user.click(document.body)
+
+        // Esperamos a que se renderice el elemento <p> con el texto de EMPTY_ERROR
+        expect(await screen.findByText(errors.email.errorMessage)).toBeInTheDocument()
     })
 })
