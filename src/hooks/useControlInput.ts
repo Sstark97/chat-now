@@ -21,7 +21,7 @@ const useControlInput = (errorManager: InputError | undefined) => {
         }
     }, [errorManager, border, handleSetErrorsInForm])
 
-    const getErrorMessageFrom = (value: string) => (value === "" ? EMPTY_ERROR : errorManager?.errorMessage)
+    const getErrorMessageFrom = (value: string) => (value === "" ? EMPTY_ERROR : errorManager?.message)
 
     const defineError = (e: FormEvent<HTMLInputElement>) => {
         if (errorManager) {
