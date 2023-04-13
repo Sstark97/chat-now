@@ -19,7 +19,7 @@ const NavBar = () => {
                 const activeClass = isActive ? "bg-light_purple" : ""
 
                 return (
-                    <Link href={href} key={href}>
+                    <Link href={href} key={href} role="link">
                         <Icon className={`text-5xl rounded-xl p-2 ${activeClass}`} />
                     </Link>
                 )
