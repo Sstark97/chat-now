@@ -99,7 +99,7 @@ describe("Register", () => {
     it("check if password are secure if the user click in generate password button", async () => {
         renderRegister()
 
-        const generatePasswordBtn = screen.getByText("Generar contraseña aleatoria")
+        const generatePasswordBtn = screen.getByText(AUTH_BUTTONS.RANDOM_PASSWORD)
         const passwordInput = screen.getByPlaceholderText(INPUT_REGISTER_PLACEHOLDER.PASSWORD)
 
         await user.click(generatePasswordBtn)
