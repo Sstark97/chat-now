@@ -79,4 +79,20 @@ describe("Login", () => {
 
         expect(await screen.findByText(errors.email.message)).toBeInTheDocument()
     })
+
+    it("Should display an error when password length are less than 6 characters", async () => {
+        render(
+            <ChatProvider>
+                <LoginForm />
+            </ChatProvider>
+        )
+
+        const inputPassword = screen.getByPlaceholderText(INPUT_LOGIN_PLACEHOLDER.PASSWORD)
+
+        await user.type(inputPassword, "short")
+
+        user.click(document.body)
+
+        expect(await screen.findByText(errors.security.message)).toBeInTheDocument()
+    })
 })
