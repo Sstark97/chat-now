@@ -35,7 +35,7 @@ describe("Register", () => {
 
         const registerBtn = screen.getByText(AUTH_BUTTONS.REGISTER)
 
-        expect(registerBtn).toHaveAttribute("disabled")
+        expect(registerBtn).toBeDisabled()
     })
 
     it("check if the button is enable when all inputs are correct", async () => {
@@ -54,7 +54,7 @@ describe("Register", () => {
         user.click(emailInput)
         user.click(passwordInput)
 
-        expect(registerBtn).not.toHaveAttribute("disabled")
+        expect(registerBtn).not.toBeDisabled()
     })
 
     it("should render error message when user clicks outside of name input", async () => {

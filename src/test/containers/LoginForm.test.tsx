@@ -29,7 +29,7 @@ describe("Login", () => {
         const loginBtn = screen.getByText(AUTH_BUTTONS.LOGIN)
 
         expect(loginBtn).toBeInTheDocument()
-        expect(loginBtn).toHaveAttribute("disabled")
+        expect(loginBtn).toBeDisabled()
     })
 
     it("should enable button when all fields are correct", async () => {
@@ -44,7 +44,7 @@ describe("Login", () => {
 
         user.click(document.body)
 
-        expect(loginBtn).not.toHaveAttribute("disabled")
+        expect(loginBtn).not.toBeDisabled()
     })
 
     it("Should display errors when all fields are empty", async () => {
@@ -57,7 +57,7 @@ describe("Login", () => {
         user.click(document.body)
 
         expect(await screen.findByText(EMPTY_ERROR)).toBeInTheDocument()
-        expect(loginBtn).toHaveAttribute("disabled")
+        expect(loginBtn).toBeDisabled()
     })
 
     it("Should display email error when value of input have a bad format", async () => {
