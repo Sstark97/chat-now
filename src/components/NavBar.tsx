@@ -20,7 +20,7 @@ const NavBar = () => {
 
                 return (
                     <Link href={href} key={href}>
-                        <Icon className={`text-3xl text-5xl rounded-xl p-2 ${activeClass}`} />
+                        <Icon className={`text-5xl rounded-xl p-2 ${activeClass}`} />
                     </Link>
                 )
             })}
