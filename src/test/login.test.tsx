@@ -4,7 +4,7 @@ import LoginForm from "@containers/LoginForm"
 import { AUTH_BUTTONS, INPUT_LOGIN_PLACEHOLDER } from "@lib/constants/authForms"
 import userEvent from "@testing-library/user-event"
 import { UserEvent } from "@testing-library/user-event/setup/setup"
-import { EMPTY_ERROR } from "@lib/constants/validations"
+import { EMPTY_ERROR, errors } from "@lib/constants/validations"
 
 jest.mock("next/router", () => require("next-router-mock"))
 
@@ -62,5 +62,21 @@ describe("Login", () => {
 
         expect(await screen.findByText(EMPTY_ERROR)).toBeInTheDocument()
         expect(loginBtn).toHaveAttribute("disabled")
+    })
+
+    it("Should display email error when value of input have a bad format", async () => {
+        render(
+            <ChatProvider>
+                <LoginForm />
+            </ChatProvider>
+        )
+
+        const inputEmail = screen.getByPlaceholderText(INPUT_LOGIN_PLACEHOLDER.EMAIL)
+
+        await user.type(inputEmail, "emailWithBadFormat@")
+
+        user.click(document.body)
+
+        expect(await screen.findByText(errors.email.message)).toBeInTheDocument()
     })
 })
