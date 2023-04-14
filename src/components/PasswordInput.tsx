@@ -9,10 +9,11 @@ import { PasswordProps } from "@customTypes/components"
  * @param {string} placeholder
  * @param {boolean} validate
  * @param {string} location
+ * @param {string} className
  * @returns component
  * @example <PasswordInput placeholder="Contraseña" />
  */
-const PasswordInput = ({ placeholder, validate, location }: PasswordProps) => {
+const PasswordInput = ({ placeholder, validate, location, className = "" }: PasswordProps) => {
     const [showPassword, setShowPassword] = useState(false)
     const iconClass = "absolute top-8 right-4 fill-white text-xl lg:text-2xl"
 
@@ -25,7 +26,7 @@ const PasswordInput = ({ placeholder, validate, location }: PasswordProps) => {
 
     return (
         <div className="relative">
-            <Input type={showPassword ? "text" : "password"} placeholder={placeholder} name="password" errorManager={validate ? errors.security : undefined} location={location}>
+            <Input className={className} type={showPassword ? "text" : "password"} placeholder={placeholder} name="password" errorManager={validate ? errors.security : undefined} location={location}>
                 {showPassword ? <AiFillEyeInvisible className={iconClass} onClick={handleShowPassword} /> : <AiFillEye className={iconClass} onClick={handleShowPassword} />}
             </Input>
         </div>

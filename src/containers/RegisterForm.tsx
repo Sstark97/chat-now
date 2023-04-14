@@ -26,15 +26,15 @@ const RegisterForm = () => {
         <div className="w-[90%] lg:w-2/5">
             <AuthHeader title={"Crea tu cuenta"} />
             <form method="post" className="w-full flex flex-col justify-center items-center">
-                <div className="w-7/12">
+                <div className="w-10/12 md:w-6/12">
                     <AuthProviders />
                 </div>
-                <div className="w-7/12 flex flex-col items-center">
+                <div className="w-10/12 md:w-6/12 flex flex-col items-center">
                     {error ? <Error message={error} /> : null}
                     <div className="w-full" ref={ref}>
-                        <Input type="text" placeholder="Nombre" name="name" errorManager={errors.name} />
-                        <Input type="email" placeholder="Correo electrónico" name="email" errorManager={errors.email} />
-                        <PasswordInput placeholder="Contraseña" location="register" validate />
+                        <Input className="w-full mt-5" type="text" placeholder="Nombre" name="name" errorManager={errors.name} />
+                        <Input className="w-full mt-5" type="email" placeholder="Correo electrónico" name="email" errorManager={errors.email} />
+                        <PasswordInput className="w-full mt-5" placeholder="Contraseña" location="register" validate />
                         <Button value={"Crear cuenta"} action={handleClickInRegister} />
                     </div>
                 </div>

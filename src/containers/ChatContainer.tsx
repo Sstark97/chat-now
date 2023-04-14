@@ -1,6 +1,7 @@
 import ChatList from "@containers/ChatList"
 import Searcher from "@components/Searcher"
 import NavBar from "@components/NavBar"
+import ChatDesktop from "@components/ChatDesktop"
 
 const chats = [
     {
@@ -38,14 +39,19 @@ const chats = [
 ]
 
 /**
- * Este componente se encarga d
+ * Este componente es el encargado de mostrar el contenedor de chats
+ * @returns component
+ * @example <ChatContainer />
  */
 const ChatContainer = () => {
     return (
-        <div className="w-full lg:w-[28%] relative">
-            <NavBar />
-            <Searcher />
-            <ChatList chats={chats} />
+        <div className="flex h-screen">
+            <div className="w-full lg:w-[28%] relative">
+                <NavBar />
+                <Searcher />
+                <ChatList chats={chats} />
+            </div>
+            <ChatDesktop />
         </div>
     )
 }

@@ -23,18 +23,18 @@ const LoginForm = () => {
     }
 
     return (
-        <div className="w-full md:w-[40%]">
+        <div className="w-[90%] lg:w-2/5 flex flex-col justify-center items-center">
             <AuthHeader title="Bienvenido" />
 
             <form className="w-full flex flex-col justify-center items-center">
-                <div className="w-7/12">
+                <div className="w-10/12 md:w-6/12">
                     <AuthProviders />
                 </div>
-                <div className="w-7/12 flex flex-col items-center">
+                <div className="w-10/12 md:w-6/12 flex flex-col items-center">
                     {error ? <Error message={error} /> : null}
                     <div className="w-full" ref={ref}>
-                        <Input type="text" placeholder="Escribe tu email" name="email" errorManager={errors.email} />
-                        <PasswordInput placeholder="Escribe tu contraseña" validate />
+                        <Input className="w-full mt-5" type="text" placeholder="Escribe tu email" name="email" errorManager={errors.email} />
+                        <PasswordInput className="w-full mt-5" placeholder="Escribe tu contraseña" validate />
                         <Button value="Iniciar Sesión" action={handleClick} />
                     </div>
                 </div>

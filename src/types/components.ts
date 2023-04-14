@@ -41,6 +41,7 @@ interface InputProps {
     children?: ReactNode
     errorManager?: InputError
     location?: string
+    className?: string
 }
 
 /**
@@ -66,11 +67,13 @@ interface ChatProps {
  * @property {string} placeholder - Input placeholder
  * @property {boolean} validate - Validación del input
  * @property {string} location - Ubicación del input
+ * @property {string} className - Clase del input
  */
 interface PasswordProps {
     placeholder: string
     validate?: boolean
     location?: string
+    className?: string
 }
 
 /**
@@ -81,6 +84,12 @@ interface PasswordProps {
 interface ButtonProps {
     value: string
     action(): void
+}
+
+/**
+ */
+interface NavBarProps {
+    type?: string
 }
 
 /**
@@ -121,4 +130,4 @@ interface NavBarLinks {
     icon: IconType
 }
 
-export type { ErrorProps, InputError, InputProps, PasswordProps, ButtonProps, LevelOfSecurityProps, AuthHeaderProps, AuthButtonProps, ChatProps, NavBarLinks }
+export type { ErrorProps, InputError, InputProps, PasswordProps, ButtonProps, LevelOfSecurityProps, AuthHeaderProps, AuthButtonProps, ChatProps, NavBarLinks, NavBarProps }
