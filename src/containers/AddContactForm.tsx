@@ -8,11 +8,11 @@ import { FaUserAlt } from "react-icons/fa"
 import { MdEmail } from "react-icons/md"
 
 /**
- * Este componente es el encargado de mostrar el formulario para añadir un usuario
+ * Este componente es el encargado de mostrar el formulario para añadir un contacto
  * @returns component
- * @example <AddUserForm />
+ * @example <AddContactForm />
  */
-const AddUserForm = () => {
+const AddContactForm = () => {
     const { ref } = useChatContext()
     const { addUser, error } = useAddUser(ref)
 
@@ -20,7 +20,7 @@ const AddUserForm = () => {
         await addUser()
     }
 
-    const inputClass = "w-[90%] ml-[20%]"
+    const inputClass = "w-[90%]"
 
     return (
         <div className="w-full">
@@ -28,14 +28,14 @@ const AddUserForm = () => {
                 <div className="w-[90%] flex flex-col items-center">
                     {error ? <Error message={error} /> : null}
                     <div className="w-full flex flex-col justify-center items-center" ref={ref}>
-                        <div className="w-full flex items-center justify-between mt-5 relative">
-                            <FaUserAlt className="w-[20%] text-2xl absolute top-3 right-[21.5rem]" />
+                        <div className="w-full flex items-center mt-5">
+                            <FaUserAlt className="w-[20%] text-2xl" />
                             <div className="w-[90%] flex flex-col justify-center items-center">
                                 <Input className={inputClass} type="text" placeholder="Nombre" name="name" errorManager={errors.name} />
                             </div>
                         </div>
-                        <div className="w-full flex items-center justify-between mt-5 relative">
-                            <MdEmail className="w-[20%] text-3xl absolute top-3 right-[21.5rem]" />
+                        <div className="w-full flex items-center justify-between mt-5">
+                            <MdEmail className="w-[20%] text-3xl" />
                             <div className="w-[90%] flex flex-col justify-center items-center">
                                 <Input className={inputClass} type="text" placeholder="Correo electrónico" name="email" errorManager={errors.email} />
                             </div>
@@ -50,4 +50,4 @@ const AddUserForm = () => {
     )
 }
 
-export default AddUserForm
+export default AddContactForm

@@ -1,5 +1,5 @@
 import ChatLayout from "@layouts/ChatLayout"
-import AddUserContainer from "@containers/AddUserContainer"
+import AddUserContainer from "@containers/AddContactContainer"
 // import ChatContainer from "@containers/ChatContainer"
 
 const Home = () => (

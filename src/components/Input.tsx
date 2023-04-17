@@ -29,7 +29,7 @@ const Input = ({ type, placeholder, name, children, errorManager, location, clas
                     id={name}
                     type={type}
                     placeholder={placeholder}
-                    className={className === "" ? `${inputClass} ${border}` : `${inputClass} ${className} ${border}`}
+                    className={`${inputClass} ${className} ${border}`}
                     autoComplete="new-password"
                     name={name}
                     onBlur={defineError}
