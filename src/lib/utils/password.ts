@@ -1,4 +1,5 @@
-import { SECURITY_LEVEL, CHARACTERS } from "@lib/const"
+import { CHARACTERS } from "@lib/constants/validations"
+import { SECURITY_LEVEL } from "@lib/constants/securityPassword"
 
 /**
  * @description Función que devuelve el nivel de seguridad de una contraseña

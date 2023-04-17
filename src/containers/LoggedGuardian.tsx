@@ -1,8 +1,8 @@
 import { useEffect } from "react"
 import { useSession } from "next-auth/react"
 import { useRouter } from "next/router"
-import { REDIRECT } from "@lib/const"
 import type { ChildrenProps } from "@customTypes/global"
+import { REDIRECT } from "@lib/constants/links"
 
 // TODO: Refactorizar para que sea un solo componente y no haga un flash de loading
 /**

@@ -2,7 +2,7 @@ import useControlInput from "@hooks/useControlInput"
 import type { InputProps } from "@customTypes/components"
 import LevelSecurityPassword from "@components/LevelSecurityPassword"
 import { useState } from "react"
-import { randomPassword } from "../lib/utils/password"
+import { randomPassword } from "@lib/utils/password"
 
 /**
  * Este componente es el encargado de mostrar un input

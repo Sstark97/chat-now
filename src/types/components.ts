@@ -19,7 +19,7 @@ interface ErrorProps {
  * @property {Function} validateFunction - Función para validar el input
  */
 interface InputError {
-    errorMessage: string
+    message: string
     regex: RegExp
     validate: (value: string) => boolean
 }

@@ -1,8 +1,8 @@
 import { useState } from "react"
 import Input from "@components/Input"
 import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai"
-import { errors } from "@lib/const"
 import { PasswordProps } from "@customTypes/components"
+import { errors } from "@lib/constants/validations"
 
 /**
  * Este componente es el encargado de mostrar un input de tipo password

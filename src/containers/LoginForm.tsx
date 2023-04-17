@@ -7,7 +7,8 @@ import Input from "@components/Input"
 import PasswordInput from "@components/PasswordInput"
 import Error from "@components/Error"
 import AuthProviders from "@containers/AuthProviders"
-import { errors } from "@lib/const"
+import { errors } from "@lib/constants/validations"
+import { AUTH_BUTTONS, INPUT_LOGIN_PLACEHOLDER } from "@lib/constants/authForms"
 
 /**
  * Este componente es el encargado de mostrar el formulario de inicio de sesión
@@ -33,9 +34,9 @@ const LoginForm = () => {
                 <div className="w-10/12 md:w-6/12 flex flex-col items-center">
                     {error ? <Error message={error} /> : null}
                     <div className="w-full" ref={ref}>
-                        <Input className="w-full mt-5" type="text" placeholder="Escribe tu email" name="email" errorManager={errors.email} />
-                        <PasswordInput className="w-full mt-5" placeholder="Escribe tu contraseña" validate />
-                        <Button value="Iniciar Sesión" action={handleClick} />
+                        <Input className="w-full mt-5" type="text" placeholder={INPUT_LOGIN_PLACEHOLDER.EMAIL} name="email" errorManager={errors.email} />
+                        <PasswordInput className="w-full mt-5" placeholder={INPUT_LOGIN_PLACEHOLDER.PASSWORD} validate />
+                        <Button value={AUTH_BUTTONS.LOGIN} action={handleClick} />
                     </div>
                 </div>
             </form>
