@@ -1,7 +1,7 @@
 import { FormEvent, useEffect, useState } from "react"
 import useChatContext from "@hooks/useChatContext"
-import { EMPTY_ERROR } from "@lib/const"
 import type { InputError } from "@customTypes/components"
+import { EMPTY_ERROR } from "@lib/constants/validations"
 
 /**
  * @description Hook para controlar los inputs
@@ -21,7 +21,7 @@ const useControlInput = (errorManager: InputError | undefined) => {
         }
     }, [errorManager, border, handleSetErrorsInForm])
 
-    const getErrorMessageFrom = (value: string) => (value === "" ? EMPTY_ERROR : errorManager?.errorMessage)
+    const getErrorMessageFrom = (value: string) => (value === "" ? EMPTY_ERROR : errorManager?.message)
 
     const defineError = (e: FormEvent<HTMLInputElement>) => {
         if (errorManager) {

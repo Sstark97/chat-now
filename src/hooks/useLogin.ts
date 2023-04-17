@@ -3,7 +3,7 @@ import { useRouter } from "next/router"
 import { getUserDataFrom } from "@lib/utils/user"
 import { MutableRefObject } from "react"
 import { signIn, SignInResponse } from "next-auth/react"
-import { REDIRECT } from "@lib/const"
+import { REDIRECT } from "@lib/constants/links"
 
 /**
  * @description Hook para loguear a un usuario

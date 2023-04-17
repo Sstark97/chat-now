@@ -6,8 +6,8 @@ import Credentials from "next-auth/providers/credentials"
 import { PrismaAdapter } from "@next-auth/prisma-adapter"
 import { PrismaClient } from "@prisma/client"
 import { postFrom } from "@lib/utils/fetcher"
-import { API } from "@lib/const"
 import type { NextAuthOptions } from "next-auth"
+import { API } from "@lib/constants/links"
 
 const prisma = new PrismaClient()
 

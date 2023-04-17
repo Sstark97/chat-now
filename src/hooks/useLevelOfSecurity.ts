@@ -1,5 +1,5 @@
 import { getLevelOfSecurityFrom } from "@lib/utils/password"
-import { SECURITY_LEVEL, SECURITY_LEVEL_COLORS } from "@lib/const"
+import { SECURITY_LEVEL, SECURITY_LEVEL_COLORS } from "@lib/constants/securityPassword"
 
 /**
  * @description Hook que devuelve el nivel de seguridad de una contraseña

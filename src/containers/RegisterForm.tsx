@@ -7,7 +7,8 @@ import PasswordInput from "@components/PasswordInput"
 import Button from "@components/Button"
 import Error from "@components/Error"
 import AuthProviders from "@containers/AuthProviders"
-import { errors } from "@lib/const"
+import { errors } from "@lib/constants/validations"
+import { AUTH_BUTTONS, INPUT_REGISTER_PLACEHOLDER } from "@lib/constants/authForms"
 
 /**
  * Este componente es el encargado de mostrar el formulario de registro
@@ -32,10 +33,10 @@ const RegisterForm = () => {
                 <div className="w-7/12 flex flex-col items-center">
                     {error ? <Error message={error} /> : null}
                     <div className="w-full" ref={ref}>
-                        <Input type="text" placeholder="Nombre" name="name" errorManager={errors.name} />
-                        <Input type="email" placeholder="Correo electrónico" name="email" errorManager={errors.email} />
-                        <PasswordInput placeholder="Contraseña" location="register" validate />
-                        <Button value={"Crear cuenta"} action={handleClickInRegister} />
+                        <Input type="text" placeholder={INPUT_REGISTER_PLACEHOLDER.NAME} name="name" errorManager={errors.name} />
+                        <Input type="email" placeholder={INPUT_REGISTER_PLACEHOLDER.EMAIL} name="email" errorManager={errors.email} />
+                        <PasswordInput placeholder={INPUT_REGISTER_PLACEHOLDER.PASSWORD} location="register" validate />
+                        <Button value={AUTH_BUTTONS.REGISTER} action={handleClickInRegister} />
                     </div>
                 </div>
             </form>

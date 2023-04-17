@@ -1,5 +1,5 @@
 import type { ChatProps } from "@customTypes/components"
-import { STATE_COLORS } from "@lib/const"
+import { STATE_COLORS } from "@lib/constants/securityPassword"
 
 /**
  * Este componente es el que se encarga de mostrar la información de un chat
