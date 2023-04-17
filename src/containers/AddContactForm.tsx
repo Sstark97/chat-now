@@ -1,11 +1,12 @@
 import useChatContext from "@hooks/useChatContext"
-import useAddUser from "@hooks/useAddUser"
+import useForm from "@hooks/useForm"
 import Button from "@components/Button"
 import Input from "@components/Input"
 import Error from "@components/Error"
 import { errors } from "@lib/constants/validations"
 import { FaUserAlt } from "react-icons/fa"
 import { MdEmail } from "react-icons/md"
+import { API, REDIRECT } from "@lib/constants/links"
 
 /**
  * Este componente es el encargado de mostrar el formulario para añadir un contacto
@@ -14,7 +15,7 @@ import { MdEmail } from "react-icons/md"
  */
 const AddContactForm = () => {
     const { ref } = useChatContext()
-    const { addUser, error } = useAddUser(ref)
+    const { action: addUser, error } = useForm(ref, API.ADD_CONTACT, REDIRECT.HOME)
 
     const handleClick = async () => {
         await addUser()

@@ -1,5 +1,5 @@
 import useChatContext from "@hooks/useChatContext"
-import useRegister from "@hooks/useRegister"
+import useForm from "@hooks/useForm"
 import Link from "next/link"
 import AuthHeader from "@components/AuthHeader"
 import Input from "@components/Input"
@@ -9,6 +9,7 @@ import Error from "@components/Error"
 import AuthProviders from "@containers/AuthProviders"
 import { errors } from "@lib/constants/validations"
 import { AUTH_BUTTONS, INPUT_REGISTER_PLACEHOLDER } from "@lib/constants/authForms"
+import { API, REDIRECT } from "@lib/constants/links"
 
 /**
  * Este componente es el encargado de mostrar el formulario de registro
@@ -17,7 +18,7 @@ import { AUTH_BUTTONS, INPUT_REGISTER_PLACEHOLDER } from "@lib/constants/authFor
  */
 const RegisterForm = () => {
     const { ref } = useChatContext()
-    const { register, error } = useRegister(ref)
+    const { action: register, error } = useForm(ref, API.REGISTER, REDIRECT.LOGIN)
 
     const handleClickInRegister = async () => {
         await register()

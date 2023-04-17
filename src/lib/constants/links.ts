@@ -13,6 +13,7 @@ import { IoSettingsSharp } from "react-icons/io5"
 enum API {
     REGISTER = "/api/auth/user/register",
     LOGIN = "/api/auth/user/login",
+    ADD_CONTACT = "/api/contacts/add",
 }
 
 /**
