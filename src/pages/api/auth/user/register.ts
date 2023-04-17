@@ -30,7 +30,7 @@ const checkErrorsInRegisterFrom = async (req: UserRequest, res: NextApiResponse<
         response.error = `Ya existe un usuario con el email ${email}`
     } else if (passwordIsNotValid) {
         response.status = 400
-        response.error = errors.security.errorMessage
+        response.error = errors.security.message
     }
 
     return response

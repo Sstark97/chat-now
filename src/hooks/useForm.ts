@@ -14,6 +14,7 @@ const useForm = (ref: MutableRefObject<HTMLDivElement>, endPoint: string, redire
 
     const action = async () => {
         const user = getUserDataFrom(ref.current)
+
         try {
             const userFromApi = await postFrom(user, endPoint)
 
