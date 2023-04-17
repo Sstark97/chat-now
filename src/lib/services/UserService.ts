@@ -1,4 +1,4 @@
-import { Credentials, UserLoginResponse, UserRepository, UserResponse } from "@customTypes/domain"
+import { ContactRequest, Credentials, UserLoginResponse, UserRepository, UserResponse } from "@customTypes/domain"
 import { UserRequest } from "@customTypes/request"
 import bcrypt from "bcrypt"
 import { errors } from "@lib/constants/validations"
@@ -56,6 +56,10 @@ class UserService {
         }
 
         return null
+    }
+
+    async addContact(userEmail: string, contactInfo: ContactRequest) {
+        return this.userRepository.addContact(userEmail, contactInfo)
     }
 
     /**

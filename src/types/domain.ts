@@ -1,4 +1,4 @@
-import { User } from "@prisma/client"
+import { User, Contact } from "@prisma/client"
 
 /**
  * @typedef Credentials
@@ -26,6 +26,7 @@ type Credentials = Record<"name" | "email" | "password", string> | undefined
 interface UserRepository {
     findUserByEmail(email: string): Promise<User | null>
     createUser(credentials: Credentials): Promise<User>
+    addContact(userEmail: string, contactInfo: ContactRequest): Promise<Contact>
 }
 
 /**
@@ -51,6 +52,11 @@ interface UserLoginResponse extends UserResponse {
     password?: string
 }
 
+interface ContactRequest {
+    name: string
+    email: string
+}
+
 /**
  * @interface ErrorResponse
  * @description Interface para definir la respuesta de error
@@ -60,4 +66,4 @@ interface ErrorResponse {
     message: string
 }
 
-export type { Credentials, User, UserRepository, UserResponse, UserLoginResponse, ErrorResponse }
+export type { Credentials, User, UserRepository, UserResponse, UserLoginResponse, ContactRequest, ErrorResponse }

@@ -38,6 +38,7 @@ model Contact {
   Contact    User   @relation("Contact", fields: [contact_id], references: [id])
   user_id    String
   contact_id String
+  name       String
 
   @@id([user_id, contact_id])
 }

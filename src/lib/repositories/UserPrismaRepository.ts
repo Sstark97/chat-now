@@ -1,5 +1,5 @@
-import { PrismaClient } from "@prisma/client"
-import { UserRepository, Credentials } from "@customTypes/domain"
+import { PrismaClient, User } from "@prisma/client"
+import { UserRepository, Credentials, ContactRequest } from "@customTypes/domain"
 
 /**
  * @class UserPrismaRepository
@@ -23,8 +23,10 @@ class UserPrismaRepository implements UserRepository {
      * const user = await userPrismaRepository.findUserByEmail(email)
      */
     findUserByEmail(email: string) {
-        return this.prisma.user.findFirst({
-            where: { email },
+        return this.prisma.user.findUnique({
+            where: {
+                email,
+            },
         })
     }
 
@@ -40,6 +42,19 @@ class UserPrismaRepository implements UserRepository {
         return this.prisma.user.create({
             data: {
                 ...credentials,
+            },
+        })
+    }
+
+    async addContact(userEmail: string, contactInfo: ContactRequest) {
+        const user = (await this.findUserByEmail(userEmail)) as User
+        const contact = (await this.findUserByEmail(contactInfo.email)) as User
+
+        return this.prisma.contact.create({
+            data: {
+                user_id: user.id,
+                contact_id: contact.id,
+                name: contactInfo.name,
             },
         })
     }

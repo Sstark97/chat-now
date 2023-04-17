@@ -21,6 +21,13 @@ interface UserRequest extends NextApiRequest {
     }
 }
 
+interface ContactRequest extends NextApiRequest {
+    body: {
+        name: string
+        email: string
+    }
+}
+
 /**
  * @interface ValidateResponse
  * @description Propiedades de la respuesta de validación
@@ -32,4 +39,4 @@ interface ValidateResponse {
     error: string
 }
 
-export type { UserRequest, ValidateResponse }
+export type { UserRequest, ContactRequest, ValidateResponse }

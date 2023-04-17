@@ -24,7 +24,7 @@ const Input = ({ type, placeholder, name, children, errorManager, location, clas
 
     return (
         <>
-            <div className="w-full relative flex flex-col justify-center items-center mx-auto">
+            <div className="w-full relative flex justify-center items-center mx-auto">
                 <input
                     id={name}
                     type={type}
@@ -44,7 +44,7 @@ const Input = ({ type, placeholder, name, children, errorManager, location, clas
                     Generar contraseña aleatoria
                 </button>
             ) : null}
-            {error ? <p className={`text-busy text-sm mt-1 opacity-60 ${className}`}>{error}</p> : null}
+            {error ? <p className={`text-busy text-sm mt-1 opacity-60 ${className} mt-0 self-end`}>{error}</p> : null}
             {location === "register" ? <LevelSecurityPassword password={password} /> : null}
         </>
     )
