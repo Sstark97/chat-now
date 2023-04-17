@@ -35,7 +35,7 @@ const RegisterForm = () => {
                     <div className="w-full" ref={ref}>
                         <Input className="w-full mt-5" type="text" placeholder={INPUT_REGISTER_PLACEHOLDER.NAME} name="name" errorManager={errors.name} />
                         <Input className="w-full mt-5" type="email" placeholder={INPUT_REGISTER_PLACEHOLDER.EMAIL} name="email" errorManager={errors.email} />
-                        <PasswordInput placeholder={INPUT_REGISTER_PLACEHOLDER.PASSWORD} location="register" validate />
+                        <PasswordInput className="w-full mt-5" placeholder={INPUT_REGISTER_PLACEHOLDER.PASSWORD} location="register" validate />
                         <Button value={AUTH_BUTTONS.REGISTER} action={handleClickInRegister} />
                     </div>
                 </div>

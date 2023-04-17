@@ -3,7 +3,7 @@ import useAddUser from "@hooks/useAddUser"
 import Button from "@components/Button"
 import Input from "@components/Input"
 import Error from "@components/Error"
-import { errors } from "@lib/const"
+import { errors } from "@lib/constants/validations"
 import { FaUserAlt } from "react-icons/fa"
 import { MdEmail } from "react-icons/md"
 

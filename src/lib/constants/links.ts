@@ -28,6 +28,22 @@ enum REDIRECT {
 }
 
 /**
+ * @description Enumerado con los títulos de la barra de navegación
+ * @constant
+ * @type {Object}
+ * @property {string} NEW_CONTACT - Título del link para añadir un nuevo contacto
+ * @property {string} SETTINGS - Título del link para acceder a los ajustes
+ * @property {string} HELP - Título del link para acceder a la ayuda
+ * @property {string} MY_ACCOUNT - Título del link para acceder a la cuenta
+ */
+enum NAVBAR_TITLES {
+    NEW_CONTACT = "Añadir un nuevo contacto",
+    SETTINGS = "Ajustes",
+    HELP = "Ayuda",
+    MY_ACCOUNT = "Mi cuenta",
+}
+
+/**
  * @description Objeto con los links de la barra de navegación
  * @constant
  * @type {NavBarLinks[]}
@@ -39,4 +55,5 @@ const principalLinks: NavBarLinks[] = [
     { href: "/contacts", icon: HiUsers },
     { href: "/settings", icon: IoSettingsSharp },
 ]
-export { API, REDIRECT, principalLinks }
+
+export { API, REDIRECT, NAVBAR_TITLES, principalLinks }

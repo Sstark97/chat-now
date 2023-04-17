@@ -1,9 +1,8 @@
 import Link from "next/link"
 import { useRouter } from "next/router"
-import { principalLinks } from "@lib/const"
+import { principalLinks } from "@lib/constants/links"
 import { NavBarProps } from "@customTypes/components"
 import { MdArrowBackIosNew } from "react-icons/md"
-import { NAVBARTITLES } from "@lib/constSara"
 
 /**
  * Este componente se encarga de crear la barra de navegacion
@@ -27,7 +26,7 @@ const NavBar = ({ type = "normal" }: NavBarProps) => {
                             const { href, icon: Icon } = link
                             const isActive = pathname === href
                             const activeClass = isActive ? "bg-light_purple" : ""
-                            
+
                             return (
                                 <Link href={href} key={href} role="link">
                                     <Icon className={`text-5xl rounded-xl p-2 ${activeClass}`} />
@@ -40,7 +39,7 @@ const NavBar = ({ type = "normal" }: NavBarProps) => {
                 <nav className="w-full bg-secondary flex justify-evenly lg:items-center lg:justify-between py-10">
                     <div className="w-full flex justify-start items-center">
                         <MdArrowBackIosNew className="ml-6 font-extrabold text-xl" />
-                        <p className="ml-6 text-lg">{NAVBARTITLES[type as keyof typeof NAVBARTITLES]}</p>
+                        <p className="ml-6 text-lg">{type}</p>
                     </div>
                 </nav>
             )}
