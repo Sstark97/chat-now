@@ -27,14 +27,14 @@ const RegisterForm = () => {
         <div className="w-[90%] lg:w-2/5">
             <AuthHeader title={"Crea tu cuenta"} />
             <form method="post" className="w-full flex flex-col justify-center items-center">
-                <div className="w-7/12">
+                <div className="w-10/12 md:w-6/12">
                     <AuthProviders />
                 </div>
-                <div className="w-7/12 flex flex-col items-center">
+                <div className="w-10/12 md:w-6/12 flex flex-col items-center">
                     {error ? <Error message={error} /> : null}
                     <div className="w-full" ref={ref}>
-                        <Input type="text" placeholder={INPUT_REGISTER_PLACEHOLDER.NAME} name="name" errorManager={errors.name} />
-                        <Input type="email" placeholder={INPUT_REGISTER_PLACEHOLDER.EMAIL} name="email" errorManager={errors.email} />
+                        <Input className="w-full mt-5" type="text" placeholder={INPUT_REGISTER_PLACEHOLDER.NAME} name="name" errorManager={errors.name} />
+                        <Input className="w-full mt-5" type="email" placeholder={INPUT_REGISTER_PLACEHOLDER.EMAIL} name="email" errorManager={errors.email} />
                         <PasswordInput placeholder={INPUT_REGISTER_PLACEHOLDER.PASSWORD} location="register" validate />
                         <Button value={AUTH_BUTTONS.REGISTER} action={handleClickInRegister} />
                     </div>

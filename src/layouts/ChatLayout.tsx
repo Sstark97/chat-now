@@ -1,6 +1,4 @@
 import Head from "next/head"
-import Searcher from "@components/Searcher"
-import NavBar from "@components/NavBar"
 import LoggedGuardian from "@containers/LoggedGuardian"
 import { Inter } from "next/font/google"
 import type { ChildrenProps } from "@customTypes/global"
@@ -21,11 +19,7 @@ const ChatLayout = ({ children }: ChildrenProps) => (
             <meta name="viewport" content="width=device-width, initial-scale=1" />
             <link rel="icon" href="/favicon.ico" />
         </Head>
-        <main className={inter.className}>
-            <Searcher />
-            {children}
-            <NavBar />
-        </main>
+        <main className={inter.className}>{children}</main>
     </LoggedGuardian>
 )
 
