@@ -35,7 +35,10 @@ const contacts = () => (
             <div className="w-full lg:w-[28%] relative">
                 <NavBar />
                 <Searcher />
-                <Link className="absolute top-24 right-10" href="/contacts/add">
+                <Link
+                    className="absolute top-24 right-10 lg:top-48 lg:right-12"
+                    href="/contacts/add"
+                >
                     <AiOutlinePlus className="p-[.4rem] text-3xl text-dark bg-light_purple rounded-full" />
                 </Link>
                 <FriendshipList friendships={friendships} />
