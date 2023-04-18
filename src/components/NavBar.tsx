@@ -37,10 +37,10 @@ const NavBar = ({ type = "normal" }: NavBarProps) => {
                 </nav>
             ) : (
                 <nav className="w-full bg-secondary flex justify-evenly lg:items-center lg:justify-between py-10">
-                    <div className="w-full flex justify-start items-center">
+                    <Link className="w-full flex justify-start items-center" href="/contacts">
                         <MdArrowBackIosNew className="ml-6 font-extrabold text-xl" />
                         <p className="ml-6 text-lg">{type}</p>
-                    </div>
+                    </Link>
                 </nav>
             )}
         </>

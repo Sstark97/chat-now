@@ -28,7 +28,7 @@ const AddContactForm = () => {
         <div className="w-full">
             <form className="w-full flex flex-col justify-center items-center">
                 <div className="w-[90%] flex flex-col items-center">
-                    {error ? <Error message={error} /> : null}
+                    {error ? <Error className="mt-5 text-center" message={error} /> : null}
                     <div className="w-full flex flex-col justify-center items-center" ref={ref}>
                         <InputWithIcon
                             className={inputClass}
