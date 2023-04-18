@@ -22,7 +22,7 @@ const checkErrorsInRegisterFrom = async (req: UserRequest, res: NextApiResponse<
         res.status(405).end()
     }
 
-    const userAlreadyExists = await userService.existUserFrom(req.body)
+    const userAlreadyExists = await userService.existUserFrom(email)
     const passwordIsNotValid = !userService.validateUserFrom(password)
 
     if (userAlreadyExists) {

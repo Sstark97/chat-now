@@ -39,7 +39,7 @@ class UserService {
      * const userLogged = await userService.login(credentials)
      */
     async login(credentials: Credentials): Promise<UserResponse | null | undefined> {
-        if (!(await this.existUserFrom(credentials))) {
+        if (!(await this.existUserFrom(credentials?.email as string))) {
             return null
         }
 
@@ -108,14 +108,12 @@ class UserService {
      * @private
      * @method existUserFrom
      * @description Verifica si un usuario existe
-     * @param credentials
+     * @param email
      * @returns {Promise<boolean>}
      * @example
      * const userExists = await userService.existUserFrom(credentials)
      */
-    async existUserFrom(credentials: Credentials) {
-        const email = credentials?.email as string
-
+    async existUserFrom(email: string) {
         const user = await this.userRepository.findUserByEmail(email)
 
         return user !== null
