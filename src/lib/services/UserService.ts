@@ -111,12 +111,26 @@ class UserService {
      * @param email
      * @returns {Promise<boolean>}
      * @example
-     * const userExists = await userService.existUserFrom(credentials)
+     * const userExists = await userService.existUserFrom(email)
      */
     async existUserFrom(email: string) {
         const user = await this.userRepository.findUserByEmail(email)
 
         return user !== null
+    }
+
+    /**
+     * @private
+     * @method isTheContactAddedBy
+     * @description Verifica si el contacto está agregado
+     * @param email
+     * @param contactEmail
+     * @returns {Promise<boolean>}
+     * @example
+     * const contactIsAdded = await userService.isTheContactAddedBy(email)
+     */
+    async isTheContactAddedBy(email: string, contactEmail: string) {
+        return await this.userRepository.existContactFrom(email, contactEmail)
     }
 }
 

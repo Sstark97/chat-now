@@ -16,23 +16,25 @@ const userService = UserFactory.createUserService()
  * await checkErrorsInRegisterFrom(req, res)
  */
 const checkErrorsFrom = async (req: ContactRequest, res: NextApiResponse<ErrorResponse>) => {
-    const { email } = req.body
+    const session = await getSession({ req })
+    const userEmail = session?.user?.email as string
+    const { email: contactEmail } = req.body
     const response = {} as ValidateResponse
 
     if (req.method !== "POST") {
         res.status(405).end()
     }
 
-    const userAlreadyExists = await userService.existUserFrom(email)
+    const userAlreadyExists = await userService.existUserFrom(contactEmail)
+    const isContactAdded = await userService.isTheContactAddedBy(userEmail, contactEmail)
 
     if (!userAlreadyExists) {
         response.status = 400
-        response.error = `No existe un usuario con el email ${email}`
+        response.error = `No existe un usuario con el email ${contactEmail}`
+    } else if (isContactAdded) {
+        response.status = 400
+        response.error = `El usuario con el email ${contactEmail} ya está añadido`
     }
-    // } else if (passwordIsNotValid) {
-    //     response.status = 400
-    //     response.error = errors.security.message
-    // }
 
     return response
 }
