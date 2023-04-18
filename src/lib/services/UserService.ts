@@ -1,4 +1,10 @@
-import { ContactRequest, Credentials, UserLoginResponse, UserRepository, UserResponse } from "@customTypes/domain"
+import {
+    ContactRequest,
+    Credentials,
+    UserLoginResponse,
+    UserRepository,
+    UserResponse,
+} from "@customTypes/domain"
 import { UserRequest } from "@customTypes/request"
 import bcrypt from "bcrypt"
 import { errors } from "@lib/constants/validations"
@@ -39,11 +45,13 @@ class UserService {
      * const userLogged = await userService.login(credentials)
      */
     async login(credentials: Credentials): Promise<UserResponse | null | undefined> {
-        if (!(await this.existUserFrom(credentials))) {
+        if (!(await this.existUserFrom(credentials?.email as string))) {
             return null
         }
 
-        const user = (await this.userRepository.findUserByEmail(credentials?.email as string)) as UserLoginResponse
+        const user = (await this.userRepository.findUserByEmail(
+            credentials?.email as string
+        )) as UserLoginResponse
         const password = credentials?.password as string
         const userPassword = user?.password as string
 
@@ -108,17 +116,29 @@ class UserService {
      * @private
      * @method existUserFrom
      * @description Verifica si un usuario existe
-     * @param credentials
+     * @param email
      * @returns {Promise<boolean>}
      * @example
-     * const userExists = await userService.existUserFrom(credentials)
+     * const userExists = await userService.existUserFrom(email)
      */
-    async existUserFrom(credentials: Credentials) {
-        const email = credentials?.email as string
-
+    async existUserFrom(email: string) {
         const user = await this.userRepository.findUserByEmail(email)
 
         return user !== null
+    }
+
+    /**
+     * @private
+     * @method isTheContactAddedBy
+     * @description Verifica si el contacto está agregado
+     * @param email
+     * @param contactEmail
+     * @returns {Promise<boolean>}
+     * @example
+     * const contactIsAdded = await userService.isTheContactAddedBy(email)
+     */
+    async isTheContactAddedBy(email: string, contactEmail: string) {
+        return await this.userRepository.existContactFrom(email, contactEmail)
     }
 }
 

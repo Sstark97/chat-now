@@ -58,6 +58,33 @@ class UserPrismaRepository implements UserRepository {
             },
         })
     }
+
+    /**
+     * @method existUserFrom
+     * @description Verifica si existe un contacto está agregado a un usuario
+     * @param userEmail
+     * @param contactEmail
+     * @returns {Promise<boolean>}
+     * @example
+     * const contactExists = await userPrismaRepository.existContactFrom(userEmail, contactEmail)
+     */
+    async existContactFrom(userEmail: string, contactEmail: string) {
+        const user = (await this.findUserByEmail(userEmail)) as User
+        const contact = (await this.findUserByEmail(contactEmail)) as User
+
+        if (!user || !contact) {
+            return false
+        }
+
+        const contactExists = await this.prisma.contact.findFirst({
+            where: {
+                user_id: user.id,
+                contact_id: contact.id,
+            },
+        })
+
+        return !!contactExists
+    }
 }
 
 export { UserPrismaRepository }

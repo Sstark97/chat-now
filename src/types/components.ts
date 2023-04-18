@@ -5,9 +5,11 @@ import { IconType } from "react-icons"
 /**
  * @interface ErrorProps
  * @description Propiedades del componente Error
+ * @property {string} className - Clase del componente
  * @property {string} message - Mensaje de error
  */
 interface ErrorProps {
+    className?: string
     message: string
 }
 
@@ -42,6 +44,7 @@ interface InputProps {
     errorManager?: InputError
     location?: string
     className?: string
+    errorClassName?: string
 }
 
 /**
@@ -130,4 +133,16 @@ interface NavBarLinks {
     icon: IconType
 }
 
-export type { ErrorProps, InputError, InputProps, PasswordProps, ButtonProps, LevelOfSecurityProps, AuthHeaderProps, AuthButtonProps, ChatProps, NavBarLinks, NavBarProps }
+export type {
+    ErrorProps,
+    InputError,
+    InputProps,
+    PasswordProps,
+    ButtonProps,
+    LevelOfSecurityProps,
+    AuthHeaderProps,
+    AuthButtonProps,
+    ChatProps,
+    NavBarLinks,
+    NavBarProps,
+}

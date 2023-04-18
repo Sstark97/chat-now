@@ -34,9 +34,26 @@ const RegisterForm = () => {
                 <div className="w-10/12 md:w-6/12 flex flex-col items-center">
                     {error ? <Error message={error} /> : null}
                     <div className="w-full" ref={ref}>
-                        <Input className="w-full mt-5" type="text" placeholder={INPUT_REGISTER_PLACEHOLDER.NAME} name="name" errorManager={errors.name} />
-                        <Input className="w-full mt-5" type="email" placeholder={INPUT_REGISTER_PLACEHOLDER.EMAIL} name="email" errorManager={errors.email} />
-                        <PasswordInput className="w-full mt-5" placeholder={INPUT_REGISTER_PLACEHOLDER.PASSWORD} location="register" validate />
+                        <Input
+                            className="w-full mt-5"
+                            type="text"
+                            placeholder={INPUT_REGISTER_PLACEHOLDER.NAME}
+                            name="name"
+                            errorManager={errors.name}
+                        />
+                        <Input
+                            className="w-full mt-5"
+                            type="email"
+                            placeholder={INPUT_REGISTER_PLACEHOLDER.EMAIL}
+                            name="email"
+                            errorManager={errors.email}
+                        />
+                        <PasswordInput
+                            className="w-full mt-5"
+                            placeholder={INPUT_REGISTER_PLACEHOLDER.PASSWORD}
+                            location="register"
+                            validate
+                        />
                         <Button value={AUTH_BUTTONS.REGISTER} action={handleClickInRegister} />
                     </div>
                 </div>

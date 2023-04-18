@@ -21,14 +21,19 @@ const useControlInput = (errorManager: InputError | undefined) => {
         }
     }, [errorManager, border, handleSetErrorsInForm])
 
-    const getErrorMessageFrom = (value: string) => (value === "" ? EMPTY_ERROR : errorManager?.message)
+    const getErrorMessageFrom = (value: string) =>
+        value === "" ? EMPTY_ERROR : errorManager?.message
 
     const defineError = (e: FormEvent<HTMLInputElement>) => {
         if (errorManager) {
             const element = e.currentTarget
             const errorMsg = getErrorMessageFrom(element.value) as string
             setError(errorManager.validate(element.value) ? "" : errorMsg)
-            setBorder(errorManager.validate(element.value) ? "border-2 border-success" : "border-2 border-busy")
+            setBorder(
+                errorManager.validate(element.value)
+                    ? "border-2 border-success"
+                    : "border-2 border-busy"
+            )
         }
     }
 

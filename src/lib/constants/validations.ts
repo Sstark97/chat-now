@@ -3,7 +3,8 @@
  * @constant
  * @type {string}
  */
-const CHARACTERS = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()_+-=[]{};':\\|,.<>/?"
+const CHARACTERS =
+    "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()_+-=[]{};':\\|,.<>/?"
 /**
  * @description String con el mensaje de error de un campo vacío
  * @constant

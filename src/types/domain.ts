@@ -27,6 +27,7 @@ interface UserRepository {
     findUserByEmail(email: string): Promise<User | null>
     createUser(credentials: Credentials): Promise<User>
     addContact(userEmail: string, contactInfo: ContactRequest): Promise<Contact>
+    existContactFrom(userEmail: string, contactEmail: string): Promise<boolean>
 }
 
 /**
@@ -66,4 +67,12 @@ interface ErrorResponse {
     message: string
 }
 
-export type { Credentials, User, UserRepository, UserResponse, UserLoginResponse, ContactRequest, ErrorResponse }
+export type {
+    Credentials,
+    User,
+    UserRepository,
+    UserResponse,
+    UserLoginResponse,
+    ContactRequest,
+    ErrorResponse,
+}
