@@ -1,6 +1,6 @@
 import NavBar from "@components/NavBar"
 import ChatDesktop from "@components/ChatDesktop"
-import AddContactForm from "./AddContactForm"
+import AddContactForm from "../../containers/AddContactForm"
 import { NAVBAR_TITLES } from "@lib/constants/links"
 
 /**
