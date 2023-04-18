@@ -22,6 +22,7 @@ const AddContactForm = () => {
     }
 
     const inputClass = "w-[80%] mt-5 mb-1"
+    const errorClass = "w-[80%] mb-1"
 
     return (
         <div className="w-full">
@@ -29,10 +30,24 @@ const AddContactForm = () => {
                 <div className="w-[90%] flex flex-col items-center">
                     {error ? <Error message={error} /> : null}
                     <div className="w-full flex flex-col justify-center items-center" ref={ref}>
-                        <InputWithIcon className={inputClass} type="text" placeholder="Nombre" name="name" errorManager={errors.name}>
+                        <InputWithIcon
+                            className={inputClass}
+                            type="text"
+                            placeholder="Nombre"
+                            name="name"
+                            errorManager={errors.name}
+                            errorClassName={errorClass}
+                        >
                             <FaUserAlt className="w-[20%] text-2xl order-first mt-5" />
                         </InputWithIcon>
-                        <InputWithIcon className={inputClass} type="text" placeholder="Correo electrónico" name="email" errorManager={errors.email}>
+                        <InputWithIcon
+                            className={inputClass}
+                            type="text"
+                            placeholder="Correo electrónico"
+                            name="email"
+                            errorManager={errors.email}
+                            errorClassName={errorClass}
+                        >
                             <MdEmail className="w-[20%] text-3xl order-first mt-5" />
                         </InputWithIcon>
                         <div className="w-[80%] flex justify-center items-center">

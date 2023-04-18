@@ -1,4 +1,10 @@
-import { ContactRequest, Credentials, UserLoginResponse, UserRepository, UserResponse } from "@customTypes/domain"
+import {
+    ContactRequest,
+    Credentials,
+    UserLoginResponse,
+    UserRepository,
+    UserResponse,
+} from "@customTypes/domain"
 import { UserRequest } from "@customTypes/request"
 import bcrypt from "bcrypt"
 import { errors } from "@lib/constants/validations"
@@ -43,7 +49,9 @@ class UserService {
             return null
         }
 
-        const user = (await this.userRepository.findUserByEmail(credentials?.email as string)) as UserLoginResponse
+        const user = (await this.userRepository.findUserByEmail(
+            credentials?.email as string
+        )) as UserLoginResponse
         const password = credentials?.password as string
         const userPassword = user?.password as string
 

@@ -8,7 +8,11 @@ interface UseForm {
     error: string
 }
 
-const useForm = (ref: MutableRefObject<HTMLDivElement>, endPoint: string, redirect: string): UseForm => {
+const useForm = (
+    ref: MutableRefObject<HTMLDivElement>,
+    endPoint: string,
+    redirect: string
+): UseForm => {
     const [error, setError] = useState("")
     const router = useRouter()
 

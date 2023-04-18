@@ -39,7 +39,10 @@ const checkErrorsFrom = async (req: ContactRequest, res: NextApiResponse<ErrorRe
     return response
 }
 
-export default async function handler(req: ContactRequest, res: NextApiResponse<Contact | ErrorResponse>) {
+export default async function handler(
+    req: ContactRequest,
+    res: NextApiResponse<Contact | ErrorResponse>
+) {
     const errorResponse = await checkErrorsFrom(req, res)
 
     if (errorResponse.status) {

@@ -29,9 +29,12 @@ const getUserDataFrom = (current: HTMLDivElement) => {
         }
     })
 
-    return allFormattedInputs.reduce((total: Record<string, string>, current: Record<string, string>) => {
-        return { ...total, ...current }
-    }, {})
+    return allFormattedInputs.reduce(
+        (total: Record<string, string>, current: Record<string, string>) => {
+            return { ...total, ...current }
+        },
+        {}
+    )
 }
 
 /**

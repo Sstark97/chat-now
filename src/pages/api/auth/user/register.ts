@@ -36,7 +36,10 @@ const checkErrorsInRegisterFrom = async (req: UserRequest, res: NextApiResponse<
     return response
 }
 
-export default async function handler(req: UserRequest, res: NextApiResponse<UserResponse | ErrorResponse>) {
+export default async function handler(
+    req: UserRequest,
+    res: NextApiResponse<UserResponse | ErrorResponse>
+) {
     const errorResponse = await checkErrorsInRegisterFrom(req, res)
 
     if (errorResponse.status) {

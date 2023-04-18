@@ -46,7 +46,10 @@ const randomPassword = () => {
     let password = ""
     const requirements = [/[A-Z]/, /[a-z]/, /[0-9]/, /[!@#$%^&*()_+\-=[\]{};':"\\|,.<>/?]/]
 
-    while (password.length < 20 || !requirements.every((requirement) => requirement.test(password))) {
+    while (
+        password.length < 20 ||
+        !requirements.every((requirement) => requirement.test(password))
+    ) {
         password = ""
         for (let i = 0; i < 20; i++) {
             const randomIndex = Math.floor(Math.random() * CHARACTERS.length)

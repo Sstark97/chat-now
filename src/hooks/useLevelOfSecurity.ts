@@ -12,8 +12,15 @@ import { SECURITY_LEVEL, SECURITY_LEVEL_COLORS } from "@lib/constants/securityPa
 const useLevelOfSecurity = (password: string) => {
     const passwordSecurityLevel = getLevelOfSecurityFrom(password)
     const bgFirstLevel = SECURITY_LEVEL_COLORS[passwordSecurityLevel] ?? "secondary_text"
-    const bgSecondLevel = passwordSecurityLevel === SECURITY_LEVEL.MEDIUM || passwordSecurityLevel === SECURITY_LEVEL.HIGH ? SECURITY_LEVEL_COLORS[passwordSecurityLevel] : "secondary_text"
-    const bgThirdLevel = passwordSecurityLevel === SECURITY_LEVEL.HIGH ? SECURITY_LEVEL_COLORS[passwordSecurityLevel] : "secondary_text"
+    const bgSecondLevel =
+        passwordSecurityLevel === SECURITY_LEVEL.MEDIUM ||
+        passwordSecurityLevel === SECURITY_LEVEL.HIGH
+            ? SECURITY_LEVEL_COLORS[passwordSecurityLevel]
+            : "secondary_text"
+    const bgThirdLevel =
+        passwordSecurityLevel === SECURITY_LEVEL.HIGH
+            ? SECURITY_LEVEL_COLORS[passwordSecurityLevel]
+            : "secondary_text"
 
     return { passwordSecurityLevel, bgFirstLevel, bgSecondLevel, bgThirdLevel }
 }

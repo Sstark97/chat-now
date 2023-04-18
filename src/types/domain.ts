@@ -67,4 +67,12 @@ interface ErrorResponse {
     message: string
 }
 
-export type { Credentials, User, UserRepository, UserResponse, UserLoginResponse, ContactRequest, ErrorResponse }
+export type {
+    Credentials,
+    User,
+    UserRepository,
+    UserResponse,
+    UserLoginResponse,
+    ContactRequest,
+    ErrorResponse,
+}
