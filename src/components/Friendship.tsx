@@ -1,4 +1,4 @@
-import type { ChatProps } from "@customTypes/components"
+import type { FriendshipProps } from "@customTypes/components"
 import { STATE_COLORS } from "@lib/constants/securityPassword"
 
 /**
@@ -12,7 +12,7 @@ import { STATE_COLORS } from "@lib/constants/securityPassword"
  * @example
  * <Chat name="Juan" time="12:30" message="Mañana podemos hablarlo mejor" numMessages={2} state="online" />
  */
-const Chat = ({ name, time, message, numMessages, state }: ChatProps) => {
+const Friendship = ({ name, time, message, numMessages, state }: FriendshipProps) => {
     const stateStyle = "h-[.8rem] w-[.8rem] ml-3 rounded-full"
     const color = STATE_COLORS[state as keyof typeof STATE_COLORS]
 
@@ -23,25 +23,27 @@ const Chat = ({ name, time, message, numMessages, state }: ChatProps) => {
                     <div className="w-[3rem] h-[3rem] bg-secondary rounded-full"></div>
                 </div>
                 <div className="w-10/12 flex flex-col pl-1 pr-6">
-                    <div className="w-full flex justify-between pb-2">
+                    <div className="w-full flex justify-between">
                         <div className="flex items-center">
                             <p>{name}</p>
                             <div className={`${stateStyle} bg-${color}`}></div>
                         </div>
                         <p className="text-secondary_text">{time}</p>
                     </div>
-                    <div className="w-full flex justify-between items-center text-secondary_text">
-                        <p className="w-[88%] truncate">{message}</p>
-                        {numMessages ? (
-                            <div className="h-[1.3rem] w-[1.3rem] flex items-center justify-center bg-light_purple rounded-full">
-                                <p className="text-xs text-white">{numMessages}</p>
-                            </div>
-                        ) : null}
-                    </div>
+                    {message ? (
+                        <div className="w-full flex justify-between items-center text-secondary_text pt-2">
+                            <p className="w-[88%] truncate">{message}</p>
+                            {numMessages ? (
+                                <div className="h-[1.3rem] w-[1.3rem] flex items-center justify-center bg-light_purple rounded-full">
+                                    <p className="text-xs text-white">{numMessages}</p>
+                                </div>
+                            ) : null}
+                        </div>
+                    ) : null}
                 </div>
             </div>
         </>
     )
 }
 
-export default Chat
+export default Friendship

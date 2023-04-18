@@ -56,10 +56,10 @@ interface InputProps {
  * @property {number} numMessages - Número de mensajes
  * @property {string} state - Estado del usuario
  */
-interface ChatProps {
+interface FriendshipProps {
     name: string
-    time: string
-    message: string
+    time?: string
+    message?: string
     numMessages?: number
     state: string
 }
@@ -142,7 +142,7 @@ export type {
     LevelOfSecurityProps,
     AuthHeaderProps,
     AuthButtonProps,
-    ChatProps,
+    FriendshipProps,
     NavBarLinks,
     NavBarProps,
 }

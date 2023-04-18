@@ -1,9 +1,9 @@
-import ChatList from "@containers/ChatList"
+import FriendshipList from "@containers/FriendshipList"
 import Searcher from "@components/Searcher"
 import NavBar from "@components/NavBar"
 import ChatDesktop from "@components/ChatDesktop"
 
-const chats = [
+const friendships = [
     {
         name: "Juan Trabajo",
         time: "12:30",
@@ -43,17 +43,17 @@ const chats = [
  * @returns component
  * @example <ChatContainer />
  */
-const ChatContainer = () => {
+const FriendshipContainer = () => {
     return (
         <div className="flex h-screen">
             <div className="w-full lg:w-[28%] relative">
                 <NavBar />
                 <Searcher />
-                <ChatList chats={chats} />
+                <FriendshipList friendships={friendships} />
             </div>
             <ChatDesktop />
         </div>
     )
 }
 
-export default ChatContainer
+export default FriendshipContainer
