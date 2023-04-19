@@ -22,7 +22,11 @@ const Contacts = () => {
                     >
                         <AiOutlinePlus className="p-[.4rem] text-3xl text-dark bg-light_purple rounded-full" />
                     </Link>
-                    <FriendshipList friendships={friendships} />
+                    {friendships.length === 0 ? (
+                        <h1 className="text-center mt-16 ">No hay contactos agregados</h1>
+                    ) : (
+                        <FriendshipList friendships={friendships} />
+                    )}
                 </div>
                 <ChatDesktop />
             </div>
