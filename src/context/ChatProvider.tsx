@@ -1,11 +1,13 @@
-import { useState, useEffect, createContext, MutableRefObject, useRef } from "react"
-import type { ChildrenProps } from "@customTypes/global"
-import type { Context } from "@customTypes/context"
-import { isFormValid } from "@lib/utils/user"
-import { Contacts } from "@customTypes/domain"
+import { createContext, MutableRefObject, useEffect, useRef, useState } from "react"
 import { useSession } from "next-auth/react"
 import { getFrom } from "@lib/utils/fetcher"
 import { API } from "@lib/constants/links"
+import { isFormValid } from "@lib/utils/user"
+import { equals } from "@lib/utils"
+import type { ChildrenProps } from "@customTypes/global"
+import type { Context } from "@customTypes/context"
+import type { Contacts } from "@customTypes/domain"
+
 const ChatContext = createContext<Context>({} as Context)
 
 /**
@@ -25,7 +27,7 @@ const ChatProvider = ({ children }: ChildrenProps) => {
         const fetchContacts = async () => {
             const data = await getFrom<Contacts[]>(API.GET_CONTACTS)
 
-            if (JSON.stringify(data) !== JSON.stringify(contacts)) {
+            if (equals(data, contacts)) {
                 setContacts(data)
             }
         }
