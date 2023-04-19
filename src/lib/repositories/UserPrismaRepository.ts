@@ -98,7 +98,7 @@ class UserPrismaRepository implements UserRepository {
     /**
      * @method existUserFrom
      * @description Verifica si existe un usuario
-     * @param email
+     * @param userEmail
      * @returns {Promise<boolean>}
      * @example
      * const userExists = await userPrismaRepository.existUserFrom(email)
