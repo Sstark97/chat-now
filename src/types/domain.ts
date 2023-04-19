@@ -1,4 +1,4 @@
-import { User, Contact } from "@prisma/client"
+import { User, Contact, Status } from "@prisma/client"
 
 /**
  * @typedef Credentials
@@ -16,6 +16,23 @@ import { User, Contact } from "@prisma/client"
 type Credentials = Record<"name" | "email" | "password", string> | undefined
 
 /**
+ * @interface Contacts
+ * @description Interface para definir la respuesta de los contactos de un usuario
+ * @property {string} id - ID del contacto
+ * @property {string} name - Nombre del contacto
+ * @property {string} email - Email del contacto
+ * @property {string} image - Imagen del contacto
+ * @property {string} status - Estado del contacto
+ */
+interface Contacts {
+    id: string
+    name: string
+    email: string | null
+    image: string | null
+    status: string | Status
+}
+
+/**
  * @interface UserRepository
  * @description Interface para definir el comportamiento de un repositorio de usuarios
  * @method findUserByEmail
@@ -31,7 +48,7 @@ interface UserRepository {
     createUser(credentials: Credentials): Promise<User>
     addContact(userEmail: string, contactInfo: ContactRequest): Promise<Contact>
     existContactFrom(userEmail: string, contactEmail: string): Promise<boolean>
-    getContactsFrom(userEmail: string): Promise<Contact[]>
+    getContactsFrom(userEmail: string): Promise<Contacts[]>
 }
 
 /**
@@ -104,4 +121,5 @@ export type {
     UserLoginResponse,
     ContactRequest,
     ErrorResponse,
+    Contacts,
 }

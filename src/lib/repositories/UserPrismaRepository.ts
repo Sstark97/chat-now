@@ -95,13 +95,27 @@ class UserPrismaRepository implements UserRepository {
         return !!contactExists
     }
 
+    // get all user data from contacts of a singular user
     async getContactsFrom(userEmail: string) {
         const user = (await this.findUserByEmail(userEmail)) as User
 
-        return this.prisma.contact.findMany({
+        const allContacts = await this.prisma.contact.findMany({
             where: {
                 user_id: user.id,
             },
+            include: {
+                Contact: true,
+            },
+        })
+
+        return allContacts.map((contact) => {
+            return {
+                id: contact.Contact.id,
+                name: contact.name,
+                email: contact.Contact.email,
+                image: contact.Contact.image,
+                status: contact.Contact.status,
+            }
         })
     }
 }
