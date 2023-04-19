@@ -13,6 +13,7 @@ interface Context {
     error: boolean
     contacts: Contacts[]
     handleSetErrorsInForm(): void
+    reloadContacts(): Promise<void>
 }
 
 export type { Context }

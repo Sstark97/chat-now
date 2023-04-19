@@ -4,6 +4,8 @@ import type { Context } from "@customTypes/context"
 import { isFormValid } from "@lib/utils/user"
 import { Contacts } from "@customTypes/domain"
 import { useSession } from "next-auth/react"
+import { getFrom } from "@lib/utils/fetcher"
+import { API } from "@lib/constants/links"
 const ChatContext = createContext<Context>({} as Context)
 
 /**
@@ -21,20 +23,33 @@ const ChatProvider = ({ children }: ChildrenProps) => {
 
     useEffect(() => {
         const fetchContacts = async () => {
-            const response = await fetch("/api/contacts")
-            const data = await response.json()
-            setContacts(data)
+            const data = await getFrom<Contacts[]>(API.GET_CONTACTS)
+
+            if (JSON.stringify(data) !== JSON.stringify(contacts)) {
+                setContacts(data)
+            }
         }
 
-        fetchContacts()
-    }, [status])
+        if (status === "authenticated") {
+            fetchContacts()
+        }
+    }, [status, contacts])
 
     const handleSetErrorsInForm = () => {
         const haveErrors = !isFormValid(ref.current)
         setError(haveErrors)
     }
 
-    return <Provider value={{ ref, error, contacts, handleSetErrorsInForm }}>{children}</Provider>
+    const reloadContacts = async () => {
+        const data = await getFrom(API.GET_CONTACTS)
+        setContacts(data)
+    }
+
+    return (
+        <Provider value={{ ref, error, contacts, handleSetErrorsInForm, reloadContacts }}>
+            {children}
+        </Provider>
+    )
 }
 
 export { ChatContext, ChatProvider }
