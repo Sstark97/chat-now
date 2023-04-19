@@ -3,9 +3,9 @@ import { AuthButtonProps } from "@customTypes/components"
 
 /**
  * Este componente se encarga de crear los botones de registro de las diferentes plataformas
- * @param {AuthButtonProps} props
+ * @param {AuthButtonProps} { children, credential } - children: contenido del botón, credential: credenciales de la plataforma
  * @returns component
- * @example <AuthButton />
+ * @example <AuthButton credential="google">Continuar con Google</AuthButton>
  */
 const AuthButton = ({ children, credential }: AuthButtonProps) => {
     const handleClick = async () => {

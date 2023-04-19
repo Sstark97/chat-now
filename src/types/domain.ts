@@ -39,7 +39,7 @@ interface UserRepository {
  * @example
  * const userResponse: UserResponse = {
  *   id: "1",
- *   email: "email: "jhon@example.com",
+ *   email: "jhon@example.com",
  *   name: "John Doe"
  *   }
  */
@@ -49,10 +49,35 @@ interface UserResponse {
     name: string | null
 }
 
+/**
+ * @interface UserLoginResponse
+ * @description Interface para definir la respuesta de un usuario al iniciar sesión
+ * @property {string} id - ID del usuario
+ * @property {string | null} email - Email del usuario
+ * @property {string | null} name - Nombre del usuario
+ * @property {string | null} password - Contraseña del usuario
+ * @example
+ * const userResponse: UserLoginResponse = {
+ *  id: "1",
+ *  email: "jhon@example.com",
+ *  name: "John Doe"
+ * }
+ */
 interface UserLoginResponse extends UserResponse {
     password?: string
 }
 
+/**
+ * @interface ContactRequest
+ * @description Interface para definir la solicitud de un contacto
+ * @property {string} name - Nombre del contacto
+ * @property {string} email - Email del contacto
+ * @example
+ * const contactRequest: ContactRequest = {
+ * name: "John Doe",
+ * email: "jhon@example.com"
+ * }
+ */
 interface ContactRequest {
     name: string
     email: string

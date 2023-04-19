@@ -17,6 +17,9 @@ const AddContactForm = () => {
     const { ref } = useChatContext()
     const { action: addUser, error } = useForm(ref, API.ADD_CONTACT, REDIRECT.HOME)
 
+    /**
+     * Esta función es la encargada de ejecutar la función addUser
+     */
     const handleClick = async () => {
         await addUser()
     }

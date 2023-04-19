@@ -39,9 +39,9 @@ const friendships = [
 ]
 
 /**
- * Este componente es el encargado de mostrar el contenedor de chats
+ * Este componente es el encargado de mostrar el contenedor de relaciones entre usuario y contactos
  * @returns component
- * @example <ChatContainer />
+ * @example <FriendshipContainer />
  */
 const FriendshipContainer = () => {
     return (

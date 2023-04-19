@@ -20,6 +20,9 @@ const RegisterForm = () => {
     const { ref } = useChatContext()
     const { action: register, error } = useForm(ref, API.REGISTER, REDIRECT.LOGIN)
 
+    /**
+     * Esta función es la encargada de ejecutar la función register
+     */
     const handleClickInRegister = async () => {
         await register()
     }
