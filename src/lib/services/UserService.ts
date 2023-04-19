@@ -140,6 +140,10 @@ class UserService {
     async isTheContactAddedBy(email: string, contactEmail: string) {
         return await this.userRepository.existContactFrom(email, contactEmail)
     }
+
+    async getContactsFrom(email: string) {
+        return this.userRepository.getContactsFrom(email)
+    }
 }
 
 export { UserService }

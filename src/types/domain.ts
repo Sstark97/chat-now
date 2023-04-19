@@ -20,6 +20,9 @@ type Credentials = Record<"name" | "email" | "password", string> | undefined
  * @description Interface para definir el comportamiento de un repositorio de usuarios
  * @method findUserByEmail
  * @method createUser
+ * @method addContact
+ * @method existContactFrom
+ * @method getContactsFrom
  * @example
  * const userRepository: UserRepository = new UserPrismaRepository()
  */
@@ -28,6 +31,7 @@ interface UserRepository {
     createUser(credentials: Credentials): Promise<User>
     addContact(userEmail: string, contactInfo: ContactRequest): Promise<Contact>
     existContactFrom(userEmail: string, contactEmail: string): Promise<boolean>
+    getContactsFrom(userEmail: string): Promise<Contact[]>
 }
 
 /**

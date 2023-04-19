@@ -94,6 +94,16 @@ class UserPrismaRepository implements UserRepository {
 
         return !!contactExists
     }
+
+    async getContactsFrom(userEmail: string) {
+        const user = (await this.findUserByEmail(userEmail)) as User
+
+        return this.prisma.contact.findMany({
+            where: {
+                user_id: user.id,
+            },
+        })
+    }
 }
 
 export { UserPrismaRepository }
