@@ -95,7 +95,14 @@ class UserPrismaRepository implements UserRepository {
         return !!contactExists
     }
 
-    // get all user data from contacts of a singular user
+    /**
+     * @method existUserFrom
+     * @description Verifica si existe un usuario
+     * @param email
+     * @returns {Promise<boolean>}
+     * @example
+     * const userExists = await userPrismaRepository.existUserFrom(email)
+     */
     async getContactsFrom(userEmail: string) {
         const user = (await this.findUserByEmail(userEmail)) as User
 
@@ -108,15 +115,13 @@ class UserPrismaRepository implements UserRepository {
             },
         })
 
-        return allContacts.map((contact) => {
-            return {
-                id: contact.Contact.id,
-                name: contact.name,
-                email: contact.Contact.email,
-                image: contact.Contact.image,
-                status: contact.Contact.status,
-            }
-        })
+        return allContacts.map((contact) => ({
+            id: contact.Contact.id,
+            name: contact.name,
+            email: contact.Contact.email,
+            image: contact.Contact.image,
+            status: contact.Contact.status,
+        }))
     }
 }
 

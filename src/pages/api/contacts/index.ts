@@ -2,20 +2,17 @@ import { NextApiResponse } from "next"
 import { getSession } from "next-auth/react"
 import { UserFactory } from "@lib/factories/UserFactory"
 import type { ContactRequest } from "@customTypes/request"
-import type { ErrorResponse, Contacts } from "@customTypes/domain"
+import type { Contacts } from "@customTypes/domain"
 
 const userService = UserFactory.createUserService()
 
 /**
  * @description Manejador de la ruta /api/contacts/add
  * @param req {UserRequest}
- * @param res {NextApiResponse<UserResponse | ErrorResponse>}
+ * @param res {NextApiResponse<Contacts[]>}
  * @returns {Promise<void>}
  */
-export default async function handler(
-    req: ContactRequest,
-    res: NextApiResponse<Contacts[] | ErrorResponse>
-) {
+export default async function handler(req: ContactRequest, res: NextApiResponse<Contacts[]>) {
     if (req.method !== "GET") {
         res.status(405).end("Method not allowed")
     }
