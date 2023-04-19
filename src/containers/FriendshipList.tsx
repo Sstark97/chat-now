@@ -17,7 +17,7 @@ const FriendshipList = ({ friendships }: FriendshipListProps) => {
                     time={friendship.time}
                     message={friendship.message}
                     numMessages={friendship.numMessages}
-                    state={friendship.state}
+                    status={friendship.status}
                 />
             ))}
         </div>

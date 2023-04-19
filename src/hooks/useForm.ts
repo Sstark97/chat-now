@@ -14,6 +14,7 @@ interface UseForm {
  * @param ref {MutableRefObject<HTMLDivElement>}
  * @param endPoint {string}
  * @param redirect {string}
+ * @param callback {() => Promise<void>}
  * @returns {{action: (function(): Promise<void>), error: string}}
  * @example
  * const { action, error } = useForm(ref, endPoint, redirect)
@@ -21,7 +22,8 @@ interface UseForm {
 const useForm = (
     ref: MutableRefObject<HTMLDivElement>,
     endPoint: string,
-    redirect: string
+    redirect: string,
+    callback?: () => Promise<void>
 ): UseForm => {
     const [error, setError] = useState("")
     const router = useRouter()
@@ -34,6 +36,9 @@ const useForm = (
 
             if (userFromApi) {
                 setError("")
+                if (callback) {
+                    await callback()
+                }
                 await router.push(redirect)
             }
         } catch (error: unknown) {

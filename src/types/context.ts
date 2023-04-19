@@ -1,4 +1,5 @@
 import { MutableRefObject } from "react"
+import { Contacts } from "@customTypes/domain"
 
 /**
  * @interface Context
@@ -10,7 +11,9 @@ import { MutableRefObject } from "react"
 interface Context {
     ref: MutableRefObject<HTMLDivElement>
     error: boolean
+    contacts: Contacts[]
     handleSetErrorsInForm(): void
+    reloadContacts(): Promise<void>
 }
 
 export type { Context }

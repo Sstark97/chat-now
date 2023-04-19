@@ -140,6 +140,18 @@ class UserService {
     async isTheContactAddedBy(email: string, contactEmail: string) {
         return await this.userRepository.existContactFrom(email, contactEmail)
     }
+
+    /**
+     * @method getContactsFrom
+     * @description Obtiene los contactos de un usuario
+     * @param email
+     * @returns {Promise<Contacts[]>}
+     * @example
+     * const contacts = await userService.getContactsFrom(email)
+     */
+    async getContactsFrom(email: string) {
+        return this.userRepository.getContactsFrom(email)
+    }
 }
 
 export { UserService }
