@@ -37,11 +37,21 @@ const ChatProvider = ({ children }: ChildrenProps) => {
         }
     }, [status, contacts])
 
+    /**
+     * Este método es el encargado de comprobar si el formulario es válido
+     * @returns void
+     * @example handleSetErrorsInForm()
+     */
     const handleSetErrorsInForm = () => {
         const haveErrors = !isFormValid(ref.current)
         setError(haveErrors)
     }
 
+    /**
+     * Este método es el encargado de recargar los contactos
+     * @returns Promise<void>
+     * @example await reloadContacts()
+     */
     const reloadContacts = async () => {
         const data = await getFrom(API.GET_CONTACTS)
         setContacts(data)
