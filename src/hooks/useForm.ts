@@ -3,11 +3,21 @@ import { useRouter } from "next/router"
 import { getUserDataFrom } from "@lib/utils/user"
 import { postFrom } from "@lib/utils/fetcher"
 
+// TODO: mover a su fichero correspondiente
 interface UseForm {
     action: () => Promise<void>
     error: string
 }
 
+/**
+ * @description Hook para controlar los inputs
+ * @param ref {MutableRefObject<HTMLDivElement>}
+ * @param endPoint {string}
+ * @param redirect {string}
+ * @returns {{action: (function(): Promise<void>), error: string}}
+ * @example
+ * const { action, error } = useForm(ref, endPoint, redirect)
+ */
 const useForm = (
     ref: MutableRefObject<HTMLDivElement>,
     endPoint: string,

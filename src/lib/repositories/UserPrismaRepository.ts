@@ -46,6 +46,15 @@ class UserPrismaRepository implements UserRepository {
         })
     }
 
+    /**
+     * @method addContact
+     * @description Agrega un contacto a un usuario
+     * @param userEmail
+     * @param contactInfo
+     * @returns {Promise<Contact>}
+     * @example
+     * const newContact = await userPrismaRepository.addContact(userEmail, contactInfo)
+     */
     async addContact(userEmail: string, contactInfo: ContactRequest) {
         const user = (await this.findUserByEmail(userEmail)) as User
         const contact = (await this.findUserByEmail(contactInfo.email)) as User

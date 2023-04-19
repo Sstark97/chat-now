@@ -11,6 +11,10 @@ import { API } from "@lib/constants/links"
 
 const prisma = new PrismaClient()
 
+/**
+ * @description Configuración de NextAuth
+ * @type {NextAuthOptions}
+ */
 const options: NextAuthOptions = {
     theme: {
         colorScheme: "light",

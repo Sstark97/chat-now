@@ -3,8 +3,7 @@ import type { ButtonProps } from "@customTypes/components"
 
 /**
  * Este componente es el encargado de mostrar un botón
- * @param {string} value
- * @param {function} action
+ * @param {ButtonProps} { value, action } - value: texto del botón, action: función a ejecutar al hacer click
  * @returns component
  * @example <Button value="Iniciar sesión" action={login}/>
  */

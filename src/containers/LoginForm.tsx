@@ -19,6 +19,9 @@ const LoginForm = () => {
     const { ref } = useChatContext()
     const { login, error } = useLogin(ref)
 
+    /**
+     * Esta función es la encargada de ejecutar la función login
+     */
     const handleClick = async () => {
         await login()
     }

@@ -36,6 +36,12 @@ const checkErrorsInRegisterFrom = async (req: UserRequest, res: NextApiResponse<
     return response
 }
 
+/**
+ * @description Manejador de la ruta /api/auth/user/register
+ * @param req {UserRequest}
+ * @param res {NextApiResponse<UserResponse | ErrorResponse>}
+ * @returns {Promise<void>}
+ */
 export default async function handler(
     req: UserRequest,
     res: NextApiResponse<UserResponse | ErrorResponse>

@@ -33,8 +33,10 @@ interface InputError {
  * @property {string} placeholder - Input placeholder
  * @property {string} name - Nombre del input
  * @property {ReactNode} children - Input children
- * @property {InputError} validate - Validación del input
+ * @property {InputError} errorManager - Gestor de errores del input
  * @property {string} location - Ubicación del input
+ * @property {string} className - Clase del input
+ * @property {string} errorClassName - Clase del error del input
  */
 interface InputProps {
     type: string
@@ -48,12 +50,12 @@ interface InputProps {
 }
 
 /**
- * @interface ChatProps
- * @description Propiedades del componente Chat
+ * @interface FriendshipProps
+ * @description Propiedades del componente Friendship
  * @property {string} name - Nombre del usuario
- * @property {string} time - Hora del mensaje
- * @property {string} message - Mensaje
- * @property {number} numMessages - Número de mensajes
+ * @property {string} time - Hora del último mensaje
+ * @property {string} message - Último mensaje
+ * @property {number} numMessages - Número de mensajes sin leer
  * @property {string} state - Estado del usuario
  */
 interface FriendshipProps {
@@ -90,6 +92,9 @@ interface ButtonProps {
 }
 
 /**
+ * @interface NavBarProps
+ * @description Propiedades del componente NavBar
+ * @property {string} type - Tipo de NavBar
  */
 interface NavBarProps {
     type?: string

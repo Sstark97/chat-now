@@ -9,7 +9,7 @@ import { NextApiRequest } from "next"
  * @example
  * const userRequest: UserRequest = {
  *   name: "John Doe",
- *   email: "email: "jhon@example.com",
+ *   email: "jhon@example.com",
  *   password: "123456"
  *   }
  */
@@ -21,6 +21,17 @@ interface UserRequest extends NextApiRequest {
     }
 }
 
+/**
+ * @interface ContactRequest
+ * @description Propiedades de la petición de un contacto
+ * @property {string} name - Nombre del contacto
+ * @property {string} email - Email del contacto
+ * @example
+ * const contactRequest: ContactRequest = {
+ * name: "John Doe",
+ * email: "jhon@example.com"
+ * }
+ */
 interface ContactRequest extends NextApiRequest {
     body: {
         name: string

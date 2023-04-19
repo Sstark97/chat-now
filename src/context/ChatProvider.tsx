@@ -6,7 +6,7 @@ const ChatContext = createContext<Context>({} as Context)
 
 /**
  * Este componente es el encargado de proveer el contexto de la aplicación
- * @param children
+ * @param {ChildrenProps} { children } - children: componente a mostrar
  * @returns component
  * @example <ChatProvider>children</ChatProvider>
  */

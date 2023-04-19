@@ -5,8 +5,8 @@ import { NavBarProps } from "@customTypes/components"
 import { MdArrowBackIosNew } from "react-icons/md"
 
 /**
- * Este componente se encarga de crear la barra de navegacion
- * @param type
+ * Este componente se encarga de crear la barra de navegación
+ * @param {NavBarProps} { type } - type: tipo de barra de navegación
  * @returns component
  * @example <NavBar type="normal" />
  */

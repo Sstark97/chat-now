@@ -1,5 +1,7 @@
 /**
- * Est
+ * Este componente es el encargado de mostrar el chat en la versión desktop
+ * @returns component
+ * @example <ChatDesktop />
  */
 const ChatDesktop = () => (
     <>

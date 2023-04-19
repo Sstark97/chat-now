@@ -3,7 +3,7 @@ import type { AuthHeaderProps } from "@customTypes/components"
 
 /**
  * Este componente es el encargado de mostrar el logo, el título y el subtítulo de la página de autenticación
- * @param {string} title
+ * @param {AuthHeaderProps} { title } - title: título de la página
  * @returns component
  * @example <AuthHeader title="Iniciar sesión" />
  */

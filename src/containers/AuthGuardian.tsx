@@ -6,7 +6,7 @@ import { REDIRECT } from "@lib/constants/links"
 
 /**
  * Este componente es el encargado de proteger las rutas de autenticación
- * @param {ChildrenProps} children
+ * @param {ChildrenProps} { children } - children: componente a mostrar
  * @returns component
  * @example <AuthGuardian><LoginForm /></AuthGuardian>
  */

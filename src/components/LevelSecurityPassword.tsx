@@ -1,6 +1,12 @@
 import useLevelOfSecurity from "@hooks/useLevelOfSecurity"
 import type { LevelOfSecurityProps } from "@customTypes/components"
 
+/**
+ * Este componente es el encargado de mostrar el nivel de seguridad de la contraseña
+ * @param {LevelOfSecurityProps} { password } - password: contraseña
+ * @returns component
+ * @example <LevelSecurityPassword password={password} />
+ */
 const LevelSecurityPassword = ({ password }: LevelOfSecurityProps) => {
     const passwordHaveTheNecessaryLength = password.length >= 6 && password.length <= 40
     const generalClass = "w-[30%] rounded-lg"
