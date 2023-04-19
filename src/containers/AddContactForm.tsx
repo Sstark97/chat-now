@@ -15,7 +15,7 @@ import InputWithIcon from "@components/InputWithIcon"
  */
 const AddContactForm = () => {
     const { ref } = useChatContext()
-    const { action: addUser, error } = useForm(ref, API.ADD_CONTACT, REDIRECT.HOME)
+    const { action: addUser, error } = useForm(ref, API.ADD_CONTACT, REDIRECT.CONTACTS)
 
     /**
      * Esta función es la encargada de ejecutar la función addUser

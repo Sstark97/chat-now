@@ -7,9 +7,9 @@ import { STATE_COLORS } from "@lib/constants/securityPassword"
  * @returns component
  * @example <Friendship name="Juan" time="12:00" message="Hola" numMessages={2} state="online" />
  */
-const Friendship = ({ name, time, message, numMessages, state }: FriendshipProps) => {
+const Friendship = ({ name, time, message, numMessages, status }: FriendshipProps) => {
     const stateStyle = "h-[.8rem] w-[.8rem] ml-3 rounded-full"
-    const color = STATE_COLORS[state as keyof typeof STATE_COLORS]
+    const color = STATE_COLORS[status as keyof typeof STATE_COLORS]
 
     return (
         <>

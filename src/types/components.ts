@@ -63,7 +63,7 @@ interface FriendshipProps {
     time?: string
     message?: string
     numMessages?: number
-    state: string
+    status: string
 }
 
 /**

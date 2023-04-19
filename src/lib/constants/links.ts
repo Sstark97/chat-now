@@ -26,6 +26,7 @@ enum API {
 enum REDIRECT {
     HOME = "/",
     LOGIN = "/login",
+    CONTACTS = "/contacts",
 }
 
 /**
@@ -44,6 +45,7 @@ enum NAVBAR_TITLES {
     MY_ACCOUNT = "Mi cuenta",
 }
 
+// noinspection JSValidateJSDoc
 /**
  * @description Objeto con los links de la barra de navegación
  * @constant
