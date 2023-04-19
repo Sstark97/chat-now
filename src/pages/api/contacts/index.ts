@@ -17,13 +17,13 @@ export default async function handler(
     res: NextApiResponse<Contacts[] | ErrorResponse>
 ) {
     if (req.method !== "GET") {
-        res.status(405).end()
+        res.status(405).end("Method not allowed")
     }
 
     const session = await getSession({ req })
 
     if (!session) {
-        return res.status(401).end()
+        return res.status(401).end("Unauthorized")
     }
 
     const userEmail = session?.user?.email as string
