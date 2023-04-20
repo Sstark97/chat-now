@@ -1,6 +1,6 @@
 import ChatHeader from "@containers/ChatHeader"
 import MessageInput from "@components/MessageInput"
-import MessageList from "@components/MessageList"
+import MessageList from "@containers/MessageList"
 
 const messages = [
     {
@@ -8,28 +8,28 @@ const messages = [
         texto: "holi",
         date: "22/01/2020",
         senderId: "2",
-        reciberId: "1",
+        receiverId: "clgnzhz4o0000u0zwvdhffphl",
     },
     {
         id: "3",
         texto: "hol1111111",
         date: "22/01/2020",
         senderId: "2",
-        reciberId: "1",
+        receiverId: "clgnzhz4o0000u0zwvdhffphl",
     },
     {
         id: "4",
         texto: "holfdfdfdf",
         date: "22/01/2020",
-        senderId: "1",
-        reciberId: "2",
+        senderId: "clgnzhz4o0000u0zwvdhffphl",
+        receiverId: "2",
     },
     {
         id: "5",
         texto: "holfffff",
         date: "22/01/2020",
-        senderId: "1",
-        reciberId: "2",
+        senderId: "clgnzhz4o0000u0zwvdhffphl",
+        receiverId: "2",
     },
 ]
 
