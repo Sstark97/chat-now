@@ -59,6 +59,7 @@ interface InputProps {
  * @property {string} state - Estado del usuario
  */
 interface FriendshipProps {
+    id: string
     name: string
     time?: string
     message?: string

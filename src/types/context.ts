@@ -12,8 +12,10 @@ interface Context {
     ref: MutableRefObject<HTMLDivElement>
     error: boolean
     contacts: Contacts[]
+    selectedChat: Contacts
     handleSetErrorsInForm(): void
     reloadContacts(): Promise<void>
+    handleOpenChat(id: string): void
 }
 
 export type { Context }
