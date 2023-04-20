@@ -3,7 +3,7 @@ import MessageInput from "@components/MessageInput"
 
 const OpenChat = () => {
     return (
-        <div className="relative h-screen">
+        <div className="relative w-full h-screen">
             <ChatHeader />
             <MessageInput />
         </div>
