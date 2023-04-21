@@ -16,7 +16,9 @@ const Contacts = () => {
     return (
         <ChatLayout>
             <div className="flex h-screen">
-                <div className="w-full lg:w-[28%] relative hidden lg:block">
+                <div
+                    className={`w-full lg:w-[28%] relative ${isChatOpen ? "hidden" : ""} lg:block`}
+                >
                     <NavBar />
                     <Searcher />
                     <Link

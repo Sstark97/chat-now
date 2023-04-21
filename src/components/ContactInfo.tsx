@@ -4,12 +4,18 @@ import Image from "next/image"
 import { MdArrowBackIosNew } from "react-icons/md"
 
 const ContactInfo = () => {
-    const { selectedChat } = useContext(ChatContext)
+    const { selectedChat, handleCloseChat } = useContext(ChatContext)
     const { image, name, status } = selectedChat
+
+    const closeChat = () => {
+        handleCloseChat()
+    }
 
     return (
         <div className="flex items-center">
-            <MdArrowBackIosNew className="font-extrabold text-xl lg:hidden mr-3" />
+            <button onClick={closeChat}>
+                <MdArrowBackIosNew className="font-extrabold text-xl lg:hidden mr-3" />
+            </button>
             {image ? (
                 <Image src={image} alt={name} width={75} height={75} />
             ) : (

@@ -63,6 +63,10 @@ const ChatProvider = ({ children }: ChildrenProps) => {
         setSelectedChat(chat)
     }
 
+    const handleCloseChat = () => {
+        setSelectedChat({} as Contacts)
+    }
+
     return (
         <Provider
             value={{
@@ -73,6 +77,7 @@ const ChatProvider = ({ children }: ChildrenProps) => {
                 handleSetErrorsInForm,
                 reloadContacts,
                 handleOpenChat,
+                handleCloseChat,
             }}
         >
             {children}

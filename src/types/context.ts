@@ -16,6 +16,7 @@ interface Context {
     handleSetErrorsInForm(): void
     reloadContacts(): Promise<void>
     handleOpenChat(id: string): void
+    handleCloseChat(): void
 }
 
 export type { Context }
