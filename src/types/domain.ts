@@ -1,4 +1,4 @@
-import { User, Contact, Status } from "@prisma/client"
+import { Contact, Status, User } from "@prisma/client"
 
 /**
  * @typedef Credentials
@@ -113,6 +113,14 @@ interface ErrorResponse {
     message: string
 }
 
+interface Messages {
+    id: string
+    text: string
+    date: string
+    senderId: string
+    receiverId: string
+}
+
 export type {
     Credentials,
     User,
@@ -122,4 +130,5 @@ export type {
     ContactRequest,
     ErrorResponse,
     Contacts,
+    Messages,
 }

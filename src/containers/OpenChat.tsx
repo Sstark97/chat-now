@@ -1,6 +1,7 @@
 import ChatHeader from "@containers/ChatHeader"
 import MessageInput from "@components/MessageInput"
 import MessageList from "@containers/MessageList"
+import { OpenChatProps } from "@customTypes/containers"
 
 const messages = [
     {
@@ -26,7 +27,7 @@ const messages = [
     },
 ]
 
-const OpenChat = ({ className }: any) => {
+const OpenChat = ({ className }: OpenChatProps) => {
     return (
         <div className={`w-full h-screen ${className}`}>
             <ChatHeader />

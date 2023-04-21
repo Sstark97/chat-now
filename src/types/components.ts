@@ -139,6 +139,12 @@ interface NavBarLinks {
     icon: IconType
 }
 
+interface MessageProps {
+    receiverId: string
+    text: string
+    date: string
+}
+
 export type {
     ErrorProps,
     InputError,
@@ -151,4 +157,5 @@ export type {
     FriendshipProps,
     NavBarLinks,
     NavBarProps,
+    MessageProps,
 }
