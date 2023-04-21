@@ -7,13 +7,18 @@ import FriendshipList from "@containers/FriendshipList"
 import Link from "next/link"
 import { AiOutlinePlus } from "react-icons/ai"
 import { ChatContext } from "@context/ChatProvider"
+import OpenChat from "@containers/OpenChat"
 
 const Contacts = () => {
-    const { contacts: friendships } = useContext(ChatContext)
+    const { contacts: friendships, selectedChat } = useContext(ChatContext)
+    const isChatOpen = Object.keys(selectedChat).length !== 0
+
     return (
         <ChatLayout>
             <div className="flex h-screen">
-                <div className="w-full lg:w-[28%] relative">
+                <div
+                    className={`w-full lg:w-[28%] relative ${isChatOpen ? "hidden" : ""} lg:block`}
+                >
                     <NavBar />
                     <Searcher />
                     <Link
@@ -28,7 +33,15 @@ const Contacts = () => {
                         <FriendshipList friendships={friendships} />
                     )}
                 </div>
-                <ChatDesktop />
+
+                {isChatOpen ? (
+                    <>
+                        <OpenChat className="lg:hidden" />
+                        <ChatDesktop />
+                    </>
+                ) : (
+                    <></>
+                )}
             </div>
         </ChatLayout>
     )

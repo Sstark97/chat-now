@@ -52,14 +52,18 @@ const Input = ({
                 >
                     Generar contraseña aleatoria
                 </button>
-            ) : null}
+            ) : (
+                <></>
+            )}
             {error ? (
                 <Error
                     className={`text-busy text-sm mt-1 opacity-60 ${errorClassName} self-end`}
                     message={error}
                 />
-            ) : null}
-            {location === "register" ? <LevelSecurityPassword password={password} /> : null}
+            ) : (
+                <></>
+            )}
+            {location === "register" ? <LevelSecurityPassword password={password} /> : <></>}
         </>
     )
 }

@@ -1,5 +1,7 @@
-import type { FriendshipProps } from "@customTypes/components"
+import { useContext } from "react"
 import { STATE_COLORS } from "@lib/constants/securityPassword"
+import { ChatContext } from "@context/ChatProvider"
+import type { FriendshipProps } from "@customTypes/components"
 
 /**
  * Este componente es el encargado de mostrar una relación entre usuario y contacto
@@ -7,13 +9,24 @@ import { STATE_COLORS } from "@lib/constants/securityPassword"
  * @returns component
  * @example <Friendship name="Juan" time="12:00" message="Hola" numMessages={2} state="online" />
  */
-const Friendship = ({ name, time, message, numMessages, status }: FriendshipProps) => {
+const Friendship = ({ id, name, time, message, numMessages, status }: FriendshipProps) => {
     const stateStyle = "h-[.8rem] w-[.8rem] ml-3 rounded-full"
     const color = STATE_COLORS[status as keyof typeof STATE_COLORS]
+    const { handleOpenChat } = useContext(ChatContext)
+
+    const handleClick = () => {
+        handleOpenChat(id)
+    }
 
     return (
         <>
-            <div className="w-full mb-4 mx-auto flex items-center">
+            <div
+                className="w-full mb-4 mx-auto flex items-center"
+                onClick={handleClick}
+                onKeyDown={handleClick}
+                role="button"
+                tabIndex={0}
+            >
                 <div className="w-2/12 p-2">
                     <div className="w-[3rem] h-[3rem] bg-secondary rounded-full"></div>
                 </div>
@@ -32,9 +45,13 @@ const Friendship = ({ name, time, message, numMessages, status }: FriendshipProp
                                 <div className="h-[1.3rem] w-[1.3rem] flex items-center justify-center bg-light_purple rounded-full">
                                     <p className="text-xs text-white">{numMessages}</p>
                                 </div>
-                            ) : null}
+                            ) : (
+                                <></>
+                            )}
                         </div>
-                    ) : null}
+                    ) : (
+                        <></>
+                    )}
                 </div>
             </div>
         </>

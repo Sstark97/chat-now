@@ -1,4 +1,5 @@
 import { FriendshipProps } from "@customTypes/components"
+import { Messages } from "@customTypes/domain"
 
 /**
  * @interface FriendshipListProps
@@ -9,4 +10,22 @@ interface FriendshipListProps {
     friendships: FriendshipProps[]
 }
 
-export type { FriendshipListProps }
+/**
+ * @interface MessageListProps
+ * @description Propiedades del componente MessageList
+ * @property {Array<Messages>} Messages - Lista de mensajes
+ */
+interface MessageListProps {
+    messages: Messages[]
+}
+
+/**
+ * @interface OpenChatProps
+ * @description Propiedades del componente OpenChat
+ * @property {string} className - Clase del componente
+ */
+interface OpenChatProps {
+    className?: string
+}
+
+export type { FriendshipListProps, MessageListProps, OpenChatProps }

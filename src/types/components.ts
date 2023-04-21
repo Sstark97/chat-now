@@ -59,6 +59,7 @@ interface InputProps {
  * @property {string} state - Estado del usuario
  */
 interface FriendshipProps {
+    id: string
     name: string
     time?: string
     message?: string
@@ -138,6 +139,19 @@ interface NavBarLinks {
     icon: IconType
 }
 
+/**
+ * @interface MessageProps
+ * @description Propiedades del componente Message
+ * @property {string} receiverId - Id del receptor
+ * @property {string} text - Texto del mensaje
+ * @property {string} date - Fecha del mensaje
+ */
+interface MessageProps {
+    receiverId: string
+    text: string
+    date: string
+}
+
 export type {
     ErrorProps,
     InputError,
@@ -150,4 +164,5 @@ export type {
     FriendshipProps,
     NavBarLinks,
     NavBarProps,
+    MessageProps,
 }

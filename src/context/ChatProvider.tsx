@@ -21,6 +21,7 @@ const ChatProvider = ({ children }: ChildrenProps) => {
     const ref = useRef<HTMLDivElement>() as MutableRefObject<HTMLDivElement>
     const [error, setError] = useState<boolean>(true)
     const [contacts, setContacts] = useState<Contacts[]>([])
+    const [selectedChat, setSelectedChat] = useState<Contacts>({} as Contacts)
     const { status } = useSession()
 
     useEffect(() => {
@@ -57,8 +58,28 @@ const ChatProvider = ({ children }: ChildrenProps) => {
         setContacts(data)
     }
 
+    const handleOpenChat = (id: string) => {
+        const chat = contacts.find((contact) => contact.id === id) as Contacts
+        setSelectedChat(chat)
+    }
+
+    const handleCloseChat = () => {
+        setSelectedChat({} as Contacts)
+    }
+
     return (
-        <Provider value={{ ref, error, contacts, handleSetErrorsInForm, reloadContacts }}>
+        <Provider
+            value={{
+                ref,
+                error,
+                contacts,
+                selectedChat,
+                handleSetErrorsInForm,
+                reloadContacts,
+                handleOpenChat,
+                handleCloseChat,
+            }}
+        >
             {children}
         </Provider>
     )
