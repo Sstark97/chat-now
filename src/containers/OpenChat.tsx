@@ -27,6 +27,12 @@ const messages = [
     },
 ]
 
+/**
+ * Este componente es el encargado de mostrar el chat abierto
+ * @param className
+ * @component
+ * @example <OpenChat />
+ */
 const OpenChat = ({ className }: OpenChatProps) => {
     return (
         <div className={`w-full h-screen ${className}`}>

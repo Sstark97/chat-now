@@ -1,6 +1,14 @@
 import { useSession } from "next-auth/react"
 import { MessageProps } from "@customTypes/components"
 
+/**
+ * Este componente es el encargado de mostrar un mensaje
+ * @param receiverId
+ * @param text
+ * @param date
+ * @component
+ * @example <Message  receiverId={receiverId} text={text} date={date} />
+ */
 const Message = ({ receiverId, text, date }: MessageProps) => {
     const { data: session } = useSession()
     const isReceiver = receiverId === session?.user.id

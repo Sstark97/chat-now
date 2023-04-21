@@ -1,5 +1,10 @@
 import { BsSendFill } from "react-icons/bs"
 
+/**
+ * Este componente es el encargado de mostrar el input para enviar mensajes
+ * @component
+ * @example <MessageInput />
+ */
 const MessageInput = () => {
     return (
         <div className="w-full lg:w-[72%] p-4 px-7 flex items-center justify-between fixed bottom-0 bg-primary lg:bg-secondary">

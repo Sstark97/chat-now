@@ -27,7 +27,9 @@ const LevelSecurityPassword = ({ password }: LevelOfSecurityProps) => {
                         <div className={`${generalClass} bg-${bgThirdLevel}`}></div>
                     </div>
                 </div>
-            ) : null}
+            ) : (
+                <></>
+            )}
         </>
     )
 }

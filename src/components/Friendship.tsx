@@ -45,9 +45,13 @@ const Friendship = ({ id, name, time, message, numMessages, status }: Friendship
                                 <div className="h-[1.3rem] w-[1.3rem] flex items-center justify-center bg-light_purple rounded-full">
                                     <p className="text-xs text-white">{numMessages}</p>
                                 </div>
-                            ) : null}
+                            ) : (
+                                <></>
+                            )}
                         </div>
-                    ) : null}
+                    ) : (
+                        <></>
+                    )}
                 </div>
             </div>
         </>
