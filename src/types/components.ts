@@ -139,6 +139,13 @@ interface NavBarLinks {
     icon: IconType
 }
 
+/**
+ * @interface MessageProps
+ * @description Propiedades del componente Message
+ * @property {string} receiverId - Id del receptor
+ * @property {string} text - Texto del mensaje
+ * @property {string} date - Fecha del mensaje
+ */
 interface MessageProps {
     receiverId: string
     text: string

@@ -113,6 +113,15 @@ interface ErrorResponse {
     message: string
 }
 
+/**
+ * @interface Messages
+ * @description Interface para definir la respuesta de un mensaje
+ * @property {string} id - ID del mensaje
+ * @property {string} text - Texto del mensaje
+ * @property {string} date - Fecha del mensaje
+ * @property {string} senderId - ID del usuario que envía el mensaje
+ * @property {string} receiverId - ID del usuario que recibe el mensaje
+ */
 interface Messages {
     id: string
     text: string
