@@ -28,12 +28,16 @@ module.exports = {
                 light_purple: "#BC8FCC",
                 icon: "#252525",
                 secondary_text: "#747474",
+                light_green: "#68CA8F",
+                light_blue: "#89C0E8",
 
                 dark_primary: "#363636",
                 dark_secondary: "#252525",
                 dark_purple: "#A151BD",
                 dark_secondary_text: "#AFAFAF",
                 dark_icon: "#D9D9D9",
+                dark_green: "#33B266",
+                dark_blue: "#4595CF",
 
                 online: "#44DD1D",
                 busy: "#CE261B",

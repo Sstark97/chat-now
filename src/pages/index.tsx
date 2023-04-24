@@ -1,6 +1,6 @@
 import ChatLayout from "@layouts/ChatLayout"
 // import FriendshipContainer from "@containers/FriendshipContainer"
-import PrincipalImage from "@components/LandingPage/PrincipalImage"
+import Boxs from "@components/LandingPage/Boxs"
 
 // const Home = () => (
 //     <ChatLayout>
@@ -10,7 +10,7 @@ import PrincipalImage from "@components/LandingPage/PrincipalImage"
 
 const Home = () => (
     <ChatLayout>
-        <PrincipalImage />
+        <Boxs />
     </ChatLayout>
 )
 
