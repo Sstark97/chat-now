@@ -1,6 +1,6 @@
 import ChatLayout from "@layouts/ChatLayout"
 // import FriendshipContainer from "@containers/FriendshipContainer"
-import Boxs from "@components/LandingPage/Boxs"
+import Footer from "@components/LandingPage/Footer"
 
 // const Home = () => (
 //     <ChatLayout>
@@ -10,7 +10,7 @@ import Boxs from "@components/LandingPage/Boxs"
 
 const Home = () => (
     <ChatLayout>
-        <Boxs />
+        <Footer />
     </ChatLayout>
 )
 
