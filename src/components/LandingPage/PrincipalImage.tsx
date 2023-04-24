@@ -2,6 +2,11 @@ import Image from "next/image"
 import Link from "next/link"
 import { useEffect, useState } from "react"
 
+/**
+ * Este componente se encarga de mostrar la imagen principal de la landing page
+ * @returns component
+ * @example <PrincipalImage />
+ */
 const PrincipalImage = () => {
     const [text, setText] = useState("cuando")
 

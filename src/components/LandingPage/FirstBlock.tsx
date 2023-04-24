@@ -1,5 +1,10 @@
 import Image from "next/image"
 
+/**
+ * Este componente se encarga de mostrar la primera sección de la landing page
+ * @returns component
+ * @example <FirstBlock />
+ */
 const FirstBlock = () => {
     return (
         <div className="mx-auto w-[80%] relative mb-8">

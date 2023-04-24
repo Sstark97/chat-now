@@ -1,5 +1,10 @@
 import { FaFacebookF, FaInstagram, FaLinkedinIn, FaTwitter } from "react-icons/fa"
 
+/**
+ * Este componente contiene el footer de la página de inicio.
+ * @returns component
+ * @example <Footer />
+ */
 const Footer = () => {
     return (
         <div className="w-full bg-secondary p-7 lg:py-9">

@@ -3,6 +3,11 @@ import { AiFillFile } from "react-icons/ai"
 import { BsCameraVideoFill } from "react-icons/bs"
 import { IoMdPlay } from "react-icons/io"
 
+/**
+ * Este componente contiene los 3 bloques de la sección de "Características" de la página de inicio.
+ * @returns component
+ * @example <Boxs />
+ */
 const Boxs = () => {
     return (
         <>
