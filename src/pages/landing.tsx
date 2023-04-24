@@ -12,7 +12,7 @@ const Landing = () => (
             alt="logo"
             width={250}
             height={500}
-            className="w-[3rem] ml-5 mt-3 rounded-xl object-cover"
+            className="w-[3rem] lg:w-[4rem] ml-5 mt-3 rounded-xl object-cover"
         />
 
         <PrincipalImage />
