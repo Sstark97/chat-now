@@ -1,5 +1,5 @@
 import Boxs from "@components/LandingPage/Boxs"
-import FirstBlock from "@components/LandingPage/FirstBlock"
+import ExampleChats from "@components/LandingPage/ExampleChats"
 import Footer from "@components/LandingPage/Footer"
 import PrincipalImage from "@components/LandingPage/PrincipalImage"
 import ChatLayout from "@layouts/ChatLayout"
@@ -16,7 +16,7 @@ const Landing = () => (
         />
 
         <PrincipalImage />
-        <FirstBlock />
+        <ExampleChats />
         <Boxs />
         <Footer />
     </ChatLayout>
