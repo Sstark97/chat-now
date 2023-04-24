@@ -20,7 +20,7 @@ const Hero = () => {
             />
             <div className="w-full absolute bottom-10 left-0 lg:bottom-28 lg:pl-32 text-white text-center lg:text-left">
                 <h1 className="text-4xl lg:text-6xl">Contacta</h1>
-                <div className="flex text-2xl h-10 lg:text-4xl mb-6 lg:mb-10">
+                <div className="flex justify-center lg:justify-start text-2xl h-10 lg:text-4xl mb-6 lg:mb-10">
                     <div className="overflow-hidden">
                         <ul className="animate-change">
                             {OPTIONS.map((option) => (
@@ -30,7 +30,7 @@ const Hero = () => {
                             ))}
                         </ul>
                     </div>
-                    <p>quieras</p>
+                    <p className="mt-1 lg:mt-0">quieras</p>
                 </div>
                 <Link
                     href="/src/pages/login"
