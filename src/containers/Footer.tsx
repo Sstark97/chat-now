@@ -17,7 +17,7 @@ const Footer = () => {
                     return (
                         <li
                             key={Icon.name}
-                            className="bg-primary rounded-full border border-black p-2 lg:p-3"
+                            className="bg-primary bg-opacity-60 rounded-full border border-black p-2 lg:p-3"
                         >
                             <Icon />
                         </li>
