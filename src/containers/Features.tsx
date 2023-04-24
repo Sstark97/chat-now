@@ -1,18 +1,20 @@
-import Image from "next/image"
 import { AiFillFile } from "react-icons/ai"
 import { BsCameraVideoFill } from "react-icons/bs"
 import { IoMdPlay } from "react-icons/io"
+import Image from "next/image"
+import Feature from "@components/Feature"
+import { FEATURE_HEADER, FEATURE_DESCRIPTION } from "@lib/constants/landing"
 
 /**
  * Este componente contiene los 3 bloques de la sección de "Características" de la página de inicio.
  * @returns component
  * @example <Boxs />
  */
-const Boxs = () => {
+const Features = () => {
     return (
         <>
             <div className="mx-auto w-[85%] lg:w-[95%] mb-14 lg:flex lg:justify-between">
-                <div className="lg:w-[31%] bg-secondary rounded-xl p-4 lg:p-6 mb-6 shadow-xl">
+                <Feature header={FEATURE_HEADER.SHARE} description={FEATURE_DESCRIPTION.SHARE}>
                     <div className="w-1/2 flex items-center p-1 lg:p-2 border border-black bg-primary rounded-lg mb-2">
                         <AiFillFile className="text-xl lg:text-2xl" />
                         <div className="w-[90%] pl-2">
@@ -36,19 +38,9 @@ const Boxs = () => {
                         height={500}
                         className="w-1/2 h-[6rem] lg:h-[10rem] ml-[50%] object-cover border border-black rounded-lg mb-4 lg:mb-5"
                     />
+                </Feature>
 
-                    <div className="w-[85%] mx-auto text-center">
-                        <h1 className="text-xl lg:text-3xl font-bold mb-1 lg:mb-2">
-                            Comparte lo que quieras
-                        </h1>
-                        <p className="text-xs lg:text-base">
-                            Envía y recibe mensajes, notas de voz, vídeos, GIFs y archivos, de
-                            manera gratuita. cuando y donde quieras.
-                        </p>
-                    </div>
-                </div>
-
-                <div className="w-full lg:w-[31%] bg-secondary rounded-xl p-4 lg:p-6 relative mb-6 shadow-xl">
+                <Feature header={FEATURE_HEADER.SPEAK} description={FEATURE_DESCRIPTION.SPEAK}>
                     <BsCameraVideoFill className="text-3xl lg:text-5xl p-1 lg:p-2 bg-light_purple border border-black rounded-full absolute top-7 left-[5.4rem] lg:top-9 lg:left-[8.2rem]" />
 
                     <Image
@@ -66,19 +58,12 @@ const Boxs = () => {
                         height={500}
                         className="w-[13%] h-[3.5rem] lg:h-[5rem] object-cover border border-black rounded-lg absolute top-20 right-[4.6rem] lg:top-44 lg:right-[7.8rem]"
                     />
+                </Feature>
 
-                    <div className="w-[90%] mx-auto text-center">
-                        <h1 className="text-xl lg:text-3xl font-bold mb-1 lg:mb-2">
-                            Habla con libertad
-                        </h1>
-                        <p className="text-xs lg:text-base">
-                            Haz llamadas y videollamas de gran calidad con aquellas personas que
-                            vivan lejos de ti.
-                        </p>
-                    </div>
-                </div>
-
-                <div className="w-full lg:w-[31%] bg-secondary rounded-xl p-4 relative mb-6 shadow-xl">
+                <Feature
+                    header={FEATURE_HEADER.COMMUNITY}
+                    description={FEATURE_DESCRIPTION.COMMUNITY}
+                >
                     <div className="w-full flex mb-4">
                         <Image
                             src="/ImgPerson1.jpg"
@@ -114,20 +99,10 @@ const Boxs = () => {
                             <div className="w-full h-[4rem] bg-light_blue rounded-xl border border-black"></div>
                         </div>
                     </div>
-
-                    <div className="w-[90%] mx-auto text-center">
-                        <h1 className="text-xl lg:text-3xl font-bold mb-1 lg:mb-2">
-                            Únete a comunidades
-                        </h1>
-                        <p className="text-xs lg:text-base">
-                            Conéctate con cientos de personas que compartan tus mismos gustos y
-                            aficiones.
-                        </p>
-                    </div>
-                </div>
+                </Feature>
             </div>
         </>
     )
 }
 
-export default Boxs
+export default Features

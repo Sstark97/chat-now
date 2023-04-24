@@ -1,9 +1,9 @@
-import Boxs from "@components/LandingPage/Boxs"
-import ExampleChats from "@components/LandingPage/ExampleChats"
-import Footer from "@components/LandingPage/Footer"
-import PrincipalImage from "@components/LandingPage/PrincipalImage"
-import ChatLayout from "@layouts/ChatLayout"
 import Image from "next/image"
+import Features from "@containers/Features"
+import ExampleChats from "@components/ExampleChats"
+import Footer from "@containers/Footer"
+import Hero from "@components/Hero"
+import ChatLayout from "@layouts/ChatLayout"
 
 const Landing = () => (
     <ChatLayout>
@@ -15,9 +15,9 @@ const Landing = () => (
             className="w-[3rem] lg:w-[4rem] ml-5 mt-3 rounded-xl object-cover"
         />
 
-        <PrincipalImage />
+        <Hero />
         <ExampleChats />
-        <Boxs />
+        <Features />
         <Footer />
     </ChatLayout>
 )

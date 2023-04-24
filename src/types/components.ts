@@ -48,7 +48,7 @@ interface InputProps {
 }
 
 /**
- * @interface ChatProps
+ * @interface FriendshipProps
  * @description Propiedades del componente Chat
  * @property {string} name - Nombre del usuario
  * @property {string} time - Hora del mensaje
@@ -133,6 +133,26 @@ interface NavBarLinks {
     icon: IconType
 }
 
+/**
+ * @interface RenderByMap
+ * @description Propiedades del componente RenderByMap
+ * @property {Function} transform - Función para transformar el elemento
+ */
+interface RenderByMap {
+    transform: (element: IconType | string) => JSX.Element
+}
+
+/**
+ * Interface que define las propiedades del componente Feature.
+ * @interface FeatureProps
+ * @property {string} header - Título del componente.
+ * @property {string} description - Descripción del componente.
+ */
+interface FeatureProps extends ChildrenProps {
+    header: string
+    description: string
+}
+
 export type {
     ErrorProps,
     InputError,
@@ -145,4 +165,6 @@ export type {
     FriendshipProps,
     NavBarLinks,
     NavBarProps,
+    RenderByMap,
+    FeatureProps,
 }

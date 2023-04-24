@@ -7,7 +7,7 @@ import { OPTIONS } from "@lib/constants/landing"
  * @returns component
  * @example <PrincipalImage />
  */
-const PrincipalImage = () => {
+const Hero = () => {
     return (
         <div className="mx-auto w-[85%] h-[27rem] lg:w-[97%] lg:h-[50rem] relative mb-8">
             <Image
@@ -33,7 +33,7 @@ const PrincipalImage = () => {
                     <p>quieras</p>
                 </div>
                 <Link
-                    href="/login"
+                    href="/src/pages/login"
                     className="px-8 py-2 lg:px-9 lg:py-3 bg-light_purple rounded-lg text-black text-lg lg:text-xl"
                 >
                     Comienza ya
@@ -43,4 +43,4 @@ const PrincipalImage = () => {
     )
 }
 
-export default PrincipalImage
+export default Hero
