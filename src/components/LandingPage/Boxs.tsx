@@ -6,8 +6,8 @@ import { IoMdPlay } from "react-icons/io"
 const Boxs = () => {
     return (
         <>
-            <div className="mx-auto w-[85%]">
-                <div className="bg-secondary rounded-xl p-4 mb-5 shadow-xl">
+            <div className="mx-auto w-[85%] mb-14">
+                <div className="bg-secondary rounded-xl p-4 mb-6 shadow-xl">
                     <div className="w-1/2 flex items-center p-1 border border-black bg-primary rounded-lg mb-2">
                         <AiFillFile className="text-xl" />
                         <div className="w-[90%] pl-2">
@@ -41,7 +41,7 @@ const Boxs = () => {
                     </div>
                 </div>
 
-                <div className="w-full bg-secondary rounded-xl p-4 relative mb-5 shadow-xl">
+                <div className="w-full bg-secondary rounded-xl p-4 relative mb-6 shadow-xl">
                     <BsCameraVideoFill className="text-3xl p-1 bg-light_purple border border-black rounded-full absolute top-7 left-[5.4rem]" />
 
                     <Image
@@ -69,7 +69,7 @@ const Boxs = () => {
                     </div>
                 </div>
 
-                <div className="w-full bg-secondary rounded-xl p-4 relative mb-5 shadow-xl">
+                <div className="w-full bg-secondary rounded-xl p-4 relative mb-6 shadow-xl">
                     <div className="w-full flex mb-4">
                         <Image
                             src="/ImgPerson1.jpg"

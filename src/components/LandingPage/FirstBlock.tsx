@@ -2,7 +2,7 @@ import Image from "next/image"
 
 const FirstBlock = () => {
     return (
-        <div className="mx-auto w-[80%] relative">
+        <div className="mx-auto w-[80%] relative mb-8">
             <Image
                 src="/ImgMobile1.png"
                 alt="ImgMobile1"

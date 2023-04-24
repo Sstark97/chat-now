@@ -1,4 +1,5 @@
 import Image from "next/image"
+import Link from "next/link"
 import { useEffect, useState } from "react"
 
 const PrincipalImage = () => {
@@ -24,7 +25,7 @@ const PrincipalImage = () => {
     // }
 
     return (
-        <div className="mx-auto w-[85%] h-[27rem] relative">
+        <div className="mx-auto w-[85%] h-[27rem] relative mb-8">
             <Image
                 src="/ImgHead.jpg"
                 alt="ImgHead"
@@ -34,14 +35,17 @@ const PrincipalImage = () => {
             />
             <div className="w-full absolute bottom-10 left-0 text-white text-center">
                 <h1 className="text-4xl">Contacta</h1>
-                <p key={text} className="text-2xl">
+                <p key={text} className="text-2xl mb-6">
                     <span className="animacion">{text}&nbsp;</span>
                     {/* https://funnyfrontend.com/efectos-texto-css-svg-html/ */}
                     quieras
                 </p>
-                <button className="px-8 py-2 mt-5 bg-light_purple rounded-lg text-black text-lg">
+                <Link
+                    href="/login"
+                    className="px-8 py-2 bg-light_purple rounded-lg text-black text-lg"
+                >
                     Comienza ya
-                </button>
+                </Link>
             </div>
         </div>
     )
