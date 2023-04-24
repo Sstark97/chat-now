@@ -18,7 +18,7 @@ const FirstBlock = () => {
             <Image
                 src="/ImgDesktop1.png"
                 alt="ImgDesktop1"
-                width={250}
+                width={1000}
                 height={500}
                 className="w-[90%] hidden lg:block object-cover mx-auto"
             />
@@ -37,7 +37,7 @@ const FirstBlock = () => {
             <Image
                 src="/ImgDesktop2.png"
                 alt="ImgDesktop2"
-                width={250}
+                width={1000}
                 height={500}
                 className="w-[90%] hidden lg:block object-cover mx-auto"
             />

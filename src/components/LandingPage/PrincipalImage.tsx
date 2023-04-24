@@ -34,9 +34,10 @@ const PrincipalImage = () => {
             <Image
                 src="/ImgHead.jpg"
                 alt="ImgHead"
-                width={250}
+                width={1000}
                 height={500}
                 className="w-full h-full rounded-xl object-cover mx-auto mt-5 brightness-[.70]"
+                priority
             />
             <div className="w-full absolute bottom-10 left-0 lg:bottom-28 lg:pl-32 text-white text-center lg:text-left">
                 <h1 className="text-4xl lg:text-6xl">Contacta</h1>
