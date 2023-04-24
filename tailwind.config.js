@@ -48,6 +48,22 @@ module.exports = {
                 medium_security: "#E7A018",
             },
         },
+        keyframes: {
+            change: {
+                "0%": { "margin-top": "0" },
+                "15%": { "margin-top": "0" },
+                "25%": { "margin-top": "-40px" },
+                "40%": { "margin-top": -"40px" },
+                "50%": { "margin-top": "-80px" },
+                "65%": { "margin-top": "-80px" },
+                "75%": { "margin-top": "-40px" },
+                "85%": { "margin-top": "-40px" },
+                "100%": { "margin-top": "0" },
+            },
+        },
+        animation: {
+            change: "6s linear 0s normal none infinite change",
+        },
     },
     plugins: [],
 }
