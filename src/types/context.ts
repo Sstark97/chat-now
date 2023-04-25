@@ -1,5 +1,6 @@
 import { MutableRefObject } from "react"
 import { Contacts } from "@customTypes/domain"
+import { PostgrestSingleResponse, SupabaseClient } from "@supabase/supabase-js"
 
 /**
  * @interface Context
@@ -16,10 +17,12 @@ interface Context {
     error: boolean
     contacts: Contacts[]
     selectedChat: Contacts
+    supabase: SupabaseClient
     handleSetErrorsInForm(): void
     reloadContacts(): Promise<void>
     handleOpenChat(id: string): void
     handleCloseChat(): void
+    getAllChats(id: string): Promise<PostgrestSingleResponse<any>>
 }
 
 export type { Context }

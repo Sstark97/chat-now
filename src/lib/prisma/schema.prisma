@@ -44,6 +44,7 @@ model Contact {
 }
 
 model Chat {
+  id          Int    @id @default(autoincrement())
   sender_id   String
   receiver_id String
   message_id  Int    @unique
@@ -51,8 +52,6 @@ model Chat {
   Receiver User    @relation("Receiver", fields: [receiver_id], references: [id])
   Sender   User    @relation("Sender", fields: [sender_id], references: [id])
   Message  Message @relation("Message", fields: [message_id], references: [id])
-
-  @@id([sender_id, receiver_id])
 }
 
 model Account {
