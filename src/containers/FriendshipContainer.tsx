@@ -80,6 +80,10 @@ const FriendshipContainer = () => {
         if (session) {
             fetchChats()
         }
+
+        return () => {
+            chatWatcher?.unsubscribe()
+        }
     }, [session, getAllChats, supabase])
 
     console.log(chatWatcher)
