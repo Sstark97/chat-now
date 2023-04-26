@@ -38,12 +38,52 @@ const RealTimeProvider = ({ children }: ChildrenProps) => {
         return supabase.from("Message").select("*").eq("chat_id", id)
     }
 
+    const checkIfChatExist = async (userId: string, contactId: string) => {
+        const chatsFromUser = await supabase
+            .from("ChatUsers")
+            .select("chat_id")
+            .eq("user_id", userId)
+
+        const chatsFromContact = await supabase
+            .from("ChatUsers")
+            .select("chat_id")
+            .eq("user_id", contactId)
+
+        if (chatsFromUser.data && chatsFromContact.data) {
+            return chatsFromUser.data.some((chat) => {
+                const { chat_id } = chat
+                return chatsFromContact.data.some((chat) => chat.chat_id === chat_id)
+            })
+        }
+    }
+
+    const createChatWithUser = async (userId: string, contactId: string) => {
+        // select chat between user and contact
+        const commonChats = await checkIfChatExist(userId, contactId)
+
+        if (!commonChats) {
+            const { data: chat } = await supabase.from("Chat").insert({}).select().single()
+
+            const { data, error } = await supabase.from("ChatUsers").insert([
+                {
+                    chat_id: chat?.id,
+                    user_id: userId,
+                },
+                {
+                    chat_id: chat?.id,
+                    user_id: contactId,
+                },
+            ])
+        }
+    }
+
     return (
         <Provider
             value={{
                 supabase,
                 getAllChats,
                 getAllMessages,
+                createChatWithUser,
             }}
         >
             {children}

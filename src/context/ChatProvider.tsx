@@ -1,4 +1,4 @@
-import { createContext, MutableRefObject, useEffect, useRef, useState } from "react"
+import { createContext, MutableRefObject, useContext, useEffect, useRef, useState } from "react"
 import { useSession } from "next-auth/react"
 import { getFrom } from "@lib/utils/fetcher"
 import { API } from "@lib/constants/links"
@@ -8,6 +8,7 @@ import type { ChildrenProps } from "@customTypes/global"
 import type { ChatContext } from "@customTypes/context"
 import type { Contacts } from "@customTypes/domain"
 import * as process from "process"
+import { RealTimeContext } from "@context/RealTimeProvider"
 
 const ChatContext = createContext<ChatContext>({} as ChatContext)
 
@@ -25,7 +26,8 @@ const ChatProvider = ({ children }: ChildrenProps) => {
     const [error, setError] = useState<boolean>(true)
     const [contacts, setContacts] = useState<Contacts[]>([])
     const [selectedChat, setSelectedChat] = useState<Contacts>({} as Contacts)
-    const { status } = useSession()
+    const { data: session, status } = useSession()
+    const { createChatWithUser } = useContext(RealTimeContext)
 
     useEffect(() => {
         const fetchContacts = async () => {
@@ -63,7 +65,9 @@ const ChatProvider = ({ children }: ChildrenProps) => {
 
     const handleOpenChat = (id: string) => {
         const chat = contacts.find((contact) => contact.id === id) as Contacts
+        const userId = session?.user?.id as string
         setSelectedChat(chat)
+        createChatWithUser(userId, id)
     }
 
     const handleCloseChat = () => {

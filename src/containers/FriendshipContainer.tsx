@@ -2,9 +2,6 @@ import FriendshipList from "@containers/FriendshipList"
 import Searcher from "@components/Searcher"
 import NavBar from "@components/NavBar"
 import ChatDesktop from "@components/ChatDesktop"
-import { useContext, useEffect, useState } from "react"
-import { RealTimeContext } from "@context/RealTimeProvider"
-import { useSession } from "next-auth/react"
 
 const friendships = [
     {
@@ -52,43 +49,6 @@ const friendships = [
  * @example <FriendshipContainer />
  */
 const FriendshipContainer = () => {
-    const { data: session } = useSession()
-    const { supabase, getAllChats, getAllMessages } = useContext(RealTimeContext)
-    const [chatWatcher, setChatWatcher] = useState<any>(null)
-
-    useEffect(() => {
-        const fetchChats = async () => {
-            const userId = session?.user?.id as string
-            const { data: allChats } = await getAllChats(userId)
-            const { data: allMessages } = await getAllMessages(5)
-
-            console.log(allMessages)
-
-            const chatsWatcher = supabase
-                .channel("custom-all-channel")
-                .on(
-                    "postgres_changes",
-                    { event: "*", schema: "public", table: "Chat" },
-                    async () => {
-                        console.log("chats changed")
-                        const { data: allChats } = await getAllChats(userId)
-                    }
-                )
-                .subscribe()
-            setChatWatcher(chatsWatcher)
-        }
-
-        if (session) {
-            fetchChats()
-        }
-
-        return () => {
-            chatWatcher?.unsubscribe()
-        }
-    }, [session, getAllChats, supabase])
-
-    console.log(chatWatcher)
-
     return (
         <div className="flex h-screen">
             <div className="w-full lg:w-[28%] relative">

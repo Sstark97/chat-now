@@ -12,14 +12,14 @@ const messages = [
         receiverId: "clgo1rty30000bz3c7atcyxbd",
     },
     {
-        id: "2",
+        id: "3",
         text: "holi holi holi holi holi holi holi holi holi holi holi holi holi holi holi holi holi holi holi holi",
         date: "10:15",
         senderId: "2",
         receiverId: "clgo1rty30000bz3c7atcyxbd",
     },
     {
-        id: "3",
+        id: "4",
         text: "hol1111111",
         date: "10:15",
         senderId: "2",

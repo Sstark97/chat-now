@@ -7,11 +7,11 @@ import "../styles/global.css"
 export default function App({ Component, pageProps }: AppProps) {
     return (
         <AuthProvider session={pageProps.session}>
-            <ChatProvider>
-                <RealTimeProvider>
+            <RealTimeProvider>
+                <ChatProvider>
                     <Component {...pageProps} />
-                </RealTimeProvider>
-            </ChatProvider>
+                </ChatProvider>
+            </RealTimeProvider>
         </AuthProvider>
     )
 }
