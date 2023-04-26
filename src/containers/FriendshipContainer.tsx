@@ -3,7 +3,7 @@ import Searcher from "@components/Searcher"
 import NavBar from "@components/NavBar"
 import ChatDesktop from "@components/ChatDesktop"
 import { useContext, useEffect, useState } from "react"
-import { ChatContext } from "@context/ChatProvider"
+import { RealTimeContext } from "@context/RealTimeProvider"
 import { useSession } from "next-auth/react"
 
 const friendships = [
@@ -53,7 +53,7 @@ const friendships = [
  */
 const FriendshipContainer = () => {
     const { data: session } = useSession()
-    const { supabase, getAllChats } = useContext(ChatContext)
+    const { supabase, getAllChats } = useContext(RealTimeContext)
     const [chatWatcher, setChatWatcher] = useState<any>(null)
 
     useEffect(() => {
@@ -84,7 +84,7 @@ const FriendshipContainer = () => {
         return () => {
             chatWatcher?.unsubscribe()
         }
-    }, [session, getAllChats, supabase])
+    }, [session, getAllChats, supabase, chatWatcher])
 
     console.log(chatWatcher)
 

@@ -3,8 +3,8 @@ import { Contacts } from "@customTypes/domain"
 import { PostgrestSingleResponse, SupabaseClient } from "@supabase/supabase-js"
 
 /**
- * @interface Context
- * @description Propiedades del contexto
+ * @interface ChatContext
+ * @description Propiedades del contexto de los Chats
  * @property {MutableRefObject<HTMLDivElement>} ref - Referencia al formulario
  * @property {boolean} error - Error del formulario
  * @property {Function} handleSetErrorsInForm - Función para setear los errores en el formulario
@@ -12,17 +12,26 @@ import { PostgrestSingleResponse, SupabaseClient } from "@supabase/supabase-js"
  * @property {Function} handleOpenChat - Función para abrir un chat
  * @property {Function} handleCloseChat - Función para cerrar un chat
  */
-interface Context {
+interface ChatContext {
     ref: MutableRefObject<HTMLDivElement>
     error: boolean
     contacts: Contacts[]
     selectedChat: Contacts
-    supabase: SupabaseClient
     handleSetErrorsInForm(): void
     reloadContacts(): Promise<void>
     handleOpenChat(id: string): void
     handleCloseChat(): void
+}
+
+/**
+ * @interface RealTimeContext
+ * @description Propiedades del contexto de tiempo real
+ * @property {SupabaseClient} supabase - Cliente de Supabase
+ * @property {Function} getAllChats - Función para obtener todos los chats
+ */
+interface RealTimeContext {
+    supabase: SupabaseClient
     getAllChats(id: string): Promise<PostgrestSingleResponse<any>>
 }
 
-export type { Context }
+export type { ChatContext, RealTimeContext }

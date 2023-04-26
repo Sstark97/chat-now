@@ -1,16 +1,15 @@
 import { createContext, MutableRefObject, useEffect, useRef, useState } from "react"
 import { useSession } from "next-auth/react"
-import { createClient } from "@supabase/supabase-js"
 import { getFrom } from "@lib/utils/fetcher"
 import { API } from "@lib/constants/links"
 import { isFormValid } from "@lib/utils/user"
 import { equals } from "@lib/utils"
 import type { ChildrenProps } from "@customTypes/global"
-import type { Context } from "@customTypes/context"
+import type { ChatContext } from "@customTypes/context"
 import type { Contacts } from "@customTypes/domain"
 import * as process from "process"
 
-const ChatContext = createContext<Context>({} as Context)
+const ChatContext = createContext<ChatContext>({} as ChatContext)
 
 /**
  * Este componente es el encargado de proveer el contexto de la aplicación
@@ -27,17 +26,6 @@ const ChatProvider = ({ children }: ChildrenProps) => {
     const [contacts, setContacts] = useState<Contacts[]>([])
     const [selectedChat, setSelectedChat] = useState<Contacts>({} as Contacts)
     const { status } = useSession()
-    const supabase = createClient(
-        process.env.NEXT_PUBLIC_REAL_TIME_URL as string,
-        process.env.NEXT_PUBLIC_REAL_TIME_API_KEY as string,
-        {
-            realtime: {
-                params: {
-                    eventsPerSecond: 10,
-                },
-            },
-        }
-    )
 
     useEffect(() => {
         const fetchContacts = async () => {
@@ -82,14 +70,6 @@ const ChatProvider = ({ children }: ChildrenProps) => {
         setSelectedChat({} as Contacts)
     }
 
-    const getAllChats = async (id: string) => {
-        // get all chats where the current user is a member
-        return supabase
-            .from("Chat")
-            .select("sender_id, receiver_id, message_id, Message(*)")
-            .or(`receiver_id.eq.${id},sender_id.eq.${id}`)
-    }
-
     return (
         <Provider
             value={{
@@ -97,12 +77,10 @@ const ChatProvider = ({ children }: ChildrenProps) => {
                 error,
                 contacts,
                 selectedChat,
-                supabase,
                 handleSetErrorsInForm,
                 reloadContacts,
                 handleOpenChat,
                 handleCloseChat,
-                getAllChats,
             }}
         >
             {children}
