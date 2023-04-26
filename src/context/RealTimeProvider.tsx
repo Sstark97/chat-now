@@ -27,11 +27,15 @@ const RealTimeProvider = ({ children }: ChildrenProps) => {
     )
 
     const getAllChats = async (id: string) => {
-        // get all chats where the current user is a member
-        return supabase
-            .from("Chat")
-            .select("sender_id, receiver_id, message_id, Message(*)")
-            .or(`receiver_id.eq.${id},sender_id.eq.${id}`)
+        // get all chats where the current user is a member and the receiver and sender are unique
+
+        return supabase.from("ChatUsers").select("chat_id").eq("user_id", id)
+    }
+
+    const getAllMessages = async (id: number) => {
+        // get all messages from a chat where the current user is a member
+
+        return supabase.from("Message").select("*").eq("chat_id", id)
     }
 
     return (
@@ -39,6 +43,7 @@ const RealTimeProvider = ({ children }: ChildrenProps) => {
             value={{
                 supabase,
                 getAllChats,
+                getAllMessages,
             }}
         >
             {children}

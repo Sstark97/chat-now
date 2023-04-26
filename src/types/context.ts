@@ -32,6 +32,7 @@ interface ChatContext {
 interface RealTimeContext {
     supabase: SupabaseClient
     getAllChats(id: string): Promise<PostgrestSingleResponse<any>>
+    getAllMessages(id: number): Promise<PostgrestSingleResponse<any>>
 }
 
 export type { ChatContext, RealTimeContext }

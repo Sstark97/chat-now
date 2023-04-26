@@ -53,15 +53,16 @@ const friendships = [
  */
 const FriendshipContainer = () => {
     const { data: session } = useSession()
-    const { supabase, getAllChats } = useContext(RealTimeContext)
+    const { supabase, getAllChats, getAllMessages } = useContext(RealTimeContext)
     const [chatWatcher, setChatWatcher] = useState<any>(null)
 
     useEffect(() => {
         const fetchChats = async () => {
             const userId = session?.user?.id as string
             const { data: allChats } = await getAllChats(userId)
+            const { data: allMessages } = await getAllMessages(5)
 
-            console.log(allChats)
+            console.log(allMessages)
 
             const chatsWatcher = supabase
                 .channel("custom-all-channel")
@@ -84,7 +85,7 @@ const FriendshipContainer = () => {
         return () => {
             chatWatcher?.unsubscribe()
         }
-    }, [session, getAllChats, supabase, chatWatcher])
+    }, [session, getAllChats, supabase])
 
     console.log(chatWatcher)
 
