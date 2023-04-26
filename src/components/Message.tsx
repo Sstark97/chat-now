@@ -9,9 +9,9 @@ import { MessageProps } from "@customTypes/components"
  * @component
  * @example <Message  receiverId={receiverId} text={text} date={date} />
  */
-const Message = ({ receiverId, text, date }: MessageProps) => {
+const Message = ({ author_id, text, date }: MessageProps) => {
     const { data: session } = useSession()
-    const isReceiver = receiverId === session?.user.id
+    const isReceiver = author_id === session?.user.id
 
     const styleReceiver = "bg-light_purple self-end"
     const styleSender = "bg-secondary lg:bg-primary self-start"

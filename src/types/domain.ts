@@ -126,8 +126,8 @@ interface Messages {
     id: string
     text: string
     date: string
-    senderId: string
-    receiverId: string
+    chat_id: number
+    author_id: string
 }
 
 export type {

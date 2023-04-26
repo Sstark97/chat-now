@@ -147,7 +147,7 @@ interface NavBarLinks {
  * @property {string} date - Fecha del mensaje
  */
 interface MessageProps {
-    receiverId: string
+    author_id: string
     text: string
     date: string
 }

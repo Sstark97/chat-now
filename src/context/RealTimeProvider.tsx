@@ -32,13 +32,7 @@ const RealTimeProvider = ({ children }: ChildrenProps) => {
         return supabase.from("ChatUsers").select("chat_id").eq("user_id", id)
     }
 
-    const getAllMessages = async (id: number) => {
-        // get all messages from a chat where the current user is a member
-
-        return supabase.from("Message").select("*").eq("chat_id", id)
-    }
-
-    const checkIfChatExist = async (userId: string, contactId: string) => {
+    const getChatIdFrom = async (userId: string, contactId: string) => {
         const chatsFromUser = await supabase
             .from("ChatUsers")
             .select("chat_id")
@@ -50,16 +44,23 @@ const RealTimeProvider = ({ children }: ChildrenProps) => {
             .eq("user_id", contactId)
 
         if (chatsFromUser.data && chatsFromContact.data) {
-            return chatsFromUser.data.some((chat) => {
+            return chatsFromUser.data.find((chat) => {
                 const { chat_id } = chat
                 return chatsFromContact.data.some((chat) => chat.chat_id === chat_id)
             })
         }
     }
 
+    const getAllMessages = async (userId: string, contactId: string) => {
+        // get all messages from a chat where the current user is a member
+        const chat = await getChatIdFrom(userId, contactId)
+
+        return supabase.from("Message").select("*").eq("chat_id", chat?.chat_id)
+    }
+
     const createChatWithUser = async (userId: string, contactId: string) => {
         // select chat between user and contact
-        const commonChats = await checkIfChatExist(userId, contactId)
+        const commonChats = await getChatIdFrom(userId, contactId)
 
         if (!commonChats) {
             const { data: chat } = await supabase.from("Chat").insert({}).select().single()
