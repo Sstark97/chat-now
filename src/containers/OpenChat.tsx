@@ -14,17 +14,27 @@ import type { OpenChatProps } from "@customTypes/containers"
  */
 const OpenChat = ({ className }: OpenChatProps) => {
     const { userId, contactId } = useChatMembersId()
-    const { getAllMessages } = useContext(RealTimeContext)
+    const { supabase, getAllMessages } = useContext(RealTimeContext)
     const [messages, setMessages] = useState([])
 
-    useEffect(() => {
-        const fetchMessages = async () => {
-            const messages = await getAllMessages(userId, contactId)
-            setMessages(messages.data)
-        }
+    const getMessages = async () => {
+        const messages = await getAllMessages(userId, contactId)
+        setMessages(messages.data)
+    }
 
-        fetchMessages()
-    }, [contactId])
+    useEffect(() => {
+        getMessages()
+        supabase
+            .channel("custom-all-channel")
+            .on(
+                "postgres_changes",
+                { event: "*", schema: "public", table: "Message" },
+                async () => {
+                    await getMessages()
+                }
+            )
+            .subscribe()
+    }, [contactId, contactId, getMessages, supabase])
 
     return (
         <div className={`w-full h-screen ${className}`}>
