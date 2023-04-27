@@ -1,11 +1,10 @@
 import ChatHeader from "@containers/ChatHeader"
 import MessageInput from "@components/MessageInput"
 import MessageList from "@containers/MessageList"
-import { OpenChatProps } from "@customTypes/containers"
 import { useContext, useEffect, useState } from "react"
+import useChatMembersId from "@hooks/useChatMembersId"
 import { RealTimeContext } from "@context/RealTimeProvider"
-import { ChatContext } from "@context/ChatProvider"
-import { useSession } from "next-auth/react"
+import type { OpenChatProps } from "@customTypes/containers"
 
 /**
  * Este componente es el encargado de mostrar el chat abierto
@@ -14,22 +13,18 @@ import { useSession } from "next-auth/react"
  * @example <OpenChat />
  */
 const OpenChat = ({ className }: OpenChatProps) => {
-    const { data: session } = useSession()
-    const { selectedChat } = useContext(ChatContext)
+    const { userId, contactId } = useChatMembersId()
     const { getAllMessages } = useContext(RealTimeContext)
     const [messages, setMessages] = useState([])
 
     useEffect(() => {
         const fetchMessages = async () => {
-            const messages = await getAllMessages(
-                session?.user?.id as string,
-                selectedChat?.id as string
-            )
+            const messages = await getAllMessages(userId, contactId)
             setMessages(messages.data)
         }
 
         fetchMessages()
-    }, [selectedChat])
+    }, [contactId])
 
     return (
         <div className={`w-full h-screen ${className}`}>
