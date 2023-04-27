@@ -1,8 +1,9 @@
 import { createContext } from "react"
-import { createClient } from "@supabase/supabase-js"
+import { createClient, PostgrestSingleResponse } from "@supabase/supabase-js"
 import * as process from "process"
 import type { ChildrenProps } from "@customTypes/global"
 import type { RealTimeContext } from "@customTypes/context"
+import type { Chats } from "@customTypes/domain"
 
 const RealTimeContext = createContext<RealTimeContext>({} as RealTimeContext)
 
@@ -26,22 +27,15 @@ const RealTimeProvider = ({ children }: ChildrenProps) => {
         }
     )
 
-    const getAllChats = async (id: string) => {
+    const getAllChats = async (id: string): Promise<PostgrestSingleResponse<Chats[]>> => {
         // get all chats where the current user is a member and the receiver and sender are unique
 
         return supabase.from("ChatUsers").select("chat_id").eq("user_id", id)
     }
 
     const getChatIdFrom = async (userId: string, contactId: string) => {
-        const chatsFromUser = await supabase
-            .from("ChatUsers")
-            .select("chat_id")
-            .eq("user_id", userId)
-
-        const chatsFromContact = await supabase
-            .from("ChatUsers")
-            .select("chat_id")
-            .eq("user_id", contactId)
+        const chatsFromUser = await getAllChats(userId)
+        const chatsFromContact = await getAllChats(contactId)
 
         if (chatsFromUser.data && chatsFromContact.data) {
             return chatsFromUser.data.find((chat) => {
@@ -52,7 +46,6 @@ const RealTimeProvider = ({ children }: ChildrenProps) => {
     }
 
     const getAllMessages = async (userId: string, contactId: string) => {
-        // get all messages from a chat where the current user is a member
         const chat = await getChatIdFrom(userId, contactId)
 
         return supabase.from("Message").select("*").eq("chat_id", chat?.chat_id)

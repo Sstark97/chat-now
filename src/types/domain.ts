@@ -114,6 +114,15 @@ interface ErrorResponse {
 }
 
 /**
+ * @interface Chats
+ * @description Interface para definir la respuesta de un chat
+ * @property {number} chat_id - ID del chat
+ */
+interface Chats {
+    chat_id: number
+}
+
+/**
  * @interface Messages
  * @description Interface para definir la respuesta de un mensaje
  * @property {string} id - ID del mensaje
@@ -139,5 +148,6 @@ export type {
     ContactRequest,
     ErrorResponse,
     Contacts,
+    Chats,
     Messages,
 }
