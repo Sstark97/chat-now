@@ -71,6 +71,18 @@ const RealTimeProvider = ({ children }: ChildrenProps) => {
         }
     }
 
+    const sendMessage = async (userId: string, contactId: string, message: string) => {
+        const { chat_id: chatId } = (await getChatIdFrom(userId, contactId)) as Chats
+
+        const { data, error } = await supabase.from("Message").insert([
+            {
+                chat_id: chatId,
+                author_id: userId,
+                text: message,
+            },
+        ])
+    }
+
     return (
         <Provider
             value={{
@@ -78,6 +90,7 @@ const RealTimeProvider = ({ children }: ChildrenProps) => {
                 getAllChats,
                 getAllMessages,
                 createChatWithUser,
+                sendMessage,
             }}
         >
             {children}

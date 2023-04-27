@@ -34,6 +34,7 @@ interface RealTimeContext {
     getAllChats(id: string): Promise<PostgrestSingleResponse<any>>
     getAllMessages(userId: string, contactId: string): Promise<PostgrestSingleResponse<any>>
     createChatWithUser(userId: string, contactId: string): Promise<void>
+    sendMessage(userId: string, contactId: string, message: string): Promise<void>
 }
 
 export type { ChatContext, RealTimeContext }
