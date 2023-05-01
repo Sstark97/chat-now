@@ -64,6 +64,7 @@ interface FriendshipProps {
     time?: string
     message?: string
     numMessages?: number
+    image?: string
     status: string
 }
 

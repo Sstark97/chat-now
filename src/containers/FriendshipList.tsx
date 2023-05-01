@@ -33,6 +33,7 @@ const FriendshipList = ({ friendships }: FriendshipListProps) => {
                     message={friendship.message}
                     numMessages={friendship.numMessages}
                     status={friendship.status}
+                    image={friendship.image}
                 />
             ))}
         </div>
