@@ -1,5 +1,6 @@
-import { createContext, MutableRefObject, useContext, useEffect, useRef, useState } from "react"
+import { createContext, MutableRefObject, useEffect, useRef, useState } from "react"
 import { useSession } from "next-auth/react"
+import useRealTimeContext from "@hooks/useRealTimeContext"
 import { getFrom } from "@lib/utils/fetcher"
 import { API } from "@lib/constants/links"
 import { isFormValid } from "@lib/utils/user"
@@ -7,7 +8,6 @@ import { equals } from "@lib/utils"
 import type { ChildrenProps } from "@customTypes/global"
 import type { ChatContext } from "@customTypes/context"
 import type { Contacts } from "@customTypes/domain"
-import { RealTimeContext } from "@context/RealTimeProvider"
 
 const ChatContext = createContext<ChatContext>({} as ChatContext)
 
@@ -24,7 +24,7 @@ const ChatProvider = ({ children }: ChildrenProps) => {
     const [contacts, setContacts] = useState<Contacts[]>([])
     const [selectedChat, setSelectedChat] = useState<Contacts>({} as Contacts)
     const { data: session, status } = useSession()
-    const { createChatWithUser } = useContext(RealTimeContext)
+    const { createChatWithUser } = useRealTimeContext()
 
     useEffect(() => {
         const fetchContacts = async () => {

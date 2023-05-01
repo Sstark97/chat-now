@@ -1,6 +1,6 @@
+import { ChangeEvent, useState } from "react"
 import useChatMembersId from "@hooks/useChatMembersId"
-import { useContext, useState, ChangeEvent } from "react"
-import { RealTimeContext } from "@context/RealTimeProvider"
+import useRealTimeContext from "@hooks/useRealTimeContext"
 import { BsSendFill } from "react-icons/bs"
 
 /**
@@ -11,7 +11,7 @@ import { BsSendFill } from "react-icons/bs"
 const MessageInput = () => {
     const [message, setMessage] = useState("")
     const { userId, contactId } = useChatMembersId()
-    const { sendMessage } = useContext(RealTimeContext)
+    const { sendMessage } = useRealTimeContext()
 
     const handleChangeMessage = (e: ChangeEvent<HTMLInputElement>) => {
         setMessage(e.target.value)

@@ -1,11 +1,11 @@
+import { useEffect, useState } from "react"
+import useRealTimeContext from "@hooks/useRealTimeContext"
 import ChatHeader from "@containers/ChatHeader"
 import MessageInput from "@components/MessageInput"
 import MessageList from "@containers/MessageList"
-import { useContext, useEffect, useState } from "react"
 import useChatMembersId from "@hooks/useChatMembersId"
-import { RealTimeContext } from "@context/RealTimeProvider"
 import type { OpenChatProps } from "@customTypes/containers"
-import { Message } from "@customTypes/domain"
+import type { Message } from "@customTypes/domain"
 
 /**
  * Este componente es el encargado de mostrar el chat abierto
@@ -15,7 +15,7 @@ import { Message } from "@customTypes/domain"
  */
 const OpenChat = ({ className }: OpenChatProps) => {
     const { userId, contactId } = useChatMembersId()
-    const { supabase, getAllMessages } = useContext(RealTimeContext)
+    const { supabase, getAllMessages } = useRealTimeContext()
     const [messages, setMessages] = useState<Message[]>([])
 
     const getMessages = async () => {
