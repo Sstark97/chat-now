@@ -3,6 +3,11 @@ import { ChatContext } from "@context/ChatProvider"
 import Image from "next/image"
 import { MdArrowBackIosNew } from "react-icons/md"
 
+/**
+ * Este componente es el encargado de mostrar la información del contacto seleccionado
+ * @returns component
+ * @example <ContactInfo />
+ */
 const ContactInfo = () => {
     const { selectedChat, handleCloseChat } = useContext(ChatContext)
     const { image, name, status } = selectedChat

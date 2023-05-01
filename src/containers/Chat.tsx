@@ -6,6 +6,14 @@ import { useContext } from "react"
 import { ChatContext } from "@context/ChatProvider"
 import OpenChat from "@containers/OpenChat"
 
+/**
+ * Este componente es el encargado de mostrar el contenedor de chats
+ * @param {string} message - Mensaje a mostrar cuando no hay chats
+ * @param {FriendshipProps[]} friendships - Lista de chats
+ * @param {ReactNode} children - Componente a renderizar
+ * @returns component
+ * @example <Chat message="No hay chats" friendships={chats} />
+ */
 const Chat = ({ message, friendships, children }: any) => {
     const { selectedChat } = useContext(ChatContext)
     const isChatOpen = Object.keys(selectedChat).length !== 0

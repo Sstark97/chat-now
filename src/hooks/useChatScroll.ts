@@ -1,5 +1,9 @@
 import { useRef } from "react"
 
+/**
+ * Hook para controlar el scroll del chat
+ * @returns {function(): *}
+ */
 const useChatScroll = () => {
     const ref = useRef<HTMLDivElement>(null)
     const handleScroll = () => {

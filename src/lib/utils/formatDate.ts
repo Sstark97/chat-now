@@ -1,6 +1,13 @@
 import moment from "moment"
 import { WEEK_DAY_NAME } from "../constants/formatDate"
 
+/**
+ * @description Formatea la fecha de un mensaje
+ * @param {string} date Fecha del mensaje
+ * @returns {string} Fecha formateada
+ * @example
+ * formatDate("2021-08-01T12:00:00.000Z") // "ayer"
+ */
 const formatDate = (date: string | undefined) => {
     const now = moment()
     const startOfToday = now.startOf("day")

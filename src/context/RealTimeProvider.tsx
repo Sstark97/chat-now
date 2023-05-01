@@ -28,12 +28,25 @@ const RealTimeProvider = ({ children }: ChildrenProps) => {
         }
     )
 
+    /**
+     * Este método es el encargado de obtener todos los chats del usuario
+     * @param id
+     * @returns Promise<PostgrestSingleResponse<Chats[]>>
+     * @example getAllChats()
+     */
     const getAllChats = async (id: string): Promise<PostgrestSingleResponse<Chats[]>> => {
         // get all chats where the current user is a member and the receiver and sender are unique
 
         return supabase.from("ChatUsers").select("chat_id").eq("user_id", id)
     }
 
+    /**
+     * Este método es el encargado de obtener todos los chats del usuario
+     * @param userId
+     * @param contactId
+     * @returns Promise<PostgrestSingleResponse<Chats[]>>
+     * @example getAllChats()
+     */
     const getChatIdFrom = async (userId: string, contactId: string) => {
         const chatsFromUser = await getAllChats(userId)
         const chatsFromContact = await getAllChats(contactId)
@@ -46,12 +59,26 @@ const RealTimeProvider = ({ children }: ChildrenProps) => {
         }
     }
 
+    /**
+     * Este método es el encargado de obtener todos los mensajes de un chat
+     * @param userId
+     * @param contactId
+     * @returns Promise<PostgrestSingleResponse<ContactChats[]>>
+     * @example getAllMessages()
+     */
     const getAllMessages = async (userId: string, contactId: string) => {
         const chat = await getChatIdFrom(userId, contactId)
 
         return supabase.from("Message").select("*").eq("chat_id", chat?.chat_id)
     }
 
+    /**
+     * Este método es el encargado de crear un chat entre dos usuarios
+     * @param userId
+     * @param contactId
+     * @returns Promise<void>
+     * @example createChatWithUser()
+     */
     const createChatWithUser = async (userId: string, contactId: string) => {
         // select chat between user and contact
         const commonChats = await getChatIdFrom(userId, contactId)
@@ -72,6 +99,14 @@ const RealTimeProvider = ({ children }: ChildrenProps) => {
         }
     }
 
+    /**
+     * Este método es el encargado de enviar un mensaje
+     * @param userId
+     * @param contactId
+     * @param message
+     * @returns Promise<void>
+     * @example sendMessage()
+     */
     const sendMessage = async (userId: string, contactId: string, message: string) => {
         const { chat_id: chatId } = (await getChatIdFrom(userId, contactId)) as Chats
 
@@ -84,6 +119,13 @@ const RealTimeProvider = ({ children }: ChildrenProps) => {
         ])
     }
 
+    /**
+     * Este método es el encargado de obtener los contactos de un usuario
+     * @param userId
+     * @param chats
+     * @returns Promise<ContactChats[]>
+     * @example getContactsFromChats()
+     */
     const getContactsFromChats = async (userId: string, chats: Chats[]) => {
         const contacts = (await Promise.all(
             chats.map(async (chat) => {
@@ -100,6 +142,12 @@ const RealTimeProvider = ({ children }: ChildrenProps) => {
         return contacts
     }
 
+    /**
+     * Este método es el encargado de obtener los nombres de los contactos
+     * @param contacts
+     * @returns Promise<string[]>
+     * @example getContactsNames()
+     */
     const getContactsNames = async (contacts: ContactChats[]) => {
         const contactsNames = (await Promise.all(
             contacts.map(async (contact) => {
@@ -115,6 +163,13 @@ const RealTimeProvider = ({ children }: ChildrenProps) => {
         return contactsNames
     }
 
+    /**
+     * Este método es el encargado de obtener los valores de los chats
+     * @param userId
+     * @param contacts
+     * @returns Promise<FriendshipProps[]>
+     * @example getChatsValues()
+     */
     const getChatsValues = async (userId: string, contacts: ContactChats[]) => {
         const chatsValues = await Promise.all(
             contacts.map(async (contact) => {
@@ -134,6 +189,12 @@ const RealTimeProvider = ({ children }: ChildrenProps) => {
         return chatsValues
     }
 
+    /**
+     * Este método es el encargado de obtener todos los chats del usuario
+     * @param userId
+     * @returns Promise<FriendshipProps[]>
+     * @example getChats()
+     */
     const getChats = async (userId: string): Promise<FriendshipProps[]> => {
         // get all contact data from chats where the current user is a member
         const { data: chats } = await getAllChats(userId)

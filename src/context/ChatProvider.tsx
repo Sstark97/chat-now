@@ -7,7 +7,6 @@ import { equals } from "@lib/utils"
 import type { ChildrenProps } from "@customTypes/global"
 import type { ChatContext } from "@customTypes/context"
 import type { Contacts } from "@customTypes/domain"
-import * as process from "process"
 import { RealTimeContext } from "@context/RealTimeProvider"
 
 const ChatContext = createContext<ChatContext>({} as ChatContext)
