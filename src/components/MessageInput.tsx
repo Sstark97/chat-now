@@ -14,7 +14,6 @@ const MessageInput = () => {
     const { sendMessage } = useContext(RealTimeContext)
 
     const handleChangeMessage = (e: ChangeEvent<HTMLInputElement>) => {
-        console.log(e.target.value)
         setMessage(e.target.value)
     }
 

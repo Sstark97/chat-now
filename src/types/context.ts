@@ -1,6 +1,7 @@
 import { MutableRefObject } from "react"
 import { Contacts } from "@customTypes/domain"
 import { PostgrestSingleResponse, SupabaseClient } from "@supabase/supabase-js"
+import type { FriendshipProps } from "@customTypes/components"
 
 /**
  * @interface ChatContext
@@ -35,6 +36,7 @@ interface RealTimeContext {
     getAllMessages(userId: string, contactId: string): Promise<PostgrestSingleResponse<any>>
     createChatWithUser(userId: string, contactId: string): Promise<void>
     sendMessage(userId: string, contactId: string, message: string): Promise<void>
+    getChats(userId: string): Promise<FriendshipProps[]>
 }
 
 export type { ChatContext, RealTimeContext }

@@ -3,7 +3,8 @@ import { createClient, PostgrestSingleResponse } from "@supabase/supabase-js"
 import * as process from "process"
 import type { ChildrenProps } from "@customTypes/global"
 import type { RealTimeContext } from "@customTypes/context"
-import type { Chats } from "@customTypes/domain"
+import type { Chats, ContactChats } from "@customTypes/domain"
+import type { FriendshipProps } from "@customTypes/components"
 
 const RealTimeContext = createContext<RealTimeContext>({} as RealTimeContext)
 
@@ -83,6 +84,80 @@ const RealTimeProvider = ({ children }: ChildrenProps) => {
         ])
     }
 
+    const getContactsFromChats = async (userId: string, chats: Chats[]) => {
+        const contacts = (await Promise.all(
+            chats.map(async (chat) => {
+                const { data: contacts } = await supabase
+                    .from("ChatUsers")
+                    .select("User(id, image, status)")
+                    .eq("chat_id", chat.chat_id)
+                    .neq("user_id", userId)
+
+                return contacts ? contacts[0].User : null
+            })
+        )) as ContactChats[]
+
+        return contacts
+    }
+
+    const getContactsNames = async (contacts: ContactChats[]) => {
+        const contactsNames = (await Promise.all(
+            contacts.map(async (contact) => {
+                const { data: name } = await supabase
+                    .from("Contact")
+                    .select("name")
+                    .eq("contact_id", contact?.id)
+
+                return name ? name[0].name : null
+            })
+        )) as string[]
+
+        return contactsNames
+    }
+
+    const getChatsValues = async (userId: string, contacts: ContactChats[]) => {
+        const chatsValues = await Promise.all(
+            contacts.map(async (contact) => {
+                const allMessages = await getAllMessages(userId, contact.id)
+                const lastMessage = allMessages.data?.at(-1)
+                const { id, author_id, text, date } = lastMessage
+
+                return {
+                    id,
+                    author_id,
+                    text,
+                    date,
+                }
+            })
+        )
+
+        return chatsValues
+    }
+
+    const getChats = async (userId: string): Promise<FriendshipProps[]> => {
+        // get all contact data from chats where the current user is a member
+        const { data: chats } = await getAllChats(userId)
+
+        const contactsChats = await getContactsFromChats(userId, chats as Chats[])
+        const nameContacts = await getContactsNames(contactsChats)
+        const chatsValues = await getChatsValues(userId, contactsChats)
+
+        return nameContacts.map((contactName, index) => {
+            const { image, status } = contactsChats[index]
+            const { author_id, text, date, id } = chatsValues[index]
+
+            return {
+                id,
+                name: contactName,
+                image,
+                status,
+                author_id,
+                message: text,
+                time: date,
+            }
+        })
+    }
+
     return (
         <Provider
             value={{
@@ -91,6 +166,7 @@ const RealTimeProvider = ({ children }: ChildrenProps) => {
                 getAllMessages,
                 createChatWithUser,
                 sendMessage,
+                getChats,
             }}
         >
             {children}

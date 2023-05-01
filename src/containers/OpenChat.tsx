@@ -40,7 +40,7 @@ const OpenChat = ({ className }: OpenChatProps) => {
     return (
         <div className={`w-full h-screen ${className}`}>
             <ChatHeader />
-            {messages.length > 0 ? <MessageList messages={messages} /> : <p>loading...</p>}
+            {messages ? <MessageList messages={messages} /> : <p>loading...</p>}
             <MessageInput />
         </div>
     )

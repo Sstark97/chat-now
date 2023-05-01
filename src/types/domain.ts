@@ -139,6 +139,12 @@ interface Messages {
     author_id: string
 }
 
+interface ContactChats {
+    id: string
+    image: string
+    status: string
+}
+
 export type {
     Credentials,
     User,
@@ -150,4 +156,5 @@ export type {
     Contacts,
     Chats,
     Messages,
+    ContactChats,
 }
