@@ -1,5 +1,4 @@
-import { useContext } from "react"
-import { ChatContext } from "@context/ChatProvider"
+import useChatContext from "@hooks/useChatContext"
 import Image from "next/image"
 import { MdArrowBackIosNew } from "react-icons/md"
 
@@ -9,7 +8,7 @@ import { MdArrowBackIosNew } from "react-icons/md"
  * @example <ContactInfo />
  */
 const ContactInfo = () => {
-    const { selectedChat, handleCloseChat } = useContext(ChatContext)
+    const { selectedChat, handleCloseChat } = useChatContext()
     const { image, name, status } = selectedChat
 
     const closeChat = () => {

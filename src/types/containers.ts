@@ -1,5 +1,5 @@
 import { FriendshipProps } from "@customTypes/components"
-import { Messages } from "@customTypes/domain"
+import { Message } from "@customTypes/domain"
 import { ChildrenProps } from "./global"
 
 /**
@@ -14,10 +14,10 @@ interface FriendshipListProps {
 /**
  * @interface MessageListProps
  * @description Propiedades del componente MessageList
- * @property {Array<Messages>} Messages - Lista de mensajes
+ * @property {Array<Message>} Message - Lista de mensajes
  */
 interface MessageListProps {
-    messages: Messages[]
+    messages: Message[]
 }
 
 /**

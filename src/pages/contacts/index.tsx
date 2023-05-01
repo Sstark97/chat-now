@@ -1,12 +1,11 @@
-import { useContext } from "react"
+import useChatContext from "@hooks/useChatContext"
 import ChatLayout from "@layouts/ChatLayout"
 import Link from "next/link"
 import { AiOutlinePlus } from "react-icons/ai"
-import { ChatContext } from "@context/ChatProvider"
 import Chat from "@containers/Chat"
 
 const Contacts = () => {
-    const { contacts: friendships } = useContext(ChatContext)
+    const { contacts: friendships } = useChatContext()
 
     return (
         <ChatLayout>

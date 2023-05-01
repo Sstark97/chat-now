@@ -1,6 +1,5 @@
-import { useContext } from "react"
+import useChatContext from "@hooks/useChatContext"
 import { STATE_COLORS } from "@lib/constants/securityPassword"
-import { ChatContext } from "@context/ChatProvider"
 import type { FriendshipProps } from "@customTypes/components"
 
 /**
@@ -12,7 +11,7 @@ import type { FriendshipProps } from "@customTypes/components"
 const Friendship = ({ id, name, time, message, numMessages, status }: FriendshipProps) => {
     const stateStyle = "h-[.8rem] w-[.8rem] ml-3 rounded-full"
     const color = STATE_COLORS[status as keyof typeof STATE_COLORS]
-    const { handleOpenChat } = useContext(ChatContext)
+    const { handleOpenChat } = useChatContext()
 
     const handleClick = () => {
         handleOpenChat(id)

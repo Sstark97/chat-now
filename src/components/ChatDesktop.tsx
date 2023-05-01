@@ -1,5 +1,4 @@
-import { useContext } from "react"
-import { ChatContext } from "@context/ChatProvider"
+import useChatContext from "@hooks/useChatContext"
 import OpenChat from "@containers/OpenChat"
 
 /**
@@ -8,7 +7,7 @@ import OpenChat from "@containers/OpenChat"
  * @example <ChatDesktop />
  */
 const ChatDesktop = () => {
-    const { selectedChat } = useContext(ChatContext)
+    const { selectedChat } = useChatContext()
     const isChatOpen = Object.keys(selectedChat).length !== 0
 
     return (

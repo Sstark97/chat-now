@@ -3,7 +3,7 @@ import { createClient, PostgrestSingleResponse } from "@supabase/supabase-js"
 import * as process from "process"
 import type { ChildrenProps } from "@customTypes/global"
 import type { RealTimeContext } from "@customTypes/context"
-import type { Chats, ContactChats } from "@customTypes/domain"
+import type { Chats, ContactChats, Message, MessageResponse } from "@customTypes/domain"
 import type { FriendshipProps } from "@customTypes/components"
 
 const RealTimeContext = createContext<RealTimeContext>({} as RealTimeContext)
@@ -69,7 +69,12 @@ const RealTimeProvider = ({ children }: ChildrenProps) => {
     const getAllMessages = async (userId: string, contactId: string) => {
         const chat = await getChatIdFrom(userId, contactId)
 
-        return supabase.from("Message").select("*").eq("chat_id", chat?.chat_id)
+        const { data: messages, error } = await supabase
+            .from("Message")
+            .select("*")
+            .eq("chat_id", chat?.chat_id)
+
+        return { data: messages as Message[], error } as MessageResponse
     }
 
     /**
@@ -127,7 +132,7 @@ const RealTimeProvider = ({ children }: ChildrenProps) => {
      * @example getContactsFromChats()
      */
     const getContactsFromChats = async (userId: string, chats: Chats[]) => {
-        const contacts = (await Promise.all(
+        return (await Promise.all(
             chats.map(async (chat) => {
                 const { data: contacts } = await supabase
                     .from("ChatUsers")
@@ -138,8 +143,6 @@ const RealTimeProvider = ({ children }: ChildrenProps) => {
                 return contacts ? contacts[0].User : null
             })
         )) as ContactChats[]
-
-        return contacts
     }
 
     /**
@@ -149,7 +152,7 @@ const RealTimeProvider = ({ children }: ChildrenProps) => {
      * @example getContactsNames()
      */
     const getContactsNames = async (contacts: ContactChats[]) => {
-        const contactsNames = (await Promise.all(
+        return (await Promise.all(
             contacts.map(async (contact) => {
                 const { data: name } = await supabase
                     .from("Contact")
@@ -159,8 +162,6 @@ const RealTimeProvider = ({ children }: ChildrenProps) => {
                 return name ? name[0].name : null
             })
         )) as string[]
-
-        return contactsNames
     }
 
     /**
@@ -171,10 +172,10 @@ const RealTimeProvider = ({ children }: ChildrenProps) => {
      * @example getChatsValues()
      */
     const getChatsValues = async (userId: string, contacts: ContactChats[]) => {
-        const chatsValues = await Promise.all(
+        return await Promise.all(
             contacts.map(async (contact) => {
-                const allMessages = await getAllMessages(userId, contact.id)
-                const lastMessage = allMessages.data?.at(-1)
+                const { data: allMessages } = await getAllMessages(userId, contact.id)
+                const lastMessage = allMessages.at(-1) as Message
                 const { id, author_id, text, date } = lastMessage
 
                 return {
@@ -185,8 +186,6 @@ const RealTimeProvider = ({ children }: ChildrenProps) => {
                 }
             })
         )
-
-        return chatsValues
     }
 
     /**

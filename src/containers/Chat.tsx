@@ -1,9 +1,8 @@
+import useChatContext from "@hooks/useChatContext"
 import FriendshipList from "@containers/FriendshipList"
 import Searcher from "@components/Searcher"
 import NavBar from "@components/NavBar"
 import ChatDesktop from "@components/ChatDesktop"
-import { useContext } from "react"
-import { ChatContext } from "@context/ChatProvider"
 import OpenChat from "@containers/OpenChat"
 import type { ChatProps } from "@customTypes/containers"
 
@@ -16,7 +15,7 @@ import type { ChatProps } from "@customTypes/containers"
  * @example <Chat message="No hay chats" friendships={chats} />
  */
 const Chat = ({ message, friendships, children }: ChatProps) => {
-    const { selectedChat } = useContext(ChatContext)
+    const { selectedChat } = useChatContext()
     const isChatOpen = Object.keys(selectedChat).length !== 0
 
     return (
