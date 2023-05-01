@@ -5,6 +5,7 @@ import ChatDesktop from "@components/ChatDesktop"
 import { useContext } from "react"
 import { ChatContext } from "@context/ChatProvider"
 import OpenChat from "@containers/OpenChat"
+import type { ChatProps } from "@customTypes/containers"
 
 /**
  * Este componente es el encargado de mostrar el contenedor de chats
@@ -14,7 +15,7 @@ import OpenChat from "@containers/OpenChat"
  * @returns component
  * @example <Chat message="No hay chats" friendships={chats} />
  */
-const Chat = ({ message, friendships, children }: any) => {
+const Chat = ({ message, friendships, children }: ChatProps) => {
     const { selectedChat } = useContext(ChatContext)
     const isChatOpen = Object.keys(selectedChat).length !== 0
 
