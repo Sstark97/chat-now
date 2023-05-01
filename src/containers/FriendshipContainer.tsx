@@ -22,11 +22,11 @@ const FriendshipContainer = () => {
         setChats(chats)
     }
 
-    console.log(chats)
-
     useEffect(() => {
         getAllChats()
     }, [])
+
+    console.log(chats)
 
     return (
         <div className="flex h-screen">

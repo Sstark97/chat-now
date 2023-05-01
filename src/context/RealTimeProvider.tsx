@@ -144,14 +144,13 @@ const RealTimeProvider = ({ children }: ChildrenProps) => {
 
         return nameContacts.map((contactName, index) => {
             const { image, status } = contactsChats[index]
-            const { author_id, text, date, id } = chatsValues[index]
+            const { author_id, text, date } = chatsValues[index]
 
             return {
-                id,
+                id: author_id,
                 name: contactName,
                 image,
                 status,
-                author_id,
                 message: text,
                 time: date,
             }

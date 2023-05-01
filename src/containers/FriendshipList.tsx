@@ -1,5 +1,6 @@
 import type { FriendshipListProps } from "@customTypes/containers"
 import Friendship from "@components/Friendship"
+import { formatDate } from "@lib/utils/formatDate"
 
 /**
  * Este componente es el que se encarga de mostrar la lista de relaciones entre usuario y contacto
@@ -15,7 +16,7 @@ const FriendshipList = ({ friendships }: FriendshipListProps) => {
                     key={friendship.id}
                     id={friendship.id}
                     name={friendship.name}
-                    time={friendship.time}
+                    time={formatDate(friendship.time)}
                     message={friendship.message}
                     numMessages={friendship.numMessages}
                     status={friendship.status}

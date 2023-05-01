@@ -15,6 +15,7 @@ const Friendship = ({ id, name, time, message, numMessages, status }: Friendship
     const { handleOpenChat } = useContext(ChatContext)
 
     const handleClick = () => {
+        console.log(id)
         handleOpenChat(id)
     }
 
