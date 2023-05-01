@@ -18,8 +18,6 @@ const ChatContext = createContext<ChatContext>({} as ChatContext)
  * @returns component
  * @example <ChatProvider>children</ChatProvider>
  */
-
-console.log(process.env)
 const ChatProvider = ({ children }: ChildrenProps) => {
     const { Provider } = ChatContext
     const ref = useRef<HTMLDivElement>() as MutableRefObject<HTMLDivElement>
@@ -66,6 +64,7 @@ const ChatProvider = ({ children }: ChildrenProps) => {
     const handleOpenChat = (id: string) => {
         const chat = contacts.find((contact) => contact.id === id) as Contacts
         const userId = session?.user?.id as string
+
         setSelectedChat(chat)
         createChatWithUser(userId, id)
     }
