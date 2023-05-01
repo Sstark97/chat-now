@@ -1,4 +1,4 @@
-import { ChangeEvent, useState } from "react"
+import { ChangeEvent, FormEvent, useState } from "react"
 import useChatMembersId from "@hooks/useChatMembersId"
 import useRealTimeContext from "@hooks/useRealTimeContext"
 import { BsSendFill } from "react-icons/bs"
@@ -17,7 +17,8 @@ const MessageInput = () => {
         setMessage(e.target.value)
     }
 
-    const handleSendMessage = () => {
+    const handleSendMessage = (e: FormEvent<HTMLFormElement>) => {
+        e.preventDefault()
         if (message !== "") {
             sendMessage(userId, contactId, message)
             setMessage("")
@@ -25,7 +26,10 @@ const MessageInput = () => {
     }
 
     return (
-        <div className="w-full lg:w-[72%] p-4 px-7 flex items-center justify-between fixed bottom-0 bg-primary lg:bg-secondary">
+        <form
+            className="w-full lg:w-[72%] p-4 px-7 flex items-center justify-between fixed bottom-0 bg-primary lg:bg-secondary"
+            onSubmit={handleSendMessage}
+        >
             <input
                 placeholder="Mensaje"
                 type="text"
@@ -35,11 +39,11 @@ const MessageInput = () => {
             />
             <button
                 className="w-[17%] lg:w-[9%] flex justify-center p-3 text-2xl font-bold bg-light_purple rounded-lg"
-                onClick={handleSendMessage}
+                type="submit"
             >
                 <BsSendFill />
             </button>
-        </div>
+        </form>
     )
 }
 
