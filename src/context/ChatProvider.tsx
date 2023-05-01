@@ -32,7 +32,6 @@ const ChatProvider = ({ children }: ChildrenProps) => {
     useEffect(() => {
         const fetchContacts = async () => {
             const data = await getFrom<Contacts[]>(API.GET_CONTACTS)
-
             if (equals(data, contacts)) {
                 setContacts(data)
             }

@@ -1,14 +1,29 @@
 import moment from "moment"
-
-const date = new Date()
-const today = `${date.getMonth() + 1 < 10 ? `0${date.getMonth() + 1}` : date.getMonth() + 1}/${
-    date.getDate() < 10 ? `0${date.getDate()}` : date.getDate()
-}/${date.getFullYear()}`
+import { WEEK_DAY_NAME } from "../constants/formatDate"
 
 const formatDate = (date: string | undefined) => {
-    moment(date).format("L") === today ? moment(date).format("HH:mm") : moment(date).format("L")
+    const now = moment()
+    const startOfToday = now.startOf("day")
+    const startOfYesterday = now.clone().subtract(1, "day").startOf("day")
+    const messageTime = moment(date)
+    let displayTime = ""
 
-    return "a"
+    if (messageTime.isSameOrAfter(startOfToday)) {
+        // Si el mensaje fue enviado hoy, mostrar la hora
+        displayTime = messageTime.format("HH:mm")
+    } else if (messageTime.isSameOrAfter(startOfYesterday)) {
+        // Si el mensaje fue enviado ayer, mostrar "ayer"
+        displayTime = "ayer"
+    } else if (messageTime.isAfter(now.clone().subtract(7, "day"))) {
+        // Si el mensaje fue enviado hace menos de una semana, mostrar el día de la semana
+        const weekdayIndex = messageTime.weekday()
+        displayTime = WEEK_DAY_NAME[weekdayIndex]
+    } else {
+        // Si el mensaje fue enviado hace más de una semana, mostrar la fecha
+        displayTime = messageTime.format("DD/MM/YYYY")
+    }
+
+    return displayTime
 }
 
 export { formatDate }

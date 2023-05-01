@@ -26,8 +26,6 @@ const FriendshipContainer = () => {
         getAllChats()
     }, [])
 
-    console.log(chats)
-
     return (
         <div className="flex h-screen">
             <div className="w-full lg:w-[28%] relative">
