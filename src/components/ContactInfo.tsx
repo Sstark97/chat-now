@@ -17,7 +17,13 @@ const ContactInfo = () => {
                 <MdArrowBackIosNew className="font-extrabold text-xl lg:hidden mr-3" />
             </button>
             {image ? (
-                <Image className="rounded-full" src={image} alt={name} width={75} height={75} />
+                <Image
+                    className="w-[4rem] h-[4rem] rounded-full"
+                    src={image}
+                    alt={name}
+                    width={75}
+                    height={75}
+                />
             ) : (
                 <div className="w-[4rem] h-[4rem] lg:bg-secondary bg-icon rounded-full"></div>
             )}
