@@ -7,11 +7,24 @@ body::-webkit-scrollbar {
 }
 
 body::-webkit-scrollbar-track {
-    background: #A7A7A7; 
+    background: #a7a7a7;
 }
 
 body::-webkit-scrollbar-thumb {
-    background-color: #BC8FCC;
+    background-color: #bc8fcc;
     padding: 2rem;
-    border-radius: 20px; 
+    border-radius: 20px;
+}
+
+.animate-spinner {
+    animation: spin 1.5s linear infinite;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
 }
