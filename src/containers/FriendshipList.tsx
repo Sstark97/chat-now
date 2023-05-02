@@ -25,7 +25,7 @@ const FriendshipList = ({ friendships }: FriendshipListProps) => {
     return (
         <div className="w-[90%] mt-8 mx-auto">
             {friendships.map((friendship) => (
-                <Friendship
+                <FriendshipItem
                     key={friendship.id}
                     id={friendship.id}
                     name={friendship.name}
