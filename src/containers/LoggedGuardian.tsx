@@ -17,7 +17,7 @@ const LoggedGuardian = ({ children }: ChildrenProps) => {
 
     useEffect(() => {
         if (status === "unauthenticated") {
-            router.push(REDIRECT.LOGIN)
+            router.push(REDIRECT.LANDING)
         }
     }, [router, status])
 

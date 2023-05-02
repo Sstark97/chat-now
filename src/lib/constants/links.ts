@@ -26,6 +26,7 @@ enum API {
 enum REDIRECT {
     HOME = "/",
     LOGIN = "/login",
+    LANDING = "/landing",
 }
 
 /**

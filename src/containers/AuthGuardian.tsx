@@ -20,11 +20,7 @@ const AuthGuardian = ({ children }: ChildrenProps) => {
         }
     }, [router, status])
 
-    if (status === "loading") {
-        return <p>loading...</p>
-    }
-
-    return <>{children}</>
+    return <>{status === "authenticated" || status === "loading" ? <p>loading...</p> : children}</>
 }
 
 export default AuthGuardian

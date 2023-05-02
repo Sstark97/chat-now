@@ -33,7 +33,7 @@ const Hero = () => {
                     <p className="mt-1 lg:mt-0">quieras</p>
                 </div>
                 <Link
-                    href="/src/pages/login"
+                    href="/login"
                     className="px-8 py-2 lg:px-9 lg:py-3 bg-light_purple rounded-lg text-black text-lg lg:text-xl"
                 >
                     Comienza ya
