@@ -8,6 +8,7 @@ import { equals } from "@lib/utils"
 import type { ChildrenProps } from "@customTypes/global"
 import type { ChatContext } from "@customTypes/context"
 import type { Contacts } from "@customTypes/domain"
+import type { Friendship } from "@customTypes/components"
 
 const ChatContext = createContext<ChatContext>({} as ChatContext)
 
@@ -21,8 +22,8 @@ const ChatProvider = ({ children }: ChildrenProps) => {
     const { Provider } = ChatContext
     const ref = useRef<HTMLDivElement>() as MutableRefObject<HTMLDivElement>
     const [error, setError] = useState<boolean>(true)
-    const [contacts, setContacts] = useState<Contacts[]>([])
-    const [selectedChat, setSelectedChat] = useState<Contacts>({} as Contacts)
+    const [contacts, setContacts] = useState<Friendship[]>([])
+    const [selectedChat, setSelectedChat] = useState<Friendship>({} as Friendship)
     const { data: session, status } = useSession()
     const { createChatWithUser } = useRealTimeContext()
 
@@ -59,16 +60,15 @@ const ChatProvider = ({ children }: ChildrenProps) => {
         setContacts(data)
     }
 
-    const handleOpenChat = (id: string) => {
-        const chat = contacts.find((contact) => contact.id === id) as Contacts
+    const handleOpenChat = (friendship: Friendship) => {
         const userId = session?.user?.id as string
 
-        setSelectedChat(chat)
-        createChatWithUser(userId, id)
+        setSelectedChat(friendship)
+        createChatWithUser(userId, friendship.id)
     }
 
     const handleCloseChat = () => {
-        setSelectedChat({} as Contacts)
+        setSelectedChat({} as Friendship)
     }
 
     return (

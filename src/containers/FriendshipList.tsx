@@ -1,5 +1,5 @@
 import type { FriendshipListProps } from "@customTypes/containers"
-import Friendship from "@components/Friendship"
+import FriendshipItem from "@components/FriendshipItem"
 import { formatDate } from "@lib/utils/formatDate"
 
 /**

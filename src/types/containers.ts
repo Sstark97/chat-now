@@ -1,14 +1,14 @@
-import { FriendshipProps } from "@customTypes/components"
+import { Friendship } from "@customTypes/components"
 import { Message } from "@customTypes/domain"
 import { ChildrenProps } from "./global"
 
 /**
  * @interface FriendshipListProps
  * @description Propiedades del componente FriendshipList
- * @property {Array<FriendshipProps>} Friendships - Lista de Friendships
+ * @property {Array<Friendship>} Friendships - Lista de Friendships
  */
 interface FriendshipListProps {
-    friendships: FriendshipProps[]
+    friendships: Friendship[]
 }
 
 /**
@@ -33,7 +33,7 @@ interface OpenChatProps {
  * @interface ChatProps
  * @description Propiedades del componente Chat
  * @property {string} message - Mensaje a enviar
- * @property {Array<FriendshipProps>} Friendships - Lista de Friendships
+ * @property {Array<Friendship>} Friendships - Lista de Friendships
  * @property children - Componentes hijos
  */
 interface ChatProps extends FriendshipListProps, ChildrenProps {

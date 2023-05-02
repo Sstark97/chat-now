@@ -26,7 +26,7 @@ const OpenChat = ({ className }: OpenChatProps) => {
     useEffect(() => {
         getMessages()
         supabase
-            .channel("custom-all-channel")
+            .channel(`custom-chat-${contactId}`)
             .on(
                 "postgres_changes",
                 { event: "*", schema: "public", table: "Message" },
@@ -35,7 +35,7 @@ const OpenChat = ({ className }: OpenChatProps) => {
                 }
             )
             .subscribe()
-    }, [contactId, contactId, getMessages, supabase])
+    }, [contactId, getMessages, supabase, userId])
 
     return (
         <div className={`w-full h-screen ${className}`}>

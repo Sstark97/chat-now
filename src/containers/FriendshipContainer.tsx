@@ -2,7 +2,7 @@ import { useState, useEffect } from "react"
 import useRealTimeContext from "@hooks/useRealTimeContext"
 import useChatMembersId from "@hooks/useChatMembersId"
 import Chat from "@containers/Chat"
-import type { FriendshipProps } from "@customTypes/components"
+import type { Friendship } from "@customTypes/components"
 
 /**
  * Este componente es el encargado de mostrar el contenedor de relaciones entre usuario y contactos
@@ -12,7 +12,7 @@ import type { FriendshipProps } from "@customTypes/components"
 const FriendshipContainer = () => {
     const { userId } = useChatMembersId()
     const { getChats } = useRealTimeContext()
-    const [chats, setChats] = useState<FriendshipProps[]>([])
+    const [chats, setChats] = useState<Friendship[]>([])
 
     const getAllChats = async () => {
         const chats = await getChats(userId)

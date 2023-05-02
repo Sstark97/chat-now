@@ -1,7 +1,7 @@
 import { MutableRefObject } from "react"
-import { Chats, Contacts, MessageResponse } from "@customTypes/domain"
+import { Chats, MessageResponse } from "@customTypes/domain"
 import { PostgrestSingleResponse, SupabaseClient } from "@supabase/supabase-js"
-import type { FriendshipProps } from "@customTypes/components"
+import type { Friendship } from "@customTypes/components"
 
 /**
  * @interface ChatContext
@@ -16,11 +16,11 @@ import type { FriendshipProps } from "@customTypes/components"
 interface ChatContext {
     ref: MutableRefObject<HTMLDivElement>
     error: boolean
-    contacts: Contacts[]
-    selectedChat: Contacts
+    contacts: Friendship[]
+    selectedChat: Friendship
     handleSetErrorsInForm(): void
     reloadContacts(): Promise<void>
-    handleOpenChat(id: string): void
+    handleOpenChat(friendship: Friendship): void
     handleCloseChat(): void
 }
 
@@ -36,7 +36,7 @@ interface RealTimeContext {
     getAllMessages(userId: string, contactId: string): Promise<MessageResponse>
     createChatWithUser(userId: string, contactId: string): Promise<void>
     sendMessage(userId: string, contactId: string, message: string): Promise<void>
-    getChats(userId: string): Promise<FriendshipProps[]>
+    getChats(userId: string): Promise<Friendship[]>
 }
 
 export type { ChatContext, RealTimeContext }

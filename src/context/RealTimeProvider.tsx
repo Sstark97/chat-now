@@ -4,7 +4,7 @@ import * as process from "process"
 import type { ChildrenProps } from "@customTypes/global"
 import type { RealTimeContext } from "@customTypes/context"
 import type { Chats, ContactChats, Message, MessageResponse } from "@customTypes/domain"
-import type { FriendshipProps } from "@customTypes/components"
+import type { Friendship } from "@customTypes/components"
 
 const RealTimeContext = createContext<RealTimeContext>({} as RealTimeContext)
 
@@ -168,7 +168,7 @@ const RealTimeProvider = ({ children }: ChildrenProps) => {
      * Este método es el encargado de obtener los valores de los chats
      * @param userId
      * @param contacts
-     * @returns Promise<FriendshipProps[]>
+     * @returns Promise<Friendship[]>
      * @example getChatsValues()
      */
     const getChatsValues = async (userId: string, contacts: ContactChats[]) => {
@@ -176,13 +176,15 @@ const RealTimeProvider = ({ children }: ChildrenProps) => {
             contacts.map(async (contact) => {
                 const { data: allMessages } = await getAllMessages(userId, contact.id)
                 const lastMessage = allMessages.at(-1) as Message
-                const { id, author_id, text, date } = lastMessage
+                if (lastMessage) {
+                    const { id, author_id, text, date } = lastMessage
 
-                return {
-                    id,
-                    author_id,
-                    text,
-                    date,
+                    return {
+                        id,
+                        author_id,
+                        text,
+                        date,
+                    }
                 }
             })
         )
@@ -191,10 +193,10 @@ const RealTimeProvider = ({ children }: ChildrenProps) => {
     /**
      * Este método es el encargado de obtener todos los chats del usuario
      * @param userId
-     * @returns Promise<FriendshipProps[]>
+     * @returns Promise<Friendship[]>
      * @example getChats()
      */
-    const getChats = async (userId: string): Promise<FriendshipProps[]> => {
+    const getChats = async (userId: string): Promise<Friendship[]> => {
         // get all contact data from chats where the current user is a member
         const { data: chats } = await getAllChats(userId)
 
@@ -204,16 +206,27 @@ const RealTimeProvider = ({ children }: ChildrenProps) => {
 
         return nameContacts.map((contactName, index) => {
             const { id, image, status } = contactsChats[index]
-            const { author_id, text, date } = chatsValues[index]
+            const chat = chatsValues.at(index)
+
+            if (chat) {
+                const { author_id, text, date } = chat
+
+                return {
+                    id,
+                    name: contactName,
+                    image,
+                    status,
+                    message: text,
+                    time: date,
+                    author_id,
+                }
+            }
 
             return {
                 id,
                 name: contactName,
                 image,
                 status,
-                message: text,
-                time: date,
-                author_id,
             }
         })
     }
