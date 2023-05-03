@@ -14,7 +14,7 @@ const Message = ({ author_id, text, date }: MessageProps) => {
     const { data: session } = useSession()
     const isReceiver = author_id === session?.user.id
 
-    const formattedDate = moment(date).format("HH:mm")
+    const formattedDate = moment.utc(date).local().format("HH:mm")
     const styleReceiver = "bg-light_purple self-end"
     const styleSender = "bg-secondary lg:bg-primary self-start"
 
