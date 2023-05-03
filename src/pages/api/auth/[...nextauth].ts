@@ -11,6 +11,10 @@ import { API } from "@lib/constants/links"
 
 const prisma = new PrismaClient()
 
+/**
+ * @description Configuración de NextAuth
+ * @type {NextAuthOptions}
+ */
 const options: NextAuthOptions = {
     theme: {
         colorScheme: "light",
@@ -52,6 +56,23 @@ const options: NextAuthOptions = {
             clientSecret: process.env.AUTH_GOOGLE_SECRET as string,
         }),
     ],
+    callbacks: {
+        async jwt({ token, user }) {
+            if (user) {
+                token.id = user.id
+                token.name = user.name
+                token.email = user.email
+            }
+
+            return token
+        },
+        async session({ session, token }) {
+            if (session.user) {
+                session.user.id = token.id as string
+            }
+            return session
+        },
+    },
     session: {
         strategy: "jwt",
     },

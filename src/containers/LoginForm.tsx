@@ -19,6 +19,9 @@ const LoginForm = () => {
     const { ref } = useChatContext()
     const { login, error } = useLogin(ref)
 
+    /**
+     * Esta función es la encargada de ejecutar la función login
+     */
     const handleClick = async () => {
         await login()
     }
@@ -32,7 +35,7 @@ const LoginForm = () => {
                     <AuthProviders />
                 </div>
                 <div className="w-10/12 md:w-6/12 flex flex-col items-center">
-                    {error ? <Error message={error} /> : null}
+                    {error ? <Error message={error} /> : <></>}
                     <div className="w-full" ref={ref}>
                         <Input
                             className="w-full mt-5"

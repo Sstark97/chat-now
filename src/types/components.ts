@@ -33,8 +33,10 @@ interface InputError {
  * @property {string} placeholder - Input placeholder
  * @property {string} name - Nombre del input
  * @property {ReactNode} children - Input children
- * @property {InputError} validate - Validación del input
+ * @property {InputError} errorManager - Gestor de errores del input
  * @property {string} location - Ubicación del input
+ * @property {string} className - Clase del input
+ * @property {string} errorClassName - Clase del error del input
  */
 interface InputProps {
     type: string
@@ -49,19 +51,20 @@ interface InputProps {
 
 /**
  * @interface FriendshipProps
- * @description Propiedades del componente Chat
+ * @description Propiedades del componente Friendship
  * @property {string} name - Nombre del usuario
- * @property {string} time - Hora del mensaje
- * @property {string} message - Mensaje
- * @property {number} numMessages - Número de mensajes
+ * @property {string} time - Hora del último mensaje
+ * @property {string} message - Último mensaje
+ * @property {number} numMessages - Número de mensajes sin leer
  * @property {string} state - Estado del usuario
  */
 interface FriendshipProps {
+    id: string
     name: string
     time?: string
     message?: string
     numMessages?: number
-    state: string
+    status: string
 }
 
 /**
@@ -90,6 +93,9 @@ interface ButtonProps {
 }
 
 /**
+ * @interface NavBarProps
+ * @description Propiedades del componente NavBar
+ * @property {string} type - Tipo de NavBar
  */
 interface NavBarProps {
     type?: string
@@ -153,6 +159,18 @@ interface FeatureProps extends ChildrenProps {
     description: string
 }
 
+ * @interface MessageProps
+ * @description Propiedades del componente Message
+ * @property {string} receiverId - Id del receptor
+ * @property {string} text - Texto del mensaje
+ * @property {string} date - Fecha del mensaje
+ */
+interface MessageProps {
+    receiverId: string
+    text: string
+    date: string
+}
+
 export type {
     ErrorProps,
     InputError,
@@ -167,4 +185,5 @@ export type {
     NavBarProps,
     RenderByMap,
     FeatureProps,
+    MessageProps,
 }

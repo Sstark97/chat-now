@@ -66,5 +66,5 @@ module.exports = {
             change: "6s linear 0s normal none infinite change",
         },
     },
-    plugins: [],
+    plugins: [require("tailwind-scrollbar-hide")],
 }

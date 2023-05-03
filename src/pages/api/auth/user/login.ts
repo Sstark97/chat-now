@@ -3,6 +3,14 @@ import type { NextApiResponse } from "next"
 import type { UserRequest } from "@customTypes/request"
 import type { UserResponse } from "@customTypes/domain"
 
+/**
+ * @description Manejador de la ruta /api/auth/user/login
+ * @param req {UserRequest}
+ * @param res {NextApiResponse<UserResponse>}
+ * @returns {Promise<void>}
+ * @example
+ * const user = await fetch("/api/auth/user/login", {
+ */
 export default async function handler(req: UserRequest, res: NextApiResponse<UserResponse>) {
     const userService = UserFactory.createUserService()
 

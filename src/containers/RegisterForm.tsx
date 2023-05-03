@@ -20,6 +20,9 @@ const RegisterForm = () => {
     const { ref } = useChatContext()
     const { action: register, error } = useForm(ref, API.REGISTER, REDIRECT.LOGIN)
 
+    /**
+     * Esta función es la encargada de ejecutar la función register
+     */
     const handleClickInRegister = async () => {
         await register()
     }
@@ -32,7 +35,7 @@ const RegisterForm = () => {
                     <AuthProviders />
                 </div>
                 <div className="w-10/12 md:w-6/12 flex flex-col items-center">
-                    {error ? <Error message={error} /> : null}
+                    {error ? <Error message={error} /> : <></>}
                     <div className="w-full" ref={ref}>
                         <Input
                             className="w-full mt-5"

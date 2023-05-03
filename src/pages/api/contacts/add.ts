@@ -39,6 +39,12 @@ const checkErrorsFrom = async (req: ContactRequest, res: NextApiResponse<ErrorRe
     return response
 }
 
+/**
+ * @description Manejador de la ruta /api/contacts/add
+ * @param req {UserRequest}
+ * @param res {NextApiResponse<UserResponse | ErrorResponse>}
+ * @returns {Promise<void>}
+ */
 export default async function handler(
     req: ContactRequest,
     res: NextApiResponse<Contact | ErrorResponse>

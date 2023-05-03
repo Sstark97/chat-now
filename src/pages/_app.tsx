@@ -5,10 +5,10 @@ import "../styles/global.css"
 
 export default function App({ Component, pageProps }: AppProps) {
     return (
-        <ChatProvider>
-            <AuthProvider session={pageProps.session}>
+        <AuthProvider session={pageProps.session}>
+            <ChatProvider>
                 <Component {...pageProps} />
-            </AuthProvider>
-        </ChatProvider>
+            </ChatProvider>
+        </AuthProvider>
     )
 }

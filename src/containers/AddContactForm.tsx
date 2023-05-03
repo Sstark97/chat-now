@@ -14,9 +14,17 @@ import InputWithIcon from "@components/InputWithIcon"
  * @example <AddContactForm />
  */
 const AddContactForm = () => {
-    const { ref } = useChatContext()
-    const { action: addUser, error } = useForm(ref, API.ADD_CONTACT, REDIRECT.HOME)
+    const { ref, reloadContacts } = useChatContext()
+    const { action: addUser, error } = useForm(
+        ref,
+        API.ADD_CONTACT,
+        REDIRECT.CONTACTS,
+        reloadContacts
+    )
 
+    /**
+     * Esta función es la encargada de ejecutar la función addUser
+     */
     const handleClick = async () => {
         await addUser()
     }
@@ -28,7 +36,7 @@ const AddContactForm = () => {
         <div className="w-full">
             <form className="w-full flex flex-col justify-center items-center">
                 <div className="w-[90%] flex flex-col items-center">
-                    {error ? <Error className="mt-5 text-center" message={error} /> : null}
+                    {error ? <Error className="mt-5 text-center" message={error} /> : <></>}
                     <div className="w-full flex flex-col justify-center items-center" ref={ref}>
                         <InputWithIcon
                             className={inputClass}

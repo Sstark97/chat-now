@@ -7,7 +7,7 @@ const inter = Inter({ subsets: ["latin"] })
 
 /**
  * Layout para las paginas del chat
- * @param children {ChildrenProps}
+ * @param {ChildrenProps} { children } - children: componente a mostrar
  * @returns component
  * @example <ChatLayout>{children}</ChatLayout>
  */

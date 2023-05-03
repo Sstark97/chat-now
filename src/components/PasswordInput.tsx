@@ -6,12 +6,9 @@ import { errors } from "@lib/constants/validations"
 
 /**
  * Este componente es el encargado de mostrar un input de tipo password
- * @param {string} placeholder
- * @param {boolean} validate
- * @param {string} location
- * @param {string} className
+ * @param {PasswordProps} { placeholder, validate, location, className } - placeholder: texto de placeholder, validate: booleano que indica si se debe validar el input, location: ubicación del input, className: clase a aplicar al input
  * @returns component
- * @example <PasswordInput placeholder="Contraseña" />
+ * @example <PasswordInput placeholder="Contraseña" validate location="login" />
  */
 const PasswordInput = ({ placeholder, validate, location, className = "" }: PasswordProps) => {
     const [showPassword, setShowPassword] = useState(false)

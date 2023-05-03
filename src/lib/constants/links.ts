@@ -14,6 +14,7 @@ enum API {
     REGISTER = "/api/auth/user/register",
     LOGIN = "/api/auth/user/login",
     ADD_CONTACT = "/api/contacts/add",
+    GET_CONTACTS = "/api/contacts",
 }
 
 /**
@@ -27,6 +28,7 @@ enum REDIRECT {
     HOME = "/",
     LOGIN = "/login",
     LANDING = "/landing",
+    CONTACTS = "/contacts",
 }
 
 /**
@@ -45,6 +47,7 @@ enum NAVBAR_TITLES {
     MY_ACCOUNT = "Mi cuenta",
 }
 
+// noinspection JSValidateJSDoc
 /**
  * @description Objeto con los links de la barra de navegación
  * @constant

@@ -1,24 +1,32 @@
-import type { FriendshipProps } from "@customTypes/components"
+import { useContext } from "react"
 import { STATE_COLORS } from "@lib/constants/securityPassword"
+import { ChatContext } from "@context/ChatProvider"
+import type { FriendshipProps } from "@customTypes/components"
 
 /**
- * Este componente es el que se encarga de mostrar la información de un chat
- * @param name Nombre del usuario
- * @param time Hora del último mensaje
- * @param message Último mensaje
- * @param numMessages Número de mensajes sin leer
- * @param state Estado del usuario
+ * Este componente es el encargado de mostrar una relación entre usuario y contacto
+ * @param {FriendshipProps} { name, time, message, numMessages, state } - name: nombre del contacto, time: hora del último mensaje, message: último mensaje, numMessages: número de mensajes sin leer, state: estado del contacto
  * @returns component
- * @example
- * <Chat name="Juan" time="12:30" message="Mañana podemos hablarlo mejor" numMessages={2} state="online" />
+ * @example <Friendship name="Juan" time="12:00" message="Hola" numMessages={2} state="online" />
  */
-const Friendship = ({ name, time, message, numMessages, state }: FriendshipProps) => {
+const Friendship = ({ id, name, time, message, numMessages, status }: FriendshipProps) => {
     const stateStyle = "h-[.8rem] w-[.8rem] ml-3 rounded-full"
-    const color = STATE_COLORS[state as keyof typeof STATE_COLORS]
+    const color = STATE_COLORS[status as keyof typeof STATE_COLORS]
+    const { handleOpenChat } = useContext(ChatContext)
+
+    const handleClick = () => {
+        handleOpenChat(id)
+    }
 
     return (
         <>
-            <div className="w-full mb-4 mx-auto flex items-center">
+            <div
+                className="w-full mb-4 mx-auto flex items-center"
+                onClick={handleClick}
+                onKeyDown={handleClick}
+                role="button"
+                tabIndex={0}
+            >
                 <div className="w-2/12 p-2">
                     <div className="w-[3rem] h-[3rem] bg-secondary rounded-full"></div>
                 </div>
@@ -37,9 +45,13 @@ const Friendship = ({ name, time, message, numMessages, state }: FriendshipProps
                                 <div className="h-[1.3rem] w-[1.3rem] flex items-center justify-center bg-light_purple rounded-full">
                                     <p className="text-xs text-white">{numMessages}</p>
                                 </div>
-                            ) : null}
+                            ) : (
+                                <></>
+                            )}
                         </div>
-                    ) : null}
+                    ) : (
+                        <></>
+                    )}
                 </div>
             </div>
         </>

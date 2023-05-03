@@ -9,39 +9,39 @@ const friendships = [
         time: "12:30",
         message: "Mañana podemos hablarlo mejor y jajajajaasdadasdasdasdad",
         numMessages: 2,
-        state: "online",
+        status: "online",
     },
     {
         name: "María",
         time: "10:14",
         message: "Vale!",
         numMessages: 1,
-        state: "busy",
+        status: "busy",
     },
     {
         name: "Pedro 1ºDAW",
         time: "Ayer",
         message: "Genial tío, pues ya hablamos en otro momento",
-        state: "offline",
+        status: "offline",
     },
     {
         name: "Paula prima",
         time: "Ayer",
         message: "√√ Graciaaas",
-        state: "absent",
+        status: "absent",
     },
     {
         name: "Darío",
         time: "Domingo",
         message: "√ ¿A qué hora?",
-        state: "offline",
+        status: "offline",
     },
 ]
 
 /**
- * Este componente es el encargado de mostrar el contenedor de chats
+ * Este componente es el encargado de mostrar el contenedor de relaciones entre usuario y contactos
  * @returns component
- * @example <ChatContainer />
+ * @example <FriendshipContainer />
  */
 const FriendshipContainer = () => {
     return (
