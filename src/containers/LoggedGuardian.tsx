@@ -3,6 +3,7 @@ import { useSession } from "next-auth/react"
 import { useRouter } from "next/router"
 import type { ChildrenProps } from "@customTypes/global"
 import { REDIRECT } from "@lib/constants/links"
+import Loading from "@components/Loading"
 
 // TODO: Refactorizar para que sea un solo componente y no haga un flash de loading
 /**
@@ -17,12 +18,12 @@ const LoggedGuardian = ({ children }: ChildrenProps) => {
 
     useEffect(() => {
         if (status === "unauthenticated") {
-            router.push(REDIRECT.LOGIN)
+            router.push(REDIRECT.LANDING)
         }
     }, [router, status])
 
     if (status === "loading" || status === "unauthenticated") {
-        return <p>loading...</p>
+        return <Loading />
     }
 
     return <>{children}</>

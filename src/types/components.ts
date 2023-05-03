@@ -140,6 +140,25 @@ interface NavBarLinks {
 }
 
 /**
+ * @interface RenderByMap
+ * @description Propiedades del componente RenderByMap
+ * @property {Function} transform - Función para transformar el elemento
+ */
+interface RenderByMap {
+    transform: (element: IconType | string) => JSX.Element
+}
+
+/**
+ * Interface que define las propiedades del componente Feature.
+ * @interface FeatureProps
+ * @property {string} header - Título del componente.
+ * @property {string} description - Descripción del componente.
+ */
+interface FeatureProps extends ChildrenProps {
+    header: string
+    description: string
+}
+
  * @interface MessageProps
  * @description Propiedades del componente Message
  * @property {string} receiverId - Id del receptor
@@ -164,5 +183,7 @@ export type {
     FriendshipProps,
     NavBarLinks,
     NavBarProps,
+    RenderByMap,
+    FeatureProps,
     MessageProps,
 }

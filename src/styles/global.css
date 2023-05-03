@@ -1,3 +1,30 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+body::-webkit-scrollbar {
+    width: 10px;
+}
+
+body::-webkit-scrollbar-track {
+    background: #a7a7a7;
+}
+
+body::-webkit-scrollbar-thumb {
+    background-color: #bc8fcc;
+    padding: 2rem;
+    border-radius: 20px;
+}
+
+.animate-spinner {
+    animation: spin 1.5s linear infinite;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}

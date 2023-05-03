@@ -3,6 +3,7 @@ import { useSession } from "next-auth/react"
 import { useRouter } from "next/router"
 import type { ChildrenProps } from "@customTypes/global"
 import { REDIRECT } from "@lib/constants/links"
+import Loading from "@components/Loading"
 
 /**
  * Este componente es el encargado de proteger las rutas de autenticación
@@ -20,11 +21,7 @@ const AuthGuardian = ({ children }: ChildrenProps) => {
         }
     }, [router, status])
 
-    if (status === "loading") {
-        return <p>loading...</p>
-    }
-
-    return <>{children}</>
+    return <>{status === "authenticated" || status === "loading" ? <Loading /> : children}</>
 }
 
 export default AuthGuardian
