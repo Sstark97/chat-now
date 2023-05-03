@@ -5,7 +5,7 @@ import Google from "next-auth/providers/google"
 import Credentials from "next-auth/providers/credentials"
 import { PrismaAdapter } from "@next-auth/prisma-adapter"
 import { PrismaClient } from "@prisma/client"
-import { postFrom } from "@lib/utils/fetcher"
+import { changeFrom } from "@lib/utils/fetcher"
 import type { NextAuthOptions } from "next-auth"
 import { API } from "@lib/constants/links"
 
@@ -34,7 +34,11 @@ const options: NextAuthOptions = {
                 password: { label: "Password", type: "password" },
             },
             authorize: async (credentials) => {
-                const user = await postFrom(credentials, `${process.env.NEXTAUTH_URL}${API.LOGIN}`)
+                const user = await changeFrom(
+                    credentials,
+                    `${process.env.NEXTAUTH_URL}${API.LOGIN}`,
+                    "POST"
+                )
 
                 if (user) {
                     return {

@@ -45,6 +45,23 @@ class ContactPrismaRepository implements ContactRepository {
         })
     }
 
+    async edit(userEmail: string, contactEmail: string, name: string) {
+        const user = (await this.findUserBy(userEmail)) as User
+        const contact = (await this.findUserBy(contactEmail)) as User
+
+        await this.prisma.contact.update({
+            where: {
+                user_id_contact_id: {
+                    user_id: user.id,
+                    contact_id: contact.id,
+                },
+            },
+            data: {
+                name,
+            },
+        })
+    }
+
     /**
      * @method existFrom
      * @description Verifica si existe un contacto está agregado a un usuario

@@ -59,6 +59,7 @@ interface UserRepository {
 interface ContactRepository {
     findUserBy(email: string): Promise<User | null>
     create(userEmail: string, contactInfo: ContactRequest): Promise<Contact>
+    edit(userEmail: string, contactEmail: string, name: string): Promise<void>
     existFrom(userEmail: string, contactEmail: string): Promise<boolean>
     getAllFrom(userEmail: string): Promise<Contacts[]>
 }
