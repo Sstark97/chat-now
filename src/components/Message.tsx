@@ -1,3 +1,4 @@
+import moment from "moment"
 import { useSession } from "next-auth/react"
 import { MessageProps } from "@customTypes/components"
 
@@ -9,10 +10,11 @@ import { MessageProps } from "@customTypes/components"
  * @component
  * @example <Message  receiverId={receiverId} text={text} date={date} />
  */
-const Message = ({ receiverId, text, date }: MessageProps) => {
+const Message = ({ author_id, text, date }: MessageProps) => {
     const { data: session } = useSession()
-    const isReceiver = receiverId === session?.user.id
+    const isReceiver = author_id === session?.user.id
 
+    const formattedDate = moment(date).format("HH:mm")
     const styleReceiver = "bg-light_purple self-end"
     const styleSender = "bg-secondary lg:bg-primary self-start"
 
@@ -24,7 +26,7 @@ const Message = ({ receiverId, text, date }: MessageProps) => {
         >
             <p>{text}</p>
             <p className="pt-1 ml-9 text-xs opacity-50 text-right">
-                {date} {isReceiver ? "√√" : <></>}
+                {formattedDate} {isReceiver ? "√√" : <></>}
             </p>
         </div>
     )

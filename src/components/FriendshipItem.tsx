@@ -1,21 +1,22 @@
-import { useContext } from "react"
+import useChatContext from "@hooks/useChatContext"
 import { STATE_COLORS } from "@lib/constants/securityPassword"
-import { ChatContext } from "@context/ChatProvider"
-import type { FriendshipProps } from "@customTypes/components"
+import type { Friendship } from "@customTypes/components"
+import Image from "next/image"
 
 /**
  * Este componente es el encargado de mostrar una relación entre usuario y contacto
- * @param {FriendshipProps} { name, time, message, numMessages, state } - name: nombre del contacto, time: hora del último mensaje, message: último mensaje, numMessages: número de mensajes sin leer, state: estado del contacto
+ * @param {Friendship} friendship - friendship: relación entre usuario y contacto
  * @returns component
- * @example <Friendship name="Juan" time="12:00" message="Hola" numMessages={2} state="online" />
+ * @example <FriendshipItem name="Juan" time="12:00" message="Hola" numMessages={2} state="online" />
  */
-const Friendship = ({ id, name, time, message, numMessages, status }: FriendshipProps) => {
+const FriendshipItem = (friendship: Friendship) => {
+    const { name, time, message, numMessages, status, image } = friendship
     const stateStyle = "h-[.8rem] w-[.8rem] ml-3 rounded-full"
     const color = STATE_COLORS[status as keyof typeof STATE_COLORS]
-    const { handleOpenChat } = useContext(ChatContext)
+    const { handleOpenChat } = useChatContext()
 
     const handleClick = () => {
-        handleOpenChat(id)
+        handleOpenChat(friendship)
     }
 
     return (
@@ -28,7 +29,17 @@ const Friendship = ({ id, name, time, message, numMessages, status }: Friendship
                 tabIndex={0}
             >
                 <div className="w-2/12 p-2">
-                    <div className="w-[3rem] h-[3rem] bg-secondary rounded-full"></div>
+                    {image ? (
+                        <Image
+                            className="h-[3rem] min-w-[3rem] rounded-full"
+                            src={image}
+                            alt={name}
+                            width={75}
+                            height={75}
+                        />
+                    ) : (
+                        <div className="w-[3rem] h-[3rem] bg-secondary rounded-full"></div>
+                    )}
                 </div>
                 <div className="w-10/12 flex flex-col pl-1 pr-6">
                     <div className="w-full flex justify-between">
@@ -58,4 +69,4 @@ const Friendship = ({ id, name, time, message, numMessages, status }: Friendship
     )
 }
 
-export default Friendship
+export default FriendshipItem

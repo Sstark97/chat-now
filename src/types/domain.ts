@@ -1,4 +1,5 @@
 import { Contact, Status, User } from "@prisma/client"
+import { PostgrestError } from "@supabase/supabase-js"
 
 /**
  * @typedef Credentials
@@ -114,7 +115,16 @@ interface ErrorResponse {
 }
 
 /**
- * @interface Messages
+ * @interface Chats
+ * @description Interface para definir la respuesta de un chat
+ * @property {number} chat_id - ID del chat
+ */
+interface Chats {
+    chat_id: number
+}
+
+/**
+ * @interface Message
  * @description Interface para definir la respuesta de un mensaje
  * @property {string} id - ID del mensaje
  * @property {string} text - Texto del mensaje
@@ -122,12 +132,23 @@ interface ErrorResponse {
  * @property {string} senderId - ID del usuario que envía el mensaje
  * @property {string} receiverId - ID del usuario que recibe el mensaje
  */
-interface Messages {
+interface Message {
     id: string
     text: string
     date: string
-    senderId: string
-    receiverId: string
+    chat_id: number
+    author_id: string
+}
+
+interface MessageResponse {
+    data: Message[]
+    error: null | PostgrestError
+}
+
+interface ContactChats {
+    id: string
+    image: string
+    status: string
 }
 
 export type {
@@ -139,5 +160,8 @@ export type {
     ContactRequest,
     ErrorResponse,
     Contacts,
-    Messages,
+    Chats,
+    Message,
+    MessageResponse,
+    ContactChats,
 }

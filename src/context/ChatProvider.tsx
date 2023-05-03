@@ -1,14 +1,16 @@
 import { createContext, MutableRefObject, useEffect, useRef, useState } from "react"
 import { useSession } from "next-auth/react"
+import useRealTimeContext from "@hooks/useRealTimeContext"
 import { getFrom } from "@lib/utils/fetcher"
 import { API } from "@lib/constants/links"
 import { isFormValid } from "@lib/utils/user"
 import { equals } from "@lib/utils"
 import type { ChildrenProps } from "@customTypes/global"
-import type { Context } from "@customTypes/context"
+import type { ChatContext } from "@customTypes/context"
 import type { Contacts } from "@customTypes/domain"
+import type { Friendship } from "@customTypes/components"
 
-const ChatContext = createContext<Context>({} as Context)
+const ChatContext = createContext<ChatContext>({} as ChatContext)
 
 /**
  * Este componente es el encargado de proveer el contexto de la aplicación
@@ -20,14 +22,14 @@ const ChatProvider = ({ children }: ChildrenProps) => {
     const { Provider } = ChatContext
     const ref = useRef<HTMLDivElement>() as MutableRefObject<HTMLDivElement>
     const [error, setError] = useState<boolean>(true)
-    const [contacts, setContacts] = useState<Contacts[]>([])
-    const [selectedChat, setSelectedChat] = useState<Contacts>({} as Contacts)
-    const { status } = useSession()
+    const [contacts, setContacts] = useState<Friendship[]>([])
+    const [selectedChat, setSelectedChat] = useState<Friendship>({} as Friendship)
+    const { data: session, status } = useSession()
+    const { createChatWithUser } = useRealTimeContext()
 
     useEffect(() => {
         const fetchContacts = async () => {
             const data = await getFrom<Contacts[]>(API.GET_CONTACTS)
-
             if (equals(data, contacts)) {
                 setContacts(data)
             }
@@ -58,13 +60,15 @@ const ChatProvider = ({ children }: ChildrenProps) => {
         setContacts(data)
     }
 
-    const handleOpenChat = (id: string) => {
-        const chat = contacts.find((contact) => contact.id === id) as Contacts
-        setSelectedChat(chat)
+    const handleOpenChat = (friendship: Friendship) => {
+        const userId = session?.user?.id as string
+
+        setSelectedChat(friendship)
+        createChatWithUser(userId, friendship.id)
     }
 
     const handleCloseChat = () => {
-        setSelectedChat({} as Contacts)
+        setSelectedChat({} as Friendship)
     }
 
     return (

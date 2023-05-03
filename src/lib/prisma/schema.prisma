@@ -11,26 +11,19 @@ datasource db {
 }
 
 model User {
-  id            String    @id @default(cuid())
+  id            String      @id @default(cuid())
   name          String?
-  email         String?   @unique
+  email         String?     @unique
   emailVerified DateTime?
   image         String?
   password      String?
-  status        Status    @default(online)
-  contacs       Contact[] @relation("Contact")
-  users         Contact[] @relation("User")
-  receivers     Chat[]    @relation("Receiver")
-  senders       Chat[]    @relation("Sender")
+  status        Status      @default(online)
+  contacs       Contact[]   @relation("Contact")
+  users         Contact[]   @relation("User")
   accounts      Account[]
   sessions      Session[]
-}
-
-model Message {
-  id   Int      @id @default(autoincrement())
-  text String
-  date DateTime @default(now())
-  chat Chat?    @relation("Message")
+  chatUsers     ChatUsers[] @relation("User")
+  messages      Message[]   @relation("User")
 }
 
 model Contact {
@@ -44,15 +37,30 @@ model Contact {
 }
 
 model Chat {
-  sender_id   String
-  receiver_id String
-  message_id  Int    @unique
+  id        Int         @id @default(autoincrement())
+  ChatUsers ChatUsers[] @relation("Chat")
+  messages  Message[]   @relation("Chat")
+}
 
-  Receiver User    @relation("Receiver", fields: [receiver_id], references: [id])
-  Sender   User    @relation("Sender", fields: [sender_id], references: [id])
-  Message  Message @relation("Message", fields: [message_id], references: [id])
+model ChatUsers {
+  chat_id Int
+  user_id String
 
-  @@id([sender_id, receiver_id])
+  chat Chat @relation("Chat", fields: [chat_id], references: [id])
+  user User @relation("User", fields: [user_id], references: [id])
+
+  @@id([chat_id, user_id])
+}
+
+model Message {
+  id        Int      @id @default(autoincrement())
+  text      String
+  date      DateTime @default(now())
+  chat_id   Int
+  author_id String
+
+  chat   Chat @relation("Chat", fields: [chat_id], references: [id])
+  author User @relation("User", fields: [author_id], references: [id])
 }
 
 model Account {

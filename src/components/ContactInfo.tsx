@@ -1,10 +1,14 @@
-import { useContext } from "react"
-import { ChatContext } from "@context/ChatProvider"
+import useChatContext from "@hooks/useChatContext"
 import Image from "next/image"
 import { MdArrowBackIosNew } from "react-icons/md"
 
+/**
+ * Este componente es el encargado de mostrar la información del contacto seleccionado
+ * @returns component
+ * @example <ContactInfo />
+ */
 const ContactInfo = () => {
-    const { selectedChat, handleCloseChat } = useContext(ChatContext)
+    const { selectedChat, handleCloseChat } = useChatContext()
     const { image, name, status } = selectedChat
 
     const closeChat = () => {
@@ -17,7 +21,13 @@ const ContactInfo = () => {
                 <MdArrowBackIosNew className="font-extrabold text-xl lg:hidden mr-3" />
             </button>
             {image ? (
-                <Image src={image} alt={name} width={75} height={75} />
+                <Image
+                    className="w-[4rem] h-[4rem] rounded-full"
+                    src={image}
+                    alt={name}
+                    width={75}
+                    height={75}
+                />
             ) : (
                 <div className="w-[4rem] h-[4rem] lg:bg-secondary bg-icon rounded-full"></div>
             )}

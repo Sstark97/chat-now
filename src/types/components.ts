@@ -1,6 +1,7 @@
 import { ReactNode } from "react"
 import { ChildrenProps } from "@customTypes/global"
 import { IconType } from "react-icons"
+import { Status } from "@prisma/client"
 
 /**
  * @interface ErrorProps
@@ -50,21 +51,23 @@ interface InputProps {
 }
 
 /**
- * @interface FriendshipProps
- * @description Propiedades del componente Friendship
+ * @interface Friendship
+ * @description Propiedades del componente FriendshipItem
  * @property {string} name - Nombre del usuario
  * @property {string} time - Hora del último mensaje
  * @property {string} message - Último mensaje
  * @property {number} numMessages - Número de mensajes sin leer
  * @property {string} state - Estado del usuario
  */
-interface FriendshipProps {
+interface Friendship {
     id: string
     name: string
+    email?: string
     time?: string
     message?: string
     numMessages?: number
-    status: string
+    image?: string
+    status: string | Status
 }
 
 /**
@@ -166,7 +169,7 @@ interface FeatureProps extends ChildrenProps {
  * @property {string} date - Fecha del mensaje
  */
 interface MessageProps {
-    receiverId: string
+    author_id: string
     text: string
     date: string
 }
@@ -180,7 +183,7 @@ export type {
     LevelOfSecurityProps,
     AuthHeaderProps,
     AuthButtonProps,
-    FriendshipProps,
+    Friendship,
     NavBarLinks,
     NavBarProps,
     RenderByMap,
