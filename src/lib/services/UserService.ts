@@ -1,10 +1,4 @@
-import {
-    ContactRequest,
-    Credentials,
-    UserLoginResponse,
-    UserRepository,
-    UserResponse,
-} from "@customTypes/domain"
+import { Credentials, UserLoginResponse, UserRepository, UserResponse } from "@customTypes/domain"
 import { UserRequest } from "@customTypes/request"
 import bcrypt from "bcrypt"
 import { errors } from "@lib/constants/validations"
@@ -27,7 +21,7 @@ class UserService {
      * const userRegistered = await userService.register(user)
      */
     async register(credentials: Credentials): Promise<UserResponse | null> {
-        const newUser = await this.userRepository.createUser(credentials)
+        const newUser = await this.userRepository.create(credentials)
 
         return {
             id: newUser.id,
@@ -49,7 +43,7 @@ class UserService {
             return null
         }
 
-        const user = (await this.userRepository.findUserByEmail(
+        const user = (await this.userRepository.findBy(
             credentials?.email as string
         )) as UserLoginResponse
         const password = credentials?.password as string
@@ -64,10 +58,6 @@ class UserService {
         }
 
         return null
-    }
-
-    async addContact(userEmail: string, contactInfo: ContactRequest) {
-        return this.userRepository.addContact(userEmail, contactInfo)
     }
 
     /**
@@ -122,35 +112,9 @@ class UserService {
      * const userExists = await userService.existUserFrom(email)
      */
     async existUserFrom(email: string) {
-        const user = await this.userRepository.findUserByEmail(email)
+        const user = await this.userRepository.findBy(email)
 
         return user !== null
-    }
-
-    /**
-     * @private
-     * @method isTheContactAddedBy
-     * @description Verifica si el contacto está agregado
-     * @param email
-     * @param contactEmail
-     * @returns {Promise<boolean>}
-     * @example
-     * const contactIsAdded = await userService.isTheContactAddedBy(email)
-     */
-    async isTheContactAddedBy(email: string, contactEmail: string) {
-        return await this.userRepository.existContactFrom(email, contactEmail)
-    }
-
-    /**
-     * @method getContactsFrom
-     * @description Obtiene los contactos de un usuario
-     * @param email
-     * @returns {Promise<Contacts[]>}
-     * @example
-     * const contacts = await userService.getContactsFrom(email)
-     */
-    async getContactsFrom(email: string) {
-        return this.userRepository.getContactsFrom(email)
     }
 }
 

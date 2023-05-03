@@ -36,20 +36,31 @@ interface Contacts {
 /**
  * @interface UserRepository
  * @description Interface para definir el comportamiento de un repositorio de usuarios
- * @method findUserByEmail
- * @method createUser
- * @method addContact
- * @method existContactFrom
- * @method getContactsFrom
+ * @method findBy
+ * @method create
  * @example
  * const userRepository: UserRepository = new UserPrismaRepository()
  */
 interface UserRepository {
-    findUserByEmail(email: string): Promise<User | null>
-    createUser(credentials: Credentials): Promise<User>
-    addContact(userEmail: string, contactInfo: ContactRequest): Promise<Contact>
-    existContactFrom(userEmail: string, contactEmail: string): Promise<boolean>
-    getContactsFrom(userEmail: string): Promise<Contacts[]>
+    findBy(email: string): Promise<User | null>
+    create(credentials: Credentials): Promise<User>
+}
+
+/**
+ * @interface ContactRepository
+ * @description Interface para definir el comportamiento de un repositorio de contactos
+ * @method findUserBy
+ * @method create
+ * @method existFrom
+ * @method getAllFrom
+ * @example
+ * const contactRepository: ContactRepository = new ContactPrismaRepository()
+ */
+interface ContactRepository {
+    findUserBy(email: string): Promise<User | null>
+    create(userEmail: string, contactInfo: ContactRequest): Promise<Contact>
+    existFrom(userEmail: string, contactEmail: string): Promise<boolean>
+    getAllFrom(userEmail: string): Promise<Contacts[]>
 }
 
 /**
@@ -155,6 +166,7 @@ export type {
     Credentials,
     User,
     UserRepository,
+    ContactRepository,
     UserResponse,
     UserLoginResponse,
     ContactRequest,

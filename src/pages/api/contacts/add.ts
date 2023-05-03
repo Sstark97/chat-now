@@ -4,8 +4,10 @@ import { UserFactory } from "@lib/factories/UserFactory"
 import type { Contact } from "@prisma/client"
 import type { ContactRequest, ValidateResponse } from "@customTypes/request"
 import type { ErrorResponse } from "@customTypes/domain"
+import { ContactFactory } from "@lib/factories/ContactFactory"
 
 const userService = UserFactory.createUserService()
+const contactService = ContactFactory.createContactService()
 
 /**
  * Comprueba si hay errores en los datos del usuario
@@ -26,7 +28,7 @@ const checkErrorsFrom = async (req: ContactRequest, res: NextApiResponse<ErrorRe
     }
 
     const userAlreadyExists = await userService.existUserFrom(contactEmail)
-    const isContactAdded = await userService.isTheContactAddedBy(userEmail, contactEmail)
+    const isContactAdded = await contactService.isAddedBy(userEmail, contactEmail)
 
     if (!userAlreadyExists) {
         response.status = 400
@@ -58,7 +60,7 @@ export default async function handler(
     const session = await getSession({ req })
     const userEmail = session?.user?.email as string
 
-    const newContact = await userService.addContact(userEmail, req.body)
+    const newContact = await contactService.create(userEmail, req.body)
 
     if (newContact !== null) {
         return res.status(200).json(newContact)
