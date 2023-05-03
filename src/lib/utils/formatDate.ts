@@ -12,7 +12,7 @@ const formatDate = (date: string | undefined) => {
     const now = moment()
     const startOfToday = now.startOf("day")
     const startOfYesterday = now.clone().subtract(1, "day").startOf("day")
-    const messageTime = moment(date)
+    const messageTime = moment.utc(date).local()
     let displayTime = ""
 
     if (messageTime.isSameOrAfter(startOfToday)) {
