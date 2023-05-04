@@ -59,6 +59,12 @@ class UserService {
         return null
     }
 
+    /**
+     * @method existUserFrom
+     * @description Verifica si la contraseña es correcta
+     * @param email
+     * @param password
+     */
     async isPasswordValid(email: string, password: string) {
         const user = (await this.userRepository.findBy(email)) as UserLoginResponse
 

@@ -41,7 +41,7 @@ const checkErrorsFrom = async (req: DeleteContactRequest, res: NextApiResponse<E
 }
 
 /**
- * @description Manejador de la ruta /api/contacts/edit
+ * @description Manejador de la ruta /api/contacts/delete
  * @param req {DeleteContactRequest}
  * @param res {NextApiResponse<Contact | ErrorResponse>}
  * @returns {Promise<void>}

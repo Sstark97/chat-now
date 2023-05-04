@@ -9,14 +9,42 @@ import { ContactRepository, ContactRequest } from "@customTypes/domain"
 class ContactService {
     constructor(private readonly contactRepository: ContactRepository) {}
 
+    /**
+     * @method create
+     * @description Crea un nuevo contacto
+     * @param userEmail
+     * @param contactInfo
+     * @returns {Promise<Contacts | null>}
+     * @example
+     * const newContact = await contactService.create(userEmail, contactInfo)
+     */
     async create(userEmail: string, contactInfo: ContactRequest) {
         return this.contactRepository.create(userEmail, contactInfo)
     }
 
+    /**
+     * @method edit
+     * @description Edita un contacto
+     * @param userEmail
+     * @param contactId
+     * @param name
+     * @returns {Promise<Contacts | null>}
+     * @example
+     * const contactEdited = await contactService.edit(userEmail, contactId, name)
+     */
     async edit(userEmail: string, contactId: string, name: string) {
         return this.contactRepository.edit(userEmail, contactId, name)
     }
 
+    /**
+     * @method delete
+     * @description Elimina un contacto
+     * @param userEmail
+     * @param contactId
+     * @returns {Promise<boolean>}
+     * @example
+     * const contactDeleted = await contactService.delete(userEmail, contactId)
+     */
     async delete(userEmail: string, contactId: string) {
         return this.contactRepository.delete(userEmail, contactId)
     }

@@ -4,6 +4,12 @@ import Error from "@components/Error"
 import useChatContext from "@hooks/useChatContext"
 import useDeleteContact from "@hooks/useDeleteContact"
 
+/**
+ * Formulario para eliminar un contacto
+ * @component DeleteContact
+ * @example
+ * <DeleteContact />
+ */
 const DeleteContact = () => {
     const [isOpen, setIsOpen] = useState(false)
     const [email, setEmail] = useState("")
