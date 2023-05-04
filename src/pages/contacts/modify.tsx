@@ -1,54 +1,15 @@
-import useChatContext from "@hooks/useChatContext"
-import useEditContact from "@hooks/useEditContact"
-import { FaUserAlt } from "react-icons/fa"
 import NavBar from "@components/NavBar"
 import ChatDesktop from "@components/ChatDesktop"
-import InputWithIcon from "@components/InputWithIcon"
-import Button from "@components/Button"
-import Error from "@components/Error"
-import { errors } from "@lib/constants/validations"
+import ModifyContactForm from "@containers/ModifyContactForm"
 
-const ModifyContactContainer = () => {
-    const { ref, selectedChat } = useChatContext()
-    const { handleEdit, error } = useEditContact()
-
-    const inputClass = "w-[80%] mt-5 mb-1"
-    const errorClass = "w-[80%] mb-1"
-
-    return (
-        <div className="flex h-screen">
-            <div className="w-full lg:w-[28%] relative">
-                <NavBar type="Editar" />
-                <div className="w-full">
-                    <form className="w-full flex flex-col justify-center items-center">
-                        <div className="w-[90%] flex flex-col items-center">
-                            {error ? <Error className="mt-5 text-center" message={error} /> : <></>}
-                            <div
-                                className="w-full flex flex-col justify-center items-center"
-                                ref={ref}
-                            >
-                                <InputWithIcon
-                                    className={inputClass}
-                                    type="text"
-                                    value={selectedChat.name}
-                                    name="name"
-                                    errorManager={errors.name}
-                                    errorClassName={errorClass}
-                                >
-                                    <FaUserAlt className="w-[20%] text-2xl order-first mt-5" />
-                                </InputWithIcon>
-                                <div className="w-[80%] flex flex-col justify-center items-center">
-                                    <Button value="Editar contacto" action={handleEdit} />
-                                    {/* <Button value="Eliminar contacto" action={handleClick} /> */}
-                                </div>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
-            <ChatDesktop />
+const ModifyContactContainer = () => (
+    <div className="flex h-screen">
+        <div className="w-full lg:w-[28%] relative">
+            <NavBar type="Editar" />
+            <ModifyContactForm />
         </div>
-    )
-}
+        <ChatDesktop />
+    </div>
+)
 
 export default ModifyContactContainer
