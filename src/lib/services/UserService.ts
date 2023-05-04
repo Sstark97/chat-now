@@ -47,9 +47,8 @@ class UserService {
             credentials?.email as string
         )) as UserLoginResponse
         const password = credentials?.password as string
-        const userPassword = user?.password as string
 
-        if (await bcrypt.compare(password, userPassword)) {
+        if (await this.isPasswordValid(credentials?.email as string, password)) {
             return {
                 id: user.id,
                 email: user.email,
@@ -58,6 +57,12 @@ class UserService {
         }
 
         return null
+    }
+
+    async isPasswordValid(email: string, password: string) {
+        const user = (await this.userRepository.findBy(email)) as UserLoginResponse
+
+        return await bcrypt.compare(password, user.password as string)
     }
 
     /**

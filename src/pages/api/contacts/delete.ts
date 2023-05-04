@@ -18,7 +18,9 @@ const contactService = ContactFactory.createContactService()
  * await checkErrorsInRegisterFrom(req, res)
  */
 const checkErrorsFrom = async (req: DeleteContactRequest, res: NextApiResponse<ErrorResponse>) => {
-    const { id: contactId } = req.body
+    const session = await getSession({ req })
+    const userEmailInSession = session?.user?.email as string
+    const { id: contactId, userEmail } = req.body
     const response = {} as ValidateResponse
 
     if (req.method !== "DELETE") {
@@ -30,6 +32,9 @@ const checkErrorsFrom = async (req: DeleteContactRequest, res: NextApiResponse<E
     if (!userAlreadyExists) {
         response.status = 400
         response.error = "No existe un usuario"
+    } else if (userEmailInSession !== userEmail) {
+        response.status = 400
+        response.error = "El usuario no coincide"
     }
 
     return response
@@ -52,11 +57,11 @@ export default async function handler(
     }
 
     const session = await getSession({ req })
-    const userEmail = session?.user?.email as string
+    const userEmailInSession = session?.user?.email as string
 
     const { id: contactId } = req.body
 
-    await contactService.delete(userEmail, contactId)
+    await contactService.delete(userEmailInSession, contactId)
 
     return res.status(200).json({ message: "Contact update success!" })
 }

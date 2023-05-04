@@ -1,11 +1,40 @@
+import { ChangeEvent, Fragment, useState } from "react"
 import { Dialog, Transition } from "@headlessui/react"
-import { Fragment, useState } from "react"
+import { useRouter } from "next/router"
+import useChatContext from "@hooks/useChatContext"
+import { deleteFrom } from "@lib/utils/fetcher"
+import { API, REDIRECT } from "@lib/constants/links"
+import Error from "@components/Error"
 
 const DeleteContact = () => {
     const [isOpen, setIsOpen] = useState(false)
+    const [email, setEmail] = useState("")
+    const [error, setError] = useState("")
+    const router = useRouter()
+    const { selectedChat, reloadContacts, handleCloseChat } = useChatContext()
+
+    const handleDelete = async () => {
+        try {
+            await deleteFrom(
+                { id: selectedChat.id as string, userEmail: email },
+                API.DELETE_CONTACT
+            )
+            await reloadContacts()
+            setIsOpen(false)
+            handleCloseChat()
+            await router.push(REDIRECT.CONTACTS)
+        } catch (error) {
+            const { message } = error as Error
+            setError(message)
+        }
+    }
+
+    const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
+        setEmail(event.target.value)
+    }
 
     const closeModal = () => {
-        setIsOpen(false)
+        handleDelete()
     }
 
     const openModal = () => {
@@ -52,18 +81,26 @@ const DeleteContact = () => {
                                     >
                                         Eliminar contacto
                                     </Dialog.Title>
+                                    {error ? (
+                                        <Error className="mt-5 text-center" message={error} />
+                                    ) : (
+                                        <></>
+                                    )}
                                     <div className="mt-2">
                                         <p className="text-sm text-gray-500">
-                                            ¿Estás seguro de que quieres eliminar a este contacto?
-                                            Escriba su contraseña para confirmar.
+                                            {`¿Está seguro que desea eliminar a ${selectedChat.name}?`}
+                                            Escriba su email para confirmar.
                                         </p>
                                     </div>
 
                                     <form className="flex flex-col mt-4">
                                         <input
                                             className="border-2"
-                                            type="password"
-                                            placeholder="Escriba su contraseña..."
+                                            type="email"
+                                            placeholder="Escriba su email..."
+                                            value={email}
+                                            onChange={handleChange}
+                                            required
                                         />
                                         <button
                                             type="button"
@@ -73,6 +110,15 @@ const DeleteContact = () => {
                                             Eliminar
                                         </button>
                                     </form>
+                                    <button
+                                        onClick={() => {
+                                            setEmail("")
+                                            setError("")
+                                            setIsOpen(false)
+                                        }}
+                                    >
+                                        Cancelar
+                                    </button>
                                 </Dialog.Panel>
                             </Transition.Child>
                         </div>

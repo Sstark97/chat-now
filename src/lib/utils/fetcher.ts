@@ -46,4 +46,18 @@ async function changeFrom<C>(
     return data
 }
 
-export { getFrom, changeFrom }
+async function deleteFrom<C>(body: Record<keyof C, string> | undefined, endPoint: string) {
+    const res = await fetch(endPoint, {
+        method: "DELETE",
+        body: JSON.stringify(body),
+        headers: { "Content-type": "application/json" },
+    })
+
+    const data = await res.json()
+
+    if (!res.ok) throw new Error(data.message)
+
+    return data
+}
+
+export { getFrom, changeFrom, deleteFrom }

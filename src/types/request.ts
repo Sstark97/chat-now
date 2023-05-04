@@ -60,6 +60,7 @@ interface EditContactRequest extends NextApiRequest {
 interface DeleteContactRequest extends NextApiRequest {
     body: {
         id: string
+        userEmail: string
     }
 }
 
