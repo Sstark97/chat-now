@@ -1,40 +1,27 @@
 import { ChangeEvent, Fragment, useState } from "react"
 import { Dialog, Transition } from "@headlessui/react"
-import { useRouter } from "next/router"
-import useChatContext from "@hooks/useChatContext"
-import { deleteFrom } from "@lib/utils/fetcher"
-import { API, REDIRECT } from "@lib/constants/links"
 import Error from "@components/Error"
+import useChatContext from "@hooks/useChatContext"
+import useDeleteContact from "@hooks/useDeleteContact"
 
 const DeleteContact = () => {
     const [isOpen, setIsOpen] = useState(false)
     const [email, setEmail] = useState("")
-    const [error, setError] = useState("")
-    const router = useRouter()
-    const { selectedChat, reloadContacts, handleCloseChat } = useChatContext()
-
-    const handleDelete = async () => {
-        try {
-            await deleteFrom(
-                { id: selectedChat.id as string, userEmail: email },
-                API.DELETE_CONTACT
-            )
-            await reloadContacts()
-            setIsOpen(false)
-            handleCloseChat()
-            await router.push(REDIRECT.CONTACTS)
-        } catch (error) {
-            const { message } = error as Error
-            setError(message)
-        }
-    }
+    const { selectedChat } = useChatContext()
+    const { handleDelete, cleanError, error } = useDeleteContact(setIsOpen)
 
     const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
         setEmail(event.target.value)
     }
 
     const closeModal = () => {
-        handleDelete()
+        handleDelete(email)
+    }
+
+    const handleCancel = () => {
+        cleanError()
+        setEmail("")
+        setIsOpen(false)
     }
 
     const openModal = () => {
@@ -110,15 +97,7 @@ const DeleteContact = () => {
                                             Eliminar
                                         </button>
                                     </form>
-                                    <button
-                                        onClick={() => {
-                                            setEmail("")
-                                            setError("")
-                                            setIsOpen(false)
-                                        }}
-                                    >
-                                        Cancelar
-                                    </button>
+                                    <button onClick={handleCancel}>Cancelar</button>
                                 </Dialog.Panel>
                             </Transition.Child>
                         </div>
