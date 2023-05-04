@@ -116,6 +116,12 @@ class UserService {
 
         return user !== null
     }
+
+    async existUserFromID(id: string) {
+        const user = await this.userRepository.findByID(id)
+
+        return user !== null
+    }
 }
 
 export { UserService }

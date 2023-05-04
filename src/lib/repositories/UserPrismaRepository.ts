@@ -30,6 +30,14 @@ class UserPrismaRepository implements UserRepository {
         })
     }
 
+    findByID(id: string) {
+        return this.prisma.user.findUnique({
+            where: {
+                id,
+            },
+        })
+    }
+
     /**
      * @method create
      * @description Crea un nuevo usuario

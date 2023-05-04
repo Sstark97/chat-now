@@ -43,6 +43,7 @@ interface Contacts {
  */
 interface UserRepository {
     findBy(email: string): Promise<User | null>
+    findByID(id: string): Promise<User | null>
     create(credentials: Credentials): Promise<User>
 }
 

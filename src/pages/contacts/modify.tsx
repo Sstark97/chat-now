@@ -1,26 +1,37 @@
 import useChatContext from "@hooks/useChatContext"
-import useForm from "@hooks/useForm"
 import NavBar from "@components/NavBar"
 import ChatDesktop from "@components/ChatDesktop"
-import { NAVBAR_TITLES } from "@lib/constants/links"
+import { API, REDIRECT } from "@lib/constants/links"
 import InputWithIcon from "@components/InputWithIcon"
 import Button from "@components/Button"
 import Error from "@components/Error"
 import { FaUserAlt } from "react-icons/fa"
 import { errors } from "@lib/constants/validations"
-import { API, REDIRECT } from "@lib/constants/links"
+import { changeFrom } from "@lib/utils/fetcher"
+import { getUserDataFrom } from "@lib/utils/user"
+import { useState } from "react"
+import { useRouter } from "next/router"
 
 const ModifyContactContainer = () => {
-    const { ref, reloadContacts, selectedChat } = useChatContext()
-    const { action: editUser, error } = useForm(
-        ref,
-        API.MODIFY_CONTACT,
-        REDIRECT.CONTACTS,
-        reloadContacts
-    )
+    const [error, setError] = useState("")
+    const router = useRouter()
+    const { ref, selectedChat, reloadContacts } = useChatContext()
 
     const handleEdit = async () => {
-        await editUser()
+        const contactBody = getUserDataFrom(ref.current)
+        try {
+            console.log(selectedChat)
+            await changeFrom(
+                { ...contactBody, id: selectedChat.id as string },
+                API.MODIFY_CONTACT,
+                "PUT"
+            )
+            await reloadContacts()
+            await router.push(REDIRECT.CONTACTS)
+        } catch (error) {
+            const { message } = error as Error
+            setError(message)
+        }
     }
 
     const inputClass = "w-[80%] mt-5 mb-1"

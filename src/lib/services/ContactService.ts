@@ -13,8 +13,8 @@ class ContactService {
         return this.contactRepository.create(userEmail, contactInfo)
     }
 
-    async edit(userEmail: string, contactEmail: string, name: string) {
-        return this.contactRepository.edit(userEmail, contactEmail, name)
+    async edit(userEmail: string, contactId: string, name: string) {
+        return this.contactRepository.edit(userEmail, contactId, name)
     }
 
     /**
