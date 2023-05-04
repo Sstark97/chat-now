@@ -30,6 +30,13 @@ class UserPrismaRepository implements UserRepository {
         })
     }
 
+    /**
+     * @method findByID
+     * @param id
+     * @returns {Promise<User | null>}
+     * @example
+     * const user = await userPrismaRepository.findByID(id)
+     */
     findByID(id: string) {
         return this.prisma.user.findUnique({
             where: {

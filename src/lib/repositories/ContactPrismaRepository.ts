@@ -45,6 +45,15 @@ class ContactPrismaRepository implements ContactRepository {
         })
     }
 
+    /**
+     * @method edit
+     * @param userEmail
+     * @param contactId
+     * @param name
+     * @returns {Promise<void>}
+     * @example
+     * await contactRepository.edit(userEmail, contactId, name)
+     */
     async edit(userEmail: string, contactId: string, name: string) {
         const user = (await this.findUserBy(userEmail)) as User
 

@@ -11,7 +11,7 @@ const contactService = ContactFactory.createContactService()
 
 /**
  * Comprueba si hay errores en los datos del usuario
- * @param req {UserRequest}
+ * @param req {EditContactRequest}
  * @param res {NextApiResponse<ErrorResponse>}
  * @returns {Promise<void>}
  * @example
@@ -36,9 +36,9 @@ const checkErrorsFrom = async (req: EditContactRequest, res: NextApiResponse<Err
 }
 
 /**
- * @description Manejador de la ruta /api/contacts/add
- * @param req {UserRequest}
- * @param res {NextApiResponse<UserResponse | ErrorResponse>}
+ * @description Manejador de la ruta /api/contacts/edit
+ * @param req {EditContactRequest}
+ * @param res {NextApiResponse<Contact | ErrorResponse>}
  * @returns {Promise<void>}
  */
 export default async function handler(

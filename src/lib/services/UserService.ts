@@ -103,7 +103,6 @@ class UserService {
     }
 
     /**
-     * @private
      * @method existUserFrom
      * @description Verifica si un usuario existe
      * @param email
@@ -117,6 +116,14 @@ class UserService {
         return user !== null
     }
 
+    /**
+     * @method existUserFromID
+     * @description Verifica si un usuario existe
+     * @param id
+     * @returns {Promise<boolean>}
+     * @example
+     * const userExists = await userService.existUserFromID(id)
+     */
     async existUserFromID(id: string) {
         const user = await this.userRepository.findByID(id)
 

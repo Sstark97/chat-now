@@ -39,6 +39,17 @@ interface ContactRequest extends NextApiRequest {
     }
 }
 
+/**
+ * @interface EditContactRequest
+ * @description Propiedades de la petición para editar un contacto
+ * @property {string} name - Nombre del contacto
+ * @property {string} id - Id del contacto
+ * @example
+ * const contactRequest: ContactRequest = {
+ * name: "John Doe",
+ * id: "1"
+ * }
+ */
 interface EditContactRequest extends NextApiRequest {
     body: {
         name: string
