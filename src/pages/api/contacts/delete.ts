@@ -3,7 +3,7 @@ import { getSession } from "next-auth/react"
 import { UserFactory } from "@lib/factories/UserFactory"
 import { ContactFactory } from "@lib/factories/ContactFactory"
 import type { Contact } from "@prisma/client"
-import type { EditContactRequest, ValidateResponse } from "@customTypes/request"
+import type { DeleteContactRequest, ValidateResponse } from "@customTypes/request"
 import type { ErrorResponse } from "@customTypes/domain"
 
 const userService = UserFactory.createUserService()
@@ -11,17 +11,17 @@ const contactService = ContactFactory.createContactService()
 
 /**
  * Comprueba si hay errores en los datos del usuario
- * @param req {EditContactRequest}
+ * @param req {DeleteContactRequest}
  * @param res {NextApiResponse<ErrorResponse>}
  * @returns {Promise<void>}
  * @example
  * await checkErrorsInRegisterFrom(req, res)
  */
-const checkErrorsFrom = async (req: EditContactRequest, res: NextApiResponse<ErrorResponse>) => {
+const checkErrorsFrom = async (req: DeleteContactRequest, res: NextApiResponse<ErrorResponse>) => {
     const { id: contactId } = req.body
     const response = {} as ValidateResponse
 
-    if (req.method !== "PUT") {
+    if (req.method !== "DELETE") {
         res.status(405).end()
     }
 
@@ -37,12 +37,12 @@ const checkErrorsFrom = async (req: EditContactRequest, res: NextApiResponse<Err
 
 /**
  * @description Manejador de la ruta /api/contacts/edit
- * @param req {EditContactRequest}
+ * @param req {DeleteContactRequest}
  * @param res {NextApiResponse<Contact | ErrorResponse>}
  * @returns {Promise<void>}
  */
 export default async function handler(
-    req: EditContactRequest,
+    req: DeleteContactRequest,
     res: NextApiResponse<Contact | ErrorResponse>
 ) {
     const errorResponse = await checkErrorsFrom(req, res)
@@ -54,9 +54,9 @@ export default async function handler(
     const session = await getSession({ req })
     const userEmail = session?.user?.email as string
 
-    const { id: contactId, name } = req.body
+    const { id: contactId } = req.body
 
-    await contactService.edit(userEmail, contactId, name)
+    await contactService.delete(userEmail, contactId)
 
     return res.status(200).json({ message: "Contact update success!" })
 }

@@ -70,6 +70,19 @@ class ContactPrismaRepository implements ContactRepository {
         })
     }
 
+    async delete(userEmail: string, contactId: string) {
+        const user = (await this.findUserBy(userEmail)) as User
+
+        await this.prisma.contact.delete({
+            where: {
+                user_id_contact_id: {
+                    user_id: user.id,
+                    contact_id: contactId,
+                },
+            },
+        })
+    }
+
     /**
      * @method existFrom
      * @description Verifica si existe un contacto está agregado a un usuario

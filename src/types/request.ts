@@ -57,6 +57,12 @@ interface EditContactRequest extends NextApiRequest {
     }
 }
 
+interface DeleteContactRequest extends NextApiRequest {
+    body: {
+        id: string
+    }
+}
+
 /**
  * @interface ValidateResponse
  * @description Propiedades de la respuesta de validación
@@ -68,4 +74,10 @@ interface ValidateResponse {
     error: string
 }
 
-export type { UserRequest, ContactRequest, EditContactRequest, ValidateResponse }
+export type {
+    UserRequest,
+    ContactRequest,
+    EditContactRequest,
+    DeleteContactRequest,
+    ValidateResponse,
+}

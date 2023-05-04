@@ -17,6 +17,10 @@ class ContactService {
         return this.contactRepository.edit(userEmail, contactId, name)
     }
 
+    async delete(userEmail: string, contactId: string) {
+        return this.contactRepository.delete(userEmail, contactId)
+    }
+
     /**
      * @private
      * @method isTheContactAddedBy
