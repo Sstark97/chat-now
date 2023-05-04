@@ -22,6 +22,7 @@ interface ChatContext {
     reloadContacts(): Promise<void>
     handleOpenChat(friendship: Friendship): void
     handleCloseChat(): void
+    handleChangeSelectedChatName(name: string): void
 }
 
 /**

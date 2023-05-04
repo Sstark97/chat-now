@@ -56,8 +56,6 @@ export default async function handler(
 
     const { id: contactId, name } = req.body
 
-    console.log(req.body)
-
     await contactService.edit(userEmail, contactId, name)
 
     return res.status(200).json({ message: "Contact update success!" })

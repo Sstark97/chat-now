@@ -71,6 +71,10 @@ const ChatProvider = ({ children }: ChildrenProps) => {
         setSelectedChat({} as Friendship)
     }
 
+    const handleChangeSelectedChatName = (name: string) => {
+        setSelectedChat((prevState) => ({ ...prevState, name }))
+    }
+
     return (
         <Provider
             value={{
@@ -82,6 +86,7 @@ const ChatProvider = ({ children }: ChildrenProps) => {
                 reloadContacts,
                 handleOpenChat,
                 handleCloseChat,
+                handleChangeSelectedChatName,
             }}
         >
             {children}

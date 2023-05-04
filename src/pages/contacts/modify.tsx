@@ -15,18 +15,18 @@ import { useRouter } from "next/router"
 const ModifyContactContainer = () => {
     const [error, setError] = useState("")
     const router = useRouter()
-    const { ref, selectedChat, reloadContacts } = useChatContext()
+    const { ref, selectedChat, reloadContacts, handleChangeSelectedChatName } = useChatContext()
 
     const handleEdit = async () => {
         const contactBody = getUserDataFrom(ref.current)
         try {
-            console.log(selectedChat)
             await changeFrom(
                 { ...contactBody, id: selectedChat.id as string },
                 API.MODIFY_CONTACT,
                 "PUT"
             )
             await reloadContacts()
+            handleChangeSelectedChatName(contactBody.name)
             await router.push(REDIRECT.CONTACTS)
         } catch (error) {
             const { message } = error as Error
