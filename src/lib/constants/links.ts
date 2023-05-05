@@ -17,6 +17,7 @@ enum API {
     GET_CONTACTS = "/api/contacts",
     MODIFY_CONTACT = "/api/contacts/edit",
     DELETE_CONTACT = "/api/contacts/delete",
+    EDIT_USER = "/api/user/edit",
 }
 
 /**
