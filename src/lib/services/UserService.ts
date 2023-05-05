@@ -1,10 +1,4 @@
-import {
-    ContactRequest,
-    Credentials,
-    UserLoginResponse,
-    UserRepository,
-    UserResponse,
-} from "@customTypes/domain"
+import { Credentials, UserLoginResponse, UserRepository, UserResponse } from "@customTypes/domain"
 import { UserRequest } from "@customTypes/request"
 import bcrypt from "bcrypt"
 import { errors } from "@lib/constants/validations"
@@ -27,7 +21,7 @@ class UserService {
      * const userRegistered = await userService.register(user)
      */
     async register(credentials: Credentials): Promise<UserResponse | null> {
-        const newUser = await this.userRepository.createUser(credentials)
+        const newUser = await this.userRepository.create(credentials)
 
         return {
             id: newUser.id,
@@ -49,13 +43,12 @@ class UserService {
             return null
         }
 
-        const user = (await this.userRepository.findUserByEmail(
+        const user = (await this.userRepository.findBy(
             credentials?.email as string
         )) as UserLoginResponse
         const password = credentials?.password as string
-        const userPassword = user?.password as string
 
-        if (await bcrypt.compare(password, userPassword)) {
+        if (await this.isPasswordValid(credentials?.email as string, password)) {
             return {
                 id: user.id,
                 email: user.email,
@@ -66,8 +59,16 @@ class UserService {
         return null
     }
 
-    async addContact(userEmail: string, contactInfo: ContactRequest) {
-        return this.userRepository.addContact(userEmail, contactInfo)
+    /**
+     * @method existUserFrom
+     * @description Verifica si la contraseña es correcta
+     * @param email
+     * @param password
+     */
+    async isPasswordValid(email: string, password: string) {
+        const user = (await this.userRepository.findBy(email)) as UserLoginResponse
+
+        return await bcrypt.compare(password, user.password as string)
     }
 
     /**
@@ -113,7 +114,6 @@ class UserService {
     }
 
     /**
-     * @private
      * @method existUserFrom
      * @description Verifica si un usuario existe
      * @param email
@@ -122,35 +122,23 @@ class UserService {
      * const userExists = await userService.existUserFrom(email)
      */
     async existUserFrom(email: string) {
-        const user = await this.userRepository.findUserByEmail(email)
+        const user = await this.userRepository.findBy(email)
 
         return user !== null
     }
 
     /**
-     * @private
-     * @method isTheContactAddedBy
-     * @description Verifica si el contacto está agregado
-     * @param email
-     * @param contactEmail
+     * @method existUserFromID
+     * @description Verifica si un usuario existe
+     * @param id
      * @returns {Promise<boolean>}
      * @example
-     * const contactIsAdded = await userService.isTheContactAddedBy(email)
+     * const userExists = await userService.existUserFromID(id)
      */
-    async isTheContactAddedBy(email: string, contactEmail: string) {
-        return await this.userRepository.existContactFrom(email, contactEmail)
-    }
+    async existUserFromID(id: string) {
+        const user = await this.userRepository.findByID(id)
 
-    /**
-     * @method getContactsFrom
-     * @description Obtiene los contactos de un usuario
-     * @param email
-     * @returns {Promise<Contacts[]>}
-     * @example
-     * const contacts = await userService.getContactsFrom(email)
-     */
-    async getContactsFrom(email: string) {
-        return this.userRepository.getContactsFrom(email)
+        return user !== null
     }
 }
 

@@ -19,6 +19,7 @@ const AddContactForm = () => {
         ref,
         API.ADD_CONTACT,
         REDIRECT.CONTACTS,
+        "POST",
         reloadContacts
     )
 

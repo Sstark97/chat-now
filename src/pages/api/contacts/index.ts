@@ -1,10 +1,10 @@
 import { NextApiResponse } from "next"
 import { getSession } from "next-auth/react"
-import { UserFactory } from "@lib/factories/UserFactory"
 import type { ContactRequest } from "@customTypes/request"
 import type { Contacts } from "@customTypes/domain"
+import { ContactFactory } from "@lib/factories/ContactFactory"
 
-const userService = UserFactory.createUserService()
+const contactService = ContactFactory.createContactService()
 
 /**
  * @description Manejador de la ruta /api/contacts/add
@@ -25,7 +25,7 @@ export default async function handler(req: ContactRequest, res: NextApiResponse<
 
     const userEmail = session?.user?.email as string
 
-    const contacts = await userService.getContactsFrom(userEmail)
+    const contacts = await contactService.getAllFrom(userEmail)
 
     if (contacts !== null) {
         return res.status(200).json(contacts)

@@ -41,13 +41,14 @@ interface InputError {
  */
 interface InputProps {
     type: string
-    placeholder: string
+    placeholder?: string
     name: string
     children?: ReactNode
     errorManager?: InputError
     location?: string
     className?: string
     errorClassName?: string
+    value?: string
 }
 
 /**
@@ -162,6 +163,7 @@ interface FeatureProps extends ChildrenProps {
     description: string
 }
 
+/**
  * @interface MessageProps
  * @description Propiedades del componente Message
  * @property {string} receiverId - Id del receptor
