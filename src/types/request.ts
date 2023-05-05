@@ -1,4 +1,5 @@
 import { NextApiRequest } from "next"
+import { UserEdit } from "@customTypes/domain"
 
 /**
  * @interface UserRequest
@@ -57,6 +58,12 @@ interface EditContactRequest extends NextApiRequest {
     }
 }
 
+interface EditUserRequest extends NextApiRequest {
+    body: {
+        userEdit: UserEdit
+    }
+}
+
 interface DeleteContactRequest extends NextApiRequest {
     body: {
         id: string
@@ -78,6 +85,7 @@ interface ValidateResponse {
 export type {
     UserRequest,
     ContactRequest,
+    EditUserRequest,
     EditContactRequest,
     DeleteContactRequest,
     ValidateResponse,

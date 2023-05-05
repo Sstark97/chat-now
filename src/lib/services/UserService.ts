@@ -1,4 +1,10 @@
-import { Credentials, UserLoginResponse, UserRepository, UserResponse } from "@customTypes/domain"
+import {
+    Credentials,
+    UserEdit,
+    UserLoginResponse,
+    UserRepository,
+    UserResponse,
+} from "@customTypes/domain"
 import { UserRequest } from "@customTypes/request"
 import bcrypt from "bcrypt"
 import { errors } from "@lib/constants/validations"
@@ -57,6 +63,10 @@ class UserService {
         }
 
         return null
+    }
+
+    async edit(user: UserEdit) {
+        await this.userRepository.edit(user)
     }
 
     /**

@@ -34,8 +34,8 @@ const EditUser = () => {
         <section className="w-full">
             <form className="w-full flex flex-col justify-center items-center">
                 {error ? <Error message={error} /> : <></>}
-                <div className="w-[90%] flex flex-col items-center" ref={ref}>
-                    <div className="w-full flex flex-col justify-center items-center">
+                <div className="w-[90%] flex flex-col items-center">
+                    <div className="w-full flex flex-col justify-center items-center" ref={ref}>
                         <InputWithIcon
                             className={inputClass}
                             type="text"
@@ -67,7 +67,8 @@ const EditUser = () => {
                             <FaKey className="w-[20%] text-3xl order-first mt-5" />
                         </PasswordInput>
                         <div className="w-[80%] flex justify-center items-center">
-                            <Button value="Editar" action={handleClickInEdit} />
+                            {/*<Button value="Editar" action={handleClickInEdit} />*/}
+                            <button onClick={handleClickInEdit}>Editar</button>
                         </div>
                     </div>
                 </div>

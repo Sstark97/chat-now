@@ -1,5 +1,5 @@
 import { PrismaClient } from "@prisma/client"
-import { UserRepository, Credentials } from "@customTypes/domain"
+import { UserRepository, Credentials, UserEdit } from "@customTypes/domain"
 
 /**
  * @class UserPrismaRepository
@@ -57,6 +57,18 @@ class UserPrismaRepository implements UserRepository {
         return this.prisma.user.create({
             data: {
                 ...credentials,
+            },
+        })
+    }
+
+    async edit(userEdit: UserEdit) {
+        console.log(userEdit)
+        this.prisma.user.update({
+            where: {
+                email: userEdit.email,
+            },
+            data: {
+                ...userEdit,
             },
         })
     }
