@@ -2,13 +2,14 @@ import { ChangeEvent, FormEvent, useState } from "react"
 import useChatMembersId from "@hooks/useChatMembersId"
 import useRealTimeContext from "@hooks/useRealTimeContext"
 import { BsSendFill } from "react-icons/bs"
+import { Socket } from "socket.io-client"
 
 /**
  * Este componente es el encargado de mostrar el input para enviar mensajes
  * @component
  * @example <MessageInput />
  */
-const MessageInput = () => {
+const MessageInput = ({ socket }: { socket: Socket }) => {
     const [message, setMessage] = useState("")
     const { userId, contactId } = useChatMembersId()
     const { sendMessage } = useRealTimeContext()
@@ -20,7 +21,13 @@ const MessageInput = () => {
     const handleSendMessage = (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault()
         if (message !== "") {
-            sendMessage(userId, contactId, message)
+            // sendMessage(userId, contactId, message)
+            socket.emit("send-message", {
+                userId,
+                contactId,
+                message,
+            })
+
             setMessage("")
         }
     }

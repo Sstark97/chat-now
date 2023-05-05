@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react"
+import io, { Socket } from "socket.io-client"
 import useRealTimeContext from "@hooks/useRealTimeContext"
 import ChatHeader from "@containers/ChatHeader"
 import MessageInput from "@components/MessageInput"
@@ -6,6 +7,8 @@ import MessageList from "@containers/MessageList"
 import useChatMembersId from "@hooks/useChatMembersId"
 import type { OpenChatProps } from "@customTypes/containers"
 import type { Message } from "@customTypes/domain"
+
+let socket: Socket
 
 /**
  * Este componente es el encargado de mostrar el chat abierto
@@ -15,7 +18,7 @@ import type { Message } from "@customTypes/domain"
  */
 const OpenChat = ({ className }: OpenChatProps) => {
     const { userId, contactId } = useChatMembersId()
-    const { supabase, getAllMessages } = useRealTimeContext()
+    const { getAllMessages } = useRealTimeContext()
     const [messages, setMessages] = useState<Message[]>([])
 
     const getMessages = async () => {
@@ -25,23 +28,33 @@ const OpenChat = ({ className }: OpenChatProps) => {
 
     useEffect(() => {
         getMessages()
-        supabase
-            .channel(`custom-chat-${contactId}`)
-            .on(
-                "postgres_changes",
-                { event: "*", schema: "public", table: "Message" },
-                async () => {
-                    await getMessages()
-                }
-            )
-            .subscribe()
-    }, [contactId, getMessages, supabase, userId])
+    }, [contactId])
+
+    console.log(messages)
+
+    useEffect(() => {
+        socketInitializer()
+
+        return () => {
+            if (socket) socket.disconnect()
+        }
+    }, [])
+
+    async function socketInitializer() {
+        await fetch("/api/socket")
+
+        socket = io()
+
+        socket.on("receive-message", (data) => {
+            setMessages((pre) => [...pre, data])
+        })
+    }
 
     return (
         <div className={`w-full h-screen ${className}`}>
             <ChatHeader />
             {messages ? <MessageList messages={messages} /> : <p>loading...</p>}
-            <MessageInput />
+            <MessageInput socket={socket} />
         </div>
     )
 }
