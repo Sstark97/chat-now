@@ -26,7 +26,7 @@ const ContactNavBar = () => {
                             height={75}
                         />
                     ) : (
-                        <div className="w-[8rem] h-[8rem] lg:bg-secondary bg-icon rounded-full"></div>
+                        <div className="w-[8rem] h-[8rem] lg:bg-icon bg-secondary rounded-full"></div>
                     )}
                     <p className="text-center text-2xl mt-5">{selectedChat.name}</p>
                     <p className="opacity-50 mt-3">En línea</p>
