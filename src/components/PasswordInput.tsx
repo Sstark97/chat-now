@@ -10,7 +10,7 @@ import { errors } from "@lib/constants/validations"
  * @returns component
  * @example <PasswordInput placeholder="Contraseña" validate location="login" />
  */
-const PasswordInput = ({ placeholder, validate, location, className = "" }: PasswordProps) => {
+const PasswordInput = ({ placeholder, validate, location, className, children }: PasswordProps) => {
     const [showPassword, setShowPassword] = useState(false)
     const iconClass = "absolute top-8 right-4 fill-white text-xl lg:text-2xl"
 
@@ -30,6 +30,7 @@ const PasswordInput = ({ placeholder, validate, location, className = "" }: Pass
             errorManager={validate ? errors.security : undefined}
             location={location}
         >
+            {children}
             {showPassword ? (
                 <AiFillEyeInvisible className={iconClass} onClick={handleShowPassword} />
             ) : (

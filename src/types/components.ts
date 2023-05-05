@@ -84,6 +84,7 @@ interface PasswordProps {
     validate?: boolean
     location?: string
     className?: string
+    children?: ReactNode
 }
 
 /**

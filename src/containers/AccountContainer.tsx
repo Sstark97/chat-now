@@ -25,9 +25,7 @@ const AccountContainer = () => {
                 )}
             </section>
 
-            <section>
-                <EditUser />
-            </section>
+            <EditUser />
         </div>
     )
 }
