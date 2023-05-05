@@ -1,5 +1,8 @@
 import { Server } from "socket.io"
 import { NextApiRequest, NextApiResponse } from "next"
+import { ChatFactory } from "@lib/factories/ChatFactory"
+
+const chatService = ChatFactory.createChatService()
 
 export default function handler(req: NextApiRequest, res: NextApiResponse) {
     if (res.socket.server.io) {
@@ -17,10 +20,11 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
         console.log("Connected")
         socket.on("send-message", async (obj) => {
             const { userId, contactId, message } = obj
-            io.emit("receive-message", obj)
+            const messageInDb = await chatService.sendMessage(userId, contactId, message)
+            io.emit("receive-message", messageInDb)
         })
     })
 
-    console.log("Setting up socket")
+    // Enviar la respuesta después de configurar el socket
     res.end()
 }

@@ -1,4 +1,4 @@
-import { Contact, Status, User } from "@prisma/client"
+import { Contact, Status, User, Message as MessagePrisma } from "@prisma/client"
 import { PostgrestError } from "@supabase/supabase-js"
 
 /**
@@ -50,6 +50,10 @@ interface UserRepository {
     addContact(userEmail: string, contactInfo: ContactRequest): Promise<Contact>
     existContactFrom(userEmail: string, contactEmail: string): Promise<boolean>
     getContactsFrom(userEmail: string): Promise<Contacts[]>
+}
+
+interface ChatRepository {
+    sendMessage(userId: string, contactId: string, message: string): Promise<MessagePrisma>
 }
 
 /**
@@ -155,6 +159,7 @@ export type {
     Credentials,
     User,
     UserRepository,
+    ChatRepository,
     UserResponse,
     UserLoginResponse,
     ContactRequest,
