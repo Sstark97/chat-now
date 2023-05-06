@@ -3,6 +3,7 @@ import { Dialog, Transition } from "@headlessui/react"
 import Error from "@components/Error"
 import useChatContext from "@hooks/useChatContext"
 import useDeleteContact from "@hooks/useDeleteContact"
+import { AiOutlineClose } from "react-icons/ai"
 
 /**
  * Formulario para eliminar un contacto
@@ -68,42 +69,61 @@ const DeleteContact = () => {
                                 leaveTo="opacity-0 scale-95"
                             >
                                 <Dialog.Panel className="w-full max-w-md transform overflow-hidden rounded-2xl bg-white p-6 text-left align-middle shadow-xl transition-all">
+                                    <form className="absolute top-4 right-4">
+                                        <button
+                                            type="button"
+                                            onClick={handleCancel}
+                                            className="text-2xl"
+                                        >
+                                            <AiOutlineClose />
+                                        </button>
+                                    </form>
                                     <Dialog.Title
                                         as="h3"
-                                        className="text-lg font-medium leading-6 text-gray-900"
+                                        className="text-2xl font-medium text-black mb-4"
                                     >
                                         Eliminar contacto
                                     </Dialog.Title>
-                                    {error ? (
-                                        <Error className="mt-5 text-center" message={error} />
-                                    ) : (
-                                        <></>
-                                    )}
                                     <div className="mt-2">
-                                        <p className="text-sm text-gray-500">
-                                            {`¿Está seguro que desea eliminar a ${selectedChat.name}?`}
-                                            Escriba su email para confirmar.
+                                        <p className="text-sm">
+                                            {`¿Está seguro de que desea eliminar a ${selectedChat.name}?`}
                                         </p>
                                     </div>
 
                                     <form className="flex flex-col mt-4">
+                                        {error ? (
+                                            <Error className="mb-2 text-center" message={error} />
+                                        ) : (
+                                            <></>
+                                        )}
+                                        <p className="text-sm mb-2">
+                                            Escribe tu email para confirmar.
+                                        </p>
                                         <input
-                                            className="border-2"
+                                            className="border-0 p-3 bg-secondary rounded-xl text-white placeholder-white"
                                             type="email"
-                                            placeholder="Escriba su email..."
+                                            placeholder="Escribe tu email"
                                             value={email}
                                             onChange={handleChange}
                                             required
                                         />
-                                        <button
-                                            type="button"
-                                            className="inline-flex justify-center rounded-md border border-transparent bg-red-500 px-4 py-2 text-sm font-medium text-slate-900 hover:bg-red-400 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
-                                            onClick={closeModal}
-                                        >
-                                            Eliminar
-                                        </button>
+                                        <div className="w-10/12 mx-auto flex justify-around items-center mt-7">
+                                            <button
+                                                type="button"
+                                                className="w-2/5 inline-flex justify-center rounded-xl border-0 bg-secondary py-2 text-lg text-black"
+                                                onClick={handleCancel}
+                                            >
+                                                Cancelar
+                                            </button>
+                                            <button
+                                                type="button"
+                                                className="w-2/5 inline-flex justify-center rounded-xl border border-transparent bg-light_purple py-2 text-lg text-black"
+                                                onClick={closeModal}
+                                            >
+                                                Eliminar
+                                            </button>
+                                        </div>
                                     </form>
-                                    <button onClick={handleCancel}>Cancelar</button>
                                 </Dialog.Panel>
                             </Transition.Child>
                         </div>
