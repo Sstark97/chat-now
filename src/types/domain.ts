@@ -51,7 +51,7 @@ interface UserRepository {
     findBy(email: string): Promise<User | null>
     findByID(id: string): Promise<User | null>
     create(credentials: Credentials): Promise<User>
-    edit(userEdit: UserEdit): Promise<void>
+    edit(userEdit: UserEdit): Promise<User>
 }
 
 /**

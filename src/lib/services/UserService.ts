@@ -66,7 +66,7 @@ class UserService {
     }
 
     async edit(user: UserEdit) {
-        await this.userRepository.edit(user)
+        return await this.userRepository.edit(user)
     }
 
     /**

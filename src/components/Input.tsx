@@ -21,6 +21,7 @@ const Input = ({
     className,
     errorClassName,
     value,
+    disabled,
 }: InputProps) => {
     const { error, border, defineError } = useControlInput(errorManager)
     const inputClass =
@@ -42,6 +43,7 @@ const Input = ({
                     required
                     onChange={(e) => setInputValue(e.target.value)}
                     value={inputValue}
+                    disabled={disabled}
                 />
                 {children}
             </div>

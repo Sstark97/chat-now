@@ -8,6 +8,7 @@ import { PrismaClient } from "@prisma/client"
 import { changeFrom } from "@lib/utils/fetcher"
 import type { NextAuthOptions } from "next-auth"
 import { API } from "@lib/constants/links"
+import { NextApiRequest, NextApiResponse } from "next"
 
 const prisma = new PrismaClient()
 
@@ -15,7 +16,7 @@ const prisma = new PrismaClient()
  * @description Configuración de NextAuth
  * @type {NextAuthOptions}
  */
-const options: NextAuthOptions = {
+const createConfig = (req: NextApiRequest): NextAuthOptions => ({
     theme: {
         colorScheme: "light",
     },
@@ -61,7 +62,11 @@ const options: NextAuthOptions = {
         }),
     ],
     callbacks: {
-        async jwt({ token, user }) {
+        async jwt({ token, user, trigger, session }) {
+            if (trigger === "update" && session) {
+                return { ...token, ...session?.user }
+            }
+
             if (user) {
                 token.id = user.id
                 token.name = user.name
@@ -80,6 +85,10 @@ const options: NextAuthOptions = {
     session: {
         strategy: "jwt",
     },
+})
+
+const handler = async (req: NextApiRequest, res: NextApiResponse) => {
+    return NextAuth(req, res, createConfig(req))
 }
 
-export default NextAuth(options)
+export default handler

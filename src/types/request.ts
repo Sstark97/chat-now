@@ -60,7 +60,9 @@ interface EditContactRequest extends NextApiRequest {
 
 interface EditUserRequest extends NextApiRequest {
     body: {
-        userEdit: UserEdit
+        name: string
+        email: string
+        password: string
     }
 }
 

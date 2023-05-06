@@ -3,6 +3,7 @@ import { UserFactory } from "@lib/factories/UserFactory"
 import type { User } from "@prisma/client"
 import type { EditContactRequest, EditUserRequest, ValidateResponse } from "@customTypes/request"
 import type { ErrorResponse } from "@customTypes/domain"
+import { getSession } from "next-auth/react"
 
 const userService = UserFactory.createUserService()
 
@@ -47,9 +48,8 @@ export default async function handler(
     //     return res.status(errorResponse.status).json({ message: errorResponse.error })
     // }
 
-    const { userEdit } = req.body
-    console.log(req.body)
-    await userService.edit(userEdit)
+    const { name, email, password } = req.body
+    const userUpdated = await userService.edit({ name, email, password })
 
-    return res.status(200).json({ message: "User update success!" })
+    return res.status(200).json(userUpdated)
 }

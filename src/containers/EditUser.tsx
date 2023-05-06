@@ -10,7 +10,9 @@ import PasswordInput from "@components/PasswordInput"
 import { INPUT_REGISTER_PLACEHOLDER } from "@lib/constants/authForms"
 import useForm from "@hooks/useForm"
 import { API, REDIRECT } from "@lib/constants/links"
-
+import { getUserDataFrom } from "@lib/utils/user"
+import { changeFrom } from "@lib/utils/fetcher"
+import { useRouter } from "next/router"
 /**
  * Este componente es el encargado de mostrar el formulario para añadir un contacto
  * @returns component
@@ -18,16 +20,28 @@ import { API, REDIRECT } from "@lib/constants/links"
  */
 const EditUser = () => {
     const { ref } = useChatContext()
+    const { data: session, update } = useSession()
     const { action: editUser, error } = useForm(ref, API.EDIT_USER, REDIRECT.HOME, "PUT")
-    const { data: session } = useSession()
     const userName = session?.user?.name as string
     const userEmail = session?.user.email
+    const router = useRouter()
 
     const inputClass = "w-[80%] mt-5 mb-1"
     const errorClass = "w-[80%] mb-1"
 
     const handleClickInEdit = async () => {
-        await editUser()
+        const user = getUserDataFrom(ref.current)
+        const userFromApi = await changeFrom(user, API.EDIT_USER, "PUT")
+
+        await update({
+            ...session,
+            user: {
+                ...session?.user,
+                name: userFromApi.name,
+            },
+        })
+
+        await router.push(REDIRECT.HOME)
     }
 
     return (
@@ -50,11 +64,9 @@ const EditUser = () => {
                         <InputWithIcon
                             className={inputClass}
                             type="text"
-                            placeholder="Correo electrónico"
                             name="email"
-                            errorManager={errors.email}
-                            errorClassName={errorClass}
                             value={userEmail}
+                            disabled
                         >
                             <MdEmail className="w-[20%] text-3xl order-first mt-5" />
                         </InputWithIcon>

@@ -49,6 +49,7 @@ interface InputProps {
     className?: string
     errorClassName?: string
     value?: string
+    disabled?: boolean
 }
 
 /**
