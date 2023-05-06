@@ -54,7 +54,7 @@ const LoginForm = () => {
                 </div>
             </form>
 
-            <p className="mt-5 text-sm text-center text-secondary_text md:text-lg">
+            <p className="mt-5 text-sm text-center text-secondary_text dark:text-dark_secondary_text md:text-lg">
                 ¿Aún no tienes cuenta?{" "}
                 <Link className="font-bold" href="/register">
                     Regístrate

@@ -38,7 +38,7 @@ const FriendshipItem = (friendship: Friendship) => {
                             height={75}
                         />
                     ) : (
-                        <div className="w-[3rem] h-[3rem] bg-secondary rounded-full"></div>
+                        <div className="w-[3rem] h-[3rem] bg-secondary dark:bg-dark_secondary rounded-full"></div>
                     )}
                 </div>
                 <div className="w-10/12 flex flex-col pl-1 pr-6">
@@ -47,14 +47,16 @@ const FriendshipItem = (friendship: Friendship) => {
                             <p>{name}</p>
                             <div className={`${stateStyle} bg-${color}`}></div>
                         </div>
-                        <p className="text-secondary_text">{time}</p>
+                        <p className="text-secondary_text dark:text-dark_secondary_text">{time}</p>
                     </div>
                     {message ? (
-                        <div className="w-full flex justify-between items-center text-secondary_text pt-2">
+                        <div className="w-full flex justify-between items-center text-secondary_text dark:text-dark_secondary_text pt-2">
                             <p className="w-[88%] truncate">{message}</p>
                             {numMessages ? (
-                                <div className="h-[1.3rem] w-[1.3rem] flex items-center justify-center bg-light_purple rounded-full">
-                                    <p className="text-xs text-white">{numMessages}</p>
+                                <div className="h-[1.3rem] w-[1.3rem] flex items-center justify-center bg-light_purple dark:bg-dark_purple rounded-full">
+                                    <p className="text-xs text-white dark:text-black">
+                                        {numMessages}
+                                    </p>
                                 </div>
                             ) : (
                                 <></>
