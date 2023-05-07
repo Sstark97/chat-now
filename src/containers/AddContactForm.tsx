@@ -30,7 +30,7 @@ const AddContactForm = () => {
         await addUser()
     }
 
-    const inputClass = "w-[80%] mt-5 mb-1"
+    const inputClass = "w-[80%] mt-5 mb-1 dark:placeholder-white"
     const errorClass = "w-[80%] mb-1"
 
     return (

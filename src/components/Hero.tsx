@@ -18,7 +18,7 @@ const Hero = () => {
                 className="w-full h-full rounded-xl object-cover mx-auto mt-5 brightness-[.70]"
                 priority
             />
-            <div className="w-full absolute bottom-10 left-0 lg:bottom-28 lg:pl-32 text-white text-center lg:text-left">
+            <div className="w-full absolute bottom-10 left-0 lg:bottom-28 lg:pl-32 text-white dark:text-black text-center lg:text-left">
                 <h1 className="text-4xl lg:text-6xl">Contacta</h1>
                 <div className="flex justify-center lg:justify-start text-2xl h-10 lg:text-4xl mb-6 lg:mb-10">
                     <div className="overflow-hidden">
@@ -34,7 +34,7 @@ const Hero = () => {
                 </div>
                 <Link
                     href="/login"
-                    className="px-8 py-2 lg:px-9 lg:py-3 bg-light_purple rounded-lg text-black text-lg lg:text-xl"
+                    className="px-8 py-2 lg:px-9 lg:py-3 bg-light_purple dark:bg-dark_purple rounded-lg text-black dark:text-white text-lg lg:text-xl"
                 >
                     Comienza ya
                 </Link>

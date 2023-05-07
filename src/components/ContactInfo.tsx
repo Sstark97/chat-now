@@ -29,7 +29,7 @@ const ContactInfo = () => {
                     height={75}
                 />
             ) : (
-                <div className="w-[4rem] h-[4rem] lg:bg-secondary bg-icon rounded-full"></div>
+                <div className="w-[4rem] h-[4rem] lg:bg-secondary dark:lg:bg-dark_secondary bg-icon dark:bg-dark_icon rounded-full"></div>
             )}
             <div className="flex flex-col ml-5">
                 <p className="text-lg">{name}</p>

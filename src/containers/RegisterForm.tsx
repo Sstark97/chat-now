@@ -61,7 +61,7 @@ const RegisterForm = () => {
                     </div>
                 </div>
             </form>
-            <p className="mt-5 text-sm text-center text-secondary_text lg:text-lg">
+            <p className="mt-5 text-sm text-center text-secondary_text dark:text-dark_secondary_text lg:text-lg">
                 ¿Ya tienes una cuenta?{" "}
                 <Link href="/login" className="font-bold">
                     Inicia sesión

@@ -38,7 +38,23 @@ const ChatProvider = ({ children }: ChildrenProps) => {
         if (status === "authenticated") {
             fetchContacts()
         }
+
+        setTheme()
     }, [status, contacts])
+
+    const setTheme = () => {
+        const theme = localStorage.getItem("theme") ?? "light"
+        const html = document.querySelector("html")
+
+        if (theme === "dark") {
+            html?.classList.add("dark")
+            html?.classList.remove("light")
+        }
+        if (theme === "light") {
+            html?.classList.add("light")
+            html?.classList.remove("dark")
+        }
+    }
 
     /**
      * Este método es el encargado de comprobar si el formulario es válido
