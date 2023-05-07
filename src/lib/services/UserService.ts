@@ -74,6 +74,10 @@ class UserService {
         return await this.userRepository.edit(user)
     }
 
+    async delete(email: string) {
+        return await this.userRepository.delete(email)
+    }
+
     /**
      * @method existUserFrom
      * @description Verifica si la contraseña es correcta

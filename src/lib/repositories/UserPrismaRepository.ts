@@ -72,6 +72,14 @@ class UserPrismaRepository implements UserRepository {
             },
         })
     }
+
+    async delete(email: string) {
+        return this.prisma.user.delete({
+            where: {
+                email,
+            },
+        })
+    }
 }
 
 export { UserPrismaRepository }

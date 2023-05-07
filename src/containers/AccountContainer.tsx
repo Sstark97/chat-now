@@ -2,6 +2,7 @@ import Image from "next/image"
 import { useSession } from "next-auth/react"
 import { BsFillCameraFill } from "react-icons/bs"
 import EditUser from "./EditUser"
+import DeleteModal from "@components/DeleteModal"
 
 const AccountContainer = () => {
     const { data: session } = useSession()
@@ -25,6 +26,7 @@ const AccountContainer = () => {
                 )}
             </section>
             <EditUser />
+            <DeleteModal title="cuenta" error={""} handleDelete={() => {}} cleanError={() => {}} />
         </div>
     )
 }
