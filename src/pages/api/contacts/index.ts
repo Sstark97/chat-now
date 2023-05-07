@@ -1,8 +1,9 @@
 import { NextApiResponse } from "next"
-import { getSession } from "next-auth/react"
+import { getServerSession } from "next-auth"
+import { ContactFactory } from "@lib/factories/ContactFactory"
+import authConfig from "../auth/[...nextauth]"
 import type { ContactRequest } from "@customTypes/request"
 import type { Contacts } from "@customTypes/domain"
-import { ContactFactory } from "@lib/factories/ContactFactory"
 
 const contactService = ContactFactory.createContactService()
 
@@ -17,7 +18,9 @@ export default async function handler(req: ContactRequest, res: NextApiResponse<
         res.status(405).end("Method not allowed")
     }
 
-    const session = await getSession({ req })
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
+    const session = await getServerSession(req, res, authConfig)
 
     if (!session) {
         return res.status(401).end("Unauthorized")

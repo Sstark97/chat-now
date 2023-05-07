@@ -1,10 +1,13 @@
 import Image from "next/image"
+import useDeleteUser from "@hooks/useDeleteUser"
 import { useSession } from "next-auth/react"
 import { BsFillCameraFill } from "react-icons/bs"
 import EditUser from "./EditUser"
+import DeleteModal from "@components/DeleteModal"
 
 const AccountContainer = () => {
     const { data: session } = useSession()
+    const { handleDelete, error, cleanError } = useDeleteUser()
     const userImage = session?.user?.image
 
     return (
@@ -24,10 +27,13 @@ const AccountContainer = () => {
                     </div>
                 )}
             </section>
-
-            <section>
-                <EditUser />
-            </section>
+            <EditUser />
+            <DeleteModal
+                title="cuenta"
+                error={error}
+                handleDelete={handleDelete}
+                cleanError={cleanError}
+            />
         </div>
     )
 }

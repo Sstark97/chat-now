@@ -49,6 +49,8 @@ interface InputProps {
     className?: string
     errorClassName?: string
     value?: string
+    disabled?: boolean
+    notRequired?: boolean
 }
 
 /**
@@ -84,6 +86,8 @@ interface PasswordProps {
     validate?: boolean
     location?: string
     className?: string
+    notRequired?: boolean
+    children?: ReactNode
 }
 
 /**
@@ -176,6 +180,23 @@ interface MessageProps {
     date: string
 }
 
+/**
+ * @interface DeleteModalProps
+ * @description Propiedades del componente DeleteModal
+ * @property {string} name - Nombre del usuario
+ * @property {string} title - Título del modal
+ * @property {string} error - Error del modal
+ * @property {Function} handleDelete - Función para eliminar el usuario
+ * @property {Function} cleanError - Función para limpiar el error
+ */
+interface DeleteModalProps {
+    name?: string
+    title: string
+    error: string
+    handleDelete: (email: string) => void
+    cleanError: () => void
+}
+
 export type {
     ErrorProps,
     InputError,
@@ -191,4 +212,5 @@ export type {
     RenderByMap,
     FeatureProps,
     MessageProps,
+    DeleteModalProps,
 }

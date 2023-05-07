@@ -36,7 +36,6 @@
     "react-dom": "18.2.0",
     "react-icons": "^4.8.0",
     "tailwind-scrollbar-hide": "^1.1.7",
-    "tailwindcss-dark-mode": "^1.1.7",
     "typescript": "5.0.2"
   },
   "devDependencies": {

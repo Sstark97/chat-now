@@ -1,9 +1,8 @@
 import { ChangeEvent, Fragment, useState } from "react"
 import { Dialog, Transition } from "@headlessui/react"
 import Error from "@components/Error"
-import useChatContext from "@hooks/useChatContext"
-import useDeleteContact from "@hooks/useDeleteContact"
 import { AiOutlineClose } from "react-icons/ai"
+import type { DeleteModalProps } from "@customTypes/components"
 
 /**
  * Formulario para eliminar un contacto
@@ -11,11 +10,10 @@ import { AiOutlineClose } from "react-icons/ai"
  * @example
  * <DeleteContact />
  */
-const DeleteContact = () => {
+const DeleteModal = ({ name, title, error, handleDelete, cleanError }: DeleteModalProps) => {
     const [isOpen, setIsOpen] = useState(false)
     const [email, setEmail] = useState("")
-    const { selectedChat } = useChatContext()
-    const { handleDelete, cleanError, error } = useDeleteContact(setIsOpen)
+    const deleteMessage = name ? ` a ${name}` : "la cuenta"
 
     const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
         setEmail(event.target.value)
@@ -39,7 +37,7 @@ const DeleteContact = () => {
         <>
             <div className="flex items-center justify-center">
                 <button type="button" onClick={openModal} className="italic text-center mt-4">
-                    Eliminar contacto
+                    Eliminar {title.toLowerCase()}
                 </button>
             </div>
 
@@ -82,20 +80,20 @@ const DeleteContact = () => {
                                         as="h3"
                                         className="text-2xl font-medium text-black dark:text-white mb-4"
                                     >
-                                        Eliminar contacto
+                                        Eliminar {title}
                                     </Dialog.Title>
+                                    {error ? (
+                                        <Error className="mb-1 text-center" message={error} />
+                                    ) : (
+                                        <></>
+                                    )}
                                     <div className="mt-2">
                                         <p className="text-sm">
-                                            {`¿Está seguro de que desea eliminar a ${selectedChat.name}?`}
+                                            {`¿Está seguro de que desea eliminar ${deleteMessage}?`}
                                         </p>
                                     </div>
 
                                     <form className="flex flex-col mt-4">
-                                        {error ? (
-                                            <Error className="mb-2 text-center" message={error} />
-                                        ) : (
-                                            <></>
-                                        )}
                                         <p className="text-sm mb-2">
                                             Escribe tu email para confirmar.
                                         </p>
@@ -133,4 +131,4 @@ const DeleteContact = () => {
         </>
     )
 }
-export default DeleteContact
+export default DeleteModal

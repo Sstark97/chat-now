@@ -57,10 +57,24 @@ interface EditContactRequest extends NextApiRequest {
     }
 }
 
+interface EditUserRequest extends NextApiRequest {
+    body: {
+        name: string
+        email: string
+        password: string
+    }
+}
+
 interface DeleteContactRequest extends NextApiRequest {
     body: {
         id: string
         userEmail: string
+    }
+}
+
+interface DeleteUserRequest extends NextApiRequest {
+    body: {
+        email: string
     }
 }
 
@@ -78,7 +92,9 @@ interface ValidateResponse {
 export type {
     UserRequest,
     ContactRequest,
+    EditUserRequest,
     EditContactRequest,
     DeleteContactRequest,
+    DeleteUserRequest,
     ValidateResponse,
 }

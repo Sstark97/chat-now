@@ -33,6 +33,12 @@ interface Contacts {
     status: string | Status
 }
 
+interface UserEdit {
+    name?: string
+    email: string
+    password?: string
+}
+
 /**
  * @interface UserRepository
  * @description Interface para definir el comportamiento de un repositorio de usuarios
@@ -45,6 +51,8 @@ interface UserRepository {
     findBy(email: string): Promise<User | null>
     findByID(id: string): Promise<User | null>
     create(credentials: Credentials): Promise<User>
+    edit(userEdit: UserEdit): Promise<User>
+    delete(email: string): Promise<User>
 }
 
 /**
@@ -167,6 +175,7 @@ interface ContactChats {
 
 export type {
     Credentials,
+    UserEdit,
     User,
     UserRepository,
     ContactRepository,
