@@ -1,10 +1,11 @@
 import { NextApiResponse } from "next"
-import { getSession } from "next-auth/react"
 import { UserFactory } from "@lib/factories/UserFactory"
 import type { Contact } from "@prisma/client"
 import type { ContactRequest, ValidateResponse } from "@customTypes/request"
 import type { ErrorResponse } from "@customTypes/domain"
 import { ContactFactory } from "@lib/factories/ContactFactory"
+import { getServerSession } from "next-auth"
+import authConfig from "@pages/api/auth/[...nextauth]"
 
 const userService = UserFactory.createUserService()
 const contactService = ContactFactory.createContactService()
@@ -18,10 +19,14 @@ const contactService = ContactFactory.createContactService()
  * await checkErrorsInRegisterFrom(req, res)
  */
 const checkErrorsFrom = async (req: ContactRequest, res: NextApiResponse<ErrorResponse>) => {
-    const session = await getSession({ req })
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
+    const session = await getServerSession(req, res, authConfig)
     const userEmail = session?.user?.email as string
     const { email: contactEmail } = req.body
     const response = {} as ValidateResponse
+
+    console.log("userEmail", session)
 
     if (req.method !== "POST") {
         res.status(405).end()
@@ -57,7 +62,9 @@ export default async function handler(
         return res.status(errorResponse.status).json({ message: errorResponse.error })
     }
 
-    const session = await getSession({ req })
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
+    const session = await getServerSession(req, res, authConfig)
     const userEmail = session?.user?.email as string
 
     const newContact = await contactService.create(userEmail, req.body)

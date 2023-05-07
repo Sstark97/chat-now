@@ -27,6 +27,8 @@ const ChatProvider = ({ children }: ChildrenProps) => {
     const { data: session, status } = useSession()
     const { createChatWithUser } = useRealTimeContext()
 
+    console.log(session)
+
     useEffect(() => {
         const fetchContacts = async () => {
             const data = await getFrom<Contacts[]>(API.GET_CONTACTS)

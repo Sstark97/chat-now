@@ -5,6 +5,8 @@ import { ContactFactory } from "@lib/factories/ContactFactory"
 import type { Contact } from "@prisma/client"
 import type { EditContactRequest, ValidateResponse } from "@customTypes/request"
 import type { ErrorResponse } from "@customTypes/domain"
+import { getServerSession } from "next-auth"
+import authConfig from "@pages/api/auth/[...nextauth]"
 
 const userService = UserFactory.createUserService()
 const contactService = ContactFactory.createContactService()
@@ -51,7 +53,9 @@ export default async function handler(
         return res.status(errorResponse.status).json({ message: errorResponse.error })
     }
 
-    const session = await getSession({ req })
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
+    const session = await getServerSession(req, res, authConfig)
     const userEmail = session?.user?.email as string
 
     const { id: contactId, name } = req.body

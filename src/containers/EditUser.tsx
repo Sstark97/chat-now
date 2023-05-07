@@ -20,7 +20,7 @@ import { useRouter } from "next/router"
  */
 const EditUser = () => {
     const { ref } = useChatContext()
-    const { data: session, update } = useSession()
+    const { data: session, status, update } = useSession()
     const { action: editUser, error } = useForm(ref, API.EDIT_USER, REDIRECT.HOME, "PUT")
     const userName = session?.user?.name as string
     const userEmail = session?.user.email
@@ -29,9 +29,12 @@ const EditUser = () => {
     const inputClass = "w-[80%] mt-5 mb-1"
     const errorClass = "w-[80%] mb-1"
 
+    console.log(session)
+
     const handleClickInEdit = async () => {
         const user = getUserDataFrom(ref.current)
         const userFromApi = await changeFrom(user, API.EDIT_USER, "PUT")
+        console.log(userFromApi)
 
         await update({
             ...session,

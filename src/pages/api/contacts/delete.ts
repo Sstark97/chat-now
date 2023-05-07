@@ -5,6 +5,8 @@ import { ContactFactory } from "@lib/factories/ContactFactory"
 import type { Contact } from "@prisma/client"
 import type { DeleteContactRequest, ValidateResponse } from "@customTypes/request"
 import type { ErrorResponse } from "@customTypes/domain"
+import { getServerSession } from "next-auth"
+import authConfig from "@pages/api/auth/[...nextauth]"
 
 const userService = UserFactory.createUserService()
 const contactService = ContactFactory.createContactService()
@@ -18,7 +20,9 @@ const contactService = ContactFactory.createContactService()
  * await checkErrorsInRegisterFrom(req, res)
  */
 const checkErrorsFrom = async (req: DeleteContactRequest, res: NextApiResponse<ErrorResponse>) => {
-    const session = await getSession({ req })
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
+    const session = await getServerSession(req, res, authConfig)
     const userEmailInSession = session?.user?.email as string
     const { id: contactId, userEmail } = req.body
     const response = {} as ValidateResponse
@@ -56,7 +60,9 @@ export default async function handler(
         return res.status(errorResponse.status).json({ message: errorResponse.error })
     }
 
-    const session = await getSession({ req })
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
+    const session = await getServerSession(req, res, authConfig)
     const userEmailInSession = session?.user?.email as string
 
     const { id: contactId } = req.body
