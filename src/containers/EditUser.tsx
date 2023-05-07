@@ -1,5 +1,3 @@
-import Button from "@components/Button"
-import Error from "@components/Error"
 import { errors } from "@lib/constants/validations"
 import { FaUserAlt, FaKey } from "react-icons/fa"
 import { MdEmail } from "react-icons/md"
@@ -12,6 +10,7 @@ import { API, REDIRECT } from "@lib/constants/links"
 import { getUserDataFrom } from "@lib/utils/user"
 import { changeFrom } from "@lib/utils/fetcher"
 import { useRouter } from "next/router"
+import { FormEvent } from "react"
 /**
  * Este componente es el encargado de mostrar el formulario para añadir un contacto
  * @returns component
@@ -27,7 +26,8 @@ const EditUser = () => {
     const inputClass = "w-[80%] mt-5 mb-1"
     const errorClass = "w-[80%] mb-1"
 
-    const handleClickInEdit = async () => {
+    const handleClickInEdit = async (e: FormEvent<HTMLFormElement>) => {
+        e.preventDefault()
         const user = getUserDataFrom(ref.current)
         const userFromApi = await changeFrom(user, API.EDIT_USER, "PUT")
 
@@ -46,7 +46,11 @@ const EditUser = () => {
 
     return (
         <section className="w-full">
-            <form className="w-full flex flex-col justify-center items-center">
+            <form
+                className="w-full flex flex-col justify-center items-center"
+                method="POST"
+                onSubmit={handleClickInEdit}
+            >
                 {/*{error ? <Error message={error} /> : <></>}*/}
                 <div className="w-[90%] flex flex-col items-center">
                     <div className="w-full flex flex-col justify-center items-center" ref={ref}>
@@ -80,8 +84,9 @@ const EditUser = () => {
                             <FaKey className="w-[20%] text-3xl order-first mt-5" />
                         </PasswordInput>
                         <div className="w-[80%] flex justify-center items-center">
-                            {/*<Button value="Editar" action={handleClickInEdit} />*/}
-                            <button onClick={handleClickInEdit}>Editar</button>
+                            <button className="w-full bg-light_purple py-2 mt-5 md:mt-6 text-[1.15rem] rounded-xl shadow-lg brightness-100 disabled:brightness-75 active:translate-y-[2%] active:shadow-md disabled:active:translate-y-[0%] disabled:active:shadow-lg">
+                                Editar
+                            </button>
                         </div>
                     </div>
                 </div>

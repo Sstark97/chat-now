@@ -1,11 +1,11 @@
 import { NextApiResponse } from "next"
 import { UserFactory } from "@lib/factories/UserFactory"
+import { getServerSession } from "next-auth"
+import { ContactFactory } from "@lib/factories/ContactFactory"
+import authConfig from "@pages/api/auth/[...nextauth]"
 import type { Contact } from "@prisma/client"
 import type { ContactRequest, ValidateResponse } from "@customTypes/request"
 import type { ErrorResponse } from "@customTypes/domain"
-import { ContactFactory } from "@lib/factories/ContactFactory"
-import { getServerSession } from "next-auth"
-import authConfig from "@pages/api/auth/[...nextauth]"
 
 const userService = UserFactory.createUserService()
 const contactService = ContactFactory.createContactService()
@@ -25,8 +25,6 @@ const checkErrorsFrom = async (req: ContactRequest, res: NextApiResponse<ErrorRe
     const userEmail = session?.user?.email as string
     const { email: contactEmail } = req.body
     const response = {} as ValidateResponse
-
-    console.log("userEmail", session)
 
     if (req.method !== "POST") {
         res.status(405).end()

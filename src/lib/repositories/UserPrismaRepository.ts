@@ -62,13 +62,13 @@ class UserPrismaRepository implements UserRepository {
     }
 
     async edit(userEdit: UserEdit) {
-        console.log(userEdit)
         return this.prisma.user.update({
             where: {
                 email: userEdit.email,
             },
             data: {
                 name: userEdit.name,
+                password: userEdit.password,
             },
         })
     }

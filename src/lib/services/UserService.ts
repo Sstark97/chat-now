@@ -66,6 +66,11 @@ class UserService {
     }
 
     async edit(user: UserEdit) {
+        const currentUser = await this.userRepository.findBy(user.email)
+        const currentPassword = currentUser?.password as string
+
+        user.password =
+            user?.password !== "" ? await bcrypt.hash(user.password as string, 10) : currentPassword
         return await this.userRepository.edit(user)
     }
 

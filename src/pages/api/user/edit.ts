@@ -1,9 +1,8 @@
 import { NextApiResponse } from "next"
 import { UserFactory } from "@lib/factories/UserFactory"
 import type { User } from "@prisma/client"
-import type { EditContactRequest, EditUserRequest, ValidateResponse } from "@customTypes/request"
+import type { EditUserRequest } from "@customTypes/request"
 import type { ErrorResponse } from "@customTypes/domain"
-import { getSession } from "next-auth/react"
 
 const userService = UserFactory.createUserService()
 
@@ -15,22 +14,6 @@ const userService = UserFactory.createUserService()
  * @example
  * await checkErrorsInRegisterFrom(req, res)
  */
-// const checkErrorsFrom = async (req: EditUserRequest, res: NextApiResponse<ErrorResponse>) => {
-//     const response = {} as ValidateResponse
-//
-//     if (req.method !== "PUT") {
-//         res.status(405).end()
-//     }
-//
-//     const userAlreadyExists = await userService.existUserFromID(contactId)
-//
-//     if (!userAlreadyExists) {
-//         response.status = 400
-//         response.error = "No existe un usuario"
-//     }
-//
-//     return response
-// }
 
 /**
  * @description Manejador de la ruta /api/contacts/edit

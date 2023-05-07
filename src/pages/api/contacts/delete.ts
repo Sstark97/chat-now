@@ -1,12 +1,11 @@
 import { NextApiResponse } from "next"
-import { getSession } from "next-auth/react"
 import { UserFactory } from "@lib/factories/UserFactory"
 import { ContactFactory } from "@lib/factories/ContactFactory"
+import { getServerSession } from "next-auth"
+import authConfig from "@pages/api/auth/[...nextauth]"
 import type { Contact } from "@prisma/client"
 import type { DeleteContactRequest, ValidateResponse } from "@customTypes/request"
 import type { ErrorResponse } from "@customTypes/domain"
-import { getServerSession } from "next-auth"
-import authConfig from "@pages/api/auth/[...nextauth]"
 
 const userService = UserFactory.createUserService()
 const contactService = ContactFactory.createContactService()
