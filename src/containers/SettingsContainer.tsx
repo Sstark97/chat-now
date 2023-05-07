@@ -7,7 +7,7 @@ import { BiExit, BiHelpCircle } from "react-icons/bi"
 import { useSession } from "next-auth/react"
 import { Dialog, Transition } from "@headlessui/react"
 import Link from "next/link"
-import { useState, Fragment } from "react"
+import { useState, Fragment, ChangeEvent } from "react"
 
 const SettingsContainer = () => {
     const { data: session } = useSession()
@@ -26,7 +26,7 @@ const SettingsContainer = () => {
 
     const [theme, setTheme] = useState(localStorage.getItem("theme") || "light")
 
-    function switchTheme(e) {
+    const switchTheme = (e: ChangeEvent<HTMLInputElement>) => {
         const newTheme = e.target.value
         setTheme(newTheme)
         localStorage.setItem("theme", newTheme)
@@ -86,7 +86,7 @@ const SettingsContainer = () => {
                             leaveFrom="opacity-100"
                             leaveTo="opacity-0"
                         >
-                            <div className="fixed inset-0 bg-black dark:bg-white bg-opacity-25" />
+                            <div className="fixed inset-0 bg-black bg-opacity-25 dark:bg-opacity-25" />
                         </Transition.Child>
 
                         <div className="fixed inset-0 overflow-y-auto">
@@ -112,16 +112,15 @@ const SettingsContainer = () => {
                                         </form>
                                         <Dialog.Title
                                             as="h3"
-                                            className="text-2xl font-medium text-black dark:text-white  mb-4"
+                                            className="text-2xl font-medium text-black dark:text-white mb-5"
                                         >
                                             Elige un tema
                                         </Dialog.Title>
 
-                                        <div className="flex items-center">
-                                            <span className="text-gray-600 mr-2">Modo:</span>
+                                        <div className="flex flex-col">
                                             <label
                                                 htmlFor="light"
-                                                className="flex items-center cursor-pointer mr-2"
+                                                className="flex items-center cursor-pointer mr-2 mb-3"
                                             >
                                                 <input
                                                     type="radio"
@@ -132,8 +131,13 @@ const SettingsContainer = () => {
                                                     onChange={switchTheme}
                                                     className="sr-only"
                                                 />
-                                                <div className="block bg-gray-200 w-14 h-8 rounded-full"></div>
-                                                <span className="text-gray-600 ml-2">Claro</span>
+                                                <div
+                                                    className={`block border-2 border-icon dark:border-dark_icon w-4 h-4 rounded-full ${
+                                                        theme === "light" &&
+                                                        "bg-light_purple dark:bg-dark_purple"
+                                                    }`}
+                                                ></div>
+                                                <span className="ml-2">Claro</span>
                                             </label>
                                             <label
                                                 htmlFor="dark"
@@ -148,29 +152,15 @@ const SettingsContainer = () => {
                                                     onChange={switchTheme}
                                                     className="sr-only"
                                                 />
-                                                <div className="block bg-gray-600 w-14 h-8 rounded-full"></div>
-                                                <span className="text-gray-600 ml-2">Oscuro</span>
+                                                <div
+                                                    className={`block border-2 border-icon dark:border-dark_icon w-4 h-4 rounded-full ${
+                                                        theme === "dark" &&
+                                                        "bg-light_purple dark:bg-dark_purple"
+                                                    }`}
+                                                ></div>
+                                                <span className="ml-2">Oscuro</span>
                                             </label>
                                         </div>
-
-                                        <form className="flex flex-col mt-4">
-                                            <div className="w-10/12 mx-auto flex justify-around items-center mt-7">
-                                                <button
-                                                    type="button"
-                                                    className="w-2/5 inline-flex justify-center rounded-xl border-0 bg-secondary dark:bg-dark_secondary py-2 text-lg text-black dark:text-white"
-                                                    onClick={closeModal}
-                                                >
-                                                    Cancelar
-                                                </button>
-                                                <button
-                                                    type="button"
-                                                    className="w-2/5 inline-flex justify-center rounded-xl border border-transparent bg-light_purple dark:bg-dark_purple py-2 text-lg text-black dark:text-white"
-                                                    onClick={closeModal}
-                                                >
-                                                    Cambiar
-                                                </button>
-                                            </div>
-                                        </form>
                                     </Dialog.Panel>
                                 </Transition.Child>
                             </div>
