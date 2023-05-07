@@ -1,5 +1,4 @@
 import { NextApiRequest } from "next"
-import { UserEdit } from "@customTypes/domain"
 
 /**
  * @interface UserRequest
@@ -73,6 +72,12 @@ interface DeleteContactRequest extends NextApiRequest {
     }
 }
 
+interface DeleteUserRequest extends NextApiRequest {
+    body: {
+        email: string
+    }
+}
+
 /**
  * @interface ValidateResponse
  * @description Propiedades de la respuesta de validación
@@ -90,5 +95,6 @@ export type {
     EditUserRequest,
     EditContactRequest,
     DeleteContactRequest,
+    DeleteUserRequest,
     ValidateResponse,
 }

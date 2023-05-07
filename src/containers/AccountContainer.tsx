@@ -1,12 +1,30 @@
 import Image from "next/image"
-import { useSession } from "next-auth/react"
+import { useSession, signOut } from "next-auth/react"
 import { BsFillCameraFill } from "react-icons/bs"
 import EditUser from "./EditUser"
 import DeleteModal from "@components/DeleteModal"
+import { useState } from "react"
+import { deleteFrom } from "@lib/utils/fetcher"
+import { API, REDIRECT } from "@lib/constants/links"
+import { useRouter } from "next/router"
 
 const AccountContainer = () => {
     const { data: session } = useSession()
     const userImage = session?.user?.image
+    const [error, setError] = useState("")
+    const router = useRouter()
+
+    const handleDelete = async (email: string) => {
+        try {
+            await deleteFrom({ email }, API.DELETE_USER)
+            setError("")
+            signOut()
+            await router.push(REDIRECT.HOME)
+        } catch (error) {
+            const { message } = error as Error
+            setError(message)
+        }
+    }
 
     return (
         <div className="w-full p-7 px-8">
@@ -26,7 +44,14 @@ const AccountContainer = () => {
                 )}
             </section>
             <EditUser />
-            <DeleteModal title="cuenta" error={""} handleDelete={() => {}} cleanError={() => {}} />
+            <DeleteModal
+                title="cuenta"
+                error={error}
+                handleDelete={handleDelete}
+                cleanError={() => {
+                    setError("")
+                }}
+            />
         </div>
     )
 }
