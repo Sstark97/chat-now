@@ -132,6 +132,9 @@ const RealTimeProvider = ({ children }: ChildrenProps) => {
      * @example getContactsFromChats()
      */
     const getContactsFromChats = async (userId: string, chats: Chats[]) => {
+        if (!chats) {
+            return []
+        }
         return (await Promise.all(
             chats.map(async (chat) => {
                 const { data: contacts } = await supabase

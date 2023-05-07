@@ -4,7 +4,7 @@ import { BsSun } from "react-icons/bs"
 import { HiOutlineInformationCircle } from "react-icons/hi"
 import { MdWallpaper } from "react-icons/md"
 import { BiExit, BiHelpCircle } from "react-icons/bi"
-import { useSession } from "next-auth/react"
+import { useSession, signOut } from "next-auth/react"
 import Link from "next/link"
 
 const SettingsContainer = () => {
@@ -71,9 +71,14 @@ const SettingsContainer = () => {
 
                 <div className="w-full flex items-center mb-5">
                     <BiExit className="pb-2 mr-3 text-2xl lg:text-3xl" />
-                    <p className="w-11/12 pb-2 border-b-[.05rem] border-black text-sm lg:text-base">
+                    <button
+                        className="w-11/12 pb-2 border-b-[.05rem] border-black text-sm text-left lg:text-base"
+                        onClick={() => {
+                            signOut()
+                        }}
+                    >
                         Cerrar sesión
-                    </p>
+                    </button>
                 </div>
             </section>
         </div>
