@@ -19,8 +19,8 @@ const AccountContainer = () => {
                         height={75}
                     />
                 ) : (
-                    <div className="w-[6rem] h-[6rem] lg:w-[6.5rem] lg:h-[6.5rem] bg-secondary rounded-full flex justify-center items-center">
-                        <BsFillCameraFill className="text-4xl text-icon" />
+                    <div className="w-[6rem] h-[6rem] lg:w-[6.5rem] lg:h-[6.5rem] bg-secondary dark:bg-dark_secondary rounded-full flex justify-center items-center">
+                        <BsFillCameraFill className="text-4xl text-icon dark:text-dark_icon" />
                     </div>
                 )}
             </section>

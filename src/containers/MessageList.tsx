@@ -23,7 +23,7 @@ const MessageList = ({ messages }: MessageListProps) => {
                 ))}
             </div>
             <button
-                className="bg-secondary lg:bg-primary lg:bg-opacity-70 bg-opacity-80 text-dark_primary fixed bottom-[85px] right-14 z-10 p-3 rounded-full"
+                className="bg-secondary dark:bg-dark_secondary lg:bg-primary dark:lg:bg-dark_primary lg:bg-opacity-70 bg-opacity-80 text-black dark:text-white fixed bottom-[85px] right-14 z-10 p-3 rounded-full"
                 onClick={handleScroll}
             >
                 <MdKeyboardArrowDown className="text-2xl" />

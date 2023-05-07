@@ -13,7 +13,8 @@ const AuthProviders = () => {
         <>
             <div className="w-full mb-5">
                 <AuthButton credential="github">
-                    <BsGithub className="mr-4 text-2xl text-black" /> Regístrate con GitHub
+                    <BsGithub className="mr-4 text-2xl text-black dark:text-white" /> Regístrate con
+                    GitHub
                 </AuthButton>
                 <AuthButton credential="google">
                     <FcGoogle className="mr-4 text-2xl" /> Regístrate con Google
@@ -22,12 +23,14 @@ const AuthProviders = () => {
 
             <div className="w-full text-center">
                 <div className="w-full flex items-center justify-between">
-                    <div className="w-5/12 h-[.08rem] bg-secondary bg-opacity-50"></div>
-                    <p className="text-secondary">O</p>
-                    <div className="w-5/12 h-[.08rem] bg-secondary bg-opacity-50"></div>
+                    <div className="w-5/12 h-[.08rem] bg-secondary dark:bg-dark_secondary bg-opacity-50"></div>
+                    <p className="text-secondary dark:text-dark_secondary">O</p>
+                    <div className="w-5/12 h-[.08rem] bg-secondary dark:bg-dark_secondary bg-opacity-50"></div>
                 </div>
 
-                <p className="text-secondary">Por favor, inserte sus datos</p>
+                <p className="text-secondary dark:text-dark_secondary">
+                    Por favor, inserte sus datos
+                </p>
             </div>
         </>
     )

@@ -9,7 +9,7 @@ const ContactNavBar = () => {
     return (
         <>
             <nav
-                className="w-full bg-secondary flex justify-evenly lg:items-center lg:justify-between py-8"
+                className="w-full bg-secondary dark:bg-dark_secondary flex justify-evenly lg:items-center lg:justify-between py-8"
                 ref={ref}
             >
                 <Link className="absolute top-7 left-0" href="/contacts">
@@ -26,7 +26,7 @@ const ContactNavBar = () => {
                             height={75}
                         />
                     ) : (
-                        <div className="w-[8rem] h-[8rem] lg:bg-icon bg-secondary rounded-full"></div>
+                        <div className="w-[8rem] h-[8rem] lg:bg-icon dark:lg:bg-dark_icon bg-secondary dark:bg-dark_secondary rounded-full"></div>
                     )}
                     <p className="text-center text-2xl mt-5">{selectedChat.name}</p>
                     <p className="opacity-50 mt-3">En línea</p>
