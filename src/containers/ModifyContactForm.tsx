@@ -5,7 +5,8 @@ import InputWithIcon from "@components/InputWithIcon"
 import { errors } from "@lib/constants/validations"
 import { FaUserAlt } from "react-icons/fa"
 import Button from "@components/Button"
-import DeleteContact from "@components/DeleteContact"
+import DeleteModal from "@components/DeleteModal"
+import useDeleteContact from "@hooks/useDeleteContact"
 
 /**
  * Formulario para modificar un contacto
@@ -16,6 +17,7 @@ import DeleteContact from "@components/DeleteContact"
 const ModifyContactForm = () => {
     const { ref, selectedChat } = useChatContext()
     const { handleEdit, error } = useEditContact()
+    const { handleDelete, error: deleteError, cleanError } = useDeleteContact()
 
     const inputClass = "w-[80%] mt-5 mb-1"
     const errorClass = "w-[80%] mb-1"
@@ -37,7 +39,13 @@ const ModifyContactForm = () => {
                     </InputWithIcon>
                     <div className="w-[80%] flex flex-col justify-center items-center">
                         <Button value="Editar contacto" action={handleEdit} />
-                        <DeleteContact />
+                        <DeleteModal
+                            name={selectedChat.name}
+                            title="Contacto"
+                            error={deleteError}
+                            handleDelete={handleDelete}
+                            cleanError={cleanError}
+                        />
                     </div>
                 </div>
             </div>

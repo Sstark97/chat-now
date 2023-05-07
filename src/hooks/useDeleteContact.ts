@@ -6,12 +6,11 @@ import { API, REDIRECT } from "@lib/constants/links"
 
 /**
  * @description Hook para eliminar un contacto
- * @param setIsOpen - Función para cerrar el modal
  * @returns {object} - Objeto con la función para eliminar un contacto, el error y la función para limpiar el error
  * @example
  * const { handleDelete, error, cleanError } = useDeleteContact(setIsOpen)
  */
-const useDeleteContact = (setIsOpen: { (close: boolean): void }) => {
+const useDeleteContact = () => {
     const [error, setError] = useState("")
     const router = useRouter()
     const { selectedChat, reloadContacts, handleCloseChat } = useChatContext()
@@ -22,8 +21,8 @@ const useDeleteContact = (setIsOpen: { (close: boolean): void }) => {
                 { id: selectedChat.id as string, userEmail: email },
                 API.DELETE_CONTACT
             )
+            setError("")
             await reloadContacts()
-            setIsOpen(false)
             handleCloseChat()
             await router.push(REDIRECT.CONTACTS)
         } catch (error) {

@@ -24,7 +24,6 @@ const AccountContainer = () => {
                     </div>
                 )}
             </section>
-
             <EditUser />
         </div>
     )

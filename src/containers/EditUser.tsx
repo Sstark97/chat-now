@@ -83,7 +83,7 @@ const EditUser = () => {
                         >
                             <FaKey className="w-[20%] text-3xl order-first mt-5" />
                         </PasswordInput>
-                        <div className="w-[80%] flex justify-center items-center">
+                        <div className="w-[80%] flex flex-col justify-center items-center">
                             <button className="w-full bg-light_purple py-2 mt-5 md:mt-6 text-[1.15rem] rounded-xl shadow-lg brightness-100 disabled:brightness-75 active:translate-y-[2%] active:shadow-md disabled:active:translate-y-[0%] disabled:active:shadow-lg">
                                 Editar
                             </button>
