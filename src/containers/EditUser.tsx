@@ -8,7 +8,6 @@ import { useSession } from "next-auth/react"
 import useChatContext from "@hooks/useChatContext"
 import PasswordInput from "@components/PasswordInput"
 import { INPUT_REGISTER_PLACEHOLDER } from "@lib/constants/authForms"
-import useForm from "@hooks/useForm"
 import { API, REDIRECT } from "@lib/constants/links"
 import { getUserDataFrom } from "@lib/utils/user"
 import { changeFrom } from "@lib/utils/fetcher"
@@ -20,8 +19,7 @@ import { useRouter } from "next/router"
  */
 const EditUser = () => {
     const { ref } = useChatContext()
-    const { data: session, status, update } = useSession()
-    const { action: editUser, error } = useForm(ref, API.EDIT_USER, REDIRECT.HOME, "PUT")
+    const { data: session, update } = useSession()
     const userName = session?.user?.name as string
     const userEmail = session?.user.email
     const router = useRouter()
@@ -29,12 +27,9 @@ const EditUser = () => {
     const inputClass = "w-[80%] mt-5 mb-1"
     const errorClass = "w-[80%] mb-1"
 
-    console.log(session)
-
     const handleClickInEdit = async () => {
         const user = getUserDataFrom(ref.current)
         const userFromApi = await changeFrom(user, API.EDIT_USER, "PUT")
-        console.log(userFromApi)
 
         await update({
             ...session,
@@ -44,13 +39,15 @@ const EditUser = () => {
             },
         })
 
+        const event = new Event("visibilitychange")
+        document.dispatchEvent(event)
         await router.push(REDIRECT.HOME)
     }
 
     return (
         <section className="w-full">
             <form className="w-full flex flex-col justify-center items-center">
-                {error ? <Error message={error} /> : <></>}
+                {/*{error ? <Error message={error} /> : <></>}*/}
                 <div className="w-[90%] flex flex-col items-center">
                     <div className="w-full flex flex-col justify-center items-center" ref={ref}>
                         <InputWithIcon
@@ -77,6 +74,7 @@ const EditUser = () => {
                             className={inputClass}
                             placeholder={INPUT_REGISTER_PLACEHOLDER.PASSWORD}
                             location="register"
+                            notRequired
                             validate
                         >
                             <FaKey className="w-[20%] text-3xl order-first mt-5" />

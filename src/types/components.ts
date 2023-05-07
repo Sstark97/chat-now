@@ -50,6 +50,7 @@ interface InputProps {
     errorClassName?: string
     value?: string
     disabled?: boolean
+    notRequired?: boolean
 }
 
 /**
@@ -85,6 +86,7 @@ interface PasswordProps {
     validate?: boolean
     location?: string
     className?: string
+    notRequired?: boolean
     children?: ReactNode
 }
 

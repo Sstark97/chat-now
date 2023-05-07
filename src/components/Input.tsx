@@ -22,6 +22,7 @@ const Input = ({
     errorClassName,
     value,
     disabled,
+    notRequired,
 }: InputProps) => {
     const { error, border, defineError } = useControlInput(errorManager)
     const inputClass =
@@ -40,7 +41,7 @@ const Input = ({
                     autoComplete="new-password"
                     name={name}
                     onBlur={defineError}
-                    required
+                    required={!notRequired}
                     onChange={(e) => setInputValue(e.target.value)}
                     value={inputValue}
                     disabled={disabled}
