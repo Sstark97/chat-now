@@ -17,6 +17,9 @@ export default async function handler(
     req: ChangeUserStatusRequest,
     res: NextApiResponse<User | ErrorResponse>
 ) {
+    if (req.method !== "PUT") {
+        res.status(405).end()
+    }
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore
     const session = await getServerSession(req, res, authConfig)

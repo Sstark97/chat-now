@@ -3,9 +3,11 @@ import { Dialog, Transition } from "@headlessui/react"
 import { AiOutlineClose, AiOutlineEye } from "react-icons/ai"
 import { useSession } from "next-auth/react"
 import { STATE_VALUES_ARRAY } from "@lib/constants/settings"
+import { changeFrom } from "@lib/utils/fetcher"
+import { API } from "@lib/constants/links"
 
 const StateModal = () => {
-    const { data: session } = useSession()
+    const { data: session, update } = useSession()
     const userStatus = session?.user?.status as string
     const [state, setState] = useState(userStatus)
     const [isOpen, setIsOpen] = useState(false)
@@ -14,7 +16,18 @@ const StateModal = () => {
         setIsOpen(true)
     }
 
-    const closeModal = () => {
+    const closeModal = async () => {
+        if (state !== userStatus) {
+            const userFromApi = await changeFrom({ status: state }, API.CHANGE_STATUS, "PUT")
+
+            await update({
+                ...session,
+                user: {
+                    ...session?.user,
+                    status: userFromApi.status,
+                },
+            })
+        }
         setIsOpen(false)
     }
 

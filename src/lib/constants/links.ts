@@ -19,6 +19,7 @@ enum API {
     DELETE_CONTACT = "/api/contacts/delete",
     EDIT_USER = "/api/user/edit",
     DELETE_USER = "/api/user/delete",
+    CHANGE_STATUS = "/api/user/changeStatus",
 }
 
 /**
