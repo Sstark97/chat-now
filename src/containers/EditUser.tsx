@@ -6,7 +6,7 @@ import { useSession } from "next-auth/react"
 import useChatContext from "@hooks/useChatContext"
 import PasswordInput from "@components/PasswordInput"
 import { INPUT_REGISTER_PLACEHOLDER } from "@lib/constants/authForms"
-import { API, REDIRECT } from "@lib/constants/links"
+import { API } from "@lib/constants/links"
 import { getUserDataFrom } from "@lib/utils/user"
 import { changeFrom } from "@lib/utils/fetcher"
 import { useRouter } from "next/router"
@@ -41,7 +41,7 @@ const EditUser = () => {
 
         const event = new Event("visibilitychange")
         document.dispatchEvent(event)
-        await router.push(REDIRECT.HOME)
+        router.back()
     }
 
     return (

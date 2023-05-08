@@ -8,7 +8,7 @@ const HelpSettings = () => (
     <ChatLayout>
         <div className="flex h-screen">
             <div className="w-full lg:w-[28%] relative">
-                <NavBar type={NAVBAR_TITLES.HELP} />
+                <NavBar type={NAVBAR_TITLES.HELP} route="/settings" />
                 <HelpContainer />
             </div>
             <ChatDesktop />
