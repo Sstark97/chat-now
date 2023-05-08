@@ -107,6 +107,7 @@ interface ButtonProps {
  */
 interface NavBarProps {
     type?: string
+    route?: string
 }
 
 /**

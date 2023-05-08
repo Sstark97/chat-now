@@ -12,7 +12,7 @@ import Image from "next/image"
  * @returns component
  * @example <NavBar type="normal" />
  */
-const NavBar = ({ type = "normal" }: NavBarProps) => {
+const NavBar = ({ type = "normal", route = "" }: NavBarProps) => {
     const router = useRouter()
     const { pathname } = router
     const { data: session } = useSession()
@@ -53,7 +53,10 @@ const NavBar = ({ type = "normal" }: NavBarProps) => {
                 </nav>
             ) : (
                 <nav className="w-full h-24 bg-secondary dark:bg-dark_secondary flex justify-evenly lg:items-center lg:justify-between py-10">
-                    <Link className="w-full flex justify-start items-center" href="/contacts">
+                    <Link
+                        className="w-full flex justify-start items-center"
+                        href={route === "" ? "/contacts" : route}
+                    >
                         <MdArrowBackIosNew className="ml-6 font-extrabold text-xl" />
                         <p className="ml-6 text-lg">{type}</p>
                     </Link>

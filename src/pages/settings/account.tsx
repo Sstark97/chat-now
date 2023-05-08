@@ -8,7 +8,7 @@ const AccountSettings = () => (
     <ChatLayout>
         <div className="flex h-screen">
             <div className="w-full lg:w-[28%] relative">
-                <NavBar type={NAVBAR_TITLES.MY_ACCOUNT} />
+                <NavBar type={NAVBAR_TITLES.MY_ACCOUNT} route="/settings" />
                 <AccountContainer />
             </div>
             <ChatDesktop />
