@@ -1,6 +1,6 @@
 import ContactInfo from "@components/ContactInfo"
 import Link from "next/link"
-import { HiDotsVertical } from "react-icons/hi"
+import { MdModeEditOutline } from "react-icons/md"
 
 /**
  * Este componente es el encargado de mostrar el encabezado del chat
@@ -12,7 +12,7 @@ const ChatHeader = () => {
         <div className="w-full lg:w-[72%] flex items-center justify-between px-4 lg:px-10 py-4 lg:bg-primary dark:lg:bg-dark_primary bg-secondary dark:bg-dark_secondary z-20 fixed">
             <ContactInfo />
             <Link href="/contacts/modify">
-                <HiDotsVertical className="text-2xl" />
+                <MdModeEditOutline className="text-2xl" />
             </Link>
         </div>
     )
