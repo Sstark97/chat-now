@@ -1,11 +1,11 @@
 import Image from "next/image"
-import { AiOutlineEye } from "react-icons/ai"
 import { HiOutlineInformationCircle } from "react-icons/hi"
 import { MdWallpaper } from "react-icons/md"
 import { BiExit, BiHelpCircle } from "react-icons/bi"
 import { signOut, useSession } from "next-auth/react"
 import Link from "next/link"
 import ThemeModal from "@components/ThemeModal"
+import StateModal from "@components/StateModal"
 
 const SettingsContainer = () => {
     const { data: session } = useSession()
@@ -30,14 +30,7 @@ const SettingsContainer = () => {
             </section>
 
             <section className="w-full pl-2 pt-8">
-                <div className="w-full flex items-center mb-5">
-                    <AiOutlineEye className="pb-2 mr-3 text-2xl lg:text-3xl" />
-                    <p className="w-11/12 pb-2 border-b-[.05rem] border-black text-sm lg:text-base">
-                        Estado
-                    </p>
-                </div>
-
-                {/* Aqui */}
+                <StateModal />
                 <ThemeModal />
 
                 <div className="w-full flex items-center mb-5">

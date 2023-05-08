@@ -1,5 +1,8 @@
-const settings = {
-    a: "algo",
+enum STATE_VALUES {
+    online = "Disponible",
+    busy = "Ocupado",
+    absent = "Ausente",
+    offline = "Desconectado",
 }
 
-export { settings }
+export { STATE_VALUES }
