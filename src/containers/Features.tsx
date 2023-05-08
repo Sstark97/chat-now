@@ -41,7 +41,7 @@ const Features = () => {
                 </Feature>
 
                 <Feature header={FEATURE_HEADER.SPEAK} description={FEATURE_DESCRIPTION.SPEAK}>
-                    <BsCameraVideoFill className="text-3xl lg:text-5xl p-1 lg:p-2 bg-light_purple border border-black dark:border-white rounded-full absolute top-7 left-[5.4rem] lg:top-9 lg:left-[8.2rem]" />
+                    <BsCameraVideoFill className="text-3xl lg:text-5xl p-1 lg:p-2 bg-light_purple dark:bg-dark_purple border border-black dark:border-white rounded-full absolute top-7 left-[5.4rem] lg:top-9 lg:left-[8.2rem]" />
 
                     <Image
                         src="/ImgVideo1.jpg"

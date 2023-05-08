@@ -52,7 +52,7 @@ const DeleteModal = ({ name, title, error, handleDelete, cleanError }: DeleteMod
                         leaveFrom="opacity-100"
                         leaveTo="opacity-0"
                     >
-                        <div className="fixed inset-0 bg-black dark:bg-white bg-opacity-25" />
+                        <div className="fixed inset-0 bg-black bg-opacity-25" />
                     </Transition.Child>
 
                     <div className="fixed inset-0 overflow-y-auto">
@@ -66,7 +66,7 @@ const DeleteModal = ({ name, title, error, handleDelete, cleanError }: DeleteMod
                                 leaveFrom="opacity-100 scale-100"
                                 leaveTo="opacity-0 scale-95"
                             >
-                                <Dialog.Panel className="w-full max-w-md transform overflow-hidden rounded-2xl bg-white dark:bg-black p-6 text-left align-middle shadow-xl transition-all">
+                                <Dialog.Panel className="w-full max-w-md transform overflow-hidden rounded-2xl bg-primary dark:bg-dark_primary p-6 text-left align-middle shadow-xl transition-all">
                                     <form className="absolute top-4 right-4">
                                         <button
                                             type="button"
@@ -98,7 +98,7 @@ const DeleteModal = ({ name, title, error, handleDelete, cleanError }: DeleteMod
                                             Escribe tu email para confirmar.
                                         </p>
                                         <input
-                                            className="border-0 p-3 bg-secondary dark:bg-dark_secondary rounded-xl text-white dark:text-black placeholder-white dark:placeholder-black"
+                                            className="border-0 p-3 bg-secondary dark:bg-dark_secondary rounded-xl text-white placeholder-white"
                                             type="email"
                                             placeholder="Escribe tu email"
                                             value={email}
