@@ -3,9 +3,12 @@ import { UserRepository } from "@customTypes/domain"
 import { User } from "@prisma/client"
 
 describe("UserService", () => {
-    it("should find an user by email", async () => {
-        const user: User = {
-            id: "irrelevant",
+    let user: User
+    let users: User[]
+
+    beforeEach(() => {
+        user = {
+            id: "irrelevantId",
             name: "irrelevant",
             email: "irrelevant@email.com",
             password: "irrelevant",
@@ -13,9 +16,15 @@ describe("UserService", () => {
             status: "busy",
             emailVerified: new Date(),
         }
+
+        users = [user]
+    })
+    it("should find an user by email", async () => {
         const userRepository: UserRepository = {
             findBy: jest.fn(() => {
-                return Promise.resolve(user)
+                return Promise.resolve(
+                    users.find((user) => user.email === "irrelevant@email.com") ?? null
+                )
             }),
             findByID: jest.fn(),
             create: jest.fn(),
@@ -31,17 +40,6 @@ describe("UserService", () => {
     })
 
     it("should find an user by id", async () => {
-        const user: User = {
-            id: "irrelevantId",
-            name: "irrelevant",
-            email: "irrelevant@email.com",
-            password: "irrelevant",
-            image: "irrelevant",
-            status: "busy",
-            emailVerified: new Date(),
-        }
-
-        const users = [user]
         const userRepository: UserRepository = {
             findBy: jest.fn(),
             findByID: jest.fn(() => {
