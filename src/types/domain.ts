@@ -53,6 +53,7 @@ interface UserRepository {
     create(credentials: Credentials): Promise<User>
     edit(userEdit: UserEdit): Promise<User>
     delete(email: string): Promise<User>
+    changeStatus(email: string, status: Status): Promise<User>
 }
 
 /**

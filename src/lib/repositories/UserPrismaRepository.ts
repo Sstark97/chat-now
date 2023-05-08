@@ -1,4 +1,4 @@
-import { PrismaClient } from "@prisma/client"
+import { PrismaClient, Status } from "@prisma/client"
 import { Credentials, UserEdit, UserRepository } from "@customTypes/domain"
 
 /**
@@ -69,6 +69,17 @@ class UserPrismaRepository implements UserRepository {
             data: {
                 name: userEdit.name,
                 password: userEdit.password,
+            },
+        })
+    }
+
+    async changeStatus(email: string, status: Status) {
+        return this.prisma.user.update({
+            where: {
+                email,
+            },
+            data: {
+                status,
             },
         })
     }

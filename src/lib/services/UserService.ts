@@ -8,6 +8,7 @@ import {
 import { UserRequest } from "@customTypes/request"
 import bcrypt from "bcrypt"
 import { errors } from "@lib/constants/validations"
+import { Status } from "@prisma/client"
 
 /**
  * @class UserService
@@ -72,6 +73,10 @@ class UserService {
         user.password =
             user?.password !== "" ? await bcrypt.hash(user.password as string, 10) : currentPassword
         return await this.userRepository.edit(user)
+    }
+
+    async changeStatus(email: string, status: Status) {
+        return await this.userRepository.changeStatus(email, status)
     }
 
     async delete(email: string) {
