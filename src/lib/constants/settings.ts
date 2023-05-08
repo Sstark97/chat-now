@@ -5,4 +5,8 @@ enum STATE_VALUES {
     offline = "Desconectado",
 }
 
-export { STATE_VALUES }
+const STATE_VALUES_ARRAY = Object.keys(STATE_VALUES).map(
+    (key) => STATE_VALUES[key as keyof typeof STATE_VALUES]
+)
+
+export { STATE_VALUES, STATE_VALUES_ARRAY }

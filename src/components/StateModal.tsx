@@ -2,7 +2,7 @@ import { ChangeEvent, Fragment, useState } from "react"
 import { Dialog, Transition } from "@headlessui/react"
 import { AiOutlineClose, AiOutlineEye } from "react-icons/ai"
 import { useSession } from "next-auth/react"
-import { STATE_VALUES } from "@lib/constants/settings"
+import { STATE_VALUES, STATE_VALUES_ARRAY } from "@lib/constants/settings"
 
 const StateModal = () => {
     const { data: session } = useSession()
@@ -16,6 +16,10 @@ const StateModal = () => {
 
     const closeModal = () => {
         setIsOpen(false)
+    }
+
+    const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+        setState(e.target.value)
     }
 
     return (
@@ -70,27 +74,30 @@ const StateModal = () => {
                                     </Dialog.Title>
 
                                     <div className="flex flex-col">
-                                        <label
-                                            htmlFor="light"
-                                            className="flex items-center cursor-pointer mr-2 mb-3"
-                                        >
-                                            <input
-                                                type="radio"
-                                                id="light"
-                                                name="theme"
-                                                value="light"
-                                                checked={state === "light"}
-                                                onChange={() => setState("")}
-                                                className="sr-only"
-                                            />
-                                            <div
-                                                className={`block border-2 border-icon dark:border-dark_icon w-4 h-4 rounded-full ${
-                                                    state === "light" &&
-                                                    "bg-light_purple dark:bg-dark_purple"
-                                                }`}
-                                            ></div>
-                                            <span className="ml-2">Algo</span>
-                                        </label>
+                                        {STATE_VALUES_ARRAY.map((value) => (
+                                            <label
+                                                key={value}
+                                                htmlFor={value}
+                                                className="flex items-center cursor-pointer mr-2 mb-3"
+                                            >
+                                                <input
+                                                    type="radio"
+                                                    id={value}
+                                                    name="theme"
+                                                    value={value}
+                                                    checked={state === value}
+                                                    onChange={handleChange}
+                                                    className="sr-only"
+                                                />
+                                                <div
+                                                    className={`block border-2 border-icon dark:border-dark_icon w-4 h-4 rounded-full ${
+                                                        state === value &&
+                                                        "bg-light_purple dark:bg-dark_purple"
+                                                    }`}
+                                                ></div>
+                                                <span className="ml-2">{value}</span>
+                                            </label>
+                                        ))}
                                     </div>
                                 </Dialog.Panel>
                             </Transition.Child>
