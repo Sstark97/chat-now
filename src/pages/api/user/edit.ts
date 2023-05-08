@@ -15,6 +15,10 @@ export default async function handler(
     req: EditUserRequest,
     res: NextApiResponse<User | ErrorResponse>
 ) {
+    if (req.method !== "PUT") {
+        res.status(405).end()
+    }
+
     const { name, email, password } = req.body
     const userUpdated = await userService.edit({ name, email, password })
 

@@ -1,4 +1,5 @@
 import { NextApiRequest } from "next"
+import { Status } from "@prisma/client"
 
 /**
  * @interface UserRequest
@@ -65,6 +66,12 @@ interface EditUserRequest extends NextApiRequest {
     }
 }
 
+interface ChangeUserStatusRequest extends NextApiRequest {
+    body: {
+        status: Status
+    }
+}
+
 interface DeleteContactRequest extends NextApiRequest {
     body: {
         id: string
@@ -94,6 +101,7 @@ export type {
     ContactRequest,
     EditUserRequest,
     EditContactRequest,
+    ChangeUserStatusRequest,
     DeleteContactRequest,
     DeleteUserRequest,
     ValidateResponse,

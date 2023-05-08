@@ -16,7 +16,7 @@ const prisma = new PrismaClient()
  * @description Configuración de NextAuth
  * @type {NextAuthOptions}
  */
-const createConfig = (req: NextApiRequest): NextAuthOptions => ({
+const createConfig = (): NextAuthOptions => ({
     theme: {
         colorScheme: "light",
     },
@@ -71,6 +71,7 @@ const createConfig = (req: NextApiRequest): NextAuthOptions => ({
                 token.id = user.id
                 token.name = user.name
                 token.email = user.email
+                token.status = user.status
             }
 
             return token
@@ -78,6 +79,7 @@ const createConfig = (req: NextApiRequest): NextAuthOptions => ({
         async session({ session, token }) {
             if (session.user) {
                 session.user.id = token.id as string
+                session.user.status = token.status as string
             }
             return session
         },
@@ -88,7 +90,7 @@ const createConfig = (req: NextApiRequest): NextAuthOptions => ({
 })
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
-    return NextAuth(req, res, createConfig(req))
+    return NextAuth(req, res, createConfig())
 }
 
 export default handler
