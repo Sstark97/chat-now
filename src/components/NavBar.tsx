@@ -45,7 +45,9 @@ const NavBar = ({ type = "normal" }: NavBarProps) => {
 
                             return (
                                 <Link href={href} key={href} role="link">
-                                    <Icon className={`text-5xl rounded-xl p-2 ${activeClass}`} />
+                                    <Icon
+                                        className={`text-5xl rounded-xl text-icon dark:text-dark_icon p-2 ${activeClass}`}
+                                    />
                                 </Link>
                             )
                         })}

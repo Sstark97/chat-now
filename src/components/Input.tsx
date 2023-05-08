@@ -26,7 +26,7 @@ const Input = ({
 }: InputProps) => {
     const { error, border, defineError } = useControlInput(errorManager)
     const inputClass =
-        "bg-secondary dark:bg-dark_secondary text-white dark:text-black placeholder-white dark:placeholder-black border rounded-xl px-3 py-2 focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
+        "bg-secondary dark:bg-dark_secondary text-white placeholder-white rounded-xl px-3 py-2 focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
 
     const [inputValue, setInputValue] = useState(value ?? "")
 
