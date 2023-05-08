@@ -2,12 +2,12 @@ import { ChangeEvent, Fragment, useState } from "react"
 import { Dialog, Transition } from "@headlessui/react"
 import { AiOutlineClose, AiOutlineEye } from "react-icons/ai"
 import { useSession } from "next-auth/react"
-import { STATE_VALUES, STATE_VALUES_ARRAY } from "@lib/constants/settings"
+import { STATE_VALUES_ARRAY } from "@lib/constants/settings"
 
 const StateModal = () => {
     const { data: session } = useSession()
-    const userStatus = session?.user?.status as keyof typeof STATE_VALUES
-    const [state, setState] = useState(STATE_VALUES[userStatus] as string)
+    const userStatus = session?.user?.status as string
+    const [state, setState] = useState(userStatus)
     const [isOpen, setIsOpen] = useState(false)
 
     const openModal = () => {
@@ -74,7 +74,7 @@ const StateModal = () => {
                                     </Dialog.Title>
 
                                     <div className="flex flex-col">
-                                        {STATE_VALUES_ARRAY.map((value) => (
+                                        {STATE_VALUES_ARRAY.map(({ value, label }) => (
                                             <label
                                                 key={value}
                                                 htmlFor={value}
@@ -95,7 +95,7 @@ const StateModal = () => {
                                                         "bg-light_purple dark:bg-dark_purple"
                                                     }`}
                                                 ></div>
-                                                <span className="ml-2">{value}</span>
+                                                <span className="ml-2">{label}</span>
                                             </label>
                                         ))}
                                     </div>
