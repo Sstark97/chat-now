@@ -11,7 +11,6 @@ import { MdArrowBackIosNew } from "react-icons/md"
 const ContactInfo = () => {
     const { selectedChat, handleCloseChat } = useChatContext()
     const { image, name, status } = selectedChat
-    
     const color = STATE_COLORS[status as keyof typeof STATE_COLORS]
 
     const closeChat = () => {
