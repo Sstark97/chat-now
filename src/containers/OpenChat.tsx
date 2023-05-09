@@ -54,10 +54,6 @@ const OpenChat = ({ className }: OpenChatProps) => {
         socket?.on("receive-message", (data) => {
             setMessages((pre) => [...pre, data])
         })
-
-        return () => {
-            if (socket) socket.disconnect()
-        }
     }, [socket])
 
     // async function socketInitializer() {
