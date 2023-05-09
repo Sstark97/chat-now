@@ -19,6 +19,7 @@ describe("UserService", () => {
 
         users = [user]
     })
+
     it("should find an user by email", async () => {
         const userRepository: UserRepository = {
             findBy: jest.fn(() => {
@@ -55,5 +56,62 @@ describe("UserService", () => {
 
         expect(userExist).toBeTruthy()
         expect(userRepository.findByID).toHaveBeenCalled()
+    })
+
+    it("should create an user", async () => {
+        const userRepository: UserRepository = {
+            findBy: jest.fn(),
+            findByID: jest.fn(),
+            create: jest.fn((credentials) => {
+                const newUser = {
+                    ...user,
+                    id: "irrelevantId2",
+                    name: credentials?.name ?? null,
+                    email: credentials?.email ?? null,
+                }
+                users.push(newUser)
+                return Promise.resolve(newUser)
+            }),
+            edit: jest.fn(),
+            delete: jest.fn(),
+            changeStatus: jest.fn(),
+        }
+
+        const userService = new UserService(userRepository)
+        const userCreated = await userService.register({
+            name: "irrelevant",
+            email: "irrelevant2@gmail.com",
+            password: "irrelevant",
+        })
+
+        expect(userCreated?.email).toBe(users[1].email)
+        expect(userRepository.create).toHaveBeenCalled()
+    })
+
+    it("should edit an user only by name", async () => {
+        const userRepository: UserRepository = {
+            findBy: jest.fn(),
+            findByID: jest.fn(),
+            create: jest.fn(),
+            edit: jest.fn((user) => {
+                const userInRepository = users[0]
+
+                return Promise.resolve({
+                    ...userInRepository,
+                    name: user?.name ?? userInRepository.name,
+                })
+            }),
+            delete: jest.fn(),
+            changeStatus: jest.fn(),
+        }
+
+        const userService = new UserService(userRepository)
+        const userEdited = await userService.edit({
+            name: "irrelevant2",
+            email: "",
+        })
+
+        expect(userEdited?.name).toBe("irrelevant2")
+        expect(userRepository.edit).toHaveBeenCalled()
     })
 })
