@@ -27,8 +27,8 @@ model User {
 }
 
 model Contact {
-  User       User   @relation("User", fields: [user_id], references: [id])
-  Contact    User   @relation("Contact", fields: [contact_id], references: [id])
+  User       User   @relation("User", fields: [user_id], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  Contact    User   @relation("Contact", fields: [contact_id], references: [id], onDelete: Cascade, onUpdate: Cascade)
   user_id    String
   contact_id String
   name       String
@@ -46,8 +46,8 @@ model ChatUsers {
   chat_id Int
   user_id String
 
-  chat Chat @relation("Chat", fields: [chat_id], references: [id])
-  user User @relation("User", fields: [user_id], references: [id])
+  chat Chat @relation("Chat", fields: [chat_id], references: [id], onDelete: Cascade)
+  user User @relation("User", fields: [user_id], references: [id], onDelete: Cascade)
 
   @@id([chat_id, user_id])
 }
@@ -59,8 +59,8 @@ model Message {
   chat_id   Int
   author_id String
 
-  chat   Chat @relation("Chat", fields: [chat_id], references: [id])
-  author User @relation("User", fields: [author_id], references: [id])
+  chat   Chat @relation("Chat", fields: [chat_id], references: [id], onDelete: Cascade)
+  author User @relation("User", fields: [author_id], references: [id], onDelete: Cascade)
 }
 
 model Account {

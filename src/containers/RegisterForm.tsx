@@ -18,7 +18,7 @@ import { API, REDIRECT } from "@lib/constants/links"
  */
 const RegisterForm = () => {
     const { ref } = useChatContext()
-    const { action: register, error } = useForm(ref, API.REGISTER, REDIRECT.LOGIN)
+    const { action: register, error } = useForm(ref, API.REGISTER, REDIRECT.LOGIN, "POST")
 
     /**
      * Esta función es la encargada de ejecutar la función register
@@ -61,7 +61,7 @@ const RegisterForm = () => {
                     </div>
                 </div>
             </form>
-            <p className="mt-5 text-sm text-center text-secondary_text lg:text-lg">
+            <p className="mt-5 text-sm text-center text-secondary_text dark:text-dark_secondary_text lg:text-lg">
                 ¿Ya tienes una cuenta?{" "}
                 <Link href="/login" className="font-bold">
                     Inicia sesión

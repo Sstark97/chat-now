@@ -1,4 +1,5 @@
 import { NextApiRequest } from "next"
+import { Status } from "@prisma/client"
 
 /**
  * @interface UserRequest
@@ -40,6 +41,51 @@ interface ContactRequest extends NextApiRequest {
 }
 
 /**
+ * @interface EditContactRequest
+ * @description Propiedades de la petición para editar un contacto
+ * @property {string} name - Nombre del contacto
+ * @property {string} id - Id del contacto
+ * @example
+ * const contactRequest: ContactRequest = {
+ * name: "John Doe",
+ * id: "1"
+ * }
+ */
+interface EditContactRequest extends NextApiRequest {
+    body: {
+        name: string
+        id: string
+    }
+}
+
+interface EditUserRequest extends NextApiRequest {
+    body: {
+        name: string
+        email: string
+        password: string
+    }
+}
+
+interface ChangeUserStatusRequest extends NextApiRequest {
+    body: {
+        status: Status
+    }
+}
+
+interface DeleteContactRequest extends NextApiRequest {
+    body: {
+        id: string
+        userEmail: string
+    }
+}
+
+interface DeleteUserRequest extends NextApiRequest {
+    body: {
+        email: string
+    }
+}
+
+/**
  * @interface ValidateResponse
  * @description Propiedades de la respuesta de validación
  * @property {number} status - Código de estado HTTP
@@ -50,4 +96,13 @@ interface ValidateResponse {
     error: string
 }
 
-export type { UserRequest, ContactRequest, ValidateResponse }
+export type {
+    UserRequest,
+    ContactRequest,
+    EditUserRequest,
+    EditContactRequest,
+    ChangeUserStatusRequest,
+    DeleteContactRequest,
+    DeleteUserRequest,
+    ValidateResponse,
+}

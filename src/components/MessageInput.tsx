@@ -34,18 +34,18 @@ const MessageInput = ({ socket }: { socket: Socket }) => {
 
     return (
         <form
-            className="w-full lg:w-[72%] p-4 px-7 flex items-center justify-between fixed bottom-0 bg-primary lg:bg-secondary"
+            className="w-full lg:w-[72%] p-4 px-7 flex items-center justify-between fixed bottom-0 bg-primary dark:bg-dark_primary lg:bg-secondary dark:lg:bg-dark_secondary"
             onSubmit={handleSendMessage}
         >
             <input
                 placeholder="Mensaje"
                 type="text"
-                className="w-[80%] lg:w-[88%] rounded-lg p-3 bg-secondary lg:bg-primary placeholder:text-black"
+                className="w-[80%] lg:w-[88%] rounded-lg p-3 bg-secondary dark:bg-dark_secondary lg:bg-primary dark:lg:bg-dark_primary placeholder:text-black dark:placeholder:text-white"
                 value={message}
                 onChange={handleChangeMessage}
             />
             <button
-                className="w-[17%] lg:w-[9%] flex justify-center p-3 text-2xl font-bold bg-light_purple rounded-lg"
+                className="w-[17%] lg:w-[9%] flex justify-center p-3 text-2xl font-bold bg-light_purple rounded-lg dark:bg-dark_purple"
                 type="submit"
             >
                 <BsSendFill />

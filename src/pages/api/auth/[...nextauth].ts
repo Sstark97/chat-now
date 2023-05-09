@@ -5,9 +5,10 @@ import Google from "next-auth/providers/google"
 import Credentials from "next-auth/providers/credentials"
 import { PrismaAdapter } from "@next-auth/prisma-adapter"
 import { PrismaClient } from "@prisma/client"
-import { postFrom } from "@lib/utils/fetcher"
+import { changeFrom } from "@lib/utils/fetcher"
 import type { NextAuthOptions } from "next-auth"
 import { API } from "@lib/constants/links"
+import { NextApiRequest, NextApiResponse } from "next"
 
 const prisma = new PrismaClient()
 
@@ -15,7 +16,7 @@ const prisma = new PrismaClient()
  * @description Configuración de NextAuth
  * @type {NextAuthOptions}
  */
-const options: NextAuthOptions = {
+const createConfig = (): NextAuthOptions => ({
     theme: {
         colorScheme: "light",
     },
@@ -34,7 +35,11 @@ const options: NextAuthOptions = {
                 password: { label: "Password", type: "password" },
             },
             authorize: async (credentials) => {
-                const user = await postFrom(credentials, `${process.env.NEXTAUTH_URL}${API.LOGIN}`)
+                const user = await changeFrom(
+                    credentials,
+                    `${process.env.NEXTAUTH_URL}${API.LOGIN}`,
+                    "POST"
+                )
 
                 if (user) {
                     return {
@@ -57,11 +62,16 @@ const options: NextAuthOptions = {
         }),
     ],
     callbacks: {
-        async jwt({ token, user }) {
+        async jwt({ token, user, trigger, session }) {
+            if (trigger === "update" && session) {
+                return { ...token, ...session?.user }
+            }
+
             if (user) {
                 token.id = user.id
                 token.name = user.name
                 token.email = user.email
+                token.status = user.status
             }
 
             return token
@@ -69,6 +79,7 @@ const options: NextAuthOptions = {
         async session({ session, token }) {
             if (session.user) {
                 session.user.id = token.id as string
+                session.user.status = token.status as string
             }
             return session
         },
@@ -76,6 +87,10 @@ const options: NextAuthOptions = {
     session: {
         strategy: "jwt",
     },
+})
+
+const handler = async (req: NextApiRequest, res: NextApiResponse) => {
+    return NextAuth(req, res, createConfig())
 }
 
-export default NextAuth(options)
+export default handler

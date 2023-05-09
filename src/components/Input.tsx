@@ -20,12 +20,15 @@ const Input = ({
     location,
     className,
     errorClassName,
+    value,
+    disabled,
+    notRequired,
 }: InputProps) => {
     const { error, border, defineError } = useControlInput(errorManager)
     const inputClass =
-        "bg-secondary text-white placeholder-white border rounded-xl px-3 py-2 focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
+        "bg-secondary dark:bg-dark_secondary text-white placeholder-white rounded-xl px-3 py-2 focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
 
-    const [password, setPassword] = useState("")
+    const [inputValue, setInputValue] = useState(value ?? "")
 
     return (
         <>
@@ -38,17 +41,18 @@ const Input = ({
                     autoComplete="new-password"
                     name={name}
                     onBlur={defineError}
-                    required
-                    onChange={(e) => setPassword(e.target.value)}
-                    value={password}
+                    required={!notRequired}
+                    onChange={(e) => setInputValue(e.target.value)}
+                    value={inputValue}
+                    disabled={disabled}
                 />
                 {children}
             </div>
             {location === "register" ? (
                 <button
-                    className="text-xs text-secondary_text"
+                    className="text-xs text-secondary_text dark:text-dark_secondary_text"
                     type="button"
-                    onClick={() => setPassword(randomPassword)}
+                    onClick={() => setInputValue(randomPassword)}
                 >
                     Generar contraseña aleatoria
                 </button>
@@ -63,7 +67,7 @@ const Input = ({
             ) : (
                 <></>
             )}
-            {location === "register" ? <LevelSecurityPassword password={password} /> : <></>}
+            {location === "register" ? <LevelSecurityPassword password={inputValue} /> : <></>}
         </>
     )
 }

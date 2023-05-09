@@ -13,11 +13,11 @@ const ChatDesktop = () => {
     return (
         <>
             {!isChatOpen ? (
-                <div className="w-[.2rem] h-full hidden lg:block bg-primary"></div>
+                <div className="w-[.2rem] h-full hidden lg:block bg-primary dark:bg-dark_primary"></div>
             ) : (
                 <></>
             )}
-            <div className="w-[72%] h-full hidden lg:block bg-secondary">
+            <div className="w-[72%] h-full hidden lg:block bg-secondary dark:bg-dark_secondary">
                 {isChatOpen ? <OpenChat /> : <></>}
             </div>
         </>

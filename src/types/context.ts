@@ -12,6 +12,7 @@ import type { Friendship } from "@customTypes/components"
  * @property {Function} reloadContacts - Función para recargar los contactos
  * @property {Function} handleOpenChat - Función para abrir un chat
  * @property {Function} handleCloseChat - Función para cerrar un chat
+ * @property {Function} handleChangeSelectedChatName - Función para cambiar el nombre del chat seleccionado
  */
 interface ChatContext {
     ref: MutableRefObject<HTMLDivElement>
@@ -22,6 +23,7 @@ interface ChatContext {
     reloadContacts(): Promise<void>
     handleOpenChat(friendship: Friendship): void
     handleCloseChat(): void
+    handleChangeSelectedChatName(name: string): void
 }
 
 /**

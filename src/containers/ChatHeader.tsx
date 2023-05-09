@@ -1,4 +1,5 @@
 import ContactInfo from "@components/ContactInfo"
+import Link from "next/link"
 import { HiDotsVertical } from "react-icons/hi"
 
 /**
@@ -8,9 +9,11 @@ import { HiDotsVertical } from "react-icons/hi"
  */
 const ChatHeader = () => {
     return (
-        <div className="w-full lg:w-[72%] flex items-center justify-between px-4 lg:px-10 py-4 lg:bg-primary bg-secondary z-20 fixed">
+        <div className="w-full lg:w-[72%] flex items-center justify-between px-4 lg:px-10 py-4 lg:bg-primary dark:lg:bg-dark_primary bg-secondary dark:bg-dark_secondary z-20 fixed">
             <ContactInfo />
-            <HiDotsVertical className="text-2xl" />
+            <Link href="/contacts/modify">
+                <HiDotsVertical className="text-2xl" />
+            </Link>
         </div>
     )
 }

@@ -34,7 +34,7 @@ const Hero = () => {
                 </div>
                 <Link
                     href="/login"
-                    className="px-8 py-2 lg:px-9 lg:py-3 bg-light_purple rounded-lg text-black text-lg lg:text-xl"
+                    className="px-8 py-2 lg:px-9 lg:py-3 bg-light_purple dark:bg-dark_purple rounded-lg text-black dark:text-white text-lg lg:text-xl"
                 >
                     Comienza ya
                 </Link>

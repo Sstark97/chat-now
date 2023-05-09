@@ -15,6 +15,8 @@ const InputWithIcon = ({
     errorManager,
     className,
     errorClassName,
+    value,
+    disabled,
 }: InputProps) => {
     return (
         <Input
@@ -24,6 +26,8 @@ const InputWithIcon = ({
             name={name}
             errorManager={errorManager}
             errorClassName={errorClassName}
+            value={value}
+            disabled={disabled}
         >
             {children}
         </Input>

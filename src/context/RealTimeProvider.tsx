@@ -132,6 +132,10 @@ const RealTimeProvider = ({ children }: ChildrenProps) => {
      * @example getContactsFromChats()
      */
     const getContactsFromChats = async (userId: string, chats: Chats[]) => {
+        console.log(chats)
+        if (!chats) {
+            return []
+        }
         return (await Promise.all(
             chats.map(async (chat) => {
                 const { data: contacts } = await supabase
@@ -140,7 +144,11 @@ const RealTimeProvider = ({ children }: ChildrenProps) => {
                     .eq("chat_id", chat.chat_id)
                     .neq("user_id", userId)
 
-                return contacts ? contacts[0].User : null
+                if (contacts && contacts.length === 0) {
+                    return null
+                }
+
+                return contacts ? contacts[0]?.User : null
             })
         )) as ContactChats[]
     }
@@ -159,7 +167,7 @@ const RealTimeProvider = ({ children }: ChildrenProps) => {
                     .select("name")
                     .eq("contact_id", contact?.id)
 
-                return name ? name[0].name : null
+                return name ? name[0]?.name : null
             })
         )) as string[]
     }
@@ -201,6 +209,12 @@ const RealTimeProvider = ({ children }: ChildrenProps) => {
         const { data: chats } = await getAllChats(userId)
 
         const contactsChats = await getContactsFromChats(userId, chats as Chats[])
+
+        // TODO Intentar mejorar esto
+        if (contactsChats.some((contact) => contact === null)) {
+            return []
+        }
+
         const nameContacts = await getContactsNames(contactsChats)
         const chatsValues = await getChatsValues(userId, contactsChats)
 

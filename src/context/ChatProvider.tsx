@@ -38,7 +38,23 @@ const ChatProvider = ({ children }: ChildrenProps) => {
         if (status === "authenticated") {
             fetchContacts()
         }
+
+        setTheme()
     }, [status, contacts])
+
+    const setTheme = () => {
+        const theme = localStorage.getItem("theme") ?? "light"
+        const html = document.querySelector("html")
+
+        if (theme === "dark") {
+            html?.classList.add("dark")
+            html?.classList.remove("light")
+        }
+        if (theme === "light") {
+            html?.classList.add("light")
+            html?.classList.remove("dark")
+        }
+    }
 
     /**
      * Este método es el encargado de comprobar si el formulario es válido
@@ -60,6 +76,12 @@ const ChatProvider = ({ children }: ChildrenProps) => {
         setContacts(data)
     }
 
+    /**
+     * Este método es el encargado de abrir un chat
+     * @param friendship
+     * @returns void
+     * @example handleOpenChat(friendship)
+     */
     const handleOpenChat = (friendship: Friendship) => {
         const userId = session?.user?.id as string
 
@@ -67,8 +89,23 @@ const ChatProvider = ({ children }: ChildrenProps) => {
         createChatWithUser(userId, friendship.id)
     }
 
+    /**
+     * Este método es el encargado de cerrar un chat
+     * @returns void
+     * @example handleCloseChat()
+     */
     const handleCloseChat = () => {
         setSelectedChat({} as Friendship)
+    }
+
+    /**
+     * Este método es el encargado de cambiar el nombre del chat seleccionado
+     * @returns void
+     * @param name
+     * @example handleChangeSelectedChatName(name)
+     */
+    const handleChangeSelectedChatName = (name: string) => {
+        setSelectedChat((prevState) => ({ ...prevState, name }))
     }
 
     return (
@@ -82,6 +119,7 @@ const ChatProvider = ({ children }: ChildrenProps) => {
                 reloadContacts,
                 handleOpenChat,
                 handleCloseChat,
+                handleChangeSelectedChatName,
             }}
         >
             {children}

@@ -33,23 +33,46 @@ interface Contacts {
     status: string | Status
 }
 
+interface UserEdit {
+    name?: string
+    email: string
+    password?: string
+}
+
 /**
  * @interface UserRepository
  * @description Interface para definir el comportamiento de un repositorio de usuarios
- * @method findUserByEmail
- * @method createUser
- * @method addContact
- * @method existContactFrom
- * @method getContactsFrom
+ * @method findBy
+ * @method create
  * @example
  * const userRepository: UserRepository = new UserPrismaRepository()
  */
 interface UserRepository {
-    findUserByEmail(email: string): Promise<User | null>
-    createUser(credentials: Credentials): Promise<User>
-    addContact(userEmail: string, contactInfo: ContactRequest): Promise<Contact>
-    existContactFrom(userEmail: string, contactEmail: string): Promise<boolean>
-    getContactsFrom(userEmail: string): Promise<Contacts[]>
+    findBy(email: string): Promise<User | null>
+    findByID(id: string): Promise<User | null>
+    create(credentials: Credentials): Promise<User>
+    edit(userEdit: UserEdit): Promise<User>
+    delete(email: string): Promise<User>
+    changeStatus(email: string, status: Status): Promise<User>
+}
+
+/**
+ * @interface ContactRepository
+ * @description Interface para definir el comportamiento de un repositorio de contactos
+ * @method findUserBy
+ * @method create
+ * @method existFrom
+ * @method getAllFrom
+ * @example
+ * const contactRepository: ContactRepository = new ContactPrismaRepository()
+ */
+interface ContactRepository {
+    findUserBy(email: string): Promise<User | null>
+    create(userEmail: string, contactInfo: ContactRequest): Promise<Contact>
+    edit(userEmail: string, contactId: string, name: string): Promise<void>
+    delete(userEmail: string, contactId: string): Promise<void>
+    existFrom(userEmail: string, contactEmail: string): Promise<boolean>
+    getAllFrom(userEmail: string): Promise<Contacts[]>
 }
 
 interface ChatRepository {
@@ -157,9 +180,11 @@ interface ContactChats {
 
 export type {
     Credentials,
+    UserEdit,
     User,
     UserRepository,
     ChatRepository,
+    ContactRepository,
     UserResponse,
     UserLoginResponse,
     ContactRequest,
