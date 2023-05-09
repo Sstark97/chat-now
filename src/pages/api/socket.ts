@@ -21,7 +21,7 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
         socket.on("send-message", async (obj) => {
             const { userId, contactId, message } = obj
             const messageInDb = await chatService.sendMessage(userId, contactId, message)
-            io.emit("receive-message", messageInDb)
+            socket.broadcast.emit("receive-message", messageInDb)
         })
     })
 

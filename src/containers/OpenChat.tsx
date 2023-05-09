@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react"
+import { useEffect, useRef, useState } from "react"
 import io, { Socket } from "socket.io-client"
 import useRealTimeContext from "@hooks/useRealTimeContext"
 import ChatHeader from "@containers/ChatHeader"
@@ -8,7 +8,26 @@ import useChatMembersId from "@hooks/useChatMembersId"
 import type { OpenChatProps } from "@customTypes/containers"
 import type { Message } from "@customTypes/domain"
 
-let socket: Socket
+const useSocket = () => {
+    const socketRef = useRef<Socket>()
+
+    useEffect(() => {
+        const socketInit = async () => {
+            await fetch("/api/socket")
+            socketRef.current = io()
+        }
+
+        socketInit()
+
+        return () => {
+            if (socketRef.current) {
+                socketRef.current.disconnect()
+            }
+        }
+    }, [])
+
+    return socketRef.current as Socket
+}
 
 /**
  * Este componente es el encargado de mostrar el chat abierto
@@ -20,6 +39,7 @@ const OpenChat = ({ className }: OpenChatProps) => {
     const { userId, contactId } = useChatMembersId()
     const { getAllMessages } = useRealTimeContext()
     const [messages, setMessages] = useState<Message[]>([])
+    const socket = useSocket()
 
     const getMessages = async () => {
         const messages = await getAllMessages(userId, contactId)
@@ -30,25 +50,25 @@ const OpenChat = ({ className }: OpenChatProps) => {
         getMessages()
     }, [contactId])
 
-    console.log(messages)
-
     useEffect(() => {
-        socketInitializer()
+        socket?.on("receive-message", (data) => {
+            setMessages((pre) => [...pre, data])
+        })
 
         return () => {
             if (socket) socket.disconnect()
         }
-    }, [])
+    }, [socket])
 
-    async function socketInitializer() {
-        await fetch("/api/socket")
-
-        socket = io()
-
-        socket.on("receive-message", (data) => {
-            setMessages((pre) => [...pre, data])
-        })
-    }
+    // async function socketInitializer() {
+    //     await fetch("/api/socket")
+    //
+    //     socket = io()
+    //
+    //     socket.on("receive-message", (data) => {
+    //         setMessages((pre) => [...pre, data])
+    //     })
+    // }
 
     return (
         <div className={`w-full h-screen ${className}`}>
