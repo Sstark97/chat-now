@@ -4,6 +4,7 @@ import { ChatFactory } from "@lib/factories/ChatFactory"
 
 const chatService = ChatFactory.createChatService()
 
+// TODO Tipar este fichero
 export default function handler(req: NextApiRequest, res: NextApiResponse) {
     if (res.socket.server.io) {
         console.log("Already set up")
@@ -21,7 +22,7 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
         socket.on("send-message", async (obj) => {
             const { userId, contactId, message } = obj
             const messageInDb = await chatService.sendMessage(userId, contactId, message)
-            socket.broadcast.emit("receive-message", messageInDb)
+            io.emit("receive-message", messageInDb)
         })
     })
 
