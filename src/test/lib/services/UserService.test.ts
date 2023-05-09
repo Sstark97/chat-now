@@ -114,4 +114,60 @@ describe("UserService", () => {
         expect(userEdited?.name).toBe("irrelevant2")
         expect(userRepository.edit).toHaveBeenCalled()
     })
+
+    it("should delete a user by email", async () => {
+        const userRepository: UserRepository = {
+            findBy: jest.fn(),
+            findByID: jest.fn(),
+            create: jest.fn(),
+            edit: jest.fn(),
+            delete: jest.fn((email) => {
+                const userInRepository = users[0]
+                users = users.filter((user) => user.email !== email)
+
+                return Promise.resolve(userInRepository)
+            }),
+            changeStatus: jest.fn(),
+        }
+
+        const userService = new UserService(userRepository)
+        const userDeleted = await userService.delete("irrelevant@email.com")
+
+        expect(userDeleted?.email).toBe(user.email)
+        expect(users.length).toBe(0)
+        expect(userRepository.delete).toHaveBeenCalled()
+    })
+
+    it("should change the status of an user", async () => {
+        const userRepository: UserRepository = {
+            findBy: jest.fn(),
+            findByID: jest.fn(),
+            create: jest.fn(),
+            edit: jest.fn(),
+            delete: jest.fn(),
+            changeStatus: jest.fn((id, status) => {
+                const userInRepository = users[0]
+                users = users.map((user) => {
+                    if (user.id === id) {
+                        return {
+                            ...user,
+                            status,
+                        }
+                    }
+                    return user
+                })
+
+                return Promise.resolve({
+                    ...userInRepository,
+                    status,
+                })
+            }),
+        }
+
+        const userService = new UserService(userRepository)
+        const userChangedStatus = await userService.changeStatus("irrelevantId", "busy")
+
+        expect(userChangedStatus?.status).toBe("busy")
+        expect(userRepository.changeStatus).toHaveBeenCalled()
+    })
 })
