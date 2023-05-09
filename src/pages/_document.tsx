@@ -24,6 +24,10 @@ export default function Document() {
                 <link rel="icon" type="image/png" sizes="256x256" href="/icon-256x256.png" />
                 <link rel="icon" type="image/png" sizes="256x256" href="/icon-384x384.png" />
                 <link rel="icon" type="image/png" sizes="512x512" href="/icon-512x512.png" />
+
+                <link rel="apple-touch-icon" href="/icon.png" />
+                <link rel="shortcut icon" type="image/jpg" href="/icon.png" />
+
                 <link rel="manifest" href="/manifest.json" />
                 <link rel="shortcut icon" href="/favicon.ico" />
 
