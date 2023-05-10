@@ -1,10 +1,39 @@
 import Image from "next/image"
-import AuthGuardian from "@containers/AuthGuardian"
 import LoginForm from "@containers/LoginForm"
+import Head from "next/head"
+import { getServerSession } from "next-auth/next"
+import authConfig from "@pages/api/auth/[...nextauth]"
+import type { GetServerSidePropsContext } from "next"
 
-const Login = () => {
+export const getServerSideProps = async (context: GetServerSidePropsContext) => {
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
+    const session = await getServerSession(context.req, context.res, authConfig)
+
+    if (session) {
+        return {
+            redirect: {
+                destination: "/", // aquí lo llevas si no está logeado
+                permanent: false,
+            },
+        }
+    }
+
+    return {
+        props: {
+            title: "Login",
+            description: "Inicia sesión en tu cuenta de ChatApp",
+        },
+    }
+}
+
+const Login = ({ title, description }: { title: string; description: string }) => {
     return (
-        <AuthGuardian>
+        <>
+            <Head>
+                <title>{title}</title>
+                <meta name="description" content={description} />
+            </Head>
             <div className="h-screen flex items-center justify-center">
                 <LoginForm />
                 <div className="md:w-[60%] flex items-center justify-center">
@@ -17,7 +46,7 @@ const Login = () => {
                     />
                 </div>
             </div>
-        </AuthGuardian>
+        </>
     )
 }
 
