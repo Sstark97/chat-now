@@ -7,6 +7,7 @@ import MessageList from "@containers/MessageList"
 import useChatMembersId from "@hooks/useChatMembersId"
 import type { OpenChatProps } from "@customTypes/containers"
 import type { Message } from "@customTypes/domain"
+import useLastMessageRef from "@hooks/useLastMessageRef"
 
 /**
  * Este componente es el encargado de mostrar el chat abierto
@@ -15,9 +16,10 @@ import type { Message } from "@customTypes/domain"
  * @example <OpenChat />
  */
 const OpenChat = ({ className }: OpenChatProps) => {
-    const { userId, contactId } = useChatMembersId()
-    const { getAllMessages } = useRealTimeContext()
     const [messages, setMessages] = useState<Message[]>([])
+    const { userId, contactId } = useChatMembersId()
+    const lastMessageRef = useLastMessageRef(messages)
+    const { getAllMessages } = useRealTimeContext()
     const socket = useSocket()
 
     useEffect(() => {
@@ -38,7 +40,11 @@ const OpenChat = ({ className }: OpenChatProps) => {
     return (
         <div className={`w-full h-screen ${className}`}>
             <ChatHeader />
-            {messages ? <MessageList messages={messages} /> : <p>loading...</p>}
+            {messages ? (
+                <MessageList messages={messages} lastMessageRef={lastMessageRef} />
+            ) : (
+                <p>loading...</p>
+            )}
             <MessageInput socket={socket} />
         </div>
     )

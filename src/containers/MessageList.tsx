@@ -6,10 +6,11 @@ import type { MessageListProps } from "@customTypes/containers"
 /**
  * Este componente es el encargado de mostrar la lista de mensajes
  * @param messages
+ * @param lastMessageRef
  * @component
  * @example <MessageList messages={messages} />
  */
-const MessageList = ({ messages }: MessageListProps) => {
+const MessageList = ({ messages, lastMessageRef }: MessageListProps) => {
     const { ref, handleScroll } = useChatScroll()
 
     return (
@@ -21,6 +22,7 @@ const MessageList = ({ messages }: MessageListProps) => {
                 {messages.map((message) => (
                     <Message key={message.id} {...message} />
                 ))}
+                <div ref={lastMessageRef} />
             </div>
             <button
                 className="bg-secondary dark:bg-dark_secondary lg:bg-primary dark:lg:bg-dark_primary lg:bg-opacity-70 bg-opacity-80 text-black dark:text-white fixed bottom-[85px] right-14 z-10 p-3 rounded-full"
