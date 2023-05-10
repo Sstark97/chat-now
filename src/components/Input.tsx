@@ -48,7 +48,7 @@ const Input = ({
                 />
                 {children}
             </div>
-            {location === "register" ? (
+            {location ? (
                 <button
                     className="text-xs text-secondary_text dark:text-dark_secondary_text"
                     type="button"
@@ -67,7 +67,7 @@ const Input = ({
             ) : (
                 <></>
             )}
-            {location === "register" ? <LevelSecurityPassword password={inputValue} /> : <></>}
+            {location ? <LevelSecurityPassword password={inputValue} /> : <></>}
         </>
     )
 }
