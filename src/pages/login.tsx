@@ -6,7 +6,6 @@ import authConfig from "@pages/api/auth/[...nextauth]"
 import type { GetServerSidePropsContext } from "next"
 import type { GeneralHeaderProps } from "@customTypes/global"
 
-
 export const getServerSideProps = async (context: GetServerSidePropsContext) => {
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore
