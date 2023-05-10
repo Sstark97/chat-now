@@ -45,6 +45,7 @@ const Input = ({
                     onChange={(e) => setInputValue(e.target.value)}
                     value={inputValue}
                     disabled={disabled}
+                    aria-label={name}
                 />
                 {children}
             </div>

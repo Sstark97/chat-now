@@ -4,6 +4,9 @@ export default function Document() {
     return (
         <Html lang="en">
             <Head>
+                {/* eslint-disable-next-line @next/next/no-title-in-document-head */}
+                <title>ChatNow</title>
+
                 <meta name="application-name" content="ChatNow" />
                 <meta name="apple-mobile-web-app-capable" content="yes" />
                 <meta name="apple-mobile-web-app-status-bar-style" content="default" />
@@ -15,7 +18,6 @@ export default function Document() {
                 <meta name="msapplication-TileColor" content="#2B5797" />
                 <meta name="msapplication-tap-highlight" content="no" />
                 <meta name="theme-color" content="#BC8FCC" />
-
                 <link rel="icon" type="image/png" sizes="32x32" href="/icon-48x48.png" />
                 <link rel="icon" type="image/png" sizes="16x16" href="/icon-72x72.png" />
                 <link rel="icon" type="image/png" sizes="16x16" href="/icon-96x96.png" />
@@ -24,13 +26,10 @@ export default function Document() {
                 <link rel="icon" type="image/png" sizes="256x256" href="/icon-256x256.png" />
                 <link rel="icon" type="image/png" sizes="256x256" href="/icon-384x384.png" />
                 <link rel="icon" type="image/png" sizes="512x512" href="/icon-512x512.png" />
-
                 <link rel="apple-touch-icon" href="/icon.png" />
                 <link rel="shortcut icon" type="image/jpg" href="/icon.png" />
-
                 <link rel="manifest" href="/manifest.json" />
                 <link rel="shortcut icon" href="/favicon.ico" />
-
                 <meta name="twitter:card" content="summary" />
                 <meta name="twitter:url" content="https://chat-now-psi.vercel.app" />
                 <meta name="twitter:title" content="ChatNow" />
@@ -50,7 +49,7 @@ export default function Document() {
                 />
                 <meta
                     name="viewport"
-                    content="minimum-scale=1, initial-scale=1, width=device-width, shrink-to-fit=no, user-scalable=no, viewport-fit=cover"
+                    content="minimum-scale=1, initial-scale=1, width=device-width, shrink-to-fit=no, viewport-fit=cover"
                 />
             </Head>
             <body className="bg-primary dark:bg-dark_primary text-black dark:text-white">
