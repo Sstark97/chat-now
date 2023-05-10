@@ -13,7 +13,7 @@ export const getServerSideProps = async (context: GetServerSidePropsContext) => 
     if (session) {
         return {
             redirect: {
-                destination: "/", // aquí lo llevas si no está logeado
+                destination: "/",
                 permanent: false,
             },
         }
