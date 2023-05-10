@@ -4,6 +4,7 @@ import Head from "next/head"
 import { getServerSession } from "next-auth/next"
 import authConfig from "@pages/api/auth/[...nextauth]"
 import type { GetServerSidePropsContext } from "next"
+import type { GeneralHeaderProps } from "@customTypes/global"
 
 export const getServerSideProps = async (context: GetServerSidePropsContext) => {
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
@@ -27,7 +28,7 @@ export const getServerSideProps = async (context: GetServerSidePropsContext) => 
     }
 }
 
-const Login = ({ title, description }: { title: string; description: string }) => {
+const Login = ({ title, description }: GeneralHeaderProps) => {
     return (
         <>
             <Head>

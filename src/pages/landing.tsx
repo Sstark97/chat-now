@@ -4,10 +4,24 @@ import Features from "@containers/Features"
 import ExampleChats from "@components/ExampleChats"
 import Footer from "@containers/Footer"
 import Hero from "@components/Hero"
-import AuthGuardian from "@containers/AuthGuardian"
-import type { GetStaticProps } from "next"
+import { getServerSession } from "next-auth/next"
+import authConfig from "@pages/api/auth/[...nextauth]"
+import type { GetServerSidePropsContext } from "next"
+import type { LandingHeaderProps } from "@customTypes/global"
 
-export const getStaticProps: GetStaticProps = async () => {
+export const getServerSideProps = async (context: GetServerSidePropsContext) => {
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
+    const session = await getServerSession(context.req, context.res, authConfig)
+
+    if (session) {
+        return {
+            redirect: {
+                destination: "/",
+                permanent: false,
+            },
+        }
+    }
     return {
         props: {
             title: "ChatNow",
@@ -17,17 +31,9 @@ export const getStaticProps: GetStaticProps = async () => {
     }
 }
 
-const Landing = ({
-    title,
-    description,
-    keywords,
-}: {
-    title: string
-    description: string
-    keywords: string
-}) => {
+const Landing = ({ title, description, keywords }: LandingHeaderProps) => {
     return (
-        <AuthGuardian>
+        <>
             <Head>
                 <title>{title}</title>
                 <meta name="description" content={description} />
@@ -49,7 +55,7 @@ const Landing = ({
                 <Features />
                 <Footer />
             </>
-        </AuthGuardian>
+        </>
     )
 }
 
