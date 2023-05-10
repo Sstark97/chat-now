@@ -1,5 +1,5 @@
-import { useEffect, useRef, useState } from "react"
-import io, { Socket } from "socket.io-client"
+import { useEffect, useState } from "react"
+import useSocket from "@hooks/useSocket"
 import useRealTimeContext from "@hooks/useRealTimeContext"
 import ChatHeader from "@containers/ChatHeader"
 import MessageInput from "@components/MessageInput"
@@ -7,27 +7,6 @@ import MessageList from "@containers/MessageList"
 import useChatMembersId from "@hooks/useChatMembersId"
 import type { OpenChatProps } from "@customTypes/containers"
 import type { Message } from "@customTypes/domain"
-
-const useSocket = () => {
-    const socketRef = useRef<Socket>()
-
-    useEffect(() => {
-        const socketInit = async () => {
-            await fetch("/api/socket")
-            socketRef.current = io()
-        }
-
-        socketInit()
-
-        return () => {
-            if (socketRef.current) {
-                socketRef.current.disconnect()
-            }
-        }
-    }, [])
-
-    return socketRef.current as Socket
-}
 
 /**
  * Este componente es el encargado de mostrar el chat abierto
@@ -41,11 +20,6 @@ const OpenChat = ({ className }: OpenChatProps) => {
     const [messages, setMessages] = useState<Message[]>([])
     const socket = useSocket()
 
-    const getMessages = async () => {
-        const messages = await getAllMessages(userId, contactId)
-        setMessages(messages.data)
-    }
-
     useEffect(() => {
         getMessages()
     }, [contactId])
@@ -56,15 +30,10 @@ const OpenChat = ({ className }: OpenChatProps) => {
         })
     }, [socket])
 
-    // async function socketInitializer() {
-    //     await fetch("/api/socket")
-    //
-    //     socket = io()
-    //
-    //     socket.on("receive-message", (data) => {
-    //         setMessages((pre) => [...pre, data])
-    //     })
-    // }
+    const getMessages = async () => {
+        const messages = await getAllMessages(userId, contactId)
+        setMessages(messages.data)
+    }
 
     return (
         <div className={`w-full h-screen ${className}`}>
