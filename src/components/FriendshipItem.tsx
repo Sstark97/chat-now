@@ -51,7 +51,7 @@ const FriendshipItem = (friendship: Friendship) => {
                     </div>
                     {message ? (
                         <div className="w-full flex justify-between items-center text-secondary_text dark:text-dark_secondary_text pt-2">
-                            <p className="w-[88%] truncate">{message}</p>
+                            <p className="w-[12rem] lg:w-[14rem] truncate">{message}</p>
                             {numMessages ? (
                                 <div className="h-[1.3rem] w-[1.3rem] flex items-center justify-center bg-light_purple dark:bg-dark_purple rounded-full">
                                     <p className="text-xs text-white dark:text-black">
