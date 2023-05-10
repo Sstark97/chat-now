@@ -3,6 +3,7 @@ import useRealTimeContext from "@hooks/useRealTimeContext"
 import useChatMembersId from "@hooks/useChatMembersId"
 import Chat from "@containers/Chat"
 import type { Friendship } from "@customTypes/components"
+import useSocket from "@hooks/useSocket"
 
 /**
  * Este componente es el encargado de mostrar el contenedor de relaciones entre usuario y contactos
@@ -12,6 +13,7 @@ import type { Friendship } from "@customTypes/components"
 const FriendshipContainer = () => {
     const { userId } = useChatMembersId()
     const { getChats } = useRealTimeContext()
+    const socket = useSocket()
     const [chats, setChats] = useState<Friendship[]>([])
 
     const getAllChats = async () => {
@@ -22,6 +24,12 @@ const FriendshipContainer = () => {
     useEffect(() => {
         getAllChats()
     }, [])
+
+    useEffect(() => {
+        socket?.on("new-chat", (data) => {
+            console.log(data)
+        })
+    }, [socket])
 
     return <Chat message="No hay chats" friendships={chats} />
 }

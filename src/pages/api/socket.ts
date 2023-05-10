@@ -22,7 +22,8 @@ export default function handler(req: NextApiRequest, res: NextApiResponseWithSoc
         console.log("Connected")
         socket.on("join", async (obj) => {
             const { userId, contactId } = obj
-            await chatService.create(userId, contactId)
+            const newChat = await chatService.create(userId, contactId)
+            io.emit("new-chat", newChat)
         })
 
         socket.on("send-message", async (obj) => {
