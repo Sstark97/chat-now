@@ -1,6 +1,6 @@
 import { createContext, MutableRefObject, useEffect, useRef, useState } from "react"
 import { useSession } from "next-auth/react"
-import useRealTimeContext from "@hooks/useRealTimeContext"
+// import useRealTimeContext from "@hooks/useRealTimeContext"
 import { getFrom } from "@lib/utils/fetcher"
 import { API } from "@lib/constants/links"
 import { isFormValid } from "@lib/utils/user"
@@ -9,6 +9,7 @@ import type { ChildrenProps } from "@customTypes/global"
 import type { ChatContext } from "@customTypes/context"
 import type { Contacts } from "@customTypes/domain"
 import type { Friendship } from "@customTypes/components"
+import useSocket from "@hooks/useSocket"
 
 const ChatContext = createContext<ChatContext>({} as ChatContext)
 
@@ -25,7 +26,8 @@ const ChatProvider = ({ children }: ChildrenProps) => {
     const [contacts, setContacts] = useState<Friendship[]>([])
     const [selectedChat, setSelectedChat] = useState<Friendship>({} as Friendship)
     const { data: session, status } = useSession()
-    const { createChatWithUser } = useRealTimeContext()
+    const socket = useSocket()
+    // const { createChatWithUser } = useRealTimeContext()
 
     useEffect(() => {
         const fetchContacts = async () => {
@@ -86,7 +88,11 @@ const ChatProvider = ({ children }: ChildrenProps) => {
         const userId = session?.user?.id as string
 
         setSelectedChat(friendship)
-        createChatWithUser(userId, friendship.id)
+        socket.emit("join", {
+            userId,
+            contactId: friendship.id,
+        })
+        // createChatWithUser(userId, friendship.id)
     }
 
     /**

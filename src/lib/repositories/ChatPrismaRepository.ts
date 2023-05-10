@@ -7,18 +7,6 @@ class ChatPrismaRepository implements ChatRepository {
         this.prisma = new PrismaClient()
     }
 
-    getChatId(userId: string, contactId: string) {
-        return this.prisma.chatUsers.findFirst({
-            where: {
-                user_id: userId,
-                chat: {
-                    ChatUsers: { some: { user_id: contactId } },
-                },
-            },
-            select: { chat_id: true },
-        })
-    }
-
     async sendMessage(userId: string, contactId: string, message: string) {
         const chat = await this.getChatId(userId, contactId)
         const chatId = chat?.chat_id as number
@@ -29,6 +17,30 @@ class ChatPrismaRepository implements ChatRepository {
                 text: message,
                 author_id: userId,
             },
+        })
+    }
+
+    async create(userId: string, contactId: string) {
+        return this.prisma.chat.create({
+            data: {
+                ChatUsers: {
+                    createMany: {
+                        data: [{ user_id: userId }, { user_id: contactId }],
+                    },
+                },
+            },
+        })
+    }
+
+    getChatId(userId: string, contactId: string) {
+        return this.prisma.chatUsers.findFirst({
+            where: {
+                user_id: userId,
+                chat: {
+                    ChatUsers: { some: { user_id: contactId } },
+                },
+            },
+            select: { chat_id: true },
         })
     }
 }
