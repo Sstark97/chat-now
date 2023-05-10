@@ -1,13 +1,15 @@
 import Head from "next/head"
 import Image from "next/image"
 import Features from "@containers/Features"
-import ExampleChats from "@components/ExampleChats"
 import Footer from "@containers/Footer"
 import Hero from "@components/Hero"
+import dynamic from "next/dynamic"
 import { getServerSession } from "next-auth/next"
 import authConfig from "@pages/api/auth/[...nextauth]"
 import type { GetServerSidePropsContext } from "next"
 import type { LandingHeaderProps } from "@customTypes/global"
+
+const ExampleChats = dynamic(() => import("@components/ExampleChats"), { ssr: false })
 
 export const getServerSideProps = async (context: GetServerSidePropsContext) => {
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
