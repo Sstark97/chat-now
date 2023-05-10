@@ -132,7 +132,6 @@ const RealTimeProvider = ({ children }: ChildrenProps) => {
      * @example getContactsFromChats()
      */
     const getContactsFromChats = async (userId: string, chats: Chats[]) => {
-        console.log(chats)
         if (!chats) {
             return []
         }

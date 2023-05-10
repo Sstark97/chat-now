@@ -9,4 +9,13 @@ interface ChildrenProps {
     children?: ReactNode
 }
 
-export type { ChildrenProps }
+interface GeneralHeaderProps {
+    title: string
+    description: string
+}
+
+interface LandingHeaderProps extends GeneralHeaderProps {
+    keywords: string
+}
+
+export type { ChildrenProps, GeneralHeaderProps, LandingHeaderProps }
