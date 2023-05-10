@@ -1,18 +1,19 @@
 import { Server } from "socket.io"
-import { NextApiRequest, NextApiResponse } from "next"
 import { ChatFactory } from "@lib/factories/ChatFactory"
+import type { NextApiRequest } from "next"
+import type { NextApiResponseWithSocket } from "@customTypes/socket"
 
 const chatService = ChatFactory.createChatService()
 
-// TODO Tipar este fichero
-export default function handler(req: NextApiRequest, res: NextApiResponse) {
+export default function handler(req: NextApiRequest, res: NextApiResponseWithSocket) {
     if (res.socket.server.io) {
         console.log("Already set up")
         res.end()
         return
     }
 
-    const io = new Server(res.socket.server)
+    const { server } = res.socket
+    const io = new Server(server)
     res.socket.server.io = io
 
     console.log("Setting up socket")
