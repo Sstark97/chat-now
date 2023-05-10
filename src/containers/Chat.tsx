@@ -41,14 +41,8 @@ const Chat = ({ message, friendships, children }: ChatProps) => {
                     )}
                 </div>
 
-                {isChatOpen ? (
-                    <>
-                        <OpenChat className="lg:hidden" />
-                        <ChatDesktop />
-                    </>
-                ) : (
-                    <></>
-                )}
+                {isChatOpen ? <OpenChat className="lg:hidden" /> : <></>}
+                <ChatDesktop />
             </div>
         </>
     )

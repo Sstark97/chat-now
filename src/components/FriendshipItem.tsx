@@ -28,10 +28,10 @@ const FriendshipItem = (friendship: Friendship) => {
                 role="button"
                 tabIndex={0}
             >
-                <div className="w-2/12 p-2">
+                <div className="p-2 mr-3">
                     {image ? (
                         <Image
-                            className="h-[3rem] min-w-[3rem] rounded-full"
+                            className="h-[3rem] w-[3rem] rounded-full"
                             src={image}
                             alt={name}
                             width={75}

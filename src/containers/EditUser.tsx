@@ -77,7 +77,7 @@ const EditUser = () => {
                         <PasswordInput
                             className={inputClass}
                             placeholder={INPUT_REGISTER_PLACEHOLDER.PASSWORD}
-                            location="register"
+                            location
                             notRequired
                         >
                             <FaKey className="w-[20%] text-3xl order-first mt-5" />
