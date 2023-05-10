@@ -1,10 +1,11 @@
 import Image from "next/image"
-import LoginForm from "@containers/LoginForm"
 import Head from "next/head"
+import LoginForm from "@containers/LoginForm"
 import { getServerSession } from "next-auth/next"
 import authConfig from "@pages/api/auth/[...nextauth]"
 import type { GetServerSidePropsContext } from "next"
 import type { GeneralHeaderProps } from "@customTypes/global"
+
 
 export const getServerSideProps = async (context: GetServerSidePropsContext) => {
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment

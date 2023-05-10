@@ -54,7 +54,7 @@ const RegisterForm = () => {
                         <PasswordInput
                             className="w-full mt-5"
                             placeholder={INPUT_REGISTER_PLACEHOLDER.PASSWORD}
-                            location="register"
+                            location
                             validate
                         />
                         <Button value={AUTH_BUTTONS.REGISTER} action={handleClickInRegister} />

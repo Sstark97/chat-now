@@ -45,7 +45,7 @@ interface InputProps {
     name: string
     children?: ReactNode
     errorManager?: InputError
-    location?: string
+    location?: boolean
     className?: string
     errorClassName?: string
     value?: string
@@ -84,7 +84,7 @@ interface Friendship {
 interface PasswordProps {
     placeholder: string
     validate?: boolean
-    location?: string
+    location?: boolean
     className?: string
     notRequired?: boolean
     children?: ReactNode

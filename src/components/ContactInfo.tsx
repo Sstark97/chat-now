@@ -1,4 +1,5 @@
 import useChatContext from "@hooks/useChatContext"
+import { STATE_COLORS } from "@lib/constants/securityPassword"
 import Image from "next/image"
 import { MdArrowBackIosNew } from "react-icons/md"
 
@@ -10,6 +11,7 @@ import { MdArrowBackIosNew } from "react-icons/md"
 const ContactInfo = () => {
     const { selectedChat, handleCloseChat } = useChatContext()
     const { image, name, status } = selectedChat
+    const color = STATE_COLORS[status as keyof typeof STATE_COLORS]
 
     const closeChat = () => {
         handleCloseChat()
@@ -32,8 +34,11 @@ const ContactInfo = () => {
                 <div className="w-[4rem] h-[4rem] lg:bg-secondary dark:lg:bg-dark_secondary bg-icon dark:bg-dark_icon rounded-full"></div>
             )}
             <div className="flex flex-col ml-5">
-                <p className="text-lg">{name}</p>
-                <p className="text-sm lg:text-sm capitalize opacity-50 mt-1">{status}</p>
+                <div className="flex items-center">
+                    <p className="text-lg mr-3">{name}</p>
+                    <div className={`w-[.8rem] h-[.8rem] bg-${color} rounded-full`}></div>
+                </div>
+                <p className="text-sm lg:text-sm capitalize opacity-50 mt-1">En línea</p>
             </div>
         </div>
     )
