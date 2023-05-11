@@ -15,7 +15,8 @@ const ChatContext = createContext<ChatContext>({} as ChatContext)
 
 /**
  * Este componente es el encargado de proveer el contexto de la aplicación
- * @param {ChildrenProps} { children } - children: componente a mostrar
+ * @param {ChildrenProps} { children }
+ * - children: componente a mostrar
  * @returns component
  * @example <ChatProvider>children</ChatProvider>
  */
@@ -44,6 +45,11 @@ const ChatProvider = ({ children }: ChildrenProps) => {
         setTheme()
     }, [status, contacts])
 
+    /**
+     * Este método es el encargado de establecer el tema de la aplicación
+     * @returns void
+     * @example setTheme()
+     */
     const setTheme = () => {
         const theme = localStorage.getItem("theme") ?? "light"
         const html = document.querySelector("html")

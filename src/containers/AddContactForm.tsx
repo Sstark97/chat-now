@@ -24,7 +24,9 @@ const AddContactForm = () => {
     )
 
     /**
-     * Esta función es la encargada de ejecutar la función addUser
+     * Esta función es la encargada de añadir un contacto
+     * @returns void
+     * @example <button onClick={handleClick} />
      */
     const handleClick = async () => {
         await addUser()

@@ -7,8 +7,16 @@ import { IoSettingsSharp } from "react-icons/io5"
  * @description Enumerado con las rutas de la API
  * @constant
  * @type {Object}
- * @property {string} REGISTER - Ruta de registro de usuario
- * @property {string} LOGIN - Ruta de login de usuario
+ * @property {string} SOCKET - Ruta de la API para inicializar el socket
+ * @property {string} REGISTER - Ruta de la API para registrar un usuario
+ * @property {string} LOGIN - Ruta de la API para loguear un usuario
+ * @property {string} ADD_CONTACT - Ruta de la API para añadir un contacto
+ * @property {string} GET_CONTACTS - Ruta de la API para obtener los contactos
+ * @property {string} MODIFY_CONTACT - Ruta de la API para modificar un contacto
+ * @property {string} DELETE_CONTACT - Ruta de la API para eliminar un contacto
+ * @property {string} EDIT_USER - Ruta de la API para editar un usuario
+ * @property {string} DELETE_USER - Ruta de la API para eliminar un usuario
+ * @property {string} CHANGE_STATUS - Ruta de la API para cambiar el estado de un usuario
  */
 enum API {
     SOCKET = "/api/socket",
@@ -29,6 +37,8 @@ enum API {
  * @type {Object}
  * @property {string} HOME - Ruta de redirección a la página de inicio
  * @property {string} LOGIN - Ruta de redirección a la página de login
+ * @property {string} LANDING - Ruta de redirección a la página de aterrizaje
+ * @property {string} CONTACTS - Ruta de redirección a la página de contactos
  */
 enum REDIRECT {
     HOME = "/",

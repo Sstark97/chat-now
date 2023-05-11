@@ -5,6 +5,11 @@ import { BsFillCameraFill } from "react-icons/bs"
 import EditUser from "./EditUser"
 import DeleteModal from "@components/DeleteModal"
 
+/**
+ * Este componente se encarga de crear el contenedor de la cuenta
+ * @returns component
+ * @example <AccountContainer />
+ */
 const AccountContainer = () => {
     const { data: session } = useSession()
     const { handleDelete, error, cleanError } = useDeleteUser()

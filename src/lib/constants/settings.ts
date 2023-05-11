@@ -1,3 +1,12 @@
+/**
+ * @description Enumerado con los valores de los estados de los usuarios
+ * @type {Object}
+ * @constant
+ * @property {string} online - Estado de usuario disponible
+ * @property {string} busy - Estado de usuario ocupado
+ * @property {string} absent - Estado de usuario ausente
+ * @property {string} offline - Estado de usuario desconectado
+ */
 enum STATE_VALUES {
     online = "Disponible",
     busy = "Ocupado",
@@ -5,6 +14,13 @@ enum STATE_VALUES {
     offline = "Desconectado",
 }
 
+/**
+ * @description Array con los valores de los estados de los usuarios
+ * @type {Object}
+ * @constant
+ * @property {string} value - Valor del estado
+ * @property {string} label - Etiqueta del estado
+ */
 const STATE_VALUES_ARRAY = Object.keys(STATE_VALUES).map((key) => {
     return {
         value: key,

@@ -21,9 +21,20 @@ const useControlInput = (errorManager: InputError | undefined) => {
         }
     }, [errorManager, border, handleSetErrorsInForm])
 
+    /**
+     * Esta función se encarga de obtener el mensaje de error
+     * @private
+     * @param {string} value
+     * @returns {string}
+     */
     const getErrorMessageFrom = (value: string) =>
         value === "" ? EMPTY_ERROR : errorManager?.message
 
+    /**
+     * Esta función se encarga de definir el error
+     * @param {FormEvent<HTMLInputElement>} e
+     * @returns {void}
+     */
     const defineError = (e: FormEvent<HTMLInputElement>) => {
         if (errorManager) {
             const element = e.currentTarget

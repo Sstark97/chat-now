@@ -3,7 +3,8 @@ import type { LevelOfSecurityProps } from "@customTypes/components"
 
 /**
  * Este componente es el encargado de mostrar el nivel de seguridad de la contraseña
- * @param {LevelOfSecurityProps} { password } - password: contraseña
+ * @param {LevelOfSecurityProps} { password }
+ * - password: contraseña
  * @returns component
  * @example <LevelSecurityPassword password={password} />
  */

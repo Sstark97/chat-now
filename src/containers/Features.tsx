@@ -8,7 +8,7 @@ import { FEATURE_HEADER, FEATURE_DESCRIPTION } from "@lib/constants/landing"
 /**
  * Este componente contiene los 3 bloques de la sección de "Características" de la página de inicio.
  * @returns component
- * @example <Boxs />
+ * @example <Features />
  */
 const Features = () => {
     return (

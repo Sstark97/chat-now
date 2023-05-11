@@ -8,9 +8,10 @@ import type { MessageListProps } from "@customTypes/containers"
 
 /**
  * Este componente es el encargado de mostrar la lista de mensajes
- * @param messages
- * @param lastMessageRef
- * @component
+ * @param {MessageListProps} { messages, lastMessageRef }
+ * - messages: lista de mensajes
+ * - lastMessageRef: referencia al último mensaje
+ * @returns component
  * @example <MessageList messages={messages} />
  */
 const MessageList = ({ messages, lastMessageRef }: MessageListProps) => {

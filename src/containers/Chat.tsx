@@ -9,9 +9,10 @@ import { useState } from "react"
 
 /**
  * Este componente es el encargado de mostrar el contenedor de chats
- * @param {string} message - Mensaje a mostrar cuando no hay chats
- * @param {FriendshipProps[]} friendships - Lista de chats
- * @param {ReactNode} children - Componente a renderizar
+ * @param {ChatProps} { message, friendships, children }
+ * - message: Mensaje a mostrar cuando no hay chats
+ * - friendships: Lista de chats
+ * - children: Componente a renderizar
  * @returns component
  * @example <Chat message="No hay chats" friendships={chats} />
  */

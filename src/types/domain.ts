@@ -32,6 +32,13 @@ interface Contacts {
     status: string | Status
 }
 
+/**
+ * @interface ContactRequest
+ * @description Interface para definir la petición de un contacto
+ * @property {string} name - Nombre del contacto
+ * @property {string} email - Email del contacto
+ * @property {string} password - Contraseña del contacto
+ */
 interface UserEdit {
     name?: string
     email: string
@@ -42,7 +49,11 @@ interface UserEdit {
  * @interface UserRepository
  * @description Interface para definir el comportamiento de un repositorio de usuarios
  * @method findBy
+ * @method findByID
  * @method create
+ * @method edit
+ * @method delete
+ * @method changeStatus
  * @example
  * const userRepository: UserRepository = new UserPrismaRepository()
  */
@@ -60,6 +71,8 @@ interface UserRepository {
  * @description Interface para definir el comportamiento de un repositorio de contactos
  * @method findUserBy
  * @method create
+ * @method edit
+ * @method delete
  * @method existFrom
  * @method getAllFrom
  * @example
@@ -74,6 +87,20 @@ interface ContactRepository {
     getAllFrom(userEmail: string): Promise<Contacts[]>
 }
 
+/**
+ * @interface ContactRequest
+ * @description Interface para definir la petición de un contacto
+ * @method getChatId
+ * @method getContactName
+ * @method getAllWithContact
+ * @method getLastMessage
+ * @method getMessages
+ * @method sendMessage
+ * @method create
+ * @method delete
+ * @example
+ * const contactRequest: ContactRequest = {
+ */
 interface ChatRepository {
     getChatId(userId: string, contactId: string): Promise<Chats | null>
     getContactName(contactId: string): Promise<string | null>
@@ -173,26 +200,57 @@ interface Message {
     author_id: string
 }
 
+/**
+ * @interface MessageSocket
+ * @description Interface para definir la respuesta de un mensaje
+ * @property {string} text - Texto del mensaje
+ * @property {string} date - Fecha del mensaje
+ * @property {string} author_id - ID del usuario que envía el mensaje
+ */
 interface MessageSocket {
     text: string
     date: Date
     author_id: string
 }
 
+/**
+ * @interface MessageResponse
+ * @description Interface para definir la respuesta de un mensaje
+ * @property {Message[]} data - Mensajes
+ * @property {null} error - Error
+ */
 interface MessageResponse {
     data: Message[]
     error: null
 }
 
+/**
+ * @interface User
+ * @description Interface para definir un usuario
+ * @property {string} user - ID del usuario
+ */
 interface UserDto {
     user: User
 }
 
+/**
+ * @interface ChatWithContact
+ * @description Interface para definir un chat con un contacto
+ * @property {number} id - ID del chat
+ * @property {UserDto[]} ChatUsers - Usuarios del chat
+ */
 interface ChatWithContact {
     id: number
     ChatUsers: UserDto[]
 }
 
+/**
+ * @interface ContactChats
+ * @description Interface para definir un chat con un contacto
+ * @property {string} id - ID del chat
+ * @property {string} image - Imagen del contacto
+ * @property {string} status - Estado del contacto
+ */
 interface ContactChats {
     id: string
     image: string

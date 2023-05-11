@@ -3,8 +3,7 @@ import { Credentials, UserEdit, UserRepository } from "@customTypes/domain"
 
 /**
  * @class UserPrismaRepository
- * @description Repositorio para manejar la lógica de persistencia de los usuarios
- * con Prisma
+ * @description Repositorio para manejar la lógica de persistencia de los usuarios con Prisma
  * @example
  * const userPrismaRepository = new UserPrismaRepository()
  */
@@ -19,8 +18,6 @@ class UserPrismaRepository implements UserRepository {
      * @description Busca un usuario por su email
      * @param email
      * @returns {Promise<User | null>}
-     * @example
-     * const user = await userPrismaRepository.findBy(email)
      */
     findBy(email: string) {
         return this.prisma.user.findUnique({
@@ -34,8 +31,6 @@ class UserPrismaRepository implements UserRepository {
      * @method findByID
      * @param id
      * @returns {Promise<User | null>}
-     * @example
-     * const user = await userPrismaRepository.findByID(id)
      */
     findByID(id: string) {
         return this.prisma.user.findUnique({
@@ -50,8 +45,6 @@ class UserPrismaRepository implements UserRepository {
      * @description Crea un nuevo usuario
      * @param credentials
      * @returns {Promise<User>}
-     * @example
-     * const newUser = await userPrismaRepository.create(credentials)
      */
     create(credentials: Credentials) {
         return this.prisma.user.create({
@@ -61,6 +54,12 @@ class UserPrismaRepository implements UserRepository {
         })
     }
 
+    /**
+     * @method edit
+     * @description Edita un usuario
+     * @param userEdit
+     * @returns {Promise<User>}
+     */
     async edit(userEdit: UserEdit) {
         return this.prisma.user.update({
             where: {
@@ -73,6 +72,13 @@ class UserPrismaRepository implements UserRepository {
         })
     }
 
+    /**
+     * @method changeStatus
+     * @description Cambia el estado de un usuario
+     * @param email
+     * @param status
+     * @returns {Promise<User>}
+     */
     async changeStatus(email: string, status: Status) {
         return this.prisma.user.update({
             where: {
@@ -84,6 +90,12 @@ class UserPrismaRepository implements UserRepository {
         })
     }
 
+    /**
+     * @method delete
+     * @description Elimina un usuario
+     * @param email
+     * @returns {Promise<User>}
+     */
     async delete(email: string) {
         return this.prisma.user.delete({
             where: {

@@ -11,10 +11,11 @@ import { getUserDataFrom } from "@lib/utils/user"
 import { changeFrom } from "@lib/utils/fetcher"
 import { useRouter } from "next/router"
 import { FormEvent } from "react"
+
 /**
- * Este componente es el encargado de mostrar el formulario para añadir un contacto
+ * Este componente es el encargado de mostrar el formulario para editar un usuario
  * @returns component
- * @example <AddContactForm />
+ * @example <EditUser />
  */
 const EditUser = () => {
     const { ref } = useChatContext()
@@ -26,6 +27,11 @@ const EditUser = () => {
     const inputClass = "w-[80%] mt-5 mb-1"
     const errorClass = "w-[80%] mb-1"
 
+    /**
+     * Esta función es la encargada de añadir un contacto
+     * @returns void
+     * @example <button onClick={handleClick} />
+     */
     const handleClickInEdit = async (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault()
         const user = getUserDataFrom(ref.current)
@@ -51,7 +57,6 @@ const EditUser = () => {
                 method="POST"
                 onSubmit={handleClickInEdit}
             >
-                {/*{error ? <Error message={error} /> : <></>}*/}
                 <div className="w-[90%] flex flex-col items-center">
                     <div className="w-full flex flex-col justify-center items-center" ref={ref}>
                         <InputWithIcon

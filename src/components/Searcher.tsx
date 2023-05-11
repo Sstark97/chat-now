@@ -4,10 +4,18 @@ import type { SearcherProps } from "@customTypes/containers"
 
 /**
  * Este componente se encarga de crear el buscador de la página
+ * @param {SearcherProps} { searchText, setSearchText }
+ * - searchText: Texto a buscar
+ * - setSearchText: Función para actualizar el texto a buscar
  * @returns component
  * @example <Searcher />
  */
 const Searcher = ({ searchText, setSearchText }: SearcherProps) => {
+    /**
+     * Esta función se encarga de actualizar el valor del input
+     * @returns void
+     * @example <input onChange={handleInputChange} />
+     */
     const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
         const text = event.target.value
         setSearchText(text)

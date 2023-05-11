@@ -6,9 +6,15 @@ import { errors } from "@lib/constants/validations"
 
 /**
  * Este componente es el encargado de mostrar un input de tipo password
- * @param {PasswordProps} { placeholder, validate, location, className } - placeholder: texto de placeholder, validate: booleano que indica si se debe validar el input, location: ubicación del input, className: clase a aplicar al input
+ * @param {PasswordProps} { placeholder, validate, location, className, notRequired, children }
+ * - placeholder: Placeholder del input
+ * - validate: Si se debe validar el input
+ * - location: Ubicación del input
+ * - className: Clases del input
+ * - notRequired: Si el input no es requerido
+ * - children: Componente hijo
  * @returns component
- * @example <PasswordInput placeholder="Contraseña" validate location="login" />
+ * @example <PasswordInput />
  */
 const PasswordInput = ({
     placeholder,
@@ -22,7 +28,9 @@ const PasswordInput = ({
     const iconClass = "absolute top-8 right-4 fill-white text-xl lg:text-2xl"
 
     /**
-     * Este método es el encargado de mostrar u ocultar la contraseña
+     * Esta función es la encargada de mostrar u ocultar la contraseña
+     * @returns void
+     * @example <button onClick={handleShowPassword} />
      */
     const handleShowPassword = () => {
         setShowPassword(!showPassword)

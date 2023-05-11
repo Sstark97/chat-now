@@ -2,12 +2,7 @@ import { MutableRefObject, useState } from "react"
 import { useRouter } from "next/router"
 import { getUserDataFrom } from "@lib/utils/user"
 import { changeFrom } from "@lib/utils/fetcher"
-
-// TODO: mover a su fichero correspondiente
-interface UseForm {
-    action: () => Promise<void>
-    error: string
-}
+import type { UseForm } from "@customTypes/hooks"
 
 /**
  * @description Hook para controlar los inputs
@@ -30,6 +25,10 @@ const useForm = (
     const [error, setError] = useState("")
     const router = useRouter()
 
+    /**
+     * Esta función se encarga de enviar los datos del formulario
+     * @returns {Promise<void>}
+     */
     const action = async () => {
         const user = getUserDataFrom(ref.current)
 

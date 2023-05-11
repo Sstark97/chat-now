@@ -1,6 +1,11 @@
 import { BiHelpCircle, BiUser } from "react-icons/bi"
 import { HiOutlineInformationCircle } from "react-icons/hi"
 
+/**
+ * Este componente se encarga de crear el contenedor de ayuda
+ * @returns component
+ * @example <HelpContainer />
+ */
 const HelpContainer = () => {
     return (
         <div className="w-full p-7 px-8">

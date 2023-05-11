@@ -6,7 +6,7 @@ import { changeFrom } from "@lib/utils/fetcher"
 import { API, REDIRECT } from "@lib/constants/links"
 
 /**
- * @description Hook para controlar los inputs
+ * Este hook se encarga de editar un contacto
  * @returns {{handleEdit: (function(): Promise<void>), error: string}}
  * @example
  * const { handleEdit, error } = useEditContact()
@@ -16,6 +16,10 @@ const useEditContact = () => {
     const router = useRouter()
     const { ref, selectedChat, reloadContacts, handleChangeSelectedChatName } = useChatContext()
 
+    /**
+     * Esta función se encarga de editar un contacto
+     * @returns {Promise<void>}
+     */
     const handleEdit = async () => {
         const contactBody = getUserDataFrom(ref.current)
         try {

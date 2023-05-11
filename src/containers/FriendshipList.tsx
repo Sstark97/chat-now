@@ -4,7 +4,8 @@ import { formatDate } from "@lib/utils/formatDate"
 
 /**
  * Este componente es el que se encarga de mostrar la lista de relaciones entre usuario y contacto
- * @param {FriendshipListProps} { friendships } - friendships: lista de relaciones entre usuario y contacto
+ * @param {FriendshipListProps} { friendships }
+ * - friendships: lista de relaciones entre usuario y contacto
  * @returns component
  * @example <FriendshipList friendships={friendships} />
  */

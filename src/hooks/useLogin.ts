@@ -7,14 +7,17 @@ import { REDIRECT } from "@lib/constants/links"
 
 /**
  * @description Hook para loguear a un usuario
- * @param ref
+ * @param {MutableRefObject<HTMLDivElement>} ref - Referencia al formulario
  * @returns {{login: (function(): Promise<void>)}}
- * @example
- * const { login } = useLogin(ref)
  */
 const useLogin = (ref: MutableRefObject<HTMLDivElement>) => {
     const [error, setError] = useState("")
     const router = useRouter()
+
+    /**
+     * Esta función se encarga de loguear a un usuario
+     * @returns {Promise<void>}
+     */
     const login = async () => {
         const user = getUserDataFrom(ref.current)
         const response = await signIn("credentials", { redirect: false, ...user })
