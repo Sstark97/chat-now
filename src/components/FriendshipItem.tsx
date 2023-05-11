@@ -28,10 +28,10 @@ const FriendshipItem = (friendship: Friendship) => {
                 role="button"
                 tabIndex={0}
             >
-                <div className="w-2/12 p-2">
+                <div className="p-2 mr-3">
                     {image ? (
                         <Image
-                            className="h-[3rem] min-w-[3rem] rounded-full"
+                            className="h-[3rem] w-[3rem] rounded-full"
                             src={image}
                             alt={name}
                             width={75}
@@ -51,7 +51,7 @@ const FriendshipItem = (friendship: Friendship) => {
                     </div>
                     {message ? (
                         <div className="w-full flex justify-between items-center text-secondary_text dark:text-dark_secondary_text pt-2">
-                            <p className="w-[88%] truncate">{message}</p>
+                            <p className="w-[12rem] lg:w-[14rem] truncate">{message}</p>
                             {numMessages ? (
                                 <div className="h-[1.3rem] w-[1.3rem] flex items-center justify-center bg-light_purple dark:bg-dark_purple rounded-full">
                                     <p className="text-xs text-white dark:text-black">

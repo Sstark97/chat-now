@@ -4,20 +4,21 @@ import { WEEK_DAY_NAME } from "../constants/formatDate"
 /**
  * @description Formatea la fecha de un mensaje
  * @param {string} date Fecha del mensaje
+ * @param {string} type Tipo de fecha
  * @returns {string} Fecha formateada
  * @example
  * formatDate("2021-08-01T12:00:00.000Z") // "ayer"
  */
-const formatDate = (date: string | undefined) => {
+const formatDate = (date: string | undefined, type = "") => {
     const now = moment()
     const startOfToday = now.startOf("day")
     const startOfYesterday = now.clone().subtract(1, "day").startOf("day")
     const messageTime = moment.utc(date).local()
-    let displayTime = ""
+    let displayTime: string
 
     if (messageTime.isSameOrAfter(startOfToday)) {
         // Si el mensaje fue enviado hoy, mostrar la hora
-        displayTime = messageTime.format("HH:mm")
+        displayTime = type === "" ? messageTime.format("HH:mm") : type
     } else if (messageTime.isSameOrAfter(startOfYesterday)) {
         // Si el mensaje fue enviado ayer, mostrar "ayer"
         displayTime = "ayer"

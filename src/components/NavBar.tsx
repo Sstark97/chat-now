@@ -44,7 +44,7 @@ const NavBar = ({ type = "normal", route = "" }: NavBarProps) => {
                                 : ""
 
                             return (
-                                <Link href={href} key={href} role="link">
+                                <Link href={href} key={href} role="link" aria-label={href}>
                                     <Icon
                                         className={`text-5xl rounded-xl text-icon dark:text-dark_icon p-2 ${activeClass}`}
                                     />

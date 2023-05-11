@@ -1,13 +1,48 @@
+import Head from "next/head"
 import Image from "next/image"
 import Features from "@containers/Features"
-import ExampleChats from "@components/ExampleChats"
 import Footer from "@containers/Footer"
 import Hero from "@components/Hero"
-import AuthGuardian from "@containers/AuthGuardian"
+import dynamic from "next/dynamic"
+import { getServerSession } from "next-auth/next"
+import authConfig from "@pages/api/auth/[...nextauth]"
+import type { GetServerSidePropsContext } from "next"
+import type { LandingHeaderProps } from "@customTypes/global"
 
-const Landing = () => {
+const ExampleChats = dynamic(() => import("@components/ExampleChats"), { ssr: false })
+
+export const getServerSideProps = async (context: GetServerSidePropsContext) => {
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
+    const session = await getServerSession(context.req, context.res, authConfig)
+
+    if (session) {
+        return {
+            redirect: {
+                destination: "/",
+                permanent: false,
+            },
+        }
+    }
+    return {
+        props: {
+            title: "ChatNow",
+            description: "ChatNow es una aplicación de mensajería instantánea",
+            keywords: "chat, mensajería, instantánea, chatnow",
+        },
+    }
+}
+
+const Landing = ({ title, description, keywords }: LandingHeaderProps) => {
     return (
-        <AuthGuardian>
+        <>
+            <Head>
+                <title>{title}</title>
+                <meta name="description" content={description} />
+                <meta name="keywords" content={keywords} />
+                <meta name="viewport" content="width=device-width, initial-scale=1" />
+                <link rel="icon" href="/favicon.ico" />
+            </Head>
             <>
                 <Image
                     src="/logo.png"
@@ -22,7 +57,7 @@ const Landing = () => {
                 <Features />
                 <Footer />
             </>
-        </AuthGuardian>
+        </>
     )
 }
 

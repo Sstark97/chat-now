@@ -5,6 +5,7 @@ import NavBar from "@components/NavBar"
 import ChatDesktop from "@components/ChatDesktop"
 import OpenChat from "@containers/OpenChat"
 import type { ChatProps } from "@customTypes/containers"
+import { useState } from "react"
 
 /**
  * Este componente es el encargado de mostrar el contenedor de chats
@@ -18,6 +19,12 @@ const Chat = ({ message, friendships, children }: ChatProps) => {
     const { selectedChat } = useChatContext()
     const isChatOpen = Object.keys(selectedChat).length !== 0
 
+    const [searchText, setSearchText] = useState("")
+
+    const filteredFriendships = friendships.filter((friendship) =>
+        friendship.name.toLowerCase().startsWith(searchText.toLowerCase())
+    )
+
     return (
         <>
             <div className="flex h-screen">
@@ -25,23 +32,17 @@ const Chat = ({ message, friendships, children }: ChatProps) => {
                     className={`w-full lg:w-[28%] relative ${isChatOpen ? "hidden" : ""} lg:block`}
                 >
                     <NavBar />
-                    <Searcher />
+                    <Searcher searchText={searchText} setSearchText={setSearchText} />
                     {children}
-                    {friendships.length === 0 ? (
+                    {filteredFriendships.length === 0 ? (
                         <h1 className="text-center mt-16 ">{message}</h1>
                     ) : (
-                        <FriendshipList friendships={friendships} />
+                        <FriendshipList friendships={filteredFriendships} />
                     )}
                 </div>
 
-                {isChatOpen ? (
-                    <>
-                        <OpenChat className="lg:hidden" />
-                        <ChatDesktop />
-                    </>
-                ) : (
-                    <></>
-                )}
+                {isChatOpen ? <OpenChat className="lg:hidden" /> : <></>}
+                <ChatDesktop />
             </div>
         </>
     )

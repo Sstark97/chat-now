@@ -26,10 +26,10 @@ module.exports = {
         extend: {
             colors: {
                 primary: "#EEEEEE",
-                secondary: "#A7A7A7",
+                secondary: "#888888",
                 light_purple: "#BC8FCC",
                 icon: "#252525",
-                secondary_text: "#747474",
+                secondary_text: "#3F3F3F",
                 light_green: "#68CA8F",
                 light_blue: "#89C0E8",
 

@@ -42,4 +42,9 @@ interface ChatProps extends FriendshipListProps, ChildrenProps {
     message: string
 }
 
-export type { FriendshipListProps, MessageListProps, OpenChatProps, ChatProps }
+interface SearcherProps {
+    searchText: string
+    setSearchText: (searchText: string) => void
+}
+
+export type { FriendshipListProps, MessageListProps, OpenChatProps, ChatProps, SearcherProps }
