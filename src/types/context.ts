@@ -1,6 +1,4 @@
 import { MutableRefObject } from "react"
-import type { Chats, MessageResponse } from "@customTypes/domain"
-import type { PostgrestSingleResponse, SupabaseClient } from "@supabase/supabase-js"
 import type { Friendship } from "@customTypes/components"
 
 /**
@@ -26,19 +24,4 @@ interface ChatContext {
     handleChangeSelectedChatName(name: string): void
 }
 
-/**
- * @interface RealTimeContext
- * @description Propiedades del contexto de tiempo real
- * @property {SupabaseClient} supabase - Cliente de Supabase
- * @property {Function} getAllChats - Función para obtener todos los chats
- */
-interface RealTimeContext {
-    supabase: SupabaseClient
-    getAllChats(id: string): Promise<PostgrestSingleResponse<Chats[]>>
-    getAllMessages(userId: string, contactId: string): Promise<MessageResponse>
-    createChatWithUser(userId: string, contactId: string): Promise<void>
-    sendMessage(userId: string, contactId: string, message: string): Promise<void>
-    getChats(userId: string): Promise<Friendship[]>
-}
-
-export type { ChatContext, RealTimeContext }
+export type { ChatContext }
