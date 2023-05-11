@@ -13,6 +13,11 @@ const ContactInfo = () => {
     const { image, name, status } = selectedChat
     const color = STATE_COLORS[status as keyof typeof STATE_COLORS]
 
+    /**
+     * Esta función se encarga de cerrar el chat
+     * @returns void
+     * @example <button onClick={closeChat}>
+     */
     const closeChat = () => {
         handleCloseChat()
     }

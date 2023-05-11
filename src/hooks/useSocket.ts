@@ -1,17 +1,16 @@
 import { useEffect, useRef } from "react"
 import io, { Socket } from "socket.io-client"
-import { API } from "@lib/constants/links"
+import { SOCKET_SERVER } from "@lib/constants/links"
 
+/**
+ * Este hook se encarga de inicializar el socket
+ * @returns {Socket}
+ */
 const useSocket = () => {
     const socketRef = useRef<Socket>()
 
     useEffect(() => {
-        const socketInit = async () => {
-            await fetch(API.SOCKET)
-            socketRef.current = io()
-        }
-
-        socketInit()
+        socketRef.current = io(SOCKET_SERVER)
 
         return () => {
             if (socketRef.current) {

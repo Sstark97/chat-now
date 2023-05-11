@@ -5,17 +5,28 @@ import { Socket } from "socket.io-client"
 
 /**
  * Este componente es el encargado de mostrar el input para enviar mensajes
- * @component
+ * @param {Socket} socket Socket
+ * @returns component
  * @example <MessageInput />
  */
 const MessageInput = ({ socket }: { socket: Socket }) => {
     const [message, setMessage] = useState("")
     const { userId, contactId } = useChatMembersId()
 
+    /**
+     * Esta función se encarga de actualizar el valor del input
+     * @returns void
+     * @example <input onChange={handleChangeMessage} />
+     */
     const handleChangeMessage = (e: ChangeEvent<HTMLInputElement>) => {
         setMessage(e.target.value)
     }
 
+    /**
+     * Esta función se encarga de enviar el mensaje
+     * @returns void
+     * @example <form onSubmit={handleSendMessage} />
+     */
     const handleSendMessage = (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault()
         if (message !== "") {

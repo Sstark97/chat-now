@@ -6,16 +6,31 @@ import { STATE_VALUES_ARRAY } from "@lib/constants/settings"
 import { changeFrom } from "@lib/utils/fetcher"
 import { API } from "@lib/constants/links"
 
+/**
+ * Este componente se encarga de crear el modal para cambiar el estado del usuario
+ * @returns component
+ * @example <StateModal />
+ */
 const StateModal = () => {
     const { data: session, update } = useSession()
     const userStatus = session?.user?.status as string
     const [state, setState] = useState(userStatus)
     const [isOpen, setIsOpen] = useState(false)
 
+    /**
+     * Este método se encarga de abrir el modal
+     * @returns void
+     * @example openModal()
+     */
     const openModal = () => {
         setIsOpen(true)
     }
 
+    /**
+     * Este método se encarga de cerrar el modal
+     * @returns void
+     * @example closeModal()
+     */
     const closeModal = async () => {
         if (state !== userStatus) {
             const userFromApi = await changeFrom({ status: state }, API.CHANGE_STATUS, "PUT")
@@ -31,6 +46,12 @@ const StateModal = () => {
         setIsOpen(false)
     }
 
+    /**
+     * Este método se encarga de cambiar el estado del usuario
+     * @param {ChangeEvent<HTMLInputElement>} e
+     * @returns void
+     * @example handleChange(e)
+     */
     const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
         setState(e.target.value)
     }

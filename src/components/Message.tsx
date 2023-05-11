@@ -4,11 +4,12 @@ import { MessageProps } from "@customTypes/components"
 
 /**
  * Este componente es el encargado de mostrar un mensaje
- * @param receiverId
- * @param text
- * @param date
- * @component
- * @example <Message  receiverId={receiverId} text={text} date={date} />
+ * @param {MessageProps} { author_id, text, date }
+ * - author_id: ID del autor del mensaje
+ * - text: Texto del mensaje
+ * - date: Fecha del mensaje
+ * @returns component
+ * @example <Message />
  */
 const Message = ({ author_id, text, date }: MessageProps) => {
     const { data: session } = useSession()

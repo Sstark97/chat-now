@@ -1,3 +1,8 @@
+/**
+ * Este componente es el encargado de mostrar un spinner de carga
+ * @returns component
+ * @example <Loading />
+ */
 const Loading = () => (
     <div className="h-screen flex flex-col bg-primary dark:bg-dark_primary">
         <div className="flex flex-auto flex-col justify-center items-center p-4 md:p-5">

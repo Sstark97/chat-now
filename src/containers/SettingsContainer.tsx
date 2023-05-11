@@ -7,6 +7,11 @@ import Link from "next/link"
 import ThemeModal from "@components/ThemeModal"
 import StateModal from "@components/StateModal"
 
+/**
+ * Este componente se encarga de crear el contenedor de la configuración
+ * @returns component
+ * @example <SettingsContainer />
+ */
 const SettingsContainer = () => {
     const { data: session } = useSession()
     const userImage = session?.user?.image

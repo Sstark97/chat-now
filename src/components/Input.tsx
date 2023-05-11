@@ -7,9 +7,20 @@ import Error from "@components/Error"
 
 /**
  * Este componente es el encargado de mostrar un input
- * @param {InputProps} { type, placeholder, name, children, errorManager, location, className, errorClassName } - type: tipo de input, placeholder: texto de placeholder, name: nombre del input, children: componente a mostrar dentro del input, errorManager: objeto que contiene la información del error, location: ubicación del input, className: clase a aplicar al input, errorClassName: clase a aplicar al error
+ * @param {InputProps} { type, placeholder, name, children, errorManager, location, className, errorClassName, value, disabled, notRequired }
+ * - type: Tipo de input
+ * - placeholder: Placeholder del input
+ * - name: Nombre del input
+ * - children: Componente hijo
+ * - errorManager: Función para manejar el error
+ * - location: Ubicación del input
+ * - className: Clases del input
+ * - errorClassName: Clases del error
+ * - value: Valor del input
+ * - disabled: Si el input está deshabilitado
+ * - notRequired: Si el input no es requerido
  * @returns component
- * @example <Input type="text" placeholder="Nombre" name="name" errorManager={errorManager} location="register" />
+ * @example <Input />
  */
 const Input = ({
     type,
