@@ -1,7 +1,6 @@
 import { NextApiResponse } from "next"
 import { ChatFactory } from "@lib/factories/ChatFactory"
 import type { ChatRequest } from "@customTypes/request"
-import type { Message } from "@prisma/client"
 
 const chatService = ChatFactory.createChatService()
 
@@ -11,7 +10,7 @@ const chatService = ChatFactory.createChatService()
  * @param res {NextApiResponse<Contacts[]>}
  * @returns {Promise<void>}
  */
-export default async function handler(req: ChatRequest, res: NextApiResponse<Message[]>) {
+export default async function handler(req: ChatRequest, res: NextApiResponse) {
     if (req.method !== "GET") {
         res.status(405).end("Method not allowed")
     }
