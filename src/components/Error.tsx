@@ -2,7 +2,9 @@ import type { ErrorProps } from "@customTypes/components"
 
 /**
  * Este componente es el encargado de mostrar un mensaje de error
- * @param {ErrorProps} { className, message } - className: clase del componente, message: mensaje de error
+ * @param {ErrorProps} { className, message }
+ * - className: clase del componente
+ * - message: mensaje de error
  * @returns component
  * @example <Error message="Este campo es obligatorio" />
  */

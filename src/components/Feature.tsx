@@ -1,5 +1,14 @@
 import { FeatureProps } from "@customTypes/components"
 
+/**
+ * Este componente es el encargado de mostrar las características de la aplicación
+ * @param {FeatureProps} { children, header, description }
+ * - children: Componente hijo
+ * - header: Título de la característica
+ * - description: Descripción de la característica
+ * @returns component
+ * @example <Feature />
+ */
 const Feature = ({ children, header, description }: FeatureProps) => (
     <div className="w-full lg:w-[31%] bg-secondary dark:bg-dark_secondary rounded-xl p-4 lg:p-6 relative mb-6 shadow-xl">
         {children}

@@ -16,6 +16,11 @@ const FriendshipContainer = () => {
     const socket = useSocket()
     const [chats, setChats] = useState<Friendship[]>([])
 
+    /**
+     * Función para obtener todos los chats
+     * @returns void
+     * @example getAllChats()
+     */
     const getAllChats = useCallback(async () => {
         const chats = await getFrom(`${SOCKET_SERVER}chats?userId=${userId}`)
         setChats(chats)

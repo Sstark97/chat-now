@@ -2,8 +2,8 @@ import { getLevelOfSecurityFrom } from "@lib/utils/password"
 import { SECURITY_LEVEL, SECURITY_LEVEL_COLORS } from "@lib/constants/securityPassword"
 
 /**
- * @description Hook que devuelve el nivel de seguridad de una contraseña
- * @param password
+ * Este hook que devuelve el nivel de seguridad de una contraseña
+ * @param {string} password - Contraseña
  * @returns {string} passwordSecurityLevel - Nivel de seguridad de la contraseña
  * @returns {string} bgFirstLevel - Color del primer círculo de seguridad
  * @returns {string} bgSecondLevel - Color del segundo círculo de seguridad

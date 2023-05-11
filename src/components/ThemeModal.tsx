@@ -3,19 +3,40 @@ import { BsSun } from "react-icons/bs"
 import { Dialog, Transition } from "@headlessui/react"
 import { AiOutlineClose } from "react-icons/ai"
 
+/**
+ * Este componente se encarga de crear el modal para cambiar el tema de la página
+ * @returns component
+ * @example <ThemeModal />
+ */
 const ThemeModal = () => {
     const [isOpen, setIsOpen] = useState(false)
 
+    /**
+     * Este método se encarga de abrir el modal
+     * @returns void
+     * @example openModal()
+     */
     const openModal = () => {
         setIsOpen(true)
     }
 
+    /**
+     * Este método se encarga de cerrar el modal
+     * @returns void
+     * @example closeModal()
+     */
     const closeModal = () => {
         setIsOpen(false)
     }
 
     const [theme, setTheme] = useState(localStorage.getItem("theme") || "light")
 
+    /**
+     * Este método se encarga de cambiar el tema de la página
+     * @param {ChangeEvent<HTMLInputElement>} e
+     * @returns void
+     * @example switchTheme(e)
+     */
     const switchTheme = (e: ChangeEvent<HTMLInputElement>) => {
         const newTheme = e.target.value
         setTheme(newTheme)

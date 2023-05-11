@@ -12,8 +12,9 @@ import { SOCKET_SERVER } from "@lib/constants/links"
 
 /**
  * Este componente es el encargado de mostrar el chat abierto
- * @param className
- * @component
+ * @param {OpenChatProps} { className }
+ * - className: clases del componente
+ * @returns component
  * @example <OpenChat />
  */
 const OpenChat = ({ className }: OpenChatProps) => {
@@ -22,6 +23,11 @@ const OpenChat = ({ className }: OpenChatProps) => {
     const socket = useSocket()
     const lastMessageRef = useLastMessageRef(messages)
 
+    /**
+     * Función que obtiene los mensajes del chat
+     * @returns void
+     * @example getMessages()
+     */
     const getMessages = useCallback(async () => {
         const messages = await getFrom(
             `${SOCKET_SERVER}messages?userId=${userId}&contactId=${contactId}`

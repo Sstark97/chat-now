@@ -1,24 +1,23 @@
 /**
  * @description String con todos los caracteres posibles para la contraseña
- * @constant
  * @type {string}
+ * @constant
  */
 const CHARACTERS =
     "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()_+-=[]{};':\\|,.<>/?"
 /**
  * @description String con el mensaje de error de un campo vacío
- * @constant
  * @type {string}
+ * @constant
  */
 const EMPTY_ERROR = "Hmm... parece que este campo es obligatorio"
 /**
  * @description Objeto con los errores de validación de los formularios
- * @constant
  * @type {Object}
+ * @constant
  * @property {Object} name - Objeto con los errores de validación del nombre
  * @property {Object} email - Objeto con los errores de validación del email
  * @property {Object} password - Objeto con los errores de validación de la contraseña
- * @property {Object} strictPassword - Objeto con los errores de validación de la contraseña estricta
  */
 const errors = {
     name: {

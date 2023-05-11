@@ -18,6 +18,10 @@ const useChatScroll = () => {
         }
     }, [scrollTop])
 
+    /**
+     * Función para controlar el scroll del chat
+     * @returns {void}¡
+     */
     const handleScroll = () => {
         if (ref.current) {
             const { scrollHeight, scrollTop, clientHeight } = ref.current

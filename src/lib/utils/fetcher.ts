@@ -46,6 +46,14 @@ async function changeFrom<C>(
     return data
 }
 
+/**
+ * @description Función para hacer una petición DELETE a un endpoint
+ * @param body
+ * @param endPoint
+ * @returns {Promise<any>}
+ * @example
+ * const response = await deleteFrom(body, endPoint)
+ */
 async function deleteFrom<C>(body: Record<keyof C, string> | undefined, endPoint: string) {
     const res = await fetch(endPoint, {
         method: "DELETE",

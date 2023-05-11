@@ -2,6 +2,10 @@ import { useEffect, useRef } from "react"
 import io, { Socket } from "socket.io-client"
 import { SOCKET_SERVER } from "@lib/constants/links"
 
+/**
+ * Este hook se encarga de inicializar el socket
+ * @returns {Socket}
+ */
 const useSocket = () => {
     const socketRef = useRef<Socket>()
 

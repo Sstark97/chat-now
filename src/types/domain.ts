@@ -32,6 +32,13 @@ interface Contacts {
     status: string | Status
 }
 
+/**
+ * @interface ContactRequest
+ * @description Interface para definir la petición de un contacto
+ * @property {string} name - Nombre del contacto
+ * @property {string} email - Email del contacto
+ * @property {string} password - Contraseña del contacto
+ */
 interface UserEdit {
     name?: string
     email: string
@@ -42,7 +49,11 @@ interface UserEdit {
  * @interface UserRepository
  * @description Interface para definir el comportamiento de un repositorio de usuarios
  * @method findBy
+ * @method findByID
  * @method create
+ * @method edit
+ * @method delete
+ * @method changeStatus
  * @example
  * const userRepository: UserRepository = new UserPrismaRepository()
  */
@@ -60,6 +71,8 @@ interface UserRepository {
  * @description Interface para definir el comportamiento de un repositorio de contactos
  * @method findUserBy
  * @method create
+ * @method edit
+ * @method delete
  * @method existFrom
  * @method getAllFrom
  * @example
@@ -162,19 +175,26 @@ interface Message {
     author_id: string
 }
 
-interface MessageSocket {
-    text: string
-    date: Date
-    author_id: string
-}
-
+/**
+ * @interface UserDto
+ * @description Interface para definir un usuario
+ * @property {string} user - ID del usuario
+ */
 interface UserDto {
     user: User
 }
 
-interface ChatWithContact {
-    id: number
-    ChatUsers: UserDto[]
+/**
+ * @interface ContactChats
+ * @description Interface para definir un chat con un contacto
+ * @property {string} id - ID del chat
+ * @property {string} image - Imagen del contacto
+ * @property {string} status - Estado del contacto
+ */
+interface ContactChats {
+    id: string
+    image: string
+    status: string
 }
 
 export type {
@@ -189,7 +209,5 @@ export type {
     ErrorResponse,
     Contacts,
     Chats,
-    ChatWithContact,
     Message,
-    MessageSocket,
 }

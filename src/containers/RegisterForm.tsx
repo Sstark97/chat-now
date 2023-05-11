@@ -22,6 +22,8 @@ const RegisterForm = () => {
 
     /**
      * Esta función es la encargada de ejecutar la función register
+     * @returns void
+     * @example <button onClick={handleClickInRegister} />
      */
     const handleClickInRegister = async () => {
         await register()

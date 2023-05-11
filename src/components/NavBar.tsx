@@ -8,9 +8,11 @@ import Image from "next/image"
 
 /**
  * Este componente se encarga de crear la barra de navegación
- * @param {NavBarProps} { type } - type: tipo de barra de navegación
+ * @param {NavBarProps} { type, route }
+ * - type: Tipo de barra de navegación
+ * - route: Ruta de la barra de navegación
  * @returns component
- * @example <NavBar type="normal" />
+ * @example <NavBar type="normal" route="/home" />
  */
 const NavBar = ({ type = "normal", route = "" }: NavBarProps) => {
     const router = useRouter()

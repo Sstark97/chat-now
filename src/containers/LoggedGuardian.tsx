@@ -8,7 +8,8 @@ import Loading from "@components/Loading"
 // TODO: Refactorizar para que sea un solo componente y no haga un flash de loading
 /**
  * Este componente es el encargado de proteger las rutas de autenticación
- * @param {ChildrenProps} { children } - children: componente a mostrar
+ * @param {ChildrenProps} { children }
+ * - children: componente a mostrar
  * @returns component
  * @example <AuthGuardian><LoginForm /></AuthGuardian>
  */

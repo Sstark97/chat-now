@@ -1,6 +1,12 @@
 import { ContactRepository, ContactRequest } from "@customTypes/domain"
 import { PrismaClient, User } from "@prisma/client"
 
+/**
+ * @class ContactPrismaRepository
+ * @description Repositorio para manejar la lógica de persistencia de los contactos con Prisma
+ * @example
+ * const contactPrismaRepository = new ContactPrismaRepository()
+ */
 class ContactPrismaRepository implements ContactRepository {
     private prisma: PrismaClient
     constructor() {
@@ -12,8 +18,6 @@ class ContactPrismaRepository implements ContactRepository {
      * @description Busca un usuario por su email
      * @param email
      * @returns {Promise<User | null>}
-     * @example
-     * const user = await contactRepository.findUserBy(email)
      */
     findUserBy(email: string) {
         return this.prisma.user.findUnique({
@@ -29,8 +33,6 @@ class ContactPrismaRepository implements ContactRepository {
      * @param userEmail
      * @param contactInfo
      * @returns {Promise<Contact>}
-     * @example
-     * const newContact = await contactRepository.addContact(userEmail, contactInfo)
      */
     async create(userEmail: string, contactInfo: ContactRequest) {
         const user = (await this.findUserBy(userEmail)) as User
@@ -47,12 +49,11 @@ class ContactPrismaRepository implements ContactRepository {
 
     /**
      * @method edit
+     * @description Edita un contacto de un usuario
      * @param userEmail
      * @param contactId
      * @param name
      * @returns {Promise<void>}
-     * @example
-     * await contactRepository.edit(userEmail, contactId, name)
      */
     async edit(userEmail: string, contactId: string, name: string) {
         const user = (await this.findUserBy(userEmail)) as User
@@ -70,6 +71,13 @@ class ContactPrismaRepository implements ContactRepository {
         })
     }
 
+    /**
+     * @method delete
+     * @description Elimina un contacto de un usuario
+     * @param userEmail
+     * @param contactId
+     * @returns {Promise<void>}
+     */
     async delete(userEmail: string, contactId: string) {
         const user = (await this.findUserBy(userEmail)) as User
 
@@ -89,8 +97,6 @@ class ContactPrismaRepository implements ContactRepository {
      * @param userEmail
      * @param contactEmail
      * @returns {Promise<boolean>}
-     * @example
-     * const contactExists = await contactRepository.existContactFrom(userEmail, contactEmail)
      */
     async existFrom(userEmail: string, contactEmail: string) {
         const user = (await this.findUserBy(userEmail)) as User
@@ -115,8 +121,6 @@ class ContactPrismaRepository implements ContactRepository {
      * @description Obtiene todos los contactos de un usuario
      * @param userEmail
      * @returns {Promise<boolean>}
-     * @example
-     * const userExists = await contactRepository.existUserFrom(email)
      */
     async getAllFrom(userEmail: string) {
         const user = (await this.findUserBy(userEmail)) as User
