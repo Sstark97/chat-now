@@ -27,6 +27,7 @@ const OpenChat = ({ className }: OpenChatProps) => {
             `${SOCKET_SERVER}messages?userId=${userId}&contactId=${contactId}`
         )
 
+        console.log(messages)
         setMessages(messages)
     }, [userId, contactId])
 
@@ -36,7 +37,11 @@ const OpenChat = ({ className }: OpenChatProps) => {
 
     useEffect(() => {
         socket?.on("receive-message", (data) => {
-            setMessages((pre) => [...pre, data])
+            const { chat_id } = data
+            const lastMessage = messages.at(-1)
+            if (chat_id === lastMessage?.chat_id || messages.length === 0) {
+                setMessages((messages) => [...messages, data])
+            }
         })
     }, [socket])
 
