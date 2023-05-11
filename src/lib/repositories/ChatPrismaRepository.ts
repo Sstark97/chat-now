@@ -20,7 +20,7 @@ class ChatPrismaRepository implements ChatRepository {
         })
     }
 
-    async create(userId: string, contactId: string) {
+    create(userId: string, contactId: string) {
         return this.prisma.chat.create({
             data: {
                 ChatUsers: {
@@ -29,6 +29,12 @@ class ChatPrismaRepository implements ChatRepository {
                     },
                 },
             },
+        })
+    }
+
+    getMessages(chatId: number) {
+        return this.prisma.message.findMany({
+            where: { chat_id: chatId },
         })
     }
 

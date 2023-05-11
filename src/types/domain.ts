@@ -77,6 +77,7 @@ interface ContactRepository {
 
 interface ChatRepository {
     getChatId(userId: string, contactId: string): Promise<Chats | null>
+    getMessages(chatId: number): Promise<MessagePrisma[]>
     sendMessage(userId: string, contactId: string, message: string): Promise<MessagePrisma>
     create(userId: string, contactId: string): Promise<Chat>
 }

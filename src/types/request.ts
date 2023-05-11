@@ -40,6 +40,13 @@ interface ContactRequest extends NextApiRequest {
     }
 }
 
+interface MessageRequest extends NextApiRequest {
+    query: {
+        userId: string
+        contactId: string
+    }
+}
+
 /**
  * @interface EditContactRequest
  * @description Propiedades de la petición para editar un contacto
@@ -99,6 +106,7 @@ interface ValidateResponse {
 export type {
     UserRequest,
     ContactRequest,
+    MessageRequest,
     EditUserRequest,
     EditContactRequest,
     ChangeUserStatusRequest,

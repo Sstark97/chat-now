@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react"
 import useSocket from "@hooks/useSocket"
-import useRealTimeContext from "@hooks/useRealTimeContext"
 import ChatHeader from "@containers/ChatHeader"
 import MessageInput from "@components/MessageInput"
 import MessageList from "@containers/MessageList"
@@ -8,6 +7,7 @@ import useChatMembersId from "@hooks/useChatMembersId"
 import type { OpenChatProps } from "@customTypes/containers"
 import type { Message } from "@customTypes/domain"
 import useLastMessageRef from "@hooks/useLastMessageRef"
+import { getFrom } from "@lib/utils/fetcher"
 
 /**
  * Este componente es el encargado de mostrar el chat abierto
@@ -19,7 +19,6 @@ const OpenChat = ({ className }: OpenChatProps) => {
     const [messages, setMessages] = useState<Message[]>([])
     const { userId, contactId } = useChatMembersId()
     const lastMessageRef = useLastMessageRef(messages)
-    const { getAllMessages } = useRealTimeContext()
     const socket = useSocket()
 
     useEffect(() => {
@@ -33,8 +32,9 @@ const OpenChat = ({ className }: OpenChatProps) => {
     }, [socket])
 
     const getMessages = async () => {
-        const messages = await getAllMessages(userId, contactId)
-        setMessages(messages.data)
+        const messages = await getFrom(`/api/messages?userId=${userId}&contactId=${contactId}`)
+
+        setMessages(messages)
     }
 
     return (
