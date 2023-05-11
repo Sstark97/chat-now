@@ -11,6 +11,7 @@ import { IoSettingsSharp } from "react-icons/io5"
  * @property {string} LOGIN - Ruta de login de usuario
  */
 enum API {
+    SOCKET = "/api/socket",
     REGISTER = "/api/auth/user/register",
     LOGIN = "/api/auth/user/login",
     ADD_CONTACT = "/api/contacts/add",

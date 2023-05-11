@@ -1,6 +1,7 @@
 import { Friendship } from "@customTypes/components"
 import { Message } from "@customTypes/domain"
 import { ChildrenProps } from "./global"
+import { RefObject } from "react"
 
 /**
  * @interface FriendshipListProps
@@ -18,6 +19,7 @@ interface FriendshipListProps {
  */
 interface MessageListProps {
     messages: Message[]
+    lastMessageRef: RefObject<HTMLDivElement>
 }
 
 /**

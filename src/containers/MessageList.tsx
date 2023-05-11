@@ -1,23 +1,20 @@
+import { Fragment } from "react"
 import { MdKeyboardArrowDown } from "react-icons/md"
 import Message from "@components/Message"
 import useChatScroll from "@hooks/useChatScroll"
-import type { MessageListProps } from "@customTypes/containers"
 import { formatDate } from "@lib/utils/formatDate"
 import { capitalizeFirstLetter } from "@lib/utils/capitalizeFirstLetter"
+import type { MessageListProps } from "@customTypes/containers"
 
 /**
  * Este componente es el encargado de mostrar la lista de mensajes
  * @param messages
+ * @param lastMessageRef
  * @component
  * @example <MessageList messages={messages} />
  */
-const MessageList = ({ messages }: MessageListProps) => {
+const MessageList = ({ messages, lastMessageRef }: MessageListProps) => {
     const { ref, handleScroll, isInBottom } = useChatScroll()
-
-    // const messagesDate = messages.map((message) => {
-    //     return formatDate(message.date)
-    // })
-
     let prevDate: Date | null = null
 
     messages.sort((a, b) => {
@@ -47,17 +44,18 @@ const MessageList = ({ messages }: MessageListProps) => {
                     if (showDate) {
                         prevDate = messageDate
                         return (
-                            <>
+                            <Fragment key={message.id}>
                                 <p className="mx-auto p-2 px-5 my-2 bg-secondary dark:bg-dark_secondary lg:text-secondary_text lg:bg-primary dark:lg:bg-dark_primary dark:text-dark_secondary_text rounded-2xl">
                                     {capitalizeFirstLetter(formatDate(message.date, "hoy"))}
                                 </p>
-                                <Message key={message.id} {...message} />
-                            </>
+                                <Message {...message} />
+                            </Fragment>
                         )
                     }
 
                     return <Message key={message.id} {...message} />
                 })}
+                <div ref={lastMessageRef}></div>
             </div>
             {!isInBottom ? (
                 <button
