@@ -64,7 +64,7 @@ interface InputProps {
  */
 interface Friendship {
     id: string
-    name: string | null
+    name: string
     email?: string
     time?: string
     message?: string

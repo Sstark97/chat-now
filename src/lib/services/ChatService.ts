@@ -9,9 +9,9 @@ class ChatService {
 
     async getMessages(userId: string, contactId: string) {
         const chat = await this.chatRepository.getChatId(userId, contactId)
-        const chatId = chat?.chat_id as number
+        const chatId = chat?.chat_id
 
-        return this.chatRepository.getMessages(chatId)
+        return chatId ? this.chatRepository.getMessages(chatId) : []
     }
 
     async getAllWithContact(userId: string) {
