@@ -1,4 +1,4 @@
-import { Contact, Status, User, Chat, Message as MessagePrisma } from "@prisma/client"
+import { Contact, Status, User } from "@prisma/client"
 
 /**
  * @typedef Credentials
@@ -85,31 +85,6 @@ interface ContactRepository {
     delete(userEmail: string, contactId: string): Promise<void>
     existFrom(userEmail: string, contactEmail: string): Promise<boolean>
     getAllFrom(userEmail: string): Promise<Contacts[]>
-}
-
-/**
- * @interface ContactRequest
- * @description Interface para definir la petición de un contacto
- * @method getChatId
- * @method getContactName
- * @method getAllWithContact
- * @method getLastMessage
- * @method getMessages
- * @method sendMessage
- * @method create
- * @method delete
- * @example
- * const contactRequest: ContactRequest = {
- */
-interface ChatRepository {
-    getChatId(userId: string, contactId: string): Promise<Chats | null>
-    getContactName(contactId: string): Promise<string | null>
-    getAllWithContact(userId: string): Promise<ChatWithContact[]>
-    getLastMessage(chatId: number): Promise<MessageSocket | null>
-    getMessages(chatId: number): Promise<MessagePrisma[]>
-    sendMessage(userId: string, contactId: string, message: string): Promise<MessagePrisma>
-    create(userId: string, contactId: string): Promise<Chat>
-    delete(): Promise<void>
 }
 
 /**
@@ -201,47 +176,12 @@ interface Message {
 }
 
 /**
- * @interface MessageSocket
- * @description Interface para definir la respuesta de un mensaje
- * @property {string} text - Texto del mensaje
- * @property {string} date - Fecha del mensaje
- * @property {string} author_id - ID del usuario que envía el mensaje
- */
-interface MessageSocket {
-    text: string
-    date: Date
-    author_id: string
-}
-
-/**
- * @interface MessageResponse
- * @description Interface para definir la respuesta de un mensaje
- * @property {Message[]} data - Mensajes
- * @property {null} error - Error
- */
-interface MessageResponse {
-    data: Message[]
-    error: null
-}
-
-/**
- * @interface User
+ * @interface UserDto
  * @description Interface para definir un usuario
  * @property {string} user - ID del usuario
  */
 interface UserDto {
     user: User
-}
-
-/**
- * @interface ChatWithContact
- * @description Interface para definir un chat con un contacto
- * @property {number} id - ID del chat
- * @property {UserDto[]} ChatUsers - Usuarios del chat
- */
-interface ChatWithContact {
-    id: number
-    ChatUsers: UserDto[]
 }
 
 /**
@@ -262,7 +202,6 @@ export type {
     UserEdit,
     User,
     UserRepository,
-    ChatRepository,
     ContactRepository,
     UserResponse,
     UserLoginResponse,
@@ -270,9 +209,5 @@ export type {
     ErrorResponse,
     Contacts,
     Chats,
-    ChatWithContact,
     Message,
-    MessageSocket,
-    MessageResponse,
-    ContactChats,
 }

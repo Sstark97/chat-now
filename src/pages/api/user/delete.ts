@@ -1,6 +1,5 @@
 import { NextApiResponse } from "next"
 import { UserFactory } from "@lib/factories/UserFactory"
-import { ChatFactory } from "@lib/factories/ChatFactory"
 import { getServerSession } from "next-auth"
 import authConfig from "@pages/api/auth/[...nextauth]"
 import type { User } from "@prisma/client"
@@ -8,7 +7,6 @@ import type { DeleteUserRequest, ValidateResponse } from "@customTypes/request"
 import type { ErrorResponse } from "@customTypes/domain"
 
 const userService = UserFactory.createUserService()
-const chatService = ChatFactory.createChatService()
 
 /**
  * Comprueba si hay errores en los datos del usuario
@@ -60,7 +58,6 @@ export default async function handler(
     const userEmailInSession = session?.user?.email as string
 
     await userService.delete(userEmailInSession)
-    await chatService.delete()
 
     return res.status(200).json({ message: "User delete success!" })
 }

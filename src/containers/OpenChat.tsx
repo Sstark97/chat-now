@@ -8,6 +8,7 @@ import MessageList from "@containers/MessageList"
 import { getFrom } from "@lib/utils/fetcher"
 import type { OpenChatProps } from "@customTypes/containers"
 import type { Message } from "@customTypes/domain"
+import { SOCKET_SERVER } from "@lib/constants/links"
 
 /**
  * Este componente es el encargado de mostrar el chat abierto
@@ -28,8 +29,11 @@ const OpenChat = ({ className }: OpenChatProps) => {
      * @example getMessages()
      */
     const getMessages = useCallback(async () => {
-        const messages = await getFrom(`/api/messages?userId=${userId}&contactId=${contactId}`)
+        const messages = await getFrom(
+            `${SOCKET_SERVER}messages?userId=${userId}&contactId=${contactId}`
+        )
 
+        console.log(messages)
         setMessages(messages)
     }, [userId, contactId])
 
@@ -39,7 +43,11 @@ const OpenChat = ({ className }: OpenChatProps) => {
 
     useEffect(() => {
         socket?.on("receive-message", (data) => {
-            setMessages((pre) => [...pre, data])
+            const { chat_id } = data
+            const lastMessage = messages.at(-1)
+            if (chat_id === lastMessage?.chat_id || messages.length === 0) {
+                setMessages((messages) => [...messages, data])
+            }
         })
     }, [socket])
 
