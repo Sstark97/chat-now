@@ -30,6 +30,7 @@ export default function handler(req: NextApiRequest, res: NextApiResponseWithSoc
             const { userId, contactId, message } = obj
             const messageInDb = await chatService.sendMessage(userId, contactId, message)
             io.emit("receive-message", messageInDb)
+            io.emit("reload-chats")
         })
     })
 

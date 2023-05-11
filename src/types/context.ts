@@ -1,6 +1,6 @@
 import { MutableRefObject } from "react"
-import { Chats, MessageResponse } from "@customTypes/domain"
-import { PostgrestSingleResponse, SupabaseClient } from "@supabase/supabase-js"
+import type { Chats, MessageResponse } from "@customTypes/domain"
+import type { PostgrestSingleResponse, SupabaseClient } from "@supabase/supabase-js"
 import type { Friendship } from "@customTypes/components"
 
 /**
