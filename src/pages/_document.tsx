@@ -51,6 +51,7 @@ export default function Document() {
                     name="viewport"
                     content="minimum-scale=1, initial-scale=1, width=device-width, shrink-to-fit=no, viewport-fit=cover"
                 />
+                <meta httpEquiv="Content-Security-Policy" content="upgrade-insecure-requests" />
             </Head>
             <body className="bg-primary dark:bg-dark_primary text-black dark:text-white">
                 <Main />
