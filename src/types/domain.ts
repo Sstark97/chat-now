@@ -1,5 +1,4 @@
 import { Contact, Status, User, Chat, Message as MessagePrisma } from "@prisma/client"
-import { PostgrestError } from "@supabase/supabase-js"
 
 /**
  * @typedef Credentials
@@ -182,7 +181,7 @@ interface MessageSocket {
 
 interface MessageResponse {
     data: Message[]
-    error: null | PostgrestError
+    error: null
 }
 
 interface UserDto {
