@@ -54,6 +54,9 @@ class ChatPrismaRepository implements ChatRepository {
                         user_id: userId,
                     },
                 },
+                messages: {
+                    some: {},
+                },
             },
             include: {
                 ChatUsers: {
