@@ -2,6 +2,7 @@ import { NavBarLinks } from "@customTypes/components"
 import { IoIosChatboxes } from "react-icons/io"
 import { HiUsers } from "react-icons/hi"
 import { IoSettingsSharp } from "react-icons/io5"
+import * as process from "process"
 
 /**
  * @description Enumerado con las rutas de la API
@@ -11,7 +12,6 @@ import { IoSettingsSharp } from "react-icons/io5"
  * @property {string} LOGIN - Ruta de login de usuario
  */
 enum API {
-    SOCKET = "/api/socket",
     REGISTER = "/api/auth/user/register",
     LOGIN = "/api/auth/user/login",
     ADD_CONTACT = "/api/contacts/add",
@@ -22,6 +22,8 @@ enum API {
     DELETE_USER = "/api/user/delete",
     CHANGE_STATUS = "/api/user/changeStatus",
 }
+
+const SOCKET_SERVER = process.env.NEXT_PUBLIC_SOCKET_SERVER as string
 
 /**
  * @description Enumerado con las rutas de redirección
@@ -67,4 +69,4 @@ const principalLinks: NavBarLinks[] = [
     { href: "/settings", icon: IoSettingsSharp },
 ]
 
-export { API, REDIRECT, NAVBAR_TITLES, principalLinks }
+export { API, REDIRECT, NAVBAR_TITLES, SOCKET_SERVER, principalLinks }
