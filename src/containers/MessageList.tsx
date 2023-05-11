@@ -2,9 +2,9 @@ import { Fragment } from "react"
 import { MdKeyboardArrowDown } from "react-icons/md"
 import Message from "@components/Message"
 import useChatScroll from "@hooks/useChatScroll"
-import type { MessageListProps } from "@customTypes/containers"
 import { formatDate } from "@lib/utils/formatDate"
 import { capitalizeFirstLetter } from "@lib/utils/capitalizeFirstLetter"
+import type { MessageListProps } from "@customTypes/containers"
 
 /**
  * Este componente es el encargado de mostrar la lista de mensajes
