@@ -40,6 +40,12 @@ interface ContactRequest extends NextApiRequest {
     }
 }
 
+interface ChatRequest extends NextApiRequest {
+    query: {
+        userId: string
+    }
+}
+
 interface MessageRequest extends NextApiRequest {
     query: {
         userId: string
@@ -106,6 +112,7 @@ interface ValidateResponse {
 export type {
     UserRequest,
     ContactRequest,
+    ChatRequest,
     MessageRequest,
     EditUserRequest,
     EditContactRequest,

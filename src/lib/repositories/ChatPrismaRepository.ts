@@ -38,6 +38,46 @@ class ChatPrismaRepository implements ChatRepository {
         })
     }
 
+    getLastMessage(chatId: number) {
+        return this.prisma.message.findFirst({
+            where: { chat_id: chatId },
+            orderBy: { date: "desc" },
+            select: { text: true, date: true, author_id: true },
+        })
+    }
+
+    getAllWithContact(userId: string) {
+        return this.prisma.chat.findMany({
+            where: {
+                ChatUsers: {
+                    some: {
+                        user_id: userId,
+                    },
+                },
+            },
+            include: {
+                ChatUsers: {
+                    where: {
+                        NOT: {
+                            user_id: userId,
+                        },
+                    },
+                    select: {
+                        user: true,
+                    },
+                },
+            },
+        })
+    }
+
+    async getContactName(contactId: string) {
+        const contact = await this.prisma.contact.findFirst({
+            where: { contact_id: contactId },
+            select: { name: true },
+        })
+        return contact?.name as string
+    }
+
     getChatId(userId: string, contactId: string) {
         return this.prisma.chatUsers.findFirst({
             where: {

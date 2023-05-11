@@ -77,6 +77,9 @@ interface ContactRepository {
 
 interface ChatRepository {
     getChatId(userId: string, contactId: string): Promise<Chats | null>
+    getContactName(contactId: string): Promise<string | null>
+    getAllWithContact(userId: string): Promise<ChatWithContact[]>
+    getLastMessage(chatId: number): Promise<MessageSocket | null>
     getMessages(chatId: number): Promise<MessagePrisma[]>
     sendMessage(userId: string, contactId: string, message: string): Promise<MessagePrisma>
     create(userId: string, contactId: string): Promise<Chat>
@@ -170,9 +173,24 @@ interface Message {
     author_id: string
 }
 
+interface MessageSocket {
+    text: string
+    date: Date
+    author_id: string
+}
+
 interface MessageResponse {
     data: Message[]
     error: null | PostgrestError
+}
+
+interface UserDto {
+    user: User
+}
+
+interface ChatWithContact {
+    id: number
+    ChatUsers: UserDto[]
 }
 
 interface ContactChats {
@@ -194,7 +212,9 @@ export type {
     ErrorResponse,
     Contacts,
     Chats,
+    ChatWithContact,
     Message,
+    MessageSocket,
     MessageResponse,
     ContactChats,
 }
