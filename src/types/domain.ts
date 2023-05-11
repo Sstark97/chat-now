@@ -1,4 +1,4 @@
-import { Contact, Status, User, Chat, Message as MessagePrisma } from "@prisma/client"
+import { Contact, Status, User } from "@prisma/client"
 
 /**
  * @typedef Credentials
@@ -72,17 +72,6 @@ interface ContactRepository {
     delete(userEmail: string, contactId: string): Promise<void>
     existFrom(userEmail: string, contactEmail: string): Promise<boolean>
     getAllFrom(userEmail: string): Promise<Contacts[]>
-}
-
-interface ChatRepository {
-    getChatId(userId: string, contactId: string): Promise<Chats | null>
-    getContactName(contactId: string): Promise<string | null>
-    getAllWithContact(userId: string): Promise<ChatWithContact[]>
-    getLastMessage(chatId: number): Promise<MessageSocket | null>
-    getMessages(chatId: number): Promise<MessagePrisma[]>
-    sendMessage(userId: string, contactId: string, message: string): Promise<MessagePrisma>
-    create(userId: string, contactId: string): Promise<Chat>
-    delete(): Promise<void>
 }
 
 /**
@@ -179,11 +168,6 @@ interface MessageSocket {
     author_id: string
 }
 
-interface MessageResponse {
-    data: Message[]
-    error: null
-}
-
 interface UserDto {
     user: User
 }
@@ -193,18 +177,11 @@ interface ChatWithContact {
     ChatUsers: UserDto[]
 }
 
-interface ContactChats {
-    id: string
-    image: string
-    status: string
-}
-
 export type {
     Credentials,
     UserEdit,
     User,
     UserRepository,
-    ChatRepository,
     ContactRepository,
     UserResponse,
     UserLoginResponse,
@@ -215,6 +192,4 @@ export type {
     ChatWithContact,
     Message,
     MessageSocket,
-    MessageResponse,
-    ContactChats,
 }
