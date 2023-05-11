@@ -19,7 +19,7 @@ class ChatService {
         return await Promise.all(
             chats.map(async (chat) => {
                 const { user } = chat.ChatUsers[0]
-                const { id, image, status } = user
+                const { id, email, image, status } = user
                 const name = await this.chatRepository.getContactName(id)
                 const lastMessage = await this.chatRepository.getLastMessage(chat.id)
                 const { text, date, author_id } = lastMessage as MessageSocket
@@ -27,7 +27,7 @@ class ChatService {
                 return {
                     chat_id: chat.id,
                     id,
-                    name,
+                    name: name ?? email,
                     image,
                     status,
                     time: date,

@@ -20,11 +20,10 @@ export default function handler(req: NextApiRequest, res: NextApiResponseWithSoc
 
     io.on("connection", (socket) => {
         console.log("Connected")
-        // socket.on("join", async (obj) => {
-        //     const { userId, contactId } = obj
-        //     const newChat = await chatService.create(userId, contactId)
-        //     io.emit("new-chat", newChat)
-        // })
+        socket.on("join", async (obj) => {
+            const { userId, contactId } = obj
+            await chatService.create(userId, contactId)
+        })
 
         socket.on("send-message", async (obj) => {
             const { userId, contactId, message } = obj
