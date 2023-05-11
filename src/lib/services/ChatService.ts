@@ -45,6 +45,10 @@ class ChatService {
             return this.chatRepository.create(userId, contactId)
         }
     }
+
+    delete() {
+        this.chatRepository.delete()
+    }
 }
 
 export default ChatService

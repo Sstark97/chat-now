@@ -32,6 +32,12 @@ class ChatPrismaRepository implements ChatRepository {
         })
     }
 
+    async delete() {
+        await this.prisma.chat.deleteMany({
+            where: { NOT: { ChatUsers: { some: {} } } },
+        })
+    }
+
     getMessages(chatId: number) {
         return this.prisma.message.findMany({
             where: { chat_id: chatId },
