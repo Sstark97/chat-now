@@ -15,7 +15,7 @@
 
 <div style="display:flex;align-items:center;justify-content:space-between;width=100%;margin-bottom:2rem;">
     <h2>El proyecto</h2>
-    <img src="https://snipboard.io/ISDFwv.jpg">
+    <img src="https://i.ibb.co/M5pYPY0/icon-256x256.png">
 </div>
 
 <a id="proyecto"></a>
@@ -27,42 +27,42 @@ La aplicación consiste en una aplicación web de mensajería instantánea (como
 
 - Front-end
 
-    - ![](https://snipboard.io/2pNcs8.jpg)
-    - ![](https://snipboard.io/qGdh4B.jpg)
+    -  ![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
+    -  ![TailwindCSS](https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)
 - Base de datos
     
-    - ![](https://snipboard.io/wNQyUY.jpg)
-    - ![](https://snipboard.io/iMQFXS.jpg)
-    - ![](https://snipboard.io/wp7dIz.jpg)
+    -  ![Postgres](https://img.shields.io/badge/postgres-%23316192.svg?style=for-the-badge&logo=postgresql&logoColor=white)
+    -  ![Supabase](https://img.shields.io/badge/Supabase-3ECF8E?style=for-the-badge&logo=supabase&logoColor=white)
+    -  ![Prisma](https://img.shields.io/badge/Prisma-3982CE?style=for-the-badge&logo=Prisma&logoColor=white)
 - Back-end
 
-    - ![](https://snipboard.io/UZBlRz.jpg)
+    -  ![Express.js](https://img.shields.io/badge/express.js-%23404d59.svg?style=for-the-badge&logo=express&logoColor=%2361DAFB)
 - Fullstack
 
-    - ![](https://snipboard.io/d5Wb9v.jpg)
-    - ![](https://snipboard.io/BNKUYn.jpg)
-
+    -  	![Next JS](https://img.shields.io/badge/Next-black?style=for-the-badge&logo=next.js&logoColor=white)
+    -  ![TypeScript](https://img.shields.io/badge/typescript-%23007ACC.svg?style=for-the-badge&logo=typescript&logoColor=white)
+    -  ![Socket.io](https://img.shields.io/badge/Socket.io-black?style=for-the-badge&logo=socket.io&badgeColor=010101)
 - Testing
 
-    - ![](https://snipboard.io/JXt7s3.jpg)
-    - ![](https://snipboard.io/3je6hP.jpg)
-- Otras herramientas
+    - ![Jest](https://img.shields.io/badge/-jest-%23C21325?style=for-the-badge&logo=jest&logoColor=white)
+    - ![Testing-Library](https://img.shields.io/badge/-TestingLibrary-%23E33332?style=for-the-badge&logo=testing-library&logoColor=white)
+- Reglas de estilo
 
-    - ![](https://snipboard.io/PTSAlQ.jpg)
-    - ![](https://snipboard.io/PM1Rb7.jpg)
-    - ![](https://snipboard.io/MIafR5.jpg)
+    - ![ESLint](https://img.shields.io/badge/ESLint-4B3263?style=for-the-badge&logo=eslint&logoColor=white)
+    - ![Prettier](https://img.shields.io/badge/prettier-1A2C34?style=for-the-badge&logo=prettier&logoColor=F7BA3E)
 - Despliegue
 
-    - ![](https://snipboard.io/laCEi0.jpg)
-    - ![](https://snipboard.io/ai5t3n.jpg)
+    - ![Vercel](https://img.shields.io/badge/vercel-%23000000.svg?style=for-the-badge&logo=vercel&logoColor=white)
+    - ![DigitalOcean](https://img.shields.io/badge/DigitalOcean-%230167ff.svg?style=for-the-badge&logo=digitalOcean&logoColor=white)
 - Control de versiones 
 
-    - ![](https://snipboard.io/yv80MF.jpg)
+    - ![Git](https://img.shields.io/badge/git-%23F05033.svg?style=for-the-badge&logo=git&logoColor=white)
+    - ![GitHub](https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white)
 - Herramientas externas
 
-    - ![](https://snipboard.io/ZUwQex.jpg)
-    - ![](https://snipboard.io/mg6kEu.jpg)
-    - ![](https://snipboard.io/OpzGkE.jpg)
+    - ![Figma](https://img.shields.io/badge/Figma-F24E1E?style=for-the-badge&logo=figma&logoColor=white)
+    - ![Notion](https://img.shields.io/badge/Notion-000000?style=for-the-badge&logo=notion&logoColor=white)
+    - ![Trello](https://img.shields.io/badge/Trello-%23026AA7.svg?style=for-the-badge&logo=Trello&logoColor=white)
 
 ## Requerimientos
 <a id="requerimientos"></a>
@@ -119,15 +119,15 @@ $ npm run docs
 
 La aplicación trata de un chat de mensajería instantánea en el que diferentes personas podrán registrarse e iniciar sesión para, a continuación, acceder a una pantalla con todos los posibles chats que tengan.
 
-![](https://snipboard.io/0oyvz7.jpg)
+![](https://i.ibb.co/BntpHmV/captura1.png)
 
 Los usuarios podrán hablar con sus contactos.
 
-![](https://snipboard.io/YpMyxK.jpg)
+![](https://i.ibb.co/6brp9Dx/YpMyxK.png)
 
 También se podrá agregar nuevos contactos y editar sus datos.
 
-![](https://snipboard.io/QNCF1w.jpg)
+![](https://i.ibb.co/rZKt8q3/captura3.png)
 
 ## Licencia
 <a id="licencia"></a>
