@@ -87,6 +87,9 @@ const createConfig = (): NextAuthOptions => ({
     session: {
         strategy: "jwt",
     },
+    pages: {
+        signIn: "/login",
+    },
 })
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
