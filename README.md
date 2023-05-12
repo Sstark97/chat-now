@@ -112,7 +112,7 @@ $ npm run docs
 
 La aplicación trata de un chat de mensajería instantánea en el que diferentes personas podrán registrarse e iniciar sesión para, a continuación, acceder a una pantalla con todos los posibles chats que tengan.
 
-![](https://hackmd.io/_uploads/Sk6og09Eh.png)
+![](/public/readme_images/captura1.png)
 
 Los usuarios podrán hablar con sus contactos.
 
@@ -120,7 +120,7 @@ Los usuarios podrán hablar con sus contactos.
 
 También se podrá agregar nuevos contactos y editar sus datos.
 
-![](https://hackmd.io/_uploads/S1QxZC9Eh.png)
+![](/public/readme_images//captura3.png)
 
 ## Licencia
 <a id="licencia"></a>
