@@ -14,8 +14,6 @@ const ChatHeader = () => {
 
     const isFriend = friendships.some((friendship) => {
         if (friendship.email !== selectedChat.email) {
-            console.log(friendship.email)
-            console.log(selectedChat.name)
             return false
         } else {
             return true
