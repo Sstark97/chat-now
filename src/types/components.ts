@@ -2,6 +2,7 @@ import { ReactNode } from "react"
 import { ChildrenProps } from "@customTypes/global"
 import { IconType } from "react-icons"
 import { Status } from "@prisma/client"
+import { Toast } from "react-hot-toast"
 
 /**
  * @interface ErrorProps
@@ -198,6 +199,13 @@ interface DeleteModalProps {
     cleanError: () => void
 }
 
+interface NotificationProps {
+    t: Toast
+    name: string
+    message: string
+    profilePicture?: string
+}
+
 export type {
     ErrorProps,
     InputError,
@@ -214,4 +222,5 @@ export type {
     FeatureProps,
     MessageProps,
     DeleteModalProps,
+    NotificationProps,
 }

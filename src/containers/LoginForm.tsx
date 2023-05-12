@@ -21,6 +21,8 @@ const LoginForm = () => {
 
     /**
      * Esta función es la encargada de ejecutar la función login
+     * @returns void
+     * @example <button onClick={handleClick} />
      */
     const handleClick = async () => {
         await login()

@@ -5,30 +5,55 @@ import { AiOutlineClose } from "react-icons/ai"
 import type { DeleteModalProps } from "@customTypes/components"
 
 /**
- * Formulario para eliminar un contacto
- * @component DeleteContact
- * @example
- * <DeleteContact />
+ * Este componente es el encargado de mostrar el modal para eliminar un contacto
+ * @param {DeleteModalProps} { name, title, error, handleDelete, cleanError }
+ * - name: Nombre del contacto
+ * - title: Título del modal
+ * - error: Error al eliminar el contacto
+ * - handleDelete: Función para eliminar el contacto
+ * - cleanError: Función para limpiar el error
+ * @returns component
+ * @example <DeleteModal />
  */
 const DeleteModal = ({ name, title, error, handleDelete, cleanError }: DeleteModalProps) => {
     const [isOpen, setIsOpen] = useState(false)
     const [email, setEmail] = useState("")
     const deleteMessage = name ? ` a ${name}` : "la cuenta"
 
+    /**
+     * Esta función se encarga de actualizar el valor del input
+     * @returns void
+     * @example <input onChange={handleChange} />
+     */
     const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
         setEmail(event.target.value)
     }
 
+    /**
+     * Esta función se encarga de cerrar el modal
+     * @returns void
+     * @example <button onClick={closeModal} />
+     */
     const closeModal = () => {
         handleDelete(email)
     }
 
+    /**
+     * Esta función se encarga de cerrar el modal
+     * @returns void
+     * @example <button onClick={closeModal} />
+     */
     const handleCancel = () => {
         cleanError()
         setEmail("")
         setIsOpen(false)
     }
 
+    /**
+     * Esta función se encarga de abrir el modal
+     * @returns void
+     * @example <button onClick={openModal} />
+     */
     const openModal = () => {
         setIsOpen(true)
     }

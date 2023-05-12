@@ -15,6 +15,11 @@ const useDeleteContact = () => {
     const router = useRouter()
     const { selectedChat, reloadContacts, handleCloseChat } = useChatContext()
 
+    /**
+     * Esta función se encarga de eliminar un contacto
+     * @param {string} email
+     * @returns {Promise<void>}
+     */
     const handleDelete = async (email: string) => {
         try {
             await deleteFrom(
@@ -31,6 +36,10 @@ const useDeleteContact = () => {
         }
     }
 
+    /**
+     * Esta función se encarga de limpiar el erro
+     * @returns {void}
+     */
     const cleanError = () => setError("")
 
     return { handleDelete, error, cleanError }

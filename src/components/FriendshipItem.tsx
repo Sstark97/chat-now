@@ -5,7 +5,8 @@ import Image from "next/image"
 
 /**
  * Este componente es el encargado de mostrar una relación entre usuario y contacto
- * @param {Friendship} friendship - friendship: relación entre usuario y contacto
+ * @param {Friendship} friendship
+ * - friendship: relación entre usuario y contacto
  * @returns component
  * @example <FriendshipItem name="Juan" time="12:00" message="Hola" numMessages={2} state="online" />
  */
@@ -15,6 +16,11 @@ const FriendshipItem = (friendship: Friendship) => {
     const color = STATE_COLORS[status as keyof typeof STATE_COLORS]
     const { handleOpenChat } = useChatContext()
 
+    /**
+     * Esta función se encarga de abrir el chat con el contacto seleccionado
+     * @returns void
+     * @example handleClick()
+     */
     const handleClick = () => {
         handleOpenChat(friendship)
     }
