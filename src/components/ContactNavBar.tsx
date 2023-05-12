@@ -17,7 +17,7 @@ const ContactNavBar = () => {
                 className="w-full bg-secondary dark:bg-dark_secondary flex justify-evenly lg:items-center lg:justify-between py-8"
                 ref={ref}
             >
-                <Link className="absolute top-7 left-0" href="/contacts">
+                <Link className="absolute top-7 left-0" href="/">
                     <MdArrowBackIosNew className="ml-6 font-extrabold text-xl" />
                 </Link>
 

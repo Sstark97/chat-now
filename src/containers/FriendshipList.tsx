@@ -30,6 +30,7 @@ const FriendshipList = ({ friendships }: FriendshipListProps) => {
                     key={friendship.id}
                     id={friendship.id}
                     name={friendship.name}
+                    email={friendship.email}
                     time={!friendship.time ? "" : formatDate(friendship.time)}
                     message={friendship.message}
                     numMessages={friendship.numMessages}
