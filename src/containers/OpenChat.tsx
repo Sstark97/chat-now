@@ -6,9 +6,9 @@ import ChatHeader from "@containers/ChatHeader"
 import MessageInput from "@components/MessageInput"
 import MessageList from "@containers/MessageList"
 import { getFrom } from "@lib/utils/fetcher"
+import { SOCKET_SERVER } from "@lib/constants/links"
 import type { OpenChatProps } from "@customTypes/containers"
 import type { Message } from "@customTypes/domain"
-import { SOCKET_SERVER } from "@lib/constants/links"
 
 /**
  * Este componente es el encargado de mostrar el chat abierto
@@ -33,7 +33,6 @@ const OpenChat = ({ className }: OpenChatProps) => {
             `${SOCKET_SERVER}messages?userId=${userId}&contactId=${contactId}`
         )
 
-        console.log(messages)
         setMessages(messages)
     }, [userId, contactId])
 
