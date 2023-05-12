@@ -5,6 +5,8 @@ import Chat from "@containers/Chat"
 import type { Friendship } from "@customTypes/components"
 import { getFrom } from "@lib/utils/fetcher"
 import { SOCKET_SERVER } from "@lib/constants/links"
+import toast from "react-hot-toast"
+import Notification from "@components/Notification"
 
 /**
  * Este componente es el encargado de mostrar el contenedor de relaciones entre usuario y contactos
@@ -15,6 +17,8 @@ const FriendshipContainer = () => {
     const { userId } = useChatMembersId()
     const socket = useSocket()
     const [chats, setChats] = useState<Friendship[]>([])
+
+    // toast.custom((t) => <Notification t={t} />)
 
     /**
      * Función para obtener todos los chats
