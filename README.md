@@ -62,7 +62,7 @@ La aplicación consiste en una aplicación web de mensajería instantánea (como
     - ![](/public/readme_images/github.png)
 - Herramientas externas
 
-    - ![](/public/readme_images/figma.png)
+    - ![](https://snipboard.io/ZUwQex.jpg)
     - ![](/public/readme_images/trello.png)
     - ![](/public/readme_images/notion.png)
 
