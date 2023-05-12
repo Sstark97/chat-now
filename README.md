@@ -16,7 +16,7 @@
 
 <div style="display:flex;align-items:center;justify-content:space-between;width=100%;margin-bottom:2rem;">
     <h2>El proyecto</h2>
-    <img src="/public/src/icon.png">
+    <img src="/public/icon.png">
 </div>
 
 <a id="proyecto"></a>
