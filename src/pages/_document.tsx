@@ -4,9 +4,6 @@ export default function Document() {
     return (
         <Html lang="en">
             <Head>
-                {/* eslint-disable-next-line @next/next/no-title-in-document-head */}
-                <title>ChatNow</title>
-
                 <meta name="application-name" content="ChatNow" />
                 <meta name="apple-mobile-web-app-capable" content="yes" />
                 <meta name="apple-mobile-web-app-status-bar-style" content="default" />
@@ -46,10 +43,6 @@ export default function Document() {
                 <meta
                     property="og:image"
                     content="https://chat-now-psi.vercel.app/icon-192x192.png"
-                />
-                <meta
-                    name="viewport"
-                    content="minimum-scale=1, initial-scale=1, width=device-width, shrink-to-fit=no, viewport-fit=cover"
                 />
             </Head>
             <body className="bg-primary dark:bg-dark_primary text-black dark:text-white">
