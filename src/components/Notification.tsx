@@ -1,12 +1,6 @@
 import Image from "next/image"
-import toast, { Toast } from "react-hot-toast"
-
-interface NotificationProps {
-    t: Toast
-    name: string
-    message: string
-    profilePicture?: string
-}
+import toast from "react-hot-toast"
+import type { NotificationProps } from "@customTypes/components"
 
 const Notification = ({ t, name, message, profilePicture }: NotificationProps) => (
     <div

@@ -38,6 +38,20 @@ const FriendshipContainer = () => {
         socket?.on("reload-chats", () => {
             getAllChats()
         })
+
+        socket?.on("notify", (data) => {
+            const { id, name, image, message } = data
+            if (id !== userId) {
+                toast.custom((t) => (
+                    <Notification
+                        t={t}
+                        name={name}
+                        profilePicture={image}
+                        message={message as string}
+                    />
+                ))
+            }
+        })
     }, [socket, getAllChats])
 
     return <Chat message="No hay chats" friendships={chats} />
