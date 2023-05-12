@@ -1,6 +1,14 @@
+import Image from "next/image"
 import toast, { Toast } from "react-hot-toast"
 
-const Notification = ({ t }: { t: Toast }) => (
+interface NotificationProps {
+    t: Toast
+    name: string
+    message: string
+    profilePicture?: string
+}
+
+const Notification = ({ t, name, message, profilePicture }: NotificationProps) => (
     <div
         className={`${
             t.visible ? "animate-enter" : "animate-leave"
@@ -9,15 +17,21 @@ const Notification = ({ t }: { t: Toast }) => (
         <div className="flex-1 w-0 p-4">
             <div className="flex items-start">
                 <div className="flex-shrink-0 pt-0.5">
-                    <img
-                        className="h-10 w-10 rounded-full"
-                        src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixqx=6GHAjsWpt9&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2.2&w=160&h=160&q=80"
-                        alt=""
-                    />
+                    {profilePicture ? (
+                        <Image
+                            className="h-10 w-10 rounded-full"
+                            src={profilePicture}
+                            alt={name}
+                            width={40}
+                            height={40}
+                        />
+                    ) : (
+                        <div className="h-10 w-10 bg-secondary dark:bg-dark_secondary rounded-full"></div>
+                    )}
                 </div>
                 <div className="ml-3 flex-1">
-                    <p className="text-sm font-medium text-gray-900">Emilia Gates</p>
-                    <p className="mt-1 text-sm text-gray-500">Sure! 8:30pm works great!</p>
+                    <p className="text-sm font-medium text-gray-900">{name}</p>
+                    <p className="mt-1 text-sm text-gray-500">{message}</p>
                 </div>
             </div>
         </div>
