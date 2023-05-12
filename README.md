@@ -16,7 +16,7 @@
 
 <div style="display:flex;align-items:center;justify-content:space-between;width=100%;margin-bottom:2rem;">
     <h2>El proyecto</h2>
-    <img src="https://hackmd.io/_uploads/SJahAa54h.png">
+    <img src="/public/src/icon.png">
 </div>
 
 <a id="proyecto"></a>
@@ -28,43 +28,43 @@ La aplicación consiste en una aplicación web de mensajería instantánea (como
 
 - Front-end
 
-    - ![](https://hackmd.io/_uploads/H1Mzaac43.png)
-    - ![](https://hackmd.io/_uploads/rJMtTacE2.png)
+    - ![](/public/badges/react.png)
+    - ![](/public/badges/tailwind.png)
 - Base de datos
     
-    - ![](https://hackmd.io/_uploads/Sko25T5N2.png)
-    - ![](https://hackmd.io/_uploads/SJvZpa5En.png)
-    - ![](https://hackmd.io/_uploads/ByZO6acEn.png)
+    - ![](/public/badges/postgres.png)
+    - ![](/public//badges/prisma.png)
+    - ![](/public/badges/supabase.png)
 - Back-end
 
-    - ![](https://hackmd.io/_uploads/HJU_p69E2.png)
+    - ![](/public/badges/express.png)
 - Fullstack
 
-    - ![](https://hackmd.io/_uploads/r1DfpTqV2.png)
-    - ![](https://hackmd.io/_uploads/HkqS6acNn.png)
+    - ![](/public/badges/next.png)
+    - ![](/public/badges/typescript.png)
 
 - Testing
 
-    - ![](https://hackmd.io/_uploads/SkO36a9E3.png)
-    - ![](https://hackmd.io/_uploads/r1jnTa54n.png)
+    - ![](/public/badges/jest.png)
+    - ![](/public/badges/testingLibrary.png)
 - Otras herramientas
 
-    - ![](https://hackmd.io/_uploads/rkQRaTqEh.png)
-    - ![](https://hackmd.io/_uploads/S1h0Tpq4n.png)
-    - ![](https://hackmd.io/_uploads/B1FC66q42.png)
+    - ![](/public/badges/eslint.png)
+    - ![](/public/badges/socket.png)
+    - ![](/public/badges/vite.png)
 - Despliegue
 
-    - ![](https://hackmd.io/_uploads/Sk886pcEn.png)
-    - ![](https://hackmd.io/_uploads/r1CIaTq4n.png)
-    - ![](https://hackmd.io/_uploads/SJ9UT69V2.png)
+    - ![](/public/badges/vercel.png)
+    - ![](/public/badges/docker.png)
+    - ![](/public/badges/digitalOcean.png)
 - Control de versiones 
 
-    - ![](https://hackmd.io/_uploads/SJptpp5V3.png)
+    - ![](/public/badges/github.png)
 - Herramientas externas
 
-    - ![](https://hackmd.io/_uploads/Sk-s6acEn.png)
-    - ![](https://hackmd.io/_uploads/BJ8oaac42.png)
-    - ![](https://hackmd.io/_uploads/Hy3ip65Vh.png)
+    - ![](/public/badges/figma.png)
+    - ![](/public/badges/trello.png)
+    - ![](/public/badges/notion.png)
 
 ## Requerimientos
 <a id="requerimientos"></a>
