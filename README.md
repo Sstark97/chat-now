@@ -1,7 +1,6 @@
 # ChatNow
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT) 
-[![CodeFactor](https://www.codefactor.io/repository/github/saracs21/high5-/badge)](https://www.codefactor.io/repository/github/saracs21/high5-)
 
 ## Tabla de contenidos
 
@@ -16,7 +15,7 @@
 
 <div style="display:flex;align-items:center;justify-content:space-between;width=100%;margin-bottom:2rem;">
     <h2>El proyecto</h2>
-    <img src="/public/readme_images/icon.png">
+    <img src="https://snipboard.io/ISDFwv.jpg">
 </div>
 
 <a id="proyecto"></a>
@@ -28,48 +27,48 @@ La aplicación consiste en una aplicación web de mensajería instantánea (como
 
 - Front-end
 
-    - ![](/public/readme_images/react.png)
-    - ![](/public/readme_images/tailwind.png)
+    - ![](https://snipboard.io/2pNcs8.jpg)
+    - ![](https://snipboard.io/qGdh4B.jpg)
 - Base de datos
     
-    - ![](/public/readme_images/postgres.png)
-    - ![](/public//readme_images/prisma.png)
-    - ![](/public/readme_images/supabase.png)
+    - ![](https://snipboard.io/wNQyUY.jpg)
+    - ![](https://snipboard.io/iMQFXS.jpg)
+    - ![](https://snipboard.io/wp7dIz.jpg)
 - Back-end
 
-    - ![](/public/readme_images/express.png)
+    - ![](https://snipboard.io/UZBlRz.jpg)
 - Fullstack
 
-    - ![](/public/readme_images/next.png)
-    - ![](/public/readme_images/typescript.png)
+    - ![](https://snipboard.io/d5Wb9v.jpg)
+    - ![](https://snipboard.io/BNKUYn.jpg)
 
 - Testing
 
-    - ![](/public/readme_images/jest.png)
-    - ![](/public/readme_images/testingLibrary.png)
+    - ![](https://snipboard.io/JXt7s3.jpg)
+    - ![](https://snipboard.io/3je6hP.jpg)
 - Otras herramientas
 
-    - ![](/public/readme_images/eslint.png)
-    - ![](/public/readme_images/socket.png)
-    - ![](/public/readme_images/vite.png)
+    - ![](https://snipboard.io/PTSAlQ.jpg)
+    - ![](https://snipboard.io/PM1Rb7.jpg)
+    - ![](https://snipboard.io/MIafR5.jpg)
 - Despliegue
 
-    - ![](/public/readme_images/vercel.png)
-    - ![](/public/readme_images/docker.png)
-    - ![](/public/readme_images/digitalOcean.png)
+    - ![](https://snipboard.io/laCEi0.jpg)
+    - ![](https://snipboard.io/ai5t3n.jpg)
 - Control de versiones 
 
-    - ![](/public/readme_images/github.png)
+    - ![](https://snipboard.io/yv80MF.jpg)
 - Herramientas externas
 
     - ![](https://snipboard.io/ZUwQex.jpg)
-    - ![](/public/readme_images/trello.png)
-    - ![](/public/readme_images/notion.png)
+    - ![](https://snipboard.io/mg6kEu.jpg)
+    - ![](https://snipboard.io/OpzGkE.jpg)
 
 ## Requerimientos
 <a id="requerimientos"></a>
 
-- 
+- Node v18.14.2
+- npm 8.19.2
 
 ## Instalación local
 <a id="instalacion"></a>
@@ -82,7 +81,15 @@ $ git clone https://github.com/Sstark97/chat-now.git
 Debemos tener en cuenta que nuestra aplicación hace uso de variables de entorno, así que para poder usar nuestra Base de Datos de manera local tendremos que crear un fichero <span style="color:#6f11eb">`.env`</span> en el directorio raíz, siguiendo la siguiente estructura:
 
 ```js=
-¿?
+DATABASE_URL=
+NEXT_PUBLIC_SOCKET_SERVER=
+
+NEXTAUTH_URL=
+NEXTAUTH_SECRET=
+AUTH_GITHUB_ID=
+AUTH_GITHUB_SECRET=
+AUTH_GOOGLE_ID=
+AUTH_GOOGLE_SECRET=
 ```
 
 Una vez lo tengamos listo, tendremos que instalar las dependencias para que nuestra aplicación pueda funcionar, para ello tendremos que ejecutar <span style="color:#6f11eb">`npm`</span>:
@@ -112,15 +119,15 @@ $ npm run docs
 
 La aplicación trata de un chat de mensajería instantánea en el que diferentes personas podrán registrarse e iniciar sesión para, a continuación, acceder a una pantalla con todos los posibles chats que tengan.
 
-![](/public/readme_images/captura1.png)
+![](https://snipboard.io/0oyvz7.jpg)
 
 Los usuarios podrán hablar con sus contactos.
 
-// Captura de un CHAT
+![](https://snipboard.io/YpMyxK.jpg)
 
 También se podrá agregar nuevos contactos y editar sus datos.
 
-![](/public/readme_images//captura3.png)
+![](https://snipboard.io/QNCF1w.jpg)
 
 ## Licencia
 <a id="licencia"></a>
