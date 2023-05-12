@@ -16,7 +16,7 @@
 
 <div style="display:flex;align-items:center;justify-content:space-between;width=100%;margin-bottom:2rem;">
     <h2>El proyecto</h2>
-    <img src="/public/icon.png">
+    <img src="/public/readme_images/icon.png">
 </div>
 
 <a id="proyecto"></a>
@@ -28,43 +28,43 @@ La aplicación consiste en una aplicación web de mensajería instantánea (como
 
 - Front-end
 
-    - ![](/public/badges/react.png)
-    - ![](/public/badges/tailwind.png)
+    - ![](/public/readme_images/react.png)
+    - ![](/public/readme_images/tailwind.png)
 - Base de datos
     
-    - ![](/public/badges/postgres.png)
-    - ![](/public//badges/prisma.png)
-    - ![](/public/badges/supabase.png)
+    - ![](/public/readme_images/postgres.png)
+    - ![](/public//readme_images/prisma.png)
+    - ![](/public/readme_images/supabase.png)
 - Back-end
 
-    - ![](/public/badges/express.png)
+    - ![](/public/readme_images/express.png)
 - Fullstack
 
-    - ![](/public/badges/next.png)
-    - ![](/public/badges/typescript.png)
+    - ![](/public/readme_images/next.png)
+    - ![](/public/readme_images/typescript.png)
 
 - Testing
 
-    - ![](/public/badges/jest.png)
-    - ![](/public/badges/testingLibrary.png)
+    - ![](/public/readme_images/jest.png)
+    - ![](/public/readme_images/testingLibrary.png)
 - Otras herramientas
 
-    - ![](/public/badges/eslint.png)
-    - ![](/public/badges/socket.png)
-    - ![](/public/badges/vite.png)
+    - ![](/public/readme_images/eslint.png)
+    - ![](/public/readme_images/socket.png)
+    - ![](/public/readme_images/vite.png)
 - Despliegue
 
-    - ![](/public/badges/vercel.png)
-    - ![](/public/badges/docker.png)
-    - ![](/public/badges/digitalOcean.png)
+    - ![](/public/readme_images/vercel.png)
+    - ![](/public/readme_images/docker.png)
+    - ![](/public/readme_images/digitalOcean.png)
 - Control de versiones 
 
-    - ![](/public/badges/github.png)
+    - ![](/public/readme_images/github.png)
 - Herramientas externas
 
-    - ![](/public/badges/figma.png)
-    - ![](/public/badges/trello.png)
-    - ![](/public/badges/notion.png)
+    - ![](/public/readme_images/figma.png)
+    - ![](/public/readme_images/trello.png)
+    - ![](/public/readme_images/notion.png)
 
 ## Requerimientos
 <a id="requerimientos"></a>
