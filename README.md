@@ -1,7 +1,6 @@
 # ChatNow
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT) 
-[![CodeFactor](https://www.codefactor.io/repository/github/saracs21/high5-/badge)](https://www.codefactor.io/repository/github/saracs21/high5-)
 
 ## Tabla de contenidos
 
@@ -16,7 +15,7 @@
 
 <div style="display:flex;align-items:center;justify-content:space-between;width=100%;margin-bottom:2rem;">
     <h2>El proyecto</h2>
-    <img src="https://hackmd.io/_uploads/SJahAa54h.png">
+    <img src="https://i.ibb.co/M5pYPY0/icon-256x256.png">
 </div>
 
 <a id="proyecto"></a>
@@ -28,48 +27,48 @@ La aplicación consiste en una aplicación web de mensajería instantánea (como
 
 - Front-end
 
-    - ![](https://hackmd.io/_uploads/H1Mzaac43.png)
-    - ![](https://hackmd.io/_uploads/rJMtTacE2.png)
+    -  ![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
+    -  ![TailwindCSS](https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)
 - Base de datos
     
-    - ![](https://hackmd.io/_uploads/Sko25T5N2.png)
-    - ![](https://hackmd.io/_uploads/SJvZpa5En.png)
-    - ![](https://hackmd.io/_uploads/ByZO6acEn.png)
+    -  ![Postgres](https://img.shields.io/badge/postgres-%23316192.svg?style=for-the-badge&logo=postgresql&logoColor=white)
+    -  ![Supabase](https://img.shields.io/badge/Supabase-3ECF8E?style=for-the-badge&logo=supabase&logoColor=white)
+    -  ![Prisma](https://img.shields.io/badge/Prisma-3982CE?style=for-the-badge&logo=Prisma&logoColor=white)
 - Back-end
 
-    - ![](https://hackmd.io/_uploads/HJU_p69E2.png)
+    -  ![Express.js](https://img.shields.io/badge/express.js-%23404d59.svg?style=for-the-badge&logo=express&logoColor=%2361DAFB)
 - Fullstack
 
-    - ![](https://hackmd.io/_uploads/r1DfpTqV2.png)
-    - ![](https://hackmd.io/_uploads/HkqS6acNn.png)
-
+    -  	![Next JS](https://img.shields.io/badge/Next-black?style=for-the-badge&logo=next.js&logoColor=white)
+    -  ![TypeScript](https://img.shields.io/badge/typescript-%23007ACC.svg?style=for-the-badge&logo=typescript&logoColor=white)
+    -  ![Socket.io](https://img.shields.io/badge/Socket.io-black?style=for-the-badge&logo=socket.io&badgeColor=010101)
 - Testing
 
-    - ![](https://hackmd.io/_uploads/SkO36a9E3.png)
-    - ![](https://hackmd.io/_uploads/r1jnTa54n.png)
-- Otras herramientas
+    - ![Jest](https://img.shields.io/badge/-jest-%23C21325?style=for-the-badge&logo=jest&logoColor=white)
+    - ![Testing-Library](https://img.shields.io/badge/-TestingLibrary-%23E33332?style=for-the-badge&logo=testing-library&logoColor=white)
+- Reglas de estilo
 
-    - ![](https://hackmd.io/_uploads/rkQRaTqEh.png)
-    - ![](https://hackmd.io/_uploads/S1h0Tpq4n.png)
-    - ![](https://hackmd.io/_uploads/B1FC66q42.png)
+    - ![ESLint](https://img.shields.io/badge/ESLint-4B3263?style=for-the-badge&logo=eslint&logoColor=white)
+    - ![Prettier](https://img.shields.io/badge/prettier-1A2C34?style=for-the-badge&logo=prettier&logoColor=F7BA3E)
 - Despliegue
 
-    - ![](https://hackmd.io/_uploads/Sk886pcEn.png)
-    - ![](https://hackmd.io/_uploads/r1CIaTq4n.png)
-    - ![](https://hackmd.io/_uploads/SJ9UT69V2.png)
+    - ![Vercel](https://img.shields.io/badge/vercel-%23000000.svg?style=for-the-badge&logo=vercel&logoColor=white)
+    - ![DigitalOcean](https://img.shields.io/badge/DigitalOcean-%230167ff.svg?style=for-the-badge&logo=digitalOcean&logoColor=white)
 - Control de versiones 
 
-    - ![](https://hackmd.io/_uploads/SJptpp5V3.png)
+    - ![Git](https://img.shields.io/badge/git-%23F05033.svg?style=for-the-badge&logo=git&logoColor=white)
+    - ![GitHub](https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white)
 - Herramientas externas
 
-    - ![](https://hackmd.io/_uploads/Sk-s6acEn.png)
-    - ![](https://hackmd.io/_uploads/BJ8oaac42.png)
-    - ![](https://hackmd.io/_uploads/Hy3ip65Vh.png)
+    - ![Figma](https://img.shields.io/badge/Figma-F24E1E?style=for-the-badge&logo=figma&logoColor=white)
+    - ![Notion](https://img.shields.io/badge/Notion-000000?style=for-the-badge&logo=notion&logoColor=white)
+    - ![Trello](https://img.shields.io/badge/Trello-%23026AA7.svg?style=for-the-badge&logo=Trello&logoColor=white)
 
 ## Requerimientos
 <a id="requerimientos"></a>
 
-- 
+- Node v18.14.2
+- npm 8.19.2
 
 ## Instalación local
 <a id="instalacion"></a>
@@ -82,7 +81,15 @@ $ git clone https://github.com/Sstark97/chat-now.git
 Debemos tener en cuenta que nuestra aplicación hace uso de variables de entorno, así que para poder usar nuestra Base de Datos de manera local tendremos que crear un fichero <span style="color:#6f11eb">`.env`</span> en el directorio raíz, siguiendo la siguiente estructura:
 
 ```js=
-¿?
+DATABASE_URL=
+NEXT_PUBLIC_SOCKET_SERVER=
+
+NEXTAUTH_URL=
+NEXTAUTH_SECRET=
+AUTH_GITHUB_ID=
+AUTH_GITHUB_SECRET=
+AUTH_GOOGLE_ID=
+AUTH_GOOGLE_SECRET=
 ```
 
 Una vez lo tengamos listo, tendremos que instalar las dependencias para que nuestra aplicación pueda funcionar, para ello tendremos que ejecutar <span style="color:#6f11eb">`npm`</span>:
@@ -112,15 +119,15 @@ $ npm run docs
 
 La aplicación trata de un chat de mensajería instantánea en el que diferentes personas podrán registrarse e iniciar sesión para, a continuación, acceder a una pantalla con todos los posibles chats que tengan.
 
-![](https://hackmd.io/_uploads/Sk6og09Eh.png)
+![](https://i.ibb.co/BntpHmV/captura1.png)
 
 Los usuarios podrán hablar con sus contactos.
 
-// Captura de un CHAT
+![](https://i.ibb.co/6brp9Dx/YpMyxK.png)
 
 También se podrá agregar nuevos contactos y editar sus datos.
 
-![](https://hackmd.io/_uploads/S1QxZC9Eh.png)
+![](https://i.ibb.co/rZKt8q3/captura3.png)
 
 ## Licencia
 <a id="licencia"></a>
