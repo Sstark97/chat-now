@@ -138,4 +138,4 @@ Distribuido bajo licencia MIT.
 <a id="enlaces"></a>
 
 [Enlace a la web](https://chat-now-psi.vercel.app/)
-[Enlace a la documentación]()
+[Enlace a la documentación](https://chatnownotion.super.site/)
